@@ -17,12 +17,20 @@ class Project extends Model
     protected $fillable = [
         'title',
         'description',
-        'image_address',
-        'image_alt',
+        'image',
         'project_link',
         'framework',
         'excerpt',
         'position',
-        'image_url',
+        'properties'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'properties' => 'json'
     ];
 }

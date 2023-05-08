@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -15,14 +15,7 @@ class Book extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'author',
-        'description',
-        'image',
-        'book_link',
-        'subtitle',
-        'book_category_id',
-        'position',
+        'name',
         'properties',
     ];
 
@@ -36,8 +29,4 @@ class Book extends Model
     ];
 
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class, 'book_categories');
-    }
 }
