@@ -9,6 +9,11 @@ class PagesController extends Controller
 {
     public function home()
     {
-        return Inertia::render('Pages/Home');
+        return Inertia::render('Home');
+    }
+
+    public function resume()
+    {
+        return Inertia::render('Resume');
     }
 }

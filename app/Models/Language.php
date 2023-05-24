@@ -18,4 +18,34 @@ class Language extends Model
         'language',
         'value',
     ];
+
+    public static function getLanguagesWithWidths()
+    {
+        $langs = Language::orderBy('value', 'desc')->get();
+        $values = Language::pluck('value');
+
+        if ($langs->isNotEmpty()) {
+            $total = $values->sum();
+            $widths = [];
+
+            foreach ($langs as $lang) {
+                if (is_float($lang->value) && is_float($total) && $lang->value > 0 && $total > 0) {
+                    $width = round(($lang->value / $total) * 100, 2);
+                    $widths[$lang->language] = $width;
+                }
+            }
+
+            return $widths;
+        }
+    }
+
+    public static function slugifyLanguage($string)
+    {
+        if (str_contains($string, "+")) {
+            return str_replace("+", "plus", $string);
+        }
+
+        $string = preg_replace('/[^a-zA-Z0-9]+/', '-', $string);
+        return strtolower($string);
+    }
 }
