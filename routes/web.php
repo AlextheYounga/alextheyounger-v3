@@ -21,14 +21,16 @@ Route::get('/', function () {
     return Inertia::render('Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
 });
 
-// Route::get('/', [
-//     PagesController::class, 'home'
-// ])->middleware(['auth', 'verified'])->name('home');
+Route::get('/books', [
+    BooksController::class, 'index'
+])->name('books.index');
+
+Route::get('/projects', [
+    ProjectsController::class, 'index'
+])->name('projects.index');
 
 
 Route::middleware('auth')->group(function () {
