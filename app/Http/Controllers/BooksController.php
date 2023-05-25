@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use App\Models\Book;
 
-class BookController extends Controller
+class BooksController extends Controller
 {
     public function index()
     {
-        $books = Book::all();
+        $books = Book::all()
+        ->with('categories');
+
         return Inertia::render('Books/Index', [
-            'books' => $books
+            'books' => $books,
         ]);
     }
     
