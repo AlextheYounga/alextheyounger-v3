@@ -1,3 +1,4 @@
+<script>
 function random() {
     /*  
         This is a basic Lehmer random number generator.
@@ -1148,8 +1149,8 @@ let viewbox = '57 40 84 84'; //desktop
 
 var svg = SVG({
     // size: 500, // millimeters
-    background: "#fff",
-    stroke: "#333",
+    background: "#fafaf9",
+    stroke: "#a8a29e",
     strokeWidth: 0.1,
     cpuTime: 7, // milliseconds / frame  
     viewBox: viewbox,
@@ -1167,7 +1168,7 @@ console.log("seed: " + seed);
 
 export var terrainLoaded = false; // global terrain variable
 
-var draw = function draw(w) {
+export function draw(w) {
     var r = 200 / size;
     pen = false;
 
@@ -1185,3 +1186,28 @@ var draw = function draw(w) {
     }
     return w < size;
 }
+</script>
+
+<style>
+    #terrain-container {
+        position: fixed;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+    }
+
+    #terrain-container #terrain {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        max-width: 100vw;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+</style>

@@ -1,94 +1,96 @@
 <template>
+    <Head title="Welcome" />
+    <NavBar/>
     <div id="page-wrapper" class="opacity-0 transition-opacity duration-500 ease-in w-5/6 sm:w-3/5 mx-auto max-w-3xl pt-12">
         <section class="hero mt-16 w-1/2 sm:w-1/3 mx-auto sm:mt-0 mb-4 relative ">
             <img :src="bridgeStanding" class="headshot flex mx-auto relative text-center" alt="alex younger developer marketing about me" />
         </section>
 
-        <section class="title mb-8 bg-white border shadow rounded relative">
-            <h1 class="fancy-font text-5xl text-black text-center">Alex Younger</h1>
-            <p class="fancy-font py-2 text-black text-center text-lg">Software Engineer, Data Scientist, Entrepreneur</p>
+        <section class="title mb-8 bg-neutral-50 shadow rounded relative">
+            <h1 class="text-5xl text-gray-700 text-center">Alex Younger</h1>
+            <p class="py-2 text-gray-700 text-center text-lg">Software Engineer, Data Scientist, Entrepreneur</p>
         </section>
 
         <!-- Skills -->
-        <section class="bg-white border my-8 p-2 py-8 shadow relative rounded z-10">
+        <section class="bg-neutral-50 my-8 p-2 py-8 shadow relative rounded z-10 text-gray-700">
             <div class="language-stats">
-                <h2 class="mb-3 text-3xl text-gray-900 fancy-font sm:px-8">Skills</h2>
-                <LanguageBar :languages="languages"/>
+                <h2 class="mb-3 text-3xl text-gray-700 sm:px-8">Skills</h2>
+                <LanguageBar :languages="languages" />
             </div>
         </section>
 
         <!-- Description -->
-        <section class="home-description relative bg-white border my-8 mb-8 p-8 shadow">
+        <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow">
             <div class="image-quote sm:flex justify-between">
-                <img :src="frozenLake" class="flex  mx-auto relative text-center w-full" alt="alex younger developer marketing about me" />
-                <p class="italic text-sm w-full sm:mt-0 sm:text-right sm:ml-auto sm:w-2/3 sm:pt-16">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble" -Ralph Waldo Emerson</p>
+                <img :src="frozenLake" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full" alt="alex younger developer marketing about me" />
+                <p class="italic text-gray-700 text-sm w-full sm:mt-0 sm:text-right sm:ml-auto sm:w-2/3 sm:pt-16">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble" -Ralph Waldo Emerson</p>
             </div>
 
-            <div class="description leading-normal ml-auto normal-font">
-                <p class="py-2">I currently work for <a class="text-blue-600 hover:text-blue-900" href="https://marketplacer.com/">Marketplacer</a>,
+            <div class="description leading-normal ml-auto">
+                <p class="py-2 text-gray-700">I currently work for <a class="text-blue-600 hover:text-blue-800" href="https://marketplacer.com/">Marketplacer</a>,
                     building connector APIs that integrate with major ecommerce platforms.</p>
-                <p class="py-2">I've built and maintained websites for an extensive list of small and large companies including
-                    <a class="text-blue-600 hover:text-blue-900" href="https://www.bluehawaiian.com/en">Blue Hawaiian Helicopters</a>,
-                    <a class="text-blue-600 hover:text-blue-900" href="https://www.intelligentoffice.com/">Intelligent Office</a>, and
-                    <a class="text-blue-600 hover:text-blue-900" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
+                <p class="py-2 text-gray-700">I've built and maintained websites for an extensive list of small and large companies including
+                    <a class="text-blue-600 hover:text-blue-800" href="https://www.bluehawaiian.com/en">Blue Hawaiian Helicopters</a>,
+                    <a class="text-blue-600 hover:text-blue-800" href="https://www.intelligentoffice.com/">Intelligent Office</a>, and
+                    <a class="text-blue-600 hover:text-blue-800" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
                 </p>
-                <p class="py-2">I'm building an awesome MVC framework atop Electron called <a class="text-blue-600 hover:text-blue-900" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.
+                <p class="py-2 text-gray-700">I'm building an awesome MVC framework atop Electron called <a class="text-blue-600 hover:text-blue-800" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.
                     I built that Vultron to build a personal budget/accounting desktop app called AmassWealth.io (Work in Progress).</p>
 
-                <p>My <a class="text-blue-600 hover:text-blue-900" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts Congressional stock transactions so you can trade like the people who control the market. Follow me.</p>
-                <p class="py-2">Check out my latest
-                    <inertia-link class="text-blue-600 hover:text-blue-900" :href="route('projects.index')">projects</inertia-link>
+                <p class="text-gray-700">My <a class="text-blue-600 hover:text-blue-800" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts Congressional stock transactions so you can trade like the people who control the market. Follow me.</p>
+                <p class="py-2 text-gray-700">Check out my latest
+                    <Link class="text-blue-600 hover:text-blue-800" :href="route('projects.index')">projects</Link>
                 </p>
             </div>
         </section>
 
         <!-- Projects List -->
-        <section class="projects-home p-2 sm:p-8 relative mb-8 bg-white border">
-            <h3 class="text-3xl text-gray-900 mb-4 fancy-font mx-auto">Projects</h3>
-            <div class="overflow-hidden bg-white border shadow sm:rounded-md">
-                <ul role="list" id="projects-container" class="divide-y divide-gray-200 overflow-scroll">
-                    <!-- foreach projects -->
-                    <li>
-                        <a href="<%= project.project_link %>" class="block hover:bg-gray-50">
-                            <div class="px-4 py-4 sm:px-6">
+        <section class="projects-home p-2 sm:p-8 relative mb-8 bg-neutral-50">
+            <h3 class="text-3xl text-gray-700 mb-4 mx-auto">Projects</h3>
+            <div class="overflow-hidden shadow sm:rounded-md">
+                <ul role="list" id="projects-container" class="divide-y divide-gray-500 overflow-scroll">
+                    <li v-for="project of projects" :key="project.id">
+                        <a :href="project.project_link" class="block">
+                            <div class="bg-neutral-200 px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <p class="truncate text-lg font-medium text-blue-600 normal-font">
-                                        <!-- project title -->
+                                    <p class="truncate text-lg font-medium text-blue-600">
+                                        {{ project.title }}
                                     </p>
                                     <div class="ml-2 flex flex-shrink-0">
-                                        <p class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5" data-framework="<%= project.framework %>">
-                                            <!-- project framework -->
+                                        <p class="text-gray-700 framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5" :data-framework="project.framework">
+                                            {{ project.framework }}
                                         </p>
                                     </div>
                                 </div>
                                 <div class="mt-2 sm:flex sm:justify-between">
                                     <div class="sm:flex">
-                                        <p class="flex items-center text-sm text-gray-500 truncate">
-                                            <!-- project excerpt -->
+                                        <p class="flex items-center text-sm text-gray-400 truncate">
+                                            {{ project.excerpt }}
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <!-- end loop -->
                 </ul>
             </div>
-            <inertia-link class="bg-white border block border-blue-800 hover:bg-blue-900 hover:text-blue-100 mx-auto text-center no-underline normal-font py-3 rounded shadow-lg text-blue-900 w-48 mt-12" :href="route('projects.index')">
+            <Link class="bg-white border block border-blue-800 hover:bg-blue-900 hover:text-blue-100 mx-auto text-center no-underline normal-font py-3 rounded shadow-lg text-blue-900 w-48 mt-12" :href="route('projects.index')">
                 See More
-            </inertia-link>
+            </Link>
         </section>
     </div>
 </template>
 
 <script setup>
-// import { Head } from '@inertiajs/vue3';
-import LanguageBar from '@/Components/LanguageBar.vue'
-import { terrainLoaded } from '@/terrain'; '@/Terrain/terrain.js'
-import bridgeStanding from '/public/images/bridge-standing.jpg'
-import frozenLake from '/public/images/frozen-lake.jpg'
-
-
+import { Head } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3'
+import LanguageBar from '@/Components/LanguageBar.vue';
+import NavBar from '@/Components/Navbar.vue';
+import { draw, terrainLoaded } from '@/Components/Terrain.vue';
+import bridgeStanding from '/public/images/bridge-standing.jpg';
+import frozenLake from '/public/images/frozen-lake.jpg';
+import { generateProjectFrameworkColors } from '@/Components/ProjectColors.vue';
+import { onMounted } from 'vue';
 
 defineProps({
     canLogin: {
@@ -98,6 +100,10 @@ defineProps({
         type: Boolean,
     },
     languages: {
+        type: Object,
+        required: true,
+    },
+    projects: {
         type: Object,
         required: true,
     },
@@ -121,7 +127,12 @@ function waitForTerrain() {
     terrainFinished()
 }
 
-waitForTerrain()
+onMounted(() => {
+    draw()
+    waitForTerrain()
+    generateProjectFrameworkColors()
+});
+
 </script>
 
 <style scoped>
@@ -133,7 +144,6 @@ waitForTerrain()
 .image-quote img {
     border-radius: 100px;
     max-width: 200px;
-    border: 8px white solid;
     padding: 0;
     margin: 0;
 }
