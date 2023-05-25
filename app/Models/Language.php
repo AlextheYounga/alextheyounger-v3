@@ -38,14 +38,4 @@ class Language extends Model
             return $widths;
         }
     }
-
-    public static function slugifyLanguage($string)
-    {
-        if (str_contains($string, "+")) {
-            return str_replace("+", "plus", $string);
-        }
-
-        $string = preg_replace('/[^a-zA-Z0-9]+/', '-', $string);
-        return strtolower($string);
-    }
 }
