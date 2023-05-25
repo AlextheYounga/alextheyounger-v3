@@ -13,12 +13,12 @@
         <section class="bg-white border my-8 p-2 py-8 shadow relative rounded z-10">
             <div class="language-stats">
                 <h2 class="mb-3 text-3xl text-gray-900 fancy-font sm:px-8">Skills</h2>
-                <!-- language bar -->
+                <LanguageBar :languages="languages"/>
             </div>
         </section>
 
         <!-- Description -->
-        <section class="home-description relative bg-white border mt-24 mb-8 p-8 shadow">
+        <section class="home-description relative bg-white border my-8 mb-8 p-8 shadow">
             <div class="image-quote sm:flex justify-between">
                 <img :src="frozenLake" class="flex  mx-auto relative text-center w-full" alt="alex younger developer marketing about me" />
                 <p class="italic text-sm w-full sm:mt-0 sm:text-right sm:ml-auto sm:w-2/3 sm:pt-16">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble" -Ralph Waldo Emerson</p>
@@ -83,9 +83,11 @@
 
 <script setup>
 // import { Head } from '@inertiajs/vue3';
-import { terrainLoaded } from '@/Terrain/terrain'; '@/Terrain/terrain.js'
+import LanguageBar from '@/Components/LanguageBar.vue'
+import { terrainLoaded } from '@/terrain'; '@/Terrain/terrain.js'
 import bridgeStanding from '/public/images/bridge-standing.jpg'
 import frozenLake from '/public/images/frozen-lake.jpg'
+
 
 
 defineProps({
@@ -95,10 +97,14 @@ defineProps({
     canRegister: {
         type: Boolean,
     },
+    languages: {
+        type: Object,
+        required: true,
+    },
 });
 
 function reveal() {
-    var wrapper = document.getElementById('page-wrapper');
+    const wrapper = document.getElementById('page-wrapper');
     wrapper.classList.add(['opacity-100'])
 }
 
