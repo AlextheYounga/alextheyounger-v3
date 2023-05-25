@@ -9,11 +9,6 @@ class Book extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'title',
         'author',
@@ -26,11 +21,10 @@ class Book extends Model
         'properties',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    protected $appends = [
+        'selector'
+    ];
+
     protected $casts = [
         'properties' => 'json'
     ];
@@ -38,5 +32,13 @@ class Book extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'book_categories');
+    }
+
+    public function getSelectorAttribute()
+    {
+        if ($this->categories) {
+            $category = $this->categories[0];
+            return $category->selector;
+        }
     }
 }

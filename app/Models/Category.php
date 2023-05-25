@@ -9,22 +9,16 @@ class Category extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'type',
         'properties',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    protected $appends = [
+        'selector'
+    ];
+
     protected $casts = [
         'properties' => 'json'
     ];
@@ -32,5 +26,13 @@ class Category extends Model
     public function books()
     {
         return $this->belongsToMany(Book::class, 'book_categories');
+    }
+    
+    public function getSelectorAttribute()
+    {
+        if (isset($this->properties["html_selector"])) {
+            return $this->properties["html_selector"];
+        }
+        return null;
     }
 }

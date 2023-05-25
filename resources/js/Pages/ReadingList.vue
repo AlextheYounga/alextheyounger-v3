@@ -8,10 +8,12 @@
         <div class="category-menu">
             <ul class="flex flex-wrap w-full justify-center p-0">
                 <li class="text-center p-2 border-r border-gray-300">
-                    <button id="showall" class="normal-font text-sm text-purple-900 hover:text-purple-300">Show All</button>
+                    <button id="showall" @click="showAll" class="normal-font text-sm text-purple-900 hover:text-purple-300">Show All</button>
                 </li>
                 <li v-for="(category, index) in categories" :key="index" class="text-center p-2" :class="{ 'border-r border-gray-300': index !== categories.length - 1 }">
-                    <button :id="category.properties['html_selector']" class="normal-font text-sm text-purple-900 hover:text-purple-300">{{ category.name }}</button>
+                    <button @click="selectCategory(category.selector)" :class="category.selector + ' normal-font text-sm text-purple-900 hover:text-purple-300'">
+                        {{ category.name }}
+                    </button>
                 </li>
             </ul>
         </div>
@@ -20,7 +22,7 @@
     <div class="container mx-auto">
         <div class="covers flex flex-wrap my-8 w-full">
             <template v-for="book in this.books" :key="book.id">
-                <div :class="htmlSelector(book) + ' cover lg:w-1/4 md:w-1/3 sm:w-1/2 text-center my-12 relative'">
+                <div :class="book.selector + ' cover lg:w-1/4 md:w-1/3 sm:w-1/2 text-center my-12 relative duration-500 transition-transform'">
                     <a :href="book.external_link" target="_blank" rel="nofollow" class="no-underline">
                         <img v-if="book.external_image_link" :src="book.external_image_link" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
                         <picture v-else>
@@ -44,6 +46,7 @@
 import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3'
 import NavBar from '@/Components/Navbar.vue';
+import '@/jquery.min.js'
 import '@/Components/Terrain.vue';
 
 export default {
@@ -63,20 +66,29 @@ export default {
         },
     },
     methods: {
-        htmlSelector(book) {
-            let category = book.categories[0];
-            return category.properties['html_selector'];
-        },
         category(book) {
             return book.categories[0];
         },
         imageAlt(book) {
-            return book.properties["image_alt"] ?? 'Alex Younger Reading List Book Image'
+            return book.properties["image_alt"] ?? `Alex Younger Reading List ${book.title}`
+        },
+        selectCategory(selector) {
+            // Only using Jquery because I don't know how to replicate their cool
+            // showHide() animations in Javascript without writing a shit ton of code.
+            var get_current = $('.covers .' + selector);
+
+            $('.cover')
+                .not(get_current)
+                .hide(500);
+            get_current.show(500);
+        },
+        showAll() {
+            $('.cover').show(500);
         }
     },
     mounted() {
         const terrain = document.getElementById("terrain-container")
-        terrain.classList.add("opacity-40")
+        terrain.classList.add("opacity-50")
     }
 }
 </script>

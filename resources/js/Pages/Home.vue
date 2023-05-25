@@ -111,7 +111,7 @@ defineProps({
 
 function reveal() {
     const wrapper = document.getElementById('page-wrapper');
-    wrapper.classList.add(['opacity-100'])
+    wrapper.classList.add('opacity-100')
 }
 
 function terrainFinished() {
