@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('author')->nullable();
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
-            $table->text('book_link')->nullable();
+            $table->string('image_name')->nullable();
+            $table->text('external_link')->nullable();
+            $table->string('external_image_link')->nullable();
             $table->string('subtitle')->nullable();
             $table->integer('position')->nullable();
             $table->json('properties')->nullable();

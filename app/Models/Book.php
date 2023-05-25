@@ -18,10 +18,10 @@ class Book extends Model
         'title',
         'author',
         'description',
-        'image',
-        'book_link',
+        'image_name',
+        'external_link',
+        'external_image_link',
         'subtitle',
-        'book_category_id',
         'position',
         'properties',
     ];

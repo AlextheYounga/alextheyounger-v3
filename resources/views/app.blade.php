@@ -21,7 +21,7 @@
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-stone-50">
     <div id="terrain-container">
         <?xml version="1.0"?>
         <svg id="terrain" xmlns="http://www.w3.org/2000/svg" version="1.2"></svg>

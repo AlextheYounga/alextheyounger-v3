@@ -86,7 +86,7 @@ import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3'
 import LanguageBar from '@/Components/LanguageBar.vue';
 import NavBar from '@/Components/Navbar.vue';
-import { draw, terrainLoaded } from '@/Components/Terrain.vue';
+import { terrainLoaded } from '@/Components/Terrain.vue';
 import bridgeStanding from '/public/images/bridge-standing.jpg';
 import frozenLake from '/public/images/frozen-lake.jpg';
 import { generateProjectFrameworkColors } from '@/Components/ProjectColors.vue';
@@ -128,7 +128,6 @@ function waitForTerrain() {
 }
 
 onMounted(() => {
-    draw()
     waitForTerrain()
     generateProjectFrameworkColors()
 });

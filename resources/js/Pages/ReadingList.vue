@@ -1,7 +1,7 @@
 <template>
     <Head title="Reading List" />
     <NavBar />
-    <h1 class="sm:text-3xl text-2xl font-medium mb-4 text-gray-900 text-center">
+    <h1 class="sm:text-3xl text-2xl font-medium mb-4 sm:pt-24 text-gray-900 text-center">
         My Favorite Books & Audio
     </h1>
     <div class="container mx-auto">
@@ -19,45 +19,108 @@
 
     <div class="container mx-auto">
         <div class="covers flex flex-wrap my-8 w-full">
-            <div v-for="book in books" :key="book.id" v-if="book.covers.attached || book.image_address" :class="book.category.html_selector + ' cover lg:w-1/4 md:w-1/3 sm:w-1/2 text-center my-12 relative'">
-                <p class="absolute left-16 top-0">{{ book.position }}</p>
-                <a :href="book.book_link" target="_blank" rel="nofollow" class="no-underline">
-                    <picture>
-                        <source :srcset="book.covers.attached ? book.webp_attachment : `${imagePath(book.image_address)}.webp`" type="image/webp">
-                        <source :srcset="book.covers.attached ? book.jpeg_attachment : image_path(book.image_address)" type="image/jpg">
-                        <img :src="book.covers.attached ? book.jpeg_attachment : image_path(book.image_address)" class="mb-3 mx-auto shadow" :alt="book.image_alt">
-                    </picture>
-                </a>
-                <div class="book-description bg-purple-100 w-4/5 p-4 rounded-lg mx-auto">
-                    <p class="fancy-font text-md text-purple-900">{{ book.title }}</p>
-                    <p class="normal-font text-sm text-purple-900 py-2">{{ book.subtitle }}</p>
-                    <p class="normal-font text-sm text-purple-900">by {{ book.author }}</p>
+            <template v-for="book in this.books" :key="book.id">
+                <div :class="htmlSelector(book) + ' cover lg:w-1/4 md:w-1/3 sm:w-1/2 text-center my-12 relative'">
+                    <a :href="book.external_link" target="_blank" rel="nofollow" class="no-underline">
+                        <img v-if="book.external_image_link" :src="book.external_image_link" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
+                        <picture v-else>
+                            <source :srcset="`/images/books/${book.image_name}.webp`" type="image/webp">
+                            <source :srcset="`/images/books/${book.image_name}`" type="image/jpg">
+                            <img :src="`/images/books/${book.image_name}`" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
+                        </picture>
+                    </a>
+                    <div class="book-description bg-purple-100 w-4/5 p-4 rounded-lg mx-auto">
+                        <p class="fancy-font text-md text-purple-900">{{ book.title }}</p>
+                        <p class="normal-font text-sm text-purple-900 py-2">{{ book.subtitle }}</p>
+                        <p class="normal-font text-sm text-purple-900">by {{ book.author }}</p>
+                    </div>
                 </div>
-            </div>
+            </template>
         </div>
     </div>
 </template>
 
-<script setup>
+<script>
 import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3'
 import NavBar from '@/Components/Navbar.vue';
-import { draw } from '@/Components/Terrain.vue';
-import { onMounted } from 'vue';
+import '@/Components/Terrain.vue';
 
-defineProps({
-    books: {
-        type: Object,
-        required: true,
+export default {
+    components: {
+        NavBar,
+        Head,
+        Link
     },
-    categories: {
-        type: Object,
-        required: true,
+    props: {
+        books: {
+            type: Object,
+            required: true,
+        },
+        categories: {
+            type: Object,
+            required: true,
+        },
     },
-});
-
-onMounted(() => {
-    draw()
-});
-
+    methods: {
+        htmlSelector(book) {
+            let category = book.categories[0];
+            return category.properties['html_selector'];
+        },
+        category(book) {
+            return book.categories[0];
+        },
+        imageAlt(book) {
+            return book.properties["image_alt"] ?? 'Alex Younger Reading List Book Image'
+        }
+    },
+    mounted() {
+        const terrain = document.getElementById("terrain-container")
+        terrain.classList.add("opacity-40")
+    }
+}
 </script>
+
+<style scoped>
+.category-menu ul li {
+    list-style: none;
+}
+
+.category-menu ul li button {
+    text-decoration: none;
+}
+
+.category-menu ul li button:focus {
+    outline: 1px solid #fff;
+    outline-offset: 5px;
+}
+
+.covers .edit-book-link {
+    top: 0;
+    right: 55px;
+}
+
+.covers img {
+    border: 3px inset lightgrey;
+    border-radius: 4px;
+    max-width: 200px;
+}
+
+@media (max-width: 576px) {
+    .covers .category-menu {
+        width: 40%;
+    }
+
+    .covers .cover {
+        width: 50%;
+    }
+
+    .covers img {
+        width: 8rem;
+    }
+
+    .covers .book-description {
+        width: 83.333%;
+    }
+}
+</style>

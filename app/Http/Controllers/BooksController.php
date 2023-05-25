@@ -12,6 +12,7 @@ class BooksController extends Controller
     public function index()
     {
         $books = Book::with('categories')
+            ->orderBy('position', 'asc')
             ->get();
 
         $categories = Category::where('type', '=', 'Book::class')

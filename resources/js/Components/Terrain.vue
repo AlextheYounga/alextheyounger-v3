@@ -1168,7 +1168,7 @@ console.log("seed: " + seed);
 
 export var terrainLoaded = false; // global terrain variable
 
-export function draw(w) {
+var draw = function draw(w) {
     var r = 200 / size;
     pen = false;
 

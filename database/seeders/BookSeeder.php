@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Book;
+use App\Models\BookCategory;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
@@ -13,6 +14,7 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
+        BookCategory::truncate();
         Book::truncate();
 
         $booksJson = file_get_contents('storage/data/books.json');
@@ -23,8 +25,9 @@ class BookSeeder extends Seeder
                 'title' => $book['title'],
                 'author' => $book['author'],
                 'description' => $book['description'],
-                'image' => $book['image_address'],
-                'book_link' => $book['book_link'],
+                'image_name' => $book['image_name'],
+                'external_link' => $book['external_link'],
+                'external_image_link' => $book['external_image_link'] ?? null,
                 'subtitle' => $book['subtitle'],
                 'position' => $book['position'],
                 'properties' => [
