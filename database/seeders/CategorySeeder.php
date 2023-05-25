@@ -21,6 +21,7 @@ class CategorySeeder extends Seeder
         foreach($categories as $category) {
             Category::create([
                 'name' => $category['name'],
+                'type' => 'Book::class',
                 'properties' => [
                     'html_selector' => $category['html_selector'],
                 ],

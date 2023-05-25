@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\Language;
+use App\Models\Project;
 
 class PagesController extends Controller
 {
@@ -16,6 +17,7 @@ class PagesController extends Controller
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'languages' => $languages,
+            'projects' => Project::all(),
         ]);
     }
 

@@ -35,7 +35,6 @@ class Book extends Model
         'properties' => 'json'
     ];
 
-
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'book_categories');
