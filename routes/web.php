@@ -21,12 +21,12 @@ use Inertia\Inertia;
 Route::get('/', [PagesController::class, 'home']);
 
 Route::get('/books', [
-    BooksController::class, 'index'
-])->name('books.index');
+    PagesController::class, 'readingList'
+])->name('pages.books');
 
 Route::get('/projects', [
-    ProjectsController::class, 'index'
-])->name('projects.index');
+    PagesController::class, 'projects'
+])->name('pages.projects');
 
 
 Route::middleware('auth')->group(function () {
