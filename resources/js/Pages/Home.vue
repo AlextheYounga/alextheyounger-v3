@@ -8,7 +8,6 @@
                 <source srcset="/images/bridge-standing.jpg" type="image/jpg">
                 <img src="/images/bridge-standing.jpg" class="headshot flex mx-auto relative text-center" alt="alex younger developer marketing about me" />
             </picture>
-            <!-- <img :src="bridgeStanding" class="headshot flex mx-auto relative text-center" alt="alex younger developer marketing about me" /> -->
         </section>
 
         <section class="title mb-8 bg-neutral-50 shadow rounded relative">
@@ -24,18 +23,29 @@
             </div>
         </section>
 
-        <!-- Description -->
-        <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow">
+        <!-- Quote Box -->
+        <section class="home-quote relative bg-neutral-50 my-8 mb-8 p-8 shadow">
+            <div class="text-center">
+                <p class="text-sm pb-2 text-gray-700">Pssst! Are you bored? Wanna
+                    <Link class="text-burgandy hover:text-red-600" href="/terrain">play</Link> with the terrain generator?
+                </p>
+            </div>
             <div class="image-quote sm:flex justify-between">
                 <picture>
                     <source srcset="/images/frozen-lake.jpg.webp" type="image/webp">
                     <source srcset="/images/frozen-lake.jpg" type="image/jpg">
                     <img src="/images/frozen-lake.jpg" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full" alt="alex younger developer marketing about me" />
                 </picture>
-                <!-- <img :src="frozenLake" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full" alt="alex younger developer marketing about me" /> -->
-                <p class="italic text-gray-700 text-sm w-full mt-4 sm:mt-0 sm:text-right sm:ml-auto sm:w-2/3 sm:pt-16">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble" -Ralph Waldo Emerson</p>
+                <div class="text-gray-700 text-sm w-full mt-4 sm:mt-0 sm:text-right sm:ml-auto sm:pt-16 sm:w-2/3 pt-2">
+                    <p class="italic">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble"</p>
+                    <p class="italic pt-4"> -Ralph Waldo Emerson</p>
+                </div>
             </div>
+        </section>
 
+        <!-- Description -->
+        <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow">
+            <h2 class="mb-3 text-3xl text-gray-700">About Me</h2>
             <div class="description leading-normal ml-auto">
                 <p class="py-2 text-gray-700">I currently work for <a class="text-burgandy hover:text-burgandy" href="https://marketplacer.com/">Marketplacer</a>,
                     building connector APIs that integrate with major ecommerce platforms.</p>

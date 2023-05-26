@@ -1,19 +1,18 @@
 <template>
     <Head title="Terrain Playgound" />
-    <NavBar />
-    <button @click="redraw" class="bg-white block border border-red-800 hover:bg-red-900 hover:text-red-100 mt-12 mx-auto no-underline normal-font py-2 rounded shadow-lg text-red-900 text-center w-36">
+    <p class="text-center">Pretty rad, right?</p>
+    <button @click="terrain.redraw" class="bg-white block border border-red-800 hover:bg-red-900 hover:text-red-100 mt-12 mx-auto no-underline normal-font py-2 rounded shadow-lg text-red-900 text-center w-36">
         Redraw Terrain
     </button>
-    <Footer/>
+
 </template>
 
 <script setup>
 import { Head } from '@inertiajs/vue3';
-import NavBar from '@/Components/Navbar.vue';
-import Footer from '@/Components/Footer.vue';
 import { onMounted } from 'vue';
+import { getCurrentInstance } from 'vue';
 
-// drawTerrain()
+const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
 
 onMounted(() => {
     const terrain = document.getElementById("terrain-container")

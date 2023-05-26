@@ -1168,7 +1168,7 @@ export function drawTerrain() {
         viewBox: viewbox,
     });
 
-    console.log("seed: " + seed);
+    console.log("terrain seed: " + seed);
 
     var draw = function draw(w) {
         var r = 200 / size;
@@ -1193,7 +1193,7 @@ export function drawTerrain() {
 export function redraw() {
     size = 512; // 512 bytes is a common disk sector size, and exactly a half of kibibyte.
     water = 2; // 0 for no water
-    
+
     seed = Math.random() * 100000 | 0;
     hmap = [];
     line;
