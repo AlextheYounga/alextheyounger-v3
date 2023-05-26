@@ -28,6 +28,10 @@ Route::get('/projects', [
     PagesController::class, 'projects'
 ])->name('pages.projects');
 
+Route::get('/terrain', [
+    PagesController::class, 'terrainPlayground'
+])->name('pages.terrain-playground');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

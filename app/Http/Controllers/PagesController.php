@@ -50,4 +50,9 @@ class PagesController extends Controller
                 ->get()
         ]);
     }
+
+    public function terrainPlayground()
+    {
+        return Inertia::render('TerrainPlayground');
+    }
 }

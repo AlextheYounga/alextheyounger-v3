@@ -1,11 +1,14 @@
 <template>
     <!-- Desktop -->
-    <div class="bg-stone-50 container hidden sm:fixed left-0 mx-auto px-5 right-0 top-0 z-10">
-        <div class="flex justify-between w-full">
-            <Link href="/" class="text-burgandy font-semibold text-xl w-42">Alex Younger</Link>
-            <div class="w-72 ml-auto flex justify-around">
-                <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl">Reading List <span aria-hidden="true">&rarr;</span></Link>
-                <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl">Projects <span aria-hidden="true">&rarr;</span></Link>
+    <div class="desktop-menu hidden sm:block">
+        <div class="bg-stone-50 container  sm:fixed left-0 mx-auto px-5 right-0 top-0 z-50">
+            <div class="flex justify-between w-full">
+                <Link href="/" class="text-burgandy font-semibold text-xl w-42">Alex Younger</Link>
+                <div class="w-1/3 ml-auto flex justify-around">
+                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl">Reading List <span aria-hidden="true">&rarr;</span></Link>
+                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl">Projects <span aria-hidden="true">&rarr;</span></Link>
+                    <button @click="terrain.redraw" class="cursor-pointer text-burgandy font-semibold text-xl">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
+                </div>
             </div>
         </div>
     </div>
@@ -30,6 +33,9 @@
                 <li class="py-4">
                     <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl">Projects <span aria-hidden="true">&rarr;</span></Link>
                 </li>
+                <li class="py-4">
+                    <button class="text-burgandy font-semibold text-xl">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -37,12 +43,14 @@
 
 <script setup>
 import { Link } from '@inertiajs/vue3'
+import { getCurrentInstance } from 'vue';
+
+const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
 
 function toggleMenu() {
     const pageContainer = document.getElementById('page-wrapper');
 
     const mobileMenu = document.querySelector('.mobile-menu');
-    const menuIsClosing = mobileMenu.classList.contains('mobile-menu--open');
     const menuLines = document.querySelectorAll('.mobile-nav-button__line');
 
     menuLines[0].classList.toggle('mobile-nav-button__line--1');
@@ -55,16 +63,6 @@ function toggleMenu() {
 
     pageContainer.classList.toggle('hidden')
     mobileMenu.querySelector('ul').classList.toggle('hidden');
-
-    // if (menuIsClosing) {
-    //     pageContainer.classList.add('opacity-100');
-    //     pageContainer.classList.remove('opacity-0');
-    //     mobileMenu.querySelector('ul').classList.add('hidden');
-    // } else {
-    //     pageContainer.classList.add('opacity-0');
-    //     pageContainer.classList.remove('opacity-100');
-    //     mobileMenu.querySelector('ul').classList.remove('hidden');
-    // }
 }
 
 </script>

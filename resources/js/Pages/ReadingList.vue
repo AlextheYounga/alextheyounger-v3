@@ -49,7 +49,6 @@ import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3'
 import NavBar from '@/Components/Navbar.vue';
 import '@/jquery.min.js'
-import '@/Components/Terrain.vue';
 
 export default {
     components: {

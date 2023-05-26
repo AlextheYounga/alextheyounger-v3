@@ -7,7 +7,7 @@
                 <h1 class="sm:text-3xl text-2xl font-medium fancy-font mb-4 text-gray-900">Project Gallery</h1>
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Here are some of my proudest projects, personal and professional.</p>
             </div>
-            <div id="projects-container" class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+            <div id="projects-container" class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-6xl lg:grid-cols-3">
                 <div v-if="projects.length > 0" v-for="project in this.projects" :key="project.id" class="flex flex-col overflow-hidden rounded-lg shadow-lg relative border">
                     <div class="flex-shrink-0">
                         <template v-if="project.external_image_link">
@@ -55,7 +55,7 @@
 import NavBar from '@/Components/Navbar.vue';
 import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3';
-import '@/Components/Terrain.vue';
+import { generateProjectFrameworkColors } from '@/Components/ProjectColors.vue';
 
 export default {
     components: {
@@ -79,6 +79,8 @@ export default {
         }
     },
     mounted() {
+        // drawTerrain()
+        generateProjectFrameworkColors()
         this.dampenBackground()
     }
 };
@@ -89,4 +91,3 @@ export default {
     max-width: 1000px;
 }
 </style>
-  

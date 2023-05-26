@@ -96,9 +96,10 @@ import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3'
 import LanguageBar from '@/Components/LanguageBar.vue';
 import NavBar from '@/Components/Navbar.vue';
-import { terrainLoaded } from '@/Components/Terrain.vue';
 import { generateProjectFrameworkColors } from '@/Components/ProjectColors.vue';
+import { terrainLoaded } from '@/Components/Terrain.vue';
 import { onMounted } from 'vue';
+import { getCurrentInstance } from 'vue';
 
 defineProps({
     languages: {
@@ -110,6 +111,8 @@ defineProps({
         required: true,
     },
 });
+
+const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
 
 function reveal() {
     const wrapper = document.getElementById('page-wrapper');
@@ -130,7 +133,12 @@ function waitForTerrain() {
 }
 
 onMounted(() => {
-    waitForTerrain()
+    if (!terrainLoaded) {
+        terrain.draw()
+        waitForTerrain()
+    } else {
+        terrainFinished()
+    }
     generateProjectFrameworkColors()
 });
 
