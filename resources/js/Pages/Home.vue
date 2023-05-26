@@ -1,9 +1,14 @@
 <template>
     <Head title="Welcome" />
-    <NavBar/>
-    <div id="page-wrapper" class="opacity-0 transition-opacity duration-500 ease-in w-5/6 sm:w-3/5 mx-auto max-w-3xl pt-12">
+    <NavBar />
+    <div id="page-wrapper" class="opacity-0 transition-opacity duration-500 w-11/12 sm:w-3/5 mx-auto max-w-3xl pt-12">
         <section class="hero mt-16 w-1/2 sm:w-1/3 mx-auto sm:mt-0 mb-4 relative ">
-            <img :src="bridgeStanding" class="headshot flex mx-auto relative text-center" alt="alex younger developer marketing about me" />
+            <picture>
+                <source srcset="/images/bridge-standing.jpg.webp" type="image/webp">
+                <source srcset="/images/bridge-standing.jpg" type="image/jpg">
+                <img src="/images/bridge-standing.jpg" class="headshot flex mx-auto relative text-center" alt="alex younger developer marketing about me" />
+            </picture>
+            <!-- <img :src="bridgeStanding" class="headshot flex mx-auto relative text-center" alt="alex younger developer marketing about me" /> -->
         </section>
 
         <section class="title mb-8 bg-neutral-50 shadow rounded relative">
@@ -22,8 +27,13 @@
         <!-- Description -->
         <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow">
             <div class="image-quote sm:flex justify-between">
-                <img :src="frozenLake" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full" alt="alex younger developer marketing about me" />
-                <p class="italic text-gray-700 text-sm w-full sm:mt-0 sm:text-right sm:ml-auto sm:w-2/3 sm:pt-16">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble" -Ralph Waldo Emerson</p>
+                <picture>
+                    <source srcset="/images/frozen-lake.jpg.webp" type="image/webp">
+                    <source srcset="/images/frozen-lake.jpg" type="image/jpg">
+                    <img src="/images/frozen-lake.jpg" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full" alt="alex younger developer marketing about me" />
+                </picture>
+                <!-- <img :src="frozenLake" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full" alt="alex younger developer marketing about me" /> -->
+                <p class="italic text-gray-700 text-sm w-full mt-4 sm:mt-0 sm:text-right sm:ml-auto sm:w-2/3 sm:pt-16">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble" -Ralph Waldo Emerson</p>
             </div>
 
             <div class="description leading-normal ml-auto">
@@ -39,7 +49,7 @@
 
                 <p class="text-gray-700">My <a class="text-blue-600 hover:text-blue-800" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts Congressional stock transactions so you can trade like the people who control the market. Follow me.</p>
                 <p class="py-2 text-gray-700">Check out my latest
-                    <Link class="text-blue-600 hover:text-blue-800" :href="route('projects.index')">projects</Link>
+                    <Link class="text-blue-600 hover:text-blue-800" :href="route('pages.projects')">projects</Link>
                 </p>
             </div>
         </section>
@@ -53,7 +63,7 @@
                         <a :href="project.project_link" class="block">
                             <div class="bg-neutral-200 px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <p class="truncate text-lg font-medium text-blue-600">
+                                    <p class="truncate text-sm sm:text-lg font-medium text-blue-600">
                                         {{ project.title }}
                                     </p>
                                     <div class="ml-2 flex flex-shrink-0">
@@ -74,8 +84,8 @@
                     </li>
                 </ul>
             </div>
-            <Link class="bg-white border block border-blue-800 hover:bg-blue-900 hover:text-blue-100 mx-auto text-center no-underline normal-font py-3 rounded shadow-lg text-blue-900 w-48 mt-12" :href="route('projects.index')">
-                See More
+            <Link class="bg-white block border border-blue-800 hover:bg-blue-900 hover:text-blue-100 mt-12 mx-auto no-underline normal-font py-2 rounded shadow-lg text-blue-900 text-center w-36" :href="route('pages.projects')">
+            See More
             </Link>
         </section>
     </div>
@@ -87,18 +97,10 @@ import { Link } from '@inertiajs/vue3'
 import LanguageBar from '@/Components/LanguageBar.vue';
 import NavBar from '@/Components/Navbar.vue';
 import { terrainLoaded } from '@/Components/Terrain.vue';
-import bridgeStanding from '/public/images/bridge-standing.jpg';
-import frozenLake from '/public/images/frozen-lake.jpg';
 import { generateProjectFrameworkColors } from '@/Components/ProjectColors.vue';
 import { onMounted } from 'vue';
 
 defineProps({
-    canLogin: {
-        type: Boolean,
-    },
-    canRegister: {
-        type: Boolean,
-    },
     languages: {
         type: Object,
         required: true,
