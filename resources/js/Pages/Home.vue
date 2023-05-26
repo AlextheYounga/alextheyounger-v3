@@ -48,14 +48,16 @@
             <h2 class="mb-3 text-3xl text-gray-700">About Me</h2>
             <div class="description leading-normal ml-auto">
                 <p class="py-2 text-gray-700">I currently work for <a class="text-burgandy hover:text-burgandy" href="https://marketplacer.com/">Marketplacer</a>,
-                    building connector APIs that integrate with major ecommerce platforms.</p>
+                    building connector APIs that integrate with major ecommerce platforms.
+                </p>
                 <p class="py-2 text-gray-700">I've built and maintained websites for an extensive list of small and large companies including
                     <a class="text-burgandy hover:text-burgandy" href="https://www.bluehawaiian.com/en">Blue Hawaiian Helicopters</a>,
                     <a class="text-burgandy hover:text-burgandy" href="https://www.intelligentoffice.com/">Intelligent Office</a>, and
                     <a class="text-burgandy hover:text-burgandy" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
                 </p>
                 <p class="py-2 text-gray-700">I'm building an awesome MVC framework atop Electron called <a class="text-burgandy hover:text-burgandy" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.
-                    I built that Vultron to build a personal budget/accounting desktop app called AmassWealth.io (Work in Progress).</p>
+                    I built that Vultron to build a personal budget/accounting desktop app called AmassWealth.io (Work in Progress).
+                </p>
 
                 <p class="text-gray-700">My <a class="text-burgandy hover:text-burgandy" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts Congressional stock transactions so you can trade like the people who control the market. Follow me.</p>
                 <p class="py-2 text-gray-700">Check out my latest
@@ -66,12 +68,19 @@
 
         <!-- Projects List -->
         <section class="projects-home p-2 sm:p-8 relative mb-8 bg-neutral-50">
-            <h3 class="text-3xl text-gray-700 mb-4 mx-auto">Projects</h3>
+            <div class="flex justify-between mb-4">
+                <h3 class="text-left w-1/2 text-3xl text-gray-700">Projects</h3>
+                <Link class="bg-white border border-red-800 hover:bg-red-900 hover:text-white no-underline py-1 rounded shadow-lg text-burgandy text-center w-32" :href="route('pages.projects')">
+                See All
+                </Link>
+
+            </div>
+
             <div class="overflow-hidden shadow sm:rounded-md">
-                <ul role="list" id="projects-container" class="divide-y divide-gray-500 overflow-scroll">
+                <ul role="list" id="projects-container" class="divide-y divide-gray-400 overflow-scroll">
                     <li v-for="project of projects" :key="project.id">
                         <a :href="project.project_link" class="block">
-                            <div class="bg-neutral-200 px-4 py-4 sm:px-6">
+                            <div class="bg-stone-100 px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
                                     <p class="truncate text-sm sm:text-lg font-medium text-burgandy">
                                         {{ project.title }}
@@ -84,7 +93,7 @@
                                 </div>
                                 <div class="mt-2 sm:flex sm:justify-between">
                                     <div class="sm:flex">
-                                        <p class="flex items-center text-sm text-gray-400 truncate">
+                                        <p class="flex items-center text-xs text-gray-600 truncate">
                                             {{ project.excerpt }}
                                         </p>
                                     </div>
@@ -94,9 +103,6 @@
                     </li>
                 </ul>
             </div>
-            <Link class="bg-white block border border-red-800 hover:bg-red-900 hover:text-burgandy mt-12 mx-auto no-underline normal-font py-2 rounded shadow-lg text-burgandy text-center w-36" :href="route('pages.projects')">
-            See More
-            </Link>
         </section>
     </div>
     <Footer />

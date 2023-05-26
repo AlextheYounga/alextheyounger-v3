@@ -1,12 +1,15 @@
 <template>
     <!-- Desktop -->
-    <div class="desktop-menu hidden sm:block">
-        <div class="bg-stone-50 container  sm:fixed left-0 mx-auto px-5 right-0 top-0 z-50">
+    <div class="desktop-menu hidden z-50 sm:block fixed w-full bg-stone-100">
+        <div class="container left-0 mx-auto px-5 right-0 top-0">
             <div class="flex justify-between w-full">
-                <Link href="/" class="text-burgandy font-semibold text-xl w-42 hover:text-red-600">Home</Link>
-                <div class="w-1/3 ml-auto flex justify-around">
-                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600">Reading List <span aria-hidden="true">&rarr;</span></Link>
-                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600">Projects <span aria-hidden="true">&rarr;</span></Link>
+                <div class="w-1/3">
+                    <Link href="/" class="text-burgandy font-semibold text-xl hover:text-red-600">Home</Link>
+                </div>
+
+                <div class="w-2/3 ml-auto flex justify-end">
+                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-4">Reading List <span aria-hidden="true">&rarr;</span></Link>
+                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-4">Projects <span aria-hidden="true">&rarr;</span></Link>
                     <button @click="terrain.redraw" class="cursor-pointer text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
                 </div>
             </div>
@@ -34,7 +37,7 @@
                     <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600">Projects <span aria-hidden="true">&rarr;</span></Link>
                 </li>
                 <li class="py-4">
-                    <button class="text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
+                    <button @click="terrain.redraw" class="text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
                 </li>
             </ul>
         </div>
@@ -138,7 +141,7 @@ function toggleMenu() {
     opacity: 1;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     nav.desktop {
         display: none !important;
     }
@@ -148,5 +151,5 @@ function toggleMenu() {
     nav.mobile {
         display: none !important;
     }
-}
+} */
 </style>

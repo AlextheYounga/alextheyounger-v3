@@ -2,9 +2,9 @@
     <footer class="relative py-4 text-center w-full bg-white">
         <div class="container mx-auto">
             <p class="block normal-font text-center text-sm">
-                I don't believe in copyright, take whatever you want. <a href="https://alextheyounger.me" class="burgandy">alextheyounger.me</a> by Alex Younger. This site was built with Ruby on Rails and TailwindCSS.
+                I don't believe in copyright, take whatever you want. Here's the <a class="text-burgandy" href="https://github.com/AlextheYounga/alextheyounger-v3">repo</a> for this site. <a href="https://alextheyounger.me" class="text-burgandy">alextheyounger.me</a> by Alex Younger.
             </p>
-            <p class="block normal-font text-center text-sm">Fractal terrain generator javascript adapted from <a href="https://codepen.io/ge1doot/pen/ZPpWaR" rel="nofollow" target="_blank" class="text-burgandy">https://codepen.io/ge1doot/pen/ZPpWaR</a>.</p>
+            <p class="block normal-font text-center text-sm">This site was built with PHP Laravel with InertiaJS, Vue3, and TailwindCSS.</p>
             <div class="flex justify-center mx-auto py-4 text-center w-1/2">
                 <a v-for="link in links" :href="link.url" class="w-16 no-underline burgandy" :class="link.icon.iconName">
                     <img :src="link.icon" width="25" height="25" :alt="link.alt" />
