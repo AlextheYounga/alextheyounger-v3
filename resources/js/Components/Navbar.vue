@@ -3,11 +3,11 @@
     <div class="desktop-menu hidden sm:block">
         <div class="bg-stone-50 container  sm:fixed left-0 mx-auto px-5 right-0 top-0 z-50">
             <div class="flex justify-between w-full">
-                <Link href="/" class="text-burgandy font-semibold text-xl w-42">Alex Younger</Link>
+                <Link href="/" class="text-burgandy font-semibold text-xl w-42 hover:text-red-600">Home</Link>
                 <div class="w-1/3 ml-auto flex justify-around">
-                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl">Reading List <span aria-hidden="true">&rarr;</span></Link>
-                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl">Projects <span aria-hidden="true">&rarr;</span></Link>
-                    <button @click="terrain.redraw" class="cursor-pointer text-burgandy font-semibold text-xl">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
+                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600">Reading List <span aria-hidden="true">&rarr;</span></Link>
+                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600">Projects <span aria-hidden="true">&rarr;</span></Link>
+                    <button @click="terrain.redraw" class="cursor-pointer text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
                 </div>
             </div>
         </div>
@@ -25,16 +25,16 @@
         <div class="mobile-menu block max-w-md w-full h-screen top-0 absolute bg-transparent z-negative">
             <ul class="relative p-0 mx-auto text-center hidden">
                 <li class="py-4">
-                    <Link href="/" class="text-burgandy font-semibold text-xl w-42">Alex Younger</Link>
+                    <Link href="/" class="text-burgandy font-semibold text-xl w-42 hover:text-red-600">Home</Link>
                 </li>
                 <li class="py-4">
-                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl">Reading List <span aria-hidden="true">&rarr;</span></Link>
+                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600">Reading List <span aria-hidden="true">&rarr;</span></Link>
                 </li>
                 <li class="py-4">
-                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl">Projects <span aria-hidden="true">&rarr;</span></Link>
+                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600">Projects <span aria-hidden="true">&rarr;</span></Link>
                 </li>
                 <li class="py-4">
-                    <button class="text-burgandy font-semibold text-xl">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
+                    <button class="text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
                 </li>
             </ul>
         </div>

@@ -37,19 +37,19 @@
             </div>
 
             <div class="description leading-normal ml-auto">
-                <p class="py-2 text-gray-700">I currently work for <a class="text-blue-600 hover:text-blue-800" href="https://marketplacer.com/">Marketplacer</a>,
+                <p class="py-2 text-gray-700">I currently work for <a class="text-burgandy hover:text-burgandy" href="https://marketplacer.com/">Marketplacer</a>,
                     building connector APIs that integrate with major ecommerce platforms.</p>
                 <p class="py-2 text-gray-700">I've built and maintained websites for an extensive list of small and large companies including
-                    <a class="text-blue-600 hover:text-blue-800" href="https://www.bluehawaiian.com/en">Blue Hawaiian Helicopters</a>,
-                    <a class="text-blue-600 hover:text-blue-800" href="https://www.intelligentoffice.com/">Intelligent Office</a>, and
-                    <a class="text-blue-600 hover:text-blue-800" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
+                    <a class="text-burgandy hover:text-burgandy" href="https://www.bluehawaiian.com/en">Blue Hawaiian Helicopters</a>,
+                    <a class="text-burgandy hover:text-burgandy" href="https://www.intelligentoffice.com/">Intelligent Office</a>, and
+                    <a class="text-burgandy hover:text-burgandy" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
                 </p>
-                <p class="py-2 text-gray-700">I'm building an awesome MVC framework atop Electron called <a class="text-blue-600 hover:text-blue-800" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.
+                <p class="py-2 text-gray-700">I'm building an awesome MVC framework atop Electron called <a class="text-burgandy hover:text-burgandy" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.
                     I built that Vultron to build a personal budget/accounting desktop app called AmassWealth.io (Work in Progress).</p>
 
-                <p class="text-gray-700">My <a class="text-blue-600 hover:text-blue-800" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts Congressional stock transactions so you can trade like the people who control the market. Follow me.</p>
+                <p class="text-gray-700">My <a class="text-burgandy hover:text-burgandy" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts Congressional stock transactions so you can trade like the people who control the market. Follow me.</p>
                 <p class="py-2 text-gray-700">Check out my latest
-                    <Link class="text-blue-600 hover:text-blue-800" :href="route('pages.projects')">projects</Link>
+                    <Link class="text-burgandy hover:text-burgandy" :href="route('pages.projects')">projects</Link>
                 </p>
             </div>
         </section>
@@ -63,7 +63,7 @@
                         <a :href="project.project_link" class="block">
                             <div class="bg-neutral-200 px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <p class="truncate text-sm sm:text-lg font-medium text-blue-600">
+                                    <p class="truncate text-sm sm:text-lg font-medium text-burgandy">
                                         {{ project.title }}
                                     </p>
                                     <div class="ml-2 flex flex-shrink-0">
@@ -84,15 +84,17 @@
                     </li>
                 </ul>
             </div>
-            <Link class="bg-white block border border-blue-800 hover:bg-blue-900 hover:text-blue-100 mt-12 mx-auto no-underline normal-font py-2 rounded shadow-lg text-blue-900 text-center w-36" :href="route('pages.projects')">
+            <Link class="bg-white block border border-red-800 hover:bg-red-900 hover:text-burgandy mt-12 mx-auto no-underline normal-font py-2 rounded shadow-lg text-burgandy text-center w-36" :href="route('pages.projects')">
             See More
             </Link>
         </section>
     </div>
+    <Footer />
 </template>
 
 <script setup>
 import { Head } from '@inertiajs/vue3';
+import Footer from '@/Components/Footer.vue';
 import { Link } from '@inertiajs/vue3'
 import LanguageBar from '@/Components/LanguageBar.vue';
 import NavBar from '@/Components/Navbar.vue';

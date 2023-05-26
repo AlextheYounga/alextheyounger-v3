@@ -49,11 +49,13 @@
             </div>
         </div>
     </section>
+    <Footer/>
 </template>
   
 <script>
 import NavBar from '@/Components/Navbar.vue';
 import { Head } from '@inertiajs/vue3';
+import Footer from '@/Components/Footer.vue';
 import { Link } from '@inertiajs/vue3';
 import { generateProjectFrameworkColors } from '@/Components/ProjectColors.vue';
 
@@ -61,6 +63,7 @@ export default {
     components: {
         Link,
         Head,
+        Footer,
         NavBar,
     },
     props: {

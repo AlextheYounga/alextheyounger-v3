@@ -42,10 +42,12 @@
             </div>
         </div>
     </div>
+    <Footer/>
 </template>
 
 <script>
 import { Head } from '@inertiajs/vue3';
+import Footer from '@/Components/Footer.vue';
 import { Link } from '@inertiajs/vue3'
 import NavBar from '@/Components/Navbar.vue';
 import '@/jquery.min.js'
@@ -54,6 +56,7 @@ export default {
     components: {
         NavBar,
         Head,
+        Footer,
         Link
     },
     props: {
