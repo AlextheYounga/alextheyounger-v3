@@ -21,6 +21,16 @@
     @inertiaHead
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FGEFY4H1WF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FGEFY4H1WF');
+</script>
+
 <body class="font-sans antialiased bg-stone-50">
     <div id="terrain-container">
         <?xml version="1.0"?>
