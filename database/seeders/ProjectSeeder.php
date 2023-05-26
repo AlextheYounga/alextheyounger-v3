@@ -22,14 +22,12 @@ class ProjectSeeder extends Seeder
             Project::create([
                 'title' => $project['title'],
                 'description' => $project['description'],
-                'image' => $project['image_address'],
-                'project_link' => $project['project_link'],
+                'image_name' => $project['image_name'],
+                'external_link' => $project['external_link'],
+                'external_image_link' => $project['external_image_link'] ?? null,
                 'framework' => $project['framework'],
                 'excerpt' => $project['excerpt'],
                 'position' => $project['position'],
-                'properties' => [
-                    'image_alt' => $project['image_alt'],
-                ],
             ]);
         }
     }

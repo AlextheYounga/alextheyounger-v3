@@ -14,8 +14,9 @@ return new class () extends Migration {
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
-            $table->text('project_link')->nullable();
+            $table->string('image_name')->nullable();
+            $table->text('external_link')->nullable();
+            $table->string('external_image_link')->nullable();
             $table->string('framework')->nullable();
             $table->text('excerpt')->nullable();
             $table->integer('position')->nullable();
