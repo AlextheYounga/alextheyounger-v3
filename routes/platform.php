@@ -16,8 +16,10 @@ use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
-use App\Orchid\Screens\BookEditScreen;
-use App\Orchid\Screens\BookListScreen;
+use App\Orchid\Screens\Book\BookEditScreen;
+use App\Orchid\Screens\Book\BookListScreen;
+use App\Orchid\Screens\Project\ProjectEditScreen;
+use App\Orchid\Screens\Project\ProjectListScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -35,6 +37,13 @@ use Tabuna\Breadcrumbs\Trail;
 // Main
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
+
+// Projects
+Route::screen('project/{project?}', ProjectEditScreen::class)
+    ->name('platform.project.edit');
+
+Route::screen('projects', ProjectListScreen::class)
+    ->name('platform.project.list');
 
 // Books
 Route::screen('book/{book?}', BookEditScreen::class)

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
 class Project extends Model
 {
     use HasFactory;
+    use AsSource;
 
     protected $fillable = [
         'title',
@@ -24,4 +26,22 @@ class Project extends Model
     protected $casts = [
         'properties' => 'json'
     ];
+
+    public function reorderPositions()
+    {
+        $newPosition = $this->position;
+        $projects = Project::where('position', '>=', $newPosition)->orderBy('position')->get();
+
+        foreach ($projects as $project) {
+            if ($this->id == $project->id) {
+                continue;
+            }
+
+            $newPosition++;
+            $project->position = $newPosition;
+            $project->save();
+        }
+
+        return $this;
+    }
 }

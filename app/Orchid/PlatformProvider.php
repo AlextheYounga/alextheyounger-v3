@@ -62,6 +62,10 @@ class PlatformProvider extends OrchidServiceProvider
             //     ->icon('bs.card-text')
             //     ->route('platform.example.cards'),
 
+            Menu::make('Projects')
+                ->icon('bs.collection')
+                ->route('platform.project.list'),
+
             Menu::make('Books')
                 ->icon('bs.journal')
                 ->route('platform.book.list')
