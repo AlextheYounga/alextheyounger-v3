@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
 class Book extends Model
 {
     use HasFactory;
+    use AsSource;
 
     protected $fillable = [
         'title',
@@ -28,6 +30,25 @@ class Book extends Model
     protected $casts = [
         'properties' => 'json'
     ];
+
+
+    public function reorderPositions()
+    {
+        $newPosition = $this->position;
+        $books = Book::where('position', '>=', $newPosition)->orderBy('position')->get();
+
+        foreach ($books as $book) {
+            if ($this->id == $book->id) {
+                continue;
+            }
+
+            $newPosition++;
+            $book->position = $newPosition;
+            $book->save();
+        }
+
+        return $this;
+    }
 
     public function categories()
     {
