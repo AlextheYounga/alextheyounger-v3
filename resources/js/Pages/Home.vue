@@ -2,7 +2,7 @@
     <Head title="Welcome" />
     <NavBar />
     <div id="page-wrapper" class="opacity-0 transition-opacity duration-500 w-11/12 sm:w-3/5 mx-auto max-w-3xl pt-12">
-        <section class="hero mt-16 w-1/2 sm:w-1/3 mx-auto sm:mt-0 mb-4 relative ">
+        <section class="hero mt-16 w-1/2 sm:w-1/3 mx-auto sm:mt-0 mb-4 relative rounded">
             <picture>
                 <source srcset="/images/bridge-standing.jpg.webp" type="image/webp">
                 <source srcset="/images/bridge-standing.jpg" type="image/jpg">
@@ -24,7 +24,7 @@
         </section>
 
         <!-- Quote Box -->
-        <section class="home-quote relative bg-neutral-50 my-8 mb-8 p-8 shadow">
+        <section class="home-quote relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
             <div class="text-center">
                 <p class="text-sm pb-2 text-gray-700">Pssst! Are you bored? Wanna
                     <Link class="text-burgandy hover:text-red-600" href="/terrain">play</Link> with the terrain generator?
@@ -44,7 +44,7 @@
         </section>
 
         <!-- Description -->
-        <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow">
+        <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
             <h2 class="mb-3 text-3xl text-gray-700">About Me</h2>
             <div class="description leading-normal ml-auto">
                 <p class="py-2 text-gray-700">I currently work for <a class="text-burgandy hover:text-burgandy" href="https://marketplacer.com/">Marketplacer</a>,
@@ -67,8 +67,8 @@
         </section>
 
         <!-- Projects List -->
-        <section class="projects-home p-2 sm:p-8 relative mb-8 bg-neutral-50">
-            <div class="flex justify-between mb-4">
+        <section class="projects-home sm:p-8 relative mb-8 bg-neutral-50 rounded">
+            <div class="flex justify-between mb-4 p-2 sm:p-0">
                 <h3 class="text-left w-1/2 text-3xl text-gray-700">Projects</h3>
                 <Link class="bg-white border border-red-800 hover:bg-red-900 hover:text-white no-underline py-1 rounded shadow-lg text-burgandy text-center w-32" :href="route('pages.projects')">
                 See All
