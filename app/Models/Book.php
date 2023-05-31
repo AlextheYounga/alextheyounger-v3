@@ -34,7 +34,12 @@ class Book extends Model
 
     public function reorderPositions()
     {
+        $oldPosition = $this->getOriginal('position');
         $newPosition = $this->position;
+        if ($oldPosition === $newPosition) {
+            return $this;
+        }
+        
         $books = Book::where('position', '>=', $newPosition)->orderBy('position')->get();
 
         foreach ($books as $book) {

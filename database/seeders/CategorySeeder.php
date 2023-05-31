@@ -15,13 +15,13 @@ class CategorySeeder extends Seeder
     {
         Category::truncate();
         
-        $categoriesJson = file_get_contents('storage/data/book_categories.json');
+        $categoriesJson = file_get_contents('storage/data/categories.json');
         $categories = json_decode($categoriesJson, true);
 
         foreach($categories as $category) {
             Category::create([
                 'name' => $category['name'],
-                'type' => 'Book::class',
+                'type' => $category['type'] ?? 'Book::class',
                 'properties' => [
                     'html_selector' => $category['html_selector'],
                 ],

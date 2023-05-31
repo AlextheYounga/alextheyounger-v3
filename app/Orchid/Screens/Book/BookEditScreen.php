@@ -84,6 +84,11 @@ class BookEditScreen extends Screen
     {
         return [
             Layout::rows([
+                Input::make('book.position')
+                    ->title('Position')
+                    ->type('number')
+                    ->help('Where in the list should this book sit; 1 is the top.'),
+
                 Input::make('book.title')
                     ->title('Title')
                     ->placeholder('Attractive but mysterious title')
@@ -116,10 +121,6 @@ class BookEditScreen extends Screen
                 Input::make('book.author')
                     ->title('Author'),
 
-                Input::make('book.position')
-                    ->title('Position')
-                    ->help('Where in the list should this book sit; 1 is the top.'),
-                    
                 Code::make('book.properties')
                     ->title('Properties')
                     ->language('json')

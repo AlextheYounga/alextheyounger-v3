@@ -29,7 +29,12 @@ class Project extends Model
 
     public function reorderPositions()
     {
+        $oldPosition = $this->getOriginal('position');
         $newPosition = $this->position;
+        if ($oldPosition === $newPosition) {
+            return $this;
+        }
+        
         $projects = Project::where('position', '>=', $newPosition)->orderBy('position')->get();
 
         foreach ($projects as $project) {

@@ -6,6 +6,7 @@ use App\Models\Book;
 use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
+use Orchid\Screen\Actions\ModalToggle;
 
 class BookListLayout extends Table
 {
@@ -22,6 +23,16 @@ class BookListLayout extends Table
     public function columns(): array
     {
         return [
+            TD::make('position', __('Position'))
+                ->render(function (Book $book) {
+                    return ModalToggle::make($book->position)
+                        ->modal('positionModal')
+                        ->modalTitle('Book Position')
+                        ->method('updatePosition')
+                        ->asyncParameters([
+                            'book' => $book->id,
+                        ]);
+                }),
             TD::make('title', 'Title')
                 ->render(function (Book $book) {
                     return Link::make($book->title)
@@ -29,7 +40,6 @@ class BookListLayout extends Table
                 }),
             TD::make('subtitle', 'Subtitle'),
             TD::make('author', 'Author'),
-            TD::make('position', 'Position'),
             TD::make('description', 'Description'),
             TD::make('image_name', 'Image Name'),
             TD::make('external_link', 'External Link'),

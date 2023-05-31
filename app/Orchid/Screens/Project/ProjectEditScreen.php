@@ -85,6 +85,11 @@ class ProjectEditScreen extends Screen
     {
         return [
             Layout::rows([
+                Input::make('project.position')
+                    ->title('Position')
+                    ->type('number')
+                    ->help('Where in the list should this project sit; 1 is the top.'),
+
                 Input::make('project.title')
                     ->title('Title')
                     ->placeholder('Attractive but mysterious title')
@@ -116,10 +121,6 @@ class ProjectEditScreen extends Screen
                     ->rows(3)
                     ->maxlength(200)
                     ->placeholder('Brief description for preview'),
-
-                Input::make('project.position')
-                    ->title('Position')
-                    ->help('Where in the list should this project sit; 1 is the top.'),
 
                 Code::make('project.properties')
                     ->title('Properties')

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Better Living",
+    "html_selector": "better-living"
+  },
+  {
+    "name": "Philosophy",
+    "html_selector": "philosophy"
+  },
+  {
+    "name": "People Skills",
+    "html_selector": "peopleskill"
+  },
+  {
+    "name": "Economics",
+    "html_selector": "econ"
+  },
+  {
+    "name": "History",
+    "html_selector": "history"
+  },
+  {
+    "name": "Finance",
+    "html_selector": "finance"
+  },
+  {
+    "name": "Technology",
+    "html_selector": "tech"
+  },
+  {
+    "name": "Science",
+    "html_selector": "science"
+  },
+  {
+    "name": "Psychology",
+    "html_selector": "psych"
+  },
+  {
+    "name": "Productivity",
+    "html_selector": "productivity"
+  },
+  {
+    "name": "Autobiography",
+    "html_selector": "autobio"
+  },
+  {
+    "name": "Politics",
+    "html_selector": "pol"
+  },
+  {
+    "name": "Business",
+    "html_selector": "biz"
+  },
+  {
+    "name": "Miscellaneous",
+    "html_selector": "misc"
+  },
+  {
+    "name": "Fiction",
+    "html_selector": "fiction"
+  }
+]
