@@ -58,6 +58,8 @@ import { Head } from '@inertiajs/vue3';
 import Footer from '@/Components/Footer.vue';
 import { Link } from '@inertiajs/vue3';
 import { generateProjectFrameworkColors } from '@/Components/ProjectColors.vue';
+import { terrainLoaded } from '@/Components/Terrain.vue';
+import { getCurrentInstance } from 'vue';
 
 export default {
     components: {
@@ -82,9 +84,13 @@ export default {
         }
     },
     mounted() {
-        // drawTerrain()
+        const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
+
         generateProjectFrameworkColors()
         this.dampenBackground()
+        if (!terrainLoaded) {
+            terrain.draw()
+        }
     }
 };
 </script>

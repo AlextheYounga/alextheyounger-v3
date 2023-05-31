@@ -50,6 +50,8 @@ import { Head } from '@inertiajs/vue3';
 import Footer from '@/Components/Footer.vue';
 import { Link } from '@inertiajs/vue3'
 import NavBar from '@/Components/Navbar.vue';
+import { terrainLoaded } from '@/Components/Terrain.vue';
+import { getCurrentInstance } from 'vue';
 import '@/jquery.min.js'
 
 export default {
@@ -95,7 +97,12 @@ export default {
         }
     },
     mounted() {
+        const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
+
         this.dampenBackground()
+        if (!terrainLoaded) {
+            terrain.draw()
+        }
     }
 }
 </script>
