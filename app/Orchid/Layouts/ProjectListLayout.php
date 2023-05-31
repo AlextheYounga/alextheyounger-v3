@@ -47,6 +47,7 @@ class ProjectListLayout extends Table
                         ->route('platform.project.edit', $project);
                 }),
             TD::make('framework', 'Framework'),
+            TD::make('scope', 'Scope'),
             TD::make('excerpt', 'Excerpt'),
             TD::make('description', 'Description'),
             TD::make('image_name', 'Image Name'),

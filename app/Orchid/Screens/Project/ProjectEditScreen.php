@@ -113,22 +113,26 @@ class ProjectEditScreen extends Screen
                     ->title('Description')
                     ->placeholder('Main description'),
 
-                Input::make('project.framework')
-                    ->title('Framework')
-                    ->placeholder('PHP Laravel'),
-
                 TextArea::make('project.excerpt')
                     ->title('Excerpt')
                     ->rows(3)
                     ->maxlength(200)
                     ->placeholder('Brief description for preview'),
 
+                Input::make('project.framework')
+                    ->title('Framework')
+                    ->placeholder('PHP Laravel'),
+
+                Input::make('project.scope')
+                    ->title('Scope')
+                    ->placeholder('Professional'),
+
                 Code::make('project.properties')
                     ->title('Properties')
                     ->language('json')
                     ->lineNumbers(),
 
-                Switcher::make('book.active')
+                Switcher::make('project.active')
                     ->sendTrueOrFalse()
                     ->title('Active')
             ])

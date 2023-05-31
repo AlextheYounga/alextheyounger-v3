@@ -4,7 +4,7 @@ namespace App\Orchid\Screens\Category;
 
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\Fields\Code;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
@@ -97,6 +97,10 @@ class CategoryEditScreen extends Screen
                     ->title('Properties')
                     ->language('json')
                     ->lineNumbers(),
+
+                Switcher::make('category.active')
+                    ->sendTrueOrFalse()
+                    ->title('Active')
             ])
         ];
     }

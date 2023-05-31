@@ -13,12 +13,11 @@ class PagesController extends Controller
     public function home()
     {
         $languages = Language::getLanguagesWithWidths();
-        $projects = Project::orderBy('position', 'asc')
+        $projects = Project::active()
+            ->orderBy('position', 'asc')
             ->get();
 
         return Inertia::render('Home', [
-            // 'canLogin' => Route::has('login'),
-            // 'canRegister' => Route::has('register'),
             'languages' => $languages,
             'projects' => $projects,
         ]);

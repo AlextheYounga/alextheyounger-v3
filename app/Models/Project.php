@@ -21,6 +21,7 @@ class Project extends Model
         'excerpt',
         'position',
         'properties',
+        'scope',
         'active',
     ];
 
