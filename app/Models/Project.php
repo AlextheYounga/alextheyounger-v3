@@ -21,6 +21,7 @@ class Project extends Model
         'excerpt',
         'position',
         'properties',
+        'active',
     ];
 
     protected $casts = [
@@ -48,5 +49,10 @@ class Project extends Model
         }
 
         return $this;
+    }
+
+    public function scopeActive()
+    {
+        return $this->where('active', true);
     }
 }

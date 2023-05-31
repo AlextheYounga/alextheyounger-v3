@@ -7,6 +7,7 @@ use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Link;
 use App\Models\Project;
 use Orchid\Screen\Actions\ModalToggle;
+use Carbon\Carbon;
 
 class ProjectListLayout extends Table
 {
@@ -38,6 +39,8 @@ class ProjectListLayout extends Table
                             'project' => $project->id,
                         ]);
                 }),
+            TD::make('active', 'Active')
+                ->render(fn (Project $project) => (boolean) $project->active ? 'True' : 'False'),
             TD::make('title', 'Title')
                 ->render(function (Project $project) {
                     return Link::make($project->title)
@@ -49,8 +52,16 @@ class ProjectListLayout extends Table
             TD::make('image_name', 'Image Name'),
             TD::make('external_link', 'External Link'),
             TD::make('external_image_link', 'External Image Link'),
-            TD::make('created_at', 'Created'),
-            TD::make('updated_at', 'Last edit'),
+            TD::make('created_at', 'Created')
+                ->render(fn (Project $project) => $this->formatDate($project->created_at)),
+            TD::make('updated_at', 'Last edit')
+                ->render(fn (Project $project) => $this->formatDate($project->updated_at)),
         ];
+    }
+
+    public function formatDate($dateString)
+    {
+        $carbon = Carbon::parse($dateString);
+        return $carbon->format('Y-m-d');
     }
 }

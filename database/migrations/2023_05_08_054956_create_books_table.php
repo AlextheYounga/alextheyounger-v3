@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('subtitle')->nullable();
             $table->integer('position')->nullable();
             $table->json('properties')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

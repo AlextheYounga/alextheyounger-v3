@@ -32,10 +32,12 @@ class PagesController extends Controller
     public function readingList()
     {
         $books = Book::with('categories')
+            ->active()
             ->orderBy('position', 'asc')
             ->get();
 
-        $categories = Category::where('type', '=', 'Book::class')
+        $categories = Category::active()
+            ->where('type', '=', 'Book::class')
             ->get();
 
         return Inertia::render('ReadingList', [
@@ -47,7 +49,8 @@ class PagesController extends Controller
     public function projects()
     {
         return Inertia::render('Projects', [
-            'projects' => Project::orderBy('position', 'asc')
+            'projects' => Project::active()
+                ->orderBy('position', 'asc')
                 ->get()
         ]);
     }

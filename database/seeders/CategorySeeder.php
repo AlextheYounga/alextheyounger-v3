@@ -25,6 +25,7 @@ class CategorySeeder extends Seeder
                 'properties' => [
                     'html_selector' => $category['html_selector'],
                 ],
+                'active' => $category['active'] ?? true,
             ]);
         }
     }

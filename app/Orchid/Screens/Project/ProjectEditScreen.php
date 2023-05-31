@@ -7,6 +7,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Code;
+use Orchid\Screen\Fields\Switcher;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
@@ -126,6 +127,10 @@ class ProjectEditScreen extends Screen
                     ->title('Properties')
                     ->language('json')
                     ->lineNumbers(),
+
+                Switcher::make('book.active')
+                    ->sendTrueOrFalse()
+                    ->title('Active')
             ])
         ];
     }

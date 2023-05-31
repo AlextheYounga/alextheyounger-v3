@@ -28,6 +28,7 @@ class ProjectSeeder extends Seeder
                 'framework' => $project['framework'],
                 'excerpt' => $project['excerpt'],
                 'position' => $project['position'],
+                'active' => $project['active'] ?? true,
             ]);
         }
     }

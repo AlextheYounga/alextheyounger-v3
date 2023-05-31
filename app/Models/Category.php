@@ -15,6 +15,7 @@ class Category extends Model
         'name',
         'type',
         'properties',
+        'active',
     ];
 
     protected $appends = [
@@ -36,5 +37,10 @@ class Category extends Model
             return $this->properties["html_selector"];
         }
         return null;
+    }
+
+    public function scopeActive()
+    {
+        return $this->where('active', true);
     }
 }

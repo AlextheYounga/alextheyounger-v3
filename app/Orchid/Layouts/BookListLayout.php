@@ -7,6 +7,7 @@ use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\Actions\ModalToggle;
+use Carbon\Carbon;
 
 class BookListLayout extends Table
 {
@@ -44,8 +45,18 @@ class BookListLayout extends Table
             TD::make('image_name', 'Image Name'),
             TD::make('external_link', 'External Link'),
             TD::make('external_image_link', 'External Image Link'),
-            TD::make('created_at', 'Created'),
-            TD::make('updated_at', 'Last edit'),
+            TD::make('created_at', 'Created')
+                ->render(fn (Book $book) => $this->formatDate($book->created_at)),
+            TD::make('updated_at', 'Last edit')
+                ->render(fn (Book $book) => $this->formatDate($book->updated_at)),
+            TD::make('active', 'Active')
+                ->render(fn (Book $book) => (boolean) $book->active ? 'True' : 'False'),
         ];
+    }
+
+    public function formatDate($dateString)
+    {
+        $carbon = Carbon::parse($dateString);
+        return $carbon->format('Y-m-d');
     }
 }

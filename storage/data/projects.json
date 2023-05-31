@@ -37,14 +37,15 @@
     "framework": "Python",
     "excerpt": "",
     "position": 13,
-    "external_image_link": "https://opengraph.githubassets.com/e19edd6f791e910a541851cf35fdb7b5b1b8bba1a58aa8b115f7b6154edac6de/AlextheYounga/fractal-geometry-calculator"
+    "external_image_link": "https://opengraph.githubassets.com/e19edd6f791e910a541851cf35fdb7b5b1b8bba1a58aa8b115f7b6154edac6de/AlextheYounga/fractal-geometry-calculator",
+    "active": false
   },
   {
     "title": "Intelligent Office",
     "description": "I played a major role in making this site come to life. I built out the majority of the front end design.",
     "image_name": "io.jpg",
     "external_link": "https://www.intelligentoffice.com/",
-    "framework": "NET",
+    "framework": ".NET",
     "excerpt": "I played a major role in making this site come to life. I built out the majority of the front end design.",
     "position": 4,
     "external_image_link": ""
@@ -57,7 +58,8 @@
     "framework": "Python",
     "excerpt": "My python stock market laboratory, complete with hurst exponent calculators, VIX calculator, trend chasers, correlations scanners, and more.",
     "position": 12,
-    "external_image_link": "https://opengraph.githubassets.com/a56e57fcc2a9fc90f00187f074b579dfbed1e5bd10ba220f36421726ef1bcd4e/AlextheYounga/fractal-markets-lab"
+    "external_image_link": "https://opengraph.githubassets.com/a56e57fcc2a9fc90f00187f074b579dfbed1e5bd10ba220f36421726ef1bcd4e/AlextheYounga/fractal-markets-lab",
+    "active": false
   },
   {
     "title": "MacKinney Systems Inc",
@@ -127,7 +129,8 @@
     "framework": "Ruby on Rails",
     "excerpt": "",
     "position": 10,
-    "external_image_link": "https://opengraph.githubassets.com/bfbdac5b49927637b3a7a0a3af799ac43a94c54d90e2a6a8eb74b2c8d82bbd47/AlextheYounga/github_language_statistics"
+    "external_image_link": "https://opengraph.githubassets.com/bfbdac5b49927637b3a7a0a3af799ac43a94c54d90e2a6a8eb74b2c8d82bbd47/AlextheYounga/github_language_statistics",
+    "active": false
   },
   {
     "title": "Marketplacer",

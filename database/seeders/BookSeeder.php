@@ -33,6 +33,7 @@ class BookSeeder extends Seeder
                 'properties' => [
                     'image_alt' => $book['image_alt'],
                 ],
+                'active' => $book['active'] ?? true,
             ]);
 
             $new_book->categories()->attach($book['book_category_id']);

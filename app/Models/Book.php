@@ -21,6 +21,7 @@ class Book extends Model
         'subtitle',
         'position',
         'properties',
+        'active',
     ];
 
     protected $appends = [
@@ -66,5 +67,10 @@ class Book extends Model
             $category = $this->categories[0];
             return $category->selector;
         }
+    }
+
+    public function scopeActive()
+    {
+        return $this->where('active', true);
     }
 }
