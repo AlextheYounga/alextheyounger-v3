@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Language;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class GithubController extends Controller
 {
     protected $username;
-    protected $oauth;
 
     public function __construct()
     {
@@ -17,12 +17,11 @@ class GithubController extends Controller
 
     public function client($url)
     {
-        $username = "AlextheYounga";
         $oauth = "token " . env('GITHUB_PERSONAL_TOKEN');
 
-        return Http::withBasicAuth($username, $oauth)
+        return Http::withBasicAuth($this->username, $oauth)
         ->withHeaders([
-            'User-Agent' => $username,
+            'User-Agent' => $this->username,
             'Authorization' => $oauth,
             'proxy' => 'http://(ip_address):(port)',
             'accept' => 'application/vnd.github.v3+json',
@@ -30,57 +29,68 @@ class GithubController extends Controller
         ->get($url);
     }
 
-    public function getAllRepos()
+    public function getAllReposFromGithub()
     {
         $api_url = "https://api.github.com/search/repositories?q=user:{$this->username}";
 
         $response = $this->client($api_url);
 
-        return $response->body();
-    }
-
-    public function getRepoStats($langUrl)
-    {
-        $response = $this->client($langUrl);
-
-        $langResponse = $response->body();
-
-        return json_decode($langResponse, true);
+        return $response;
     }
 
     public function fetchLanguagesFromGithub()
     {
         $statsSum = [];
-        $repoResponse = $this->getAllRepos();
+        $repoResponse = $this->getAllReposFromGithub();
 
-        if (!empty($repoResponse)) {
-            $jsonResponse = json_decode($repoResponse, true);
+        if (empty($repoResponse) || $repoResponse->failed()) {
+            Log::error($repoResponse->status() . ' - ' . $repoResponse->body());
+            return $repoResponse->body();
+        }
 
-            foreach ($jsonResponse["items"] as $repo) {
+        $jsonResponse = json_decode($repoResponse, true);
+
+        foreach ($jsonResponse["items"] as $repo) {
+            try {
                 $languageUrl = $repo["languages_url"] ?? null;
+
+                Log::info('HTTP Attempting ' . $languageUrl);
+
+                if (empty($languageUrl)) {
+                    throw new \Exception('Failed to get language stats; language url is null.');
+                }
+
+                $languagesResponse = $this->client($languageUrl);
+                
+                if (empty($languagesResponse) || $languagesResponse->failed()) {
+                    throw new \Exception($languagesResponse->status() . ' - ' . $languagesResponse->body());
+                }
+
+                Log::info($languageUrl . " - " . $languagesResponse->body());
+    
+                $languagesArray = json_decode($languagesResponse, true);
                 $repoName = $repo["name"] ?? null;
 
-                if (!empty($languageUrl)) {
-                    $langs = $this->getRepoStats($languageUrl);
-
-                    if (!empty($langs)) {
-                        $langs = $this->suppressLanguages($repoName, $langs);
-
-                        foreach ($langs as $lang => $value) {
-                            if (!array_key_exists($lang, $statsSum)) {
-                                $statsSum[$lang] = $value;
-                                continue;
-                            }
-                            $statsSum[$lang] += $value;
-                        }
+                $languagesAdjustedWeight = $this->suppressLanguageWeights($repoName, $languagesArray);
+    
+                foreach ($languagesAdjustedWeight as $lang => $value) {
+                    if (!array_key_exists($lang, $statsSum)) {
+                        $statsSum[$lang] = $value;
+                        continue;
                     }
-                    sleep(1);
+                    $statsSum[$lang] += $value;
                 }
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+                continue;
             }
+
+            sleep(1);
         }
 
         if (empty($statsSum)) {
-            throw new \Exception("Failed to get language stats; stats are nil.");
+            Log::error("Failed to get language stats; stats are null.");
+            return "Failed to get language stats; stats are null.";
         }
 
         foreach ($statsSum as $lang => $value) {
@@ -88,7 +98,7 @@ class GithubController extends Controller
         }
     }
 
-    private function suppressLanguages($name, $langs)
+    private function suppressLanguageWeights($name, $langs)
     {
         /* Sometimes code from certain packages can highly skew your language stats.
         * For instance, in Django, some asset packages, like Tailwind, are pushed to the repo,
@@ -97,8 +107,12 @@ class GithubController extends Controller
         */
 
         $repoData = [
+            "*" => [
+                "language" => "markdown",
+                "suppressBy" => 0, // Remove markdown altogether
+            ],
             "hazlitt-data" => [
-                "lang" => "CSS",
+                "language" => "CSS",
                 "suppressBy" => 0.0000021,
                 /* Will suppress by whatever value you pass into suppressBy.
                 * Let's say your Django project has 4259089 lines of CSS code, but only 9 of those lines are yours.
@@ -108,7 +122,7 @@ class GithubController extends Controller
         ];
 
         if (array_key_exists($name, $repoData)) {
-            $lang = $repoData[$name]["lang"];
+            $lang = $repoData[$name]["language"];
             $suppressBy = $repoData[$name]["suppressBy"];
 
             $langs[$lang] = (int)($langs[$lang] * $suppressBy);

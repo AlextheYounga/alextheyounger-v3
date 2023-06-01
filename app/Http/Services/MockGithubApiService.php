@@ -7,38 +7,30 @@ use App\Http\Controllers\GithubController;
 
 class MockGithubApiService extends GithubController
 {
-    public function __construct()
+    protected $username;
+
+    public function __construct(array $params)
     {
-        $username = "AlextheYounga";
-        $oauth = "token " . env('GITHUB_PERSONAL_TOKEN');
-
-        $repoResponse = useJsonFixture('github-repo-response-example.json');
-
-        $vixVolResponse = [
-            "Python" => 26914,
-            "Shell" => 19
-        ];
-
-        $vultronJsResponse = [
-            "Vue" => 38045,
-            "JavaScript" => 35576,
-            "HTML" => 611,
-            "CSS" => 61,
-            "Shell" => 25
-        ];
+        $this->username = $params['username'];
+        $oauth = "token " . $params['oauth'];
+        
 
         $headers = [
-            'User-Agent' => $username,
+            'User-Agent' => $this->username,
             'Authorization' => $oauth,
             'proxy' => 'http://(ip_address):(port)',
             'accept' => 'application/vnd.github.v3+json',
         ];
 
+        $repoResponse = $params['response']['repo'];
+        $repoResponseCode = $params['codes']['repo'];
+        $projectResponseCode = $params['codes']['projects'];
+        
         Http::fake([
             // Stub a JSON response for GitHub endpoints...
-            'https://api.github.com/search/repositories*' => Http::response(json_encode($repoResponse), 200, $headers),
-            'https://api.github.com/repos/AlextheYounga/vix-vol-calculator*' => Http::response(json_encode($vixVolResponse), 200, $headers),
-            'https://api.github.com/repos/AlextheYounga/vultron-js*' => Http::response(json_encode($vultronJsResponse), 200, $headers),
+            'https://api.github.com/search/repositories*' => Http::response(json_encode($repoResponse), $repoResponseCode, $headers),
+            'https://api.github.com/repos/AlextheYounga/vix-vol-calculator*' => Http::response(json_encode($params['response']['projects'][0]), $projectResponseCode, $headers),
+            'https://api.github.com/repos/AlextheYounga/vultron-js*' => Http::response(json_encode($params['response']['projects'][1]), $projectResponseCode, $headers),
         ]);
     }
 }
