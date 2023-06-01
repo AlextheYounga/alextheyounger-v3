@@ -148,7 +148,12 @@ class ProjectEditScreen extends Screen
      */
     public function createOrUpdate(Project $project, Request $request)
     {
-        $project->fill($request->get('project'))
+        $fields = $request->get('project');
+
+        $fields['techstack'] = json_decode($fields['techstack']);
+        $fields['properties'] = json_decode($fields['properties']);
+
+        $project->fill($fields)
             ->reorderPositions()
             ->save();
 

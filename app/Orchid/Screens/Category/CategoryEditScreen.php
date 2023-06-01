@@ -113,7 +113,11 @@ class CategoryEditScreen extends Screen
      */
     public function createOrUpdate(Category $category, Request $request)
     {
-        $category->fill($request->get('category'))->save();
+        $fields = $request->get('category');
+
+        $fields['properties'] = json_decode($fields['properties']);
+
+        $category->fill($fields)->save();
 
         Alert::info('You have successfully created a category.');
 

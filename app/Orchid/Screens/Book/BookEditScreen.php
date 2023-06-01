@@ -142,7 +142,11 @@ class BookEditScreen extends Screen
      */
     public function createOrUpdate(Book $book, Request $request)
     {
-        $book->fill($request->get('book'))
+        $fields = $request->get('book');
+
+        $fields['properties'] = json_decode($fields['properties']);
+
+        $book->fill($fields)
             ->reorderPositions()
             ->save();
 

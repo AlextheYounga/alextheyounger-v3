@@ -27,7 +27,7 @@ class Project extends Model
 
     protected $casts = [
         'properties' => 'json',
-        'techstack' => 'json',
+        'techstack' => 'array',
     ];
 
     public function reorderPositions()
