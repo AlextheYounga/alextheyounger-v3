@@ -1,7 +1,8 @@
 <template>
     <div class="bg-transparent">
+
         <Head title="Terrain Playgound" />
-        <img class="mx-auto mt-12" width="120" height="120" src="/images/neuron-activation.png" alt="neuron activation meme" />
+        <img class="mx-auto mt-12" width="120" height="120" src="/images/neuron-activation.png.webp" alt="neuron activation meme" />
         <button @click="terrain.redraw" class="bg-white mt-2 block border border-red-800 hover:bg-red-900 hover:text-red-100 mx-auto no-underline normal-font py-2 rounded shadow-lg text-red-900 text-center w-36">
             Redraw Terrain
         </button>

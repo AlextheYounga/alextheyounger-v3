@@ -3,16 +3,14 @@
     <NavBar />
     <div id="page-wrapper" class="opacity-0 transition-opacity duration-500 w-11/12 sm:w-3/5 mx-auto max-w-3xl pt-12">
         <section class="hero mt-16 w-1/2 sm:w-1/3 mx-auto sm:mt-0 mb-4 relative rounded">
-            <picture>
-                <source srcset="/images/bridge-standing.jpg.webp" type="image/webp">
-                <source srcset="/images/bridge-standing.jpg" type="image/jpg">
-                <img src="/images/bridge-standing.jpg" class="headshot flex mx-auto relative text-center" alt="alex younger developer marketing about me" />
-            </picture>
+            <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center"
+                alt="alex younger developer marketing about me" />
         </section>
 
         <section class="title mb-8 bg-neutral-50 shadow rounded relative">
             <h1 class="text-5xl text-gray-700 text-center">Alex Younger</h1>
-            <p class="py-2 text-gray-700 text-center text-lg">Software Engineer, Data Scientist, Entrepreneur</p>
+            <p class="py-2 text-gray-700 text-center text-lg">Software Engineer, Data Scientist,
+                Entrepreneur</p>
         </section>
 
         <!-- Skills -->
@@ -27,17 +25,17 @@
         <section class="home-quote relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
             <div class="text-center">
                 <p class="text-sm pb-2 text-gray-700">Pssst! Are you bored? Wanna
-                    <Link class="text-burgandy hover:text-red-600" href="/terrain">play</Link> with the terrain generator?
+                    <Link class="text-burgandy hover:text-red-600" href="/terrain">play</Link> with the
+                    terrain generator?
                 </p>
             </div>
             <div class="image-quote sm:flex justify-between">
-                <picture>
-                    <source srcset="/images/frozen-lake.jpg.webp" type="image/webp">
-                    <source srcset="/images/frozen-lake.jpg" type="image/jpg">
-                    <img src="/images/frozen-lake.jpg" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full" alt="alex younger developer marketing about me" />
-                </picture>
+                <img src="/images/frozen-lake.jpg.webp" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full"
+                    alt="alex younger developer marketing about me" />
                 <div class="text-gray-700 text-sm w-full mt-4 sm:mt-0 sm:text-right sm:ml-auto sm:pt-16 sm:w-2/3 pt-2">
-                    <p class="italic">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble"</p>
+                    <p class="italic">"The man who grasps principles can successfully handle his own
+                        methods. The man who tries methods, ignoring principles is sure to have trouble"
+                    </p>
                     <p class="italic pt-4"> -Ralph Waldo Emerson</p>
                 </div>
             </div>
@@ -47,21 +45,27 @@
         <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
             <h2 class="mb-3 text-3xl text-gray-700">About Me</h2>
             <div class="description leading-normal ml-auto">
-                <p class="py-2 text-gray-700">I currently work for <a class="text-burgandy hover:text-burgandy" href="https://marketplacer.com/">Marketplacer</a>,
+                <p class="py-2 text-gray-700">I currently work for <a class="text-burgandy" href="https://marketplacer.com/">Marketplacer</a>,
                     building connector APIs that integrate with major ecommerce platforms.
                 </p>
                 <p class="py-2 text-gray-700">I've built and maintained websites for an extensive list of small and large companies including
-                    <a class="text-burgandy hover:text-burgandy" href="https://www.bluehawaiian.com/en">Blue Hawaiian Helicopters</a>,
-                    <a class="text-burgandy hover:text-burgandy" href="https://www.intelligentoffice.com/">Intelligent Office</a>, and
-                    <a class="text-burgandy hover:text-burgandy" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
+                    <a class="text-burgandy" href="https://www.bluehawaiian.com/en">Blue Hawaiian
+                        Helicopters</a>,
+                    <a class="text-burgandy" href="https://www.intelligentoffice.com/">Intelligent
+                        Office</a>, and
+                    <a class="text-burgandy" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
                 </p>
-                <p class="py-2 text-gray-700">I'm building an awesome MVC framework atop Electron called <a class="text-burgandy hover:text-burgandy" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.
-                    I built that Vultron to build a personal budget/accounting desktop app called AmassWealth.io (Work in Progress).
+                <p class="py-2 text-gray-700">I'm building an awesome MVC framework atop Electron called
+                    <a class="text-burgandy" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.
+                    I built that Vultron to build a personal budget/accounting desktop app called
+                    AmassWealth.io (Work in Progress).
                 </p>
 
-                <p class="text-gray-700">My <a class="text-burgandy hover:text-burgandy" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts Congressional stock transactions so you can trade like the people who control the market. Follow me.</p>
+                <p class="text-gray-700">My <a class="text-burgandy" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts
+                    Congressional stock transactions so you can trade like
+                    the people who control the market. Follow me.</p>
                 <p class="py-2 text-gray-700">Check out my latest
-                    <Link class="text-burgandy hover:text-burgandy" :href="route('pages.projects')">projects</Link>
+                    <Link class="text-burgandy" :href="route('pages.projects')">projects</Link>
                 </p>
             </div>
         </section>
@@ -70,10 +74,11 @@
         <section class="projects-home sm:p-8 relative mb-8 bg-neutral-50 rounded">
             <div class="flex justify-between mb-4 p-2 sm:p-0">
                 <h3 class="text-left w-1/2 text-3xl text-gray-700">Projects</h3>
-                <Link class="bg-white border border-red-800 hover:bg-red-900 hover:text-white no-underline py-1 rounded shadow-lg text-burgandy text-center w-32" :href="route('pages.projects')">
+                <Link
+                    class="bg-white border border-red-800 hover:bg-red-900 hover:text-white no-underline py-1 rounded shadow-lg text-burgandy text-center w-32"
+                    :href="route('pages.projects')">
                 See All
                 </Link>
-
             </div>
 
             <div class="overflow-hidden shadow sm:rounded-md">
@@ -86,8 +91,10 @@
                                         {{ project.title }}
                                     </p>
                                     <div class="ml-2 flex flex-shrink-0">
-                                        <p class="text-gray-700 framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5" :data-framework="project.framework">
-                                            {{ project.framework }}
+                                        <p v-for="tech of project.techstack" :key="tech"
+                                            class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2"
+                                            :data-techstack="tech">
+                                            {{ tech }}
                                         </p>
                                     </div>
                                 </div>
@@ -114,7 +121,7 @@ import Footer from '@/Components/Footer.vue';
 import { Link } from '@inertiajs/vue3'
 import LanguageBar from '@/Components/LanguageBar.vue';
 import NavBar from '@/Components/Navbar.vue';
-import { generateProjectFrameworkColors } from '@/Components/ProjectColors.vue';
+import { generateTechColors } from '@/Components/ProjectColors.vue';
 import { terrainLoaded } from '@/Components/Terrain.vue';
 import { onMounted } from 'vue';
 import { getCurrentInstance } from 'vue';
@@ -157,7 +164,7 @@ onMounted(() => {
     } else {
         terrainFinished()
     }
-    generateProjectFrameworkColors()
+    generateTechColors()
 });
 
 </script>
