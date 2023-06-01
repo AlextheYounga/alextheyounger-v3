@@ -46,7 +46,6 @@ class ProjectListLayout extends Table
                     return Link::make($project->title)
                         ->route('platform.project.edit', $project);
                 }),
-            TD::make('techstack', 'Tech Stack'),
             TD::make('scope', 'Scope'),
             TD::make('excerpt', 'Excerpt'),
             TD::make('description', 'Description'),
