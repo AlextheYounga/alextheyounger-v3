@@ -46,7 +46,7 @@
             </div>
         </div>
         <!-- Modal -->
-        <Modal :show="showModal" @close="showModal=false">
+        <Modal :show="showModal" @close="showModal = false">
             <div>
                 <div class="flex-shrink-0">
                     <img v-if="projectSelected.external_image_link" :src="projectSelected.external_image_link" class="w-full object-cover" />
@@ -61,19 +61,22 @@
                         </p>
 
                         <div class="mt-2 block">
-                            <p class="text-xl font-semibold text-gray-900">{{ projectSelected.title }}</p>
+                            <p class="text-2xl font-semibold text-gray-900">{{ projectSelected.title }}</p>
                             <p class="text-sm font-semibold text-gray-400">{{ projectSelected.scope }}</p>
-                            <p v-html="projectSelected.description" class="mt-3 text-base text-gray-500"></p>
+
+                            <div class="mt-2 flex items-center">
+                                <a :href="projectSelected.external_link" class="text-red-500 inline-flex items-center" target="_blank">Visit Project
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <p v-html="projectSelected.description" class="mt-6 text-base text-gray-500"></p>
                         </div>
                     </div>
-                    <div class="mt-6 flex items-center">
-                        <a :href="projectSelected.external_link" class="text-red-500 inline-flex items-center" target="_blank">Visit Project
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2"
-                                viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </Modal>
