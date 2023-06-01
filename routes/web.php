@@ -28,12 +28,3 @@ Route::get('/projects', [
 Route::get('/terrain', [
     PagesController::class, 'terrainPlayground'
 ])->name('pages.terrain-playground');
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-// require __DIR__.'/auth.php';
