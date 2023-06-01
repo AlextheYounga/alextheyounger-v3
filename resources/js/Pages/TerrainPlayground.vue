@@ -2,10 +2,14 @@
     <div class="bg-transparent">
 
         <Head title="Terrain Playgound" />
-        <img class="mx-auto mt-12" width="120" height="120" src="/images/neuron-activation.png.webp" alt="neuron activation meme" />
-        <button @click="terrain.redraw" class="bg-white mt-2 block border border-red-800 hover:bg-red-900 hover:text-red-100 mx-auto no-underline normal-font py-2 rounded shadow-lg text-red-900 text-center w-36">
-            Redraw Terrain
-        </button>
+        <div class="absolute bottom-5 left-5 sm:top-10 sm:bottom-0 sm:left-10">
+            <img class="w-20 h-20 sm:w-28 sm:h-28" src="/images/neuron-activation.png.webp" alt="neuron activation meme" />
+            <button @click="terrain.redraw"
+                class="bg-white mt-2 block border border-red-800 hover:bg-red-900 hover:text-red-100 no-underline normal-font rounded shadow-lg text-red-900 text-center p-1 sm:w-36">
+                Redraw Terrain
+            </button>
+        </div>
+
     </div>
 </template>
 

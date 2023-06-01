@@ -28,8 +28,8 @@
                             <img v-if="book.external_image_link" :src="book.external_image_link" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
                             <img v-else :src="`/images/books/${book.image_name}.webp`" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
                         </a>
-                        <div class="book-description bg-purple-100 w-4/5 p-4 rounded-lg mx-auto">
-                            <p class="fancy-font text-md text-purple-900">{{ book.title }}</p>
+                        <div class="book-description bg-purple-200 w-4/5 p-4 rounded-lg mx-auto">
+                            <p class="font-semibold fancy-font text-md text-purple-900">{{ book.title }}</p>
                             <p class="normal-font text-sm text-purple-900 py-2">{{ book.subtitle }}</p>
                             <p class="normal-font text-sm text-purple-900">by {{ book.author }}</p>
                         </div>
