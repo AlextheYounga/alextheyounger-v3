@@ -119,9 +119,10 @@ class ProjectEditScreen extends Screen
                     ->maxlength(200)
                     ->placeholder('Brief description for preview'),
 
-                Input::make('project.framework')
-                    ->title('Framework')
-                    ->placeholder('PHP Laravel'),
+                Code::make('project.techstack')
+                    ->title('Tech Stack')
+                    ->language('json')
+                    ->lineNumbers(),
 
                 Input::make('project.scope')
                     ->title('Scope')
