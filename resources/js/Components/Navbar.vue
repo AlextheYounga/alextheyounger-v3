@@ -8,8 +8,8 @@
                 </div>
 
                 <div class="w-2/3 ml-auto flex justify-end">
-                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-4">Reading List <span aria-hidden="true">&#x1F4DA;</span></Link>
-                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-4">Projects <span aria-hidden="true">&#x1F5A5;</span></Link>
+                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-6">Reading List <span aria-hidden="true">&#x1F4DA;</span></Link>
+                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-6">Projects <span aria-hidden="true">&#x1F5A5;</span></Link>
                     <button @click="terrain.redraw" class="cursor-pointer text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
                 </div>
             </div>

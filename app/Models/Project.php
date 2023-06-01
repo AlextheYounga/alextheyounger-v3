@@ -17,7 +17,7 @@ class Project extends Model
         'image_name',
         'external_link',
         'external_image_link',
-        'framework',
+        'techstack',
         'excerpt',
         'position',
         'properties',
@@ -26,7 +26,8 @@ class Project extends Model
     ];
 
     protected $casts = [
-        'properties' => 'json'
+        'properties' => 'json',
+        'techstack' => 'json',
     ];
 
     public function reorderPositions()

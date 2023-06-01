@@ -17,7 +17,7 @@ return new class () extends Migration {
             $table->string('image_name')->nullable();
             $table->text('external_link')->nullable();
             $table->string('external_image_link')->nullable();
-            $table->string('framework')->nullable();
+            $table->json('techstack')->nullable();
             $table->string('scope')->nullable();
             $table->text('excerpt')->nullable();
             $table->integer('position')->nullable();

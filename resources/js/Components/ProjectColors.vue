@@ -7,7 +7,7 @@ function padZero(str, len) {
     return (zeros + str).slice(-len);
 }
 
-function invertColor(hex, bw) {
+export function invertColor(hex, bw) {
     // https://stackoverflow.com/questions/63378749/is-there-a-way-to-generate-foreground-text-and-navigation-contrasting-colour-t
     if (hex.indexOf('#') === 0) {
         hex = hex.slice(1);
@@ -36,17 +36,18 @@ function invertColor(hex, bw) {
     return "#" + padZero(r) + padZero(g) + padZero(b);
 }
 
-export function generateProjectFrameworkColors() {
-    var projectsContainer = document.getElementById("projects-container");
-    if (typeof (projectsContainer) != 'undefined' && projectsContainer != null) {
-        var languageBubbles = document.getElementsByClassName("framework-bubble");
-        for (var i = 0; i < languageBubbles.length; i++) {
-            var framework = languageBubbles.item(i).dataset.framework
-            var frameworkBgColor = languageColors[framework]
-            var textColor = invertColor(frameworkBgColor, true)
+export function generateTechColors() {
+    const languageBubbles = document.getElementsByClassName("framework-bubble");
 
-            languageBubbles.item(i).style.backgroundColor = frameworkBgColor
-            languageBubbles.item(i).style.color = textColor
+    for (let element of languageBubbles) {
+        const techstack = element.dataset.techstack
+
+        const frameworkBgColor = languageColors[techstack]
+        if (frameworkBgColor) {
+            const textColor = invertColor(frameworkBgColor, true)
+
+            element.style.backgroundColor = frameworkBgColor
+            element.style.color = textColor
         }
     }
 }

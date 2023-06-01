@@ -25,7 +25,7 @@ class ProjectSeeder extends Seeder
                 'image_name' => $project['image_name'],
                 'external_link' => $project['external_link'],
                 'external_image_link' => $project['external_image_link'] ?? null,
-                'framework' => $project['framework'],
+                'techstack' => $project['techstack'],
                 'excerpt' => $project['excerpt'],
                 'position' => $project['position'],
                 'scope' => $project['scope'],
