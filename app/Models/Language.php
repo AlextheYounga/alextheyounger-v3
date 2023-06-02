@@ -46,13 +46,10 @@ class Language extends Model
         $repos = Repository::all();
 
         foreach($repos as $repo) {
-            $languages = $repo->languages;
-            if ($repo->host === 'github') {
-                $languagesAdjustedWeight = Language::suppressLanguageWeights($repo->name, $languages);
+            $languages = $repo->languages ?? [];
 
-                foreach($languagesAdjustedWeight as $lang => $value) {
-                    Language::incrementOrCreate($lang, $value);
-                }
+            foreach ($languages as $lang => $value) {
+                Language::incrementOrCreate($lang, $value);
             }
         }
     }
