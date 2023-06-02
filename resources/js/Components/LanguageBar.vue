@@ -24,7 +24,7 @@
         </ul>
         <div class="italic mt-6 text-sm">
             <small>
-                These stats are not arbitrary, they're pulled directly from Github and represent real lines of code.
+                These stats are not arbitrary, they're pulled directly from Github and represent real bytes of code.
             </small>
         </div>
     </div>
