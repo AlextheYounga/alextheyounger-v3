@@ -168,7 +168,6 @@ const links = [
     { name: 'Github', url: 'https://github.com/AlextheYounga', icon: githubIcon, alt: 'github', hint: 'Github' },
     { name: 'Email', url: 'mailto:alex@alextheyounger.me', icon: emailIcon, alt: 'e-mail', hint: 'Email' },
     { name: 'Resume', url: 'https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing', icon: resumeIcon, alt: 'resume', hint: 'Resume' },
-    { name: 'Codepen', url: 'https://codepen.io/alextheyounger/', icon: codepenIcon, alt: 'codepen', hint: 'Codepen' },
 ];
 
 const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
