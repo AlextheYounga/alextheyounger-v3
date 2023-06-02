@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="flex justify-between mx-auto text-center w-full sm:w-5/6 py-8">
-                <a v-for="link in links" :href="link.url" class="w-8 sm:w-12 no-underline burgandy text-gray-600">
+                <a v-for="link in links" :href="link.url" target="_blank" class="w-8 sm:w-12 no-underline burgandy text-gray-600">
                     <img :src="link.icon" class="w-16 hover:shadow p-1 rounded" :alt="link.alt" />
                     <small>{{ link.hint }}</small>
                 </a>
@@ -52,7 +52,7 @@
         <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
             <h2 class="mb-3 text-3xl text-gray-700">About Me</h2>
             <div class="description leading-normal ml-auto">
-                <p class="py-2 text-gray-700">I recently left <a class="text-burgandy hover:text-red-600 font-semibold"
+                <p class="py-2 text-gray-700">I recently left <a class="text-burgandy hover:text-red-600 font-semibold" target="_blank"
                         href="https://marketplacer.com/">Marketplacer</a>, which allows enterprises
                     to manage a fleet of eCommerce websites from a unified dashboard, incorporating major platforms like Shopify, Adobe Commerce,
                     Salesforce, and BigCommerce. Here I built critical Shopify and Adobe Commerce connectors, enabling seamless data flow through an
@@ -60,15 +60,15 @@
                 </p>
 
                 <p class="py-2 text-gray-700">I've built and maintained websites for an extensive list of small and large companies including
-                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.bluehawaiian.com/en">Blue Hawaiian
+                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.bluehawaiian.com/en" target="_blank">Blue Hawaiian
                         Helicopters</a>,
-                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.intelligentoffice.com/">Intelligent
+                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.intelligentoffice.com/" target="_blank">Intelligent
                         Office</a>, and
-                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.rugdoctor.com/">Rugdoctor</a>.
+                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.rugdoctor.com/" target="_blank">Rugdoctor</a>.
                 </p>
 
                 <p class="py-2 text-gray-700">I'm considered the Software Architect at the startup <a
-                        class="text-burgandy hover:text-red-600 font-semibold" href="https://www.learnarena.com/">LearnArena</a>.
+                        class="text-burgandy hover:text-red-600 font-semibold" href="https://www.learnarena.com/" target="_blank">LearnArena</a>.
                     As a founding developer for Learn Arena, a groundbreaking competitive learning platform, I spearheaded its transformation from a
                     hobbyist React and Firebase app to a scalable NextJS application. Learn Arena is the first-of-its-kind competitive learning platform,
                     where students with the greatest academic achievement have the potential to win back the costs of the course, or even make a profit.
@@ -76,7 +76,7 @@
 
                 <p class="py-2 text-gray-700">I recently launched a unique application that enables LLM models to autonomously interact, simulating
                     intriguing AI-generated conversations. called <a class="text-burgandy hover:text-red-600 font-semibold"
-                        href="https://www.gptconversations.app/">
+                        href="https://www.gptconversations.app/" target="_blank">
                         GPT Conversations</a>. Currently it's set up to continuously talk to itself on "phenomena lacking clear explanations but solvable
                     using all human knowledge."
                 </p>
@@ -84,7 +84,7 @@
                     <Link class="text-burgandy hover:text-red-600 font-semibold" :href="route('pages.projects')">projects</Link>
                 </p>
                 <p>Or my <a class="text-burgandy hover:text-red-600 font-semibold"
-                        href="https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing">Resume</a>.</p>
+                        href="https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing" target="_blank">Resume</a>.</p>
             </div>
         </section>
 

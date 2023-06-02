@@ -6,7 +6,7 @@
             </p>
             <p class="block normal-font text-center text-sm mt-2">This site was built with PHP Laravel with Orchid, InertiaJS, Vue3, and TailwindCSS.</p>
             <div class="flex justify-center mx-auto py-4 text-center w-full sm:w-2/3">
-                <a v-for="link in links" :href="link.url" class="w-10 sm:w-16 no-underline burgandy" :class="link.icon.iconName">
+                <a v-for="link in links" :href="link.url" class="w-10 sm:w-16 no-underline burgandy" target="_blank">
                     <img :src="link.icon" width="25" height="25" :alt="link.alt" />
                 </a>
             </div>
