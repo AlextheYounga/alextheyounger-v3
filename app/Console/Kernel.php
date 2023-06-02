@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('sync:repos')->daily();
+        // $schedule->command('app:repos')->daily();
     }
 
     /**

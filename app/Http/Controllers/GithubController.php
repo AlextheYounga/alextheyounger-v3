@@ -117,9 +117,7 @@ class GithubController extends Controller
         foreach($repos as $repo) {
             $languages = $repo->properties['languagesResponse'];
 
-            $languagesAdjustedWeight = Language::suppressLanguageWeights($repo->name, $languages);
-
-            $repo->languages = $languagesAdjustedWeight;
+            $repo->languages = $languages;
             $repo->save();
         }
     }

@@ -1,0 +1,56 @@
+[
+    {
+        "name": "gpt-conversations",
+        "path": "\/Users\/alexyounger\/Development\/AI\/gpt-conversations",
+        "host": "local",
+        "languages": {
+            "PHP": 170383,
+            "Vue": 83398,
+            "JavaScript": 2871,
+            "Blade": 2051,
+            "CSS": 61
+        },
+        "visibility": "private",
+        "properties": {
+            "languageStatistics": {
+                "PHP": {
+                    "percentage": 65.84,
+                    "bytes": 170383
+                },
+                "Vue": {
+                    "percentage": 32.23,
+                    "bytes": 83398
+                },
+                "JavaScript": {
+                    "percentage": 1.11,
+                    "bytes": 2871
+                },
+                "Blade": {
+                    "percentage": 0.79,
+                    "bytes": 2051
+                },
+                "CSS": {
+                    "percentage": 0.02,
+                    "bytes": 61
+                }
+            }
+        }
+    },
+    {
+        "name": "helicopter-weights-balance-calculator",
+        "path": "\/Users\/alexyounger\/Development\/Javascript\/helicopter-weights-balance-calculator",
+        "host": "local",
+        "languages": {
+            "JavaScript": 9240
+        },
+        "visibility": "private",
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 100,
+                    "bytes": 9240
+                }
+            }
+        }
+    }
+]

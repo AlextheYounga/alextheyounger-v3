@@ -12,7 +12,8 @@
                 <template v-for="(val, lang) in languages">
                     <li class="lang-item w-48">
                         <div class="item-wrapper inline-flex flex-nowrap no-underline text-sm mr-3">
-                            <svg :class="['octicon', slugifyLanguage(lang), 'octicon-dot-fill', 'mr-2']" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+                            <svg :class="['octicon', slugifyLanguage(lang), 'octicon-dot-fill', 'mr-2']" viewbox="0 0 16 16" version="1.1" width="16"
+                                height="16" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path>
                             </svg>
                             <span class="lang-name mr-1">{{ lang }}</span>
@@ -24,7 +25,8 @@
         </ul>
         <div class="italic mt-6 text-sm">
             <small>
-                These stats are not arbitrary, they're pulled directly from Github and represent real bytes of code.
+                These stats are not arbitrary. They're calculated using the <a class="text-burgandy hover:text-red-600"
+                    href="https://github.com/github-linguist/linguist">Github Linguist package</a> and represent real bytes of code.
             </small>
         </div>
     </div>

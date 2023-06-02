@@ -5,7 +5,6 @@ use Tests\TestCase;
 use App\Http\Services\MockGithubApiService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Models\Language;
 use App\Models\Repository;
 use Illuminate\Support\Arr;
 

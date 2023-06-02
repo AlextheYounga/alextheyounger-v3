@@ -47,8 +47,9 @@ class Language extends Model
 
         foreach($repos as $repo) {
             $languages = $repo->languages ?? [];
+            $languagesAdjustedWeight = Language::suppressLanguageWeights($repo->name, $languages);
 
-            foreach ($languages as $lang => $value) {
+            foreach ($languagesAdjustedWeight as $lang => $value) {
                 Language::incrementOrCreate($lang, $value);
             }
         }
@@ -89,15 +90,24 @@ class Language extends Model
     */
     public static function suppressLanguageWeights($repoName, $languageStats)
     {
-        $globalIgnore = ['Markdown'];
+        $globalIgnore = ['Markdown', 'ASP.NET'];
+
+        // Arbitrary adjustments to better represent the realities of my framework generated code.
+        $globalToggle = [
+            'JavaScript' => 0.4, // Every framework contains generated JavaScript code.
+            'HTML' => 0.3, // Many frameworks contain generated HTML code.
+            'Vue' => 0.7, // Inertia and Breeze generate some Vue code.
+            'Ruby' => 3.5, // Accounting for repos I can't legally keep on my computer, i.e. (Marketplacer)
+        ];
+
+        /*
+        * Will suppress by whatever value you pass into suppressBy.
+        * If a Django project has 4259089 bytes of CSS code, but only 364 bytes are yours: 364 / 4259089 = 0.000085
+        */
         $repoSuppressionData = [
             "hazlitt-data" => [
                 "language" => "CSS",
                 "suppressBy" => 0.000085,
-                /*
-                * Will suppress by whatever value you pass into suppressBy.
-                * If a Django project has 4259089 bytes of CSS code, but only 364 bytes are yours: 364 / 4259089 = 0.000085
-                */
             ],
         ];
 
@@ -105,13 +115,19 @@ class Language extends Model
             if (in_array($lang, $globalIgnore)) {
                 unset($languageStats[$lang]);
             }
+            if (in_array($lang, array_keys($globalToggle))) {
+                $suppressBy = $globalToggle[$lang];
+                $languageStats[$lang] = (int) ($languageStats[$lang] * $suppressBy);
+            }
         }
 
         if (array_key_exists($repoName, $repoSuppressionData)) {
             $lang = $repoSuppressionData[$repoName]["language"];
-            $suppressBy = $repoSuppressionData[$repoName]["suppressBy"];
 
-            $languageStats[$lang] = (int)($languageStats[$lang] * $suppressBy);
+            if (array_key_exists($lang, $languageStats)) {
+                $suppressBy = $repoSuppressionData[$repoName]["suppressBy"];
+                $languageStats[$lang] = (int) ($languageStats[$lang] * $suppressBy);
+            }
         }
 
         return $languageStats;
