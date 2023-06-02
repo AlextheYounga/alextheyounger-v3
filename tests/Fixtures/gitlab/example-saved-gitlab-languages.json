@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "language": "PHP",
+        "value": 4283660.0
+    },
+    {
+        "id": 2,
+        "language": "Vue",
+        "value": 2720659.0
+    },
+    {
+        "id": 3,
+        "language": "JavaScript",
+        "value": 93447.0
+    },
+    {
+        "id": 4,
+        "language": "Blade",
+        "value": 1069361.0
+    },
+    {
+        "id": 5,
+        "language": "Shell",
+        "value": 34980.0
+    }
+]
