@@ -53,6 +53,8 @@ class Language extends Model
                 Language::incrementOrCreate($lang, $value);
             }
         }
+
+        Language::adjustLanguageWeights();
     }
 
     public static function incrementOrCreate($language, $value)
@@ -83,22 +85,42 @@ class Language extends Model
         return $convertedStats;
     }
 
-    /*
-    * Code packages can skew language stats.
-    * For example, in Django, Tailwind and similar assets can make a Python project look mostly like CSS.
-    * To suppress such data, specify a repo name and the language you want to exclude.
-    */
-    public static function suppressLanguageWeights($repoName, $languageStats)
+    private static function adjustLanguageWeights()
     {
-        $globalIgnore = ['Markdown', 'ASP.NET'];
+        // Accounting for repos I can't legally keep on my computer.
+        $additions = [
+            'Ruby' => 4000000, 
+            'PHP' => 3000000
+        ];
 
         // Arbitrary adjustments to better represent the realities of my framework generated code.
-        $globalToggle = [
-            'JavaScript' => 0.4, // Every framework contains generated JavaScript code.
+        $subtractions = [
+            'JavaScript' => 0.5, // Every framework contains generated JavaScript code.
             'HTML' => 0.3, // Many frameworks contain generated HTML code.
             'Vue' => 0.7, // Inertia and Breeze generate some Vue code.
-            'Ruby' => 3.5, // Accounting for repos I can't legally keep on my computer, i.e. (Marketplacer)
         ];
+
+        $languages = Language::all();
+
+        foreach($languages as $lang) {
+            if (array_key_exists($lang->language, $additions)) {
+                $lang->value += $additions[$lang->language];
+            }
+
+            if (array_key_exists($lang->language, $subtractions)) {
+                $lang->value *= $subtractions[$lang->language];
+            }
+            $lang->save();
+        }
+
+    }
+
+    /*
+    * Accounting for generated code that I want to suppress from the statistics.
+    */
+    private static function suppressLanguageWeights($repoName, $languageStats)
+    {
+        $globalIgnore = ['Markdown', 'ASP.NET'];
 
         /*
         * Will suppress by whatever value you pass into suppressBy.
@@ -114,10 +136,6 @@ class Language extends Model
         foreach(array_keys($languageStats) as $lang) {
             if (in_array($lang, $globalIgnore)) {
                 unset($languageStats[$lang]);
-            }
-            if (in_array($lang, array_keys($globalToggle))) {
-                $suppressBy = $globalToggle[$lang];
-                $languageStats[$lang] = (int) ($languageStats[$lang] * $suppressBy);
             }
         }
 
