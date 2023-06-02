@@ -25,7 +25,7 @@
         </ul>
         <div class="italic mt-6 text-sm">
             <small>
-                These stats are not arbitrary. They're calculated using the <a class="text-burgandy hover:text-red-600"
+                These stats are not arbitrary. They're calculated using the <a class="text-burgandy hover:text-red-600 font-semibold"
                     href="https://github.com/github-linguist/linguist">Github Linguist package</a> and represent real bytes of code.
             </small>
         </div>

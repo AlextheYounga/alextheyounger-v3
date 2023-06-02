@@ -3,7 +3,7 @@
     <NavBar />
     <div id="page-wrapper" class="opacity-0 transition-opacity duration-500 w-11/12 sm:w-3/5 mx-auto max-w-3xl pt-12">
         <section class="hero mt-16 w-1/2 sm:w-1/3 mx-auto sm:mt-0 mb-4 relative rounded">
-            <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center"
+            <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center border-burgandy border-2"
                 alt="alex younger developer marketing about me" />
         </section>
 
@@ -23,21 +23,28 @@
 
         <!-- Quote Box -->
         <section class="home-quote relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
-            <div class="text-center">
-                <p class="text-sm pb-2 text-gray-700">Pssst! Are you bored? Wanna
-                    <Link class="text-burgandy hover:text-red-600" href="/terrain">play</Link> with the
-                    terrain generator?
-                </p>
-            </div>
             <div class="image-quote sm:flex justify-between">
-                <img src="/images/frozen-lake.jpg.webp" class="border-neutral-200 border-8 flex mx-auto relative text-center w-full"
+                <img src="/images/frozen-lake.jpg.webp" class="border-burgandy border-2 flex mx-auto relative text-center w-full"
                     alt="alex younger developer marketing about me" />
                 <div class="text-gray-700 text-sm w-full mt-4 sm:mt-0 sm:text-right sm:ml-auto sm:pt-16 sm:w-2/3 pt-2">
-                    <p class="italic">"The man who grasps principles can successfully handle his own
+                    <p class="italic text-md">"The man who grasps principles can successfully handle his own
                         methods. The man who tries methods, ignoring principles is sure to have trouble"
                     </p>
                     <p class="italic pt-4"> -Ralph Waldo Emerson</p>
                 </div>
+            </div>
+            <div class="flex justify-between mx-auto text-center w-full sm:w-5/6 py-8">
+                <a v-for="link in links" :href="link.url" class="w-8 sm:w-12 no-underline burgandy text-gray-600">
+                    <img :src="link.icon" class="w-16 hover:shadow p-1 rounded" :alt="link.alt" />
+                    <small>{{ link.hint }}</small>
+                </a>
+            </div>
+            <div class="text-center">
+                <p class="text-sm text-gray-700 pb-2">Pssst! Are you bored? Wanna play with the terrain generator?
+                </p>
+                <Link
+                    class="block mx-auto text-sm bg-red-900 text-white border border-red-800 hover:bg-white hover:text-burgandy no-underline p-1 rounded shadow-lg text-center w-16"
+                    href="/terrain">play</Link>
             </div>
         </section>
 
@@ -45,28 +52,39 @@
         <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
             <h2 class="mb-3 text-3xl text-gray-700">About Me</h2>
             <div class="description leading-normal ml-auto">
-                <p class="py-2 text-gray-700">I currently work for <a class="text-burgandy" href="https://marketplacer.com/">Marketplacer</a>,
-                    building connector APIs that integrate with major ecommerce platforms.
-                </p>
-                <p class="py-2 text-gray-700">I've built and maintained websites for an extensive list of small and large companies including
-                    <a class="text-burgandy" href="https://www.bluehawaiian.com/en">Blue Hawaiian
-                        Helicopters</a>,
-                    <a class="text-burgandy" href="https://www.intelligentoffice.com/">Intelligent
-                        Office</a>, and
-                    <a class="text-burgandy" href="https://www.intelligentoffice.com/">Rugdoctor</a>.
-                </p>
-                <p class="py-2 text-gray-700">I'm building an awesome MVC framework atop Electron called
-                    <a class="text-burgandy" href="https://github.com/AlextheYounga/vultron-js">Vultron JS</a>.
-                    I built that Vultron to build a personal budget/accounting desktop app called
-                    AmassWealth.io (Work in Progress).
+                <p class="py-2 text-gray-700">I recently left <a class="text-burgandy hover:text-red-600 font-semibold"
+                        href="https://marketplacer.com/">Marketplacer</a>, which allows enterprises
+                    to manage a fleet of eCommerce websites from a unified dashboard, incorporating major platforms like Shopify, Adobe Commerce,
+                    Salesforce, and BigCommerce. Here I built critical Shopify and Adobe Commerce connectors, enabling seamless data flow through an
+                    extensive Rails API system.
                 </p>
 
-                <p class="text-gray-700">My <a class="text-burgandy" href="https://twitter.com/hazlittresearch">Twitter bot</a> automatically posts
-                    Congressional stock transactions so you can trade like
-                    the people who control the market. Follow me.</p>
-                <p class="py-2 text-gray-700">Check out my latest
-                    <Link class="text-burgandy" :href="route('pages.projects')">projects</Link>
+                <p class="py-2 text-gray-700">I've built and maintained websites for an extensive list of small and large companies including
+                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.bluehawaiian.com/en">Blue Hawaiian
+                        Helicopters</a>,
+                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.intelligentoffice.com/">Intelligent
+                        Office</a>, and
+                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.rugdoctor.com/">Rugdoctor</a>.
                 </p>
+
+                <p class="py-2 text-gray-700">I'm considered the Software Architect at the startup <a
+                        class="text-burgandy hover:text-red-600 font-semibold" href="https://www.learnarena.com/">LearnArena</a>.
+                    As a founding developer for Learn Arena, a groundbreaking competitive learning platform, I spearheaded its transformation from a
+                    hobbyist React and Firebase app to a scalable NextJS application. Learn Arena is the first-of-its-kind competitive learning platform,
+                    where students with the greatest academic achievement have the potential to win back the costs of the course, or even make a profit.
+                </p>
+
+                <p class="py-2 text-gray-700">I recently launched a unique application that enables LLM models to autonomously interact, simulating
+                    intriguing AI-generated conversations. called <a class="text-burgandy hover:text-red-600 font-semibold"
+                        href="https://www.gptconversations.app/">
+                        GPT Conversations</a>. Currently it's set up to continuously talk to itself on "phenomena lacking clear explanations but solvable
+                    using all human knowledge."
+                </p>
+                <p class="py-2 text-gray-700">Check out my latest
+                    <Link class="text-burgandy hover:text-red-600 font-semibold" :href="route('pages.projects')">projects</Link>
+                </p>
+                <p>Or my <a class="text-burgandy hover:text-red-600 font-semibold"
+                        href="https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing">Resume</a>.</p>
             </div>
         </section>
 
@@ -75,7 +93,7 @@
             <div class="flex justify-between mb-4 p-2 sm:p-0">
                 <h3 class="text-left w-1/2 text-3xl text-gray-700">Projects</h3>
                 <Link
-                    class="bg-white border border-red-800 hover:bg-red-900 hover:text-white no-underline py-1 rounded shadow-lg text-burgandy text-center w-32"
+                    class="bg-red-900 text-white border border-red-800 hover:bg-white hover:text-burgandy no-underline p-1 rounded shadow-lg text-center w-24"
                     :href="route('pages.projects')">
                 See All
                 </Link>
@@ -137,6 +155,22 @@ defineProps({
     },
 });
 
+const twitterIcon = 'https://img.icons8.com/color/48/twitter--v1.png'
+const linkedIcon = 'https://img.icons8.com/color/48/linkedin.png'
+const githubIcon = 'https://img.icons8.com/color/48/github--v1.png'
+const emailIcon = 'https://img.icons8.com/emoji/48/e-mail.png'
+const resumeIcon = 'https://img.icons8.com/nolan/64/resume.png'
+const codepenIcon = 'https://img.icons8.com/ios/50/codepen.png'
+
+const links = [
+    { name: 'Twitter', url: 'https://github.com/AlextheYounga', icon: twitterIcon, alt: "twitter--v1", hint: 'Twitter' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alexyounger/', icon: linkedIcon, alt: 'linkedin', hint: 'LinkedIn' },
+    { name: 'Github', url: 'https://github.com/AlextheYounga', icon: githubIcon, alt: 'github', hint: 'Github' },
+    { name: 'Email', url: 'mailto:alex@alextheyounger.me', icon: emailIcon, alt: 'e-mail', hint: 'Email' },
+    { name: 'Resume', url: 'https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing', icon: resumeIcon, alt: 'resume', hint: 'Resume' },
+    { name: 'Codepen', url: 'https://codepen.io/alextheyounger/', icon: codepenIcon, alt: 'codepen', hint: 'Codepen' },
+];
+
 const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
 
 function reveal() {
@@ -170,8 +204,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.hero img,
-.hero picture {
+.hero img {
     border-radius: 130px;
 }
 
