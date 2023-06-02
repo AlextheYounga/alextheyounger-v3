@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Language;
+use App\Models\Repository;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class GithubController extends Controller
 {
     protected $username;
+    protected $error;
 
     public function __construct()
     {
         $this->username = "AlextheYounga";
+        $this->error = false;
     }
 
     public function client($url)
@@ -29,105 +31,95 @@ class GithubController extends Controller
         ->get($url);
     }
 
-    public function getAllReposFromGithub()
+    public function fetchReposFromGithub()
     {
         $api_url = "https://api.github.com/search/repositories?q=user:{$this->username}";
 
-        $response = $this->client($api_url);
-
-        return $response;
-    }
-
-    public function fetchLanguagesFromGithub()
-    {
-        $statsSum = [];
-        $repoResponse = $this->getAllReposFromGithub();
+        $repoResponse = $this->client($api_url);
 
         if (empty($repoResponse) || $repoResponse->failed()) {
             Log::error($repoResponse->status() . ' - ' . $repoResponse->body());
+            $this->error = true;
             return $repoResponse->body();
         }
 
-        $jsonResponse = json_decode($repoResponse, true);
+        $responseArray = json_decode($repoResponse->body(), true);
+        $items = $responseArray['items'] ?? [];
 
-        foreach ($jsonResponse["items"] as $repo) {
+        foreach($items as $repo) {
+            Repository::updateOrCreate(
+                [
+                    'path' => $repo['full_name'],
+                    'host' => 'github'
+                ],
+                [
+                    'name' => $repo['name'],
+                    'visibility' => $repo['private'] ? 'private' : 'public',
+                    'properties' => [
+                        'repoId' => $repo['id'],
+                        'url' => $repo['html_url'],
+                        'languages_url' => $repo['languages_url'],
+                        'primaryLanguage' => $repo['language'],
+                    ]
+                ]
+            );
+            Log::info('Saved ' . $repo['name']);
+        }
+    }
+
+    public function fetchRepoLanguages()
+    {
+        $updatedRepos = [];
+        $repos = Repository::where('host', 'github')
+            ->get();
+
+        foreach($repos as $repo) {
             try {
-                $languageUrl = $repo["languages_url"] ?? null;
-
-                Log::info('HTTP Attempting ' . $languageUrl);
-
-                if (empty($languageUrl)) {
-                    throw new \Exception('Failed to get language stats; language url is null.');
-                }
-
+                $languageUrl = $repo->properties['languages_url'];
                 $languagesResponse = $this->client($languageUrl);
-                
+
                 if (empty($languagesResponse) || $languagesResponse->failed()) {
                     throw new \Exception($languagesResponse->status() . ' - ' . $languagesResponse->body());
                 }
 
-                Log::info($languageUrl . " - " . $languagesResponse->body());
-    
                 $languagesArray = json_decode($languagesResponse, true);
-                $repoName = $repo["name"] ?? null;
 
-                $languagesAdjustedWeight = $this->suppressLanguageWeights($repoName, $languagesArray);
-    
-                foreach ($languagesAdjustedWeight as $lang => $value) {
-                    if (!array_key_exists($lang, $statsSum)) {
-                        $statsSum[$lang] = $value;
-                        continue;
-                    }
-                    $statsSum[$lang] += $value;
-                }
+                $repo->languages = $languagesArray;
+                $repo->save();
+
+                array_push($updatedRepos, $repo->name);
+
+                Log::info('Updated ' . $repo->name . ' with languages ' . json_encode($languagesArray));
+
             } catch (\Exception $e) {
                 Log::error($e->getMessage());
                 continue;
             }
-
-            sleep(1);
         }
 
-        if (empty($statsSum)) {
-            Log::error("Failed to get language stats; stats are null.");
-            return "Failed to get language stats; stats are null.";
-        }
+        if (empty($updatedRepos)) {
+            $message = "Failed to get language stats; stats are null.";
 
-        foreach ($statsSum as $lang => $value) {
-            Language::updateOrCreate(['language' => $lang], ['value' => $value]);
+            Log::error($message);
+            $this->error = true;
+
+            return $message;
         }
     }
 
-    private function suppressLanguageWeights($name, $langs)
+
+    public function runSync()
     {
-        /* Sometimes code from certain packages can highly skew your language stats.
-        * For instance, in Django, some asset packages, like Tailwind, are pushed to the repo,
-        * and suddenly your Python Django project is now treated as 90% CSS.
-        * We can suppress that data here by pointing to a repo name and the language you would like to suppress.
-        */
+        $repoReponse = $this->fetchReposFromGithub();
 
-        $repoData = [
-            "*" => [
-                "language" => "markdown",
-                "suppressBy" => 0, // Remove markdown altogether
-            ],
-            "hazlitt-data" => [
-                "language" => "CSS",
-                "suppressBy" => 0.0000021,
-                /* Will suppress by whatever value you pass into suppressBy.
-                * Let's say your Django project has 4259089 lines of CSS code, but only 9 of those lines are yours.
-                * 9 / 4259089 = 0.0000021
-                */
-            ],
-        ];
-
-        if (array_key_exists($name, $repoData)) {
-            $lang = $repoData[$name]["language"];
-            $suppressBy = $repoData[$name]["suppressBy"];
-
-            $langs[$lang] = (int)($langs[$lang] * $suppressBy);
+        if ($this->error === true) {
+            return $repoReponse;
         }
 
-        return $langs;
+        $languagesResponse = $this->fetchRepoLanguages();
+
+        if ($this->error === true) {
+            return $languagesResponse;
+        }
     }
 }

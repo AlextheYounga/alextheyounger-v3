@@ -6,6 +6,7 @@ use App\Http\Services\MockGithubApiService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Language;
+use App\Models\Repository;
 use Illuminate\Support\Arr;
 
 class GithubControllerTest extends TestCase
@@ -21,30 +22,18 @@ class GithubControllerTest extends TestCase
 
     public function test_fetch_languages_from_github(): void
     {
-        $repoResponse = useJsonFixture('github-repo-response-example.json');
-
-        $vixVolResponse = [
-            "Python" => 26914,
-            "Shell" => 19
-        ];
-
-        $vultronJsResponse = [
-            "Vue" => 38045,
-            "JavaScript" => 35576,
-            "HTML" => 611,
-            "CSS" => 61,
-            "Shell" => 25
-        ];
+        $repoResponse = useJsonFixture('github/github-repo-response-example.json');
+        $vixLanguagesResponse = useJsonFixture('github/github-vix-languages-response.json');
+        $vultronLanguagesResponse = useJsonFixture('github/github-vultron-languages-response.json');
 
         $apiParams = [
             'username' => 'AlextheYounga',
             'oauth' => 'SOMETOKEN',
-            'response' => $repoResponse,
             'response' => [
                 'repo' => $repoResponse,
                 'projects' => [
-                    $vixVolResponse, 
-                    $vultronJsResponse
+                    $vixLanguagesResponse, 
+                    $vultronLanguagesResponse
                 ]
             ],
             'codes' => [
@@ -54,12 +43,25 @@ class GithubControllerTest extends TestCase
         ];
 
         $controller = new MockGithubApiService($apiParams);
-        $expectedLanguages = useJsonFixture('example-saved-languages.json');
 
-        $controller->fetchLanguagesFromGithub();
+        $expectedRepositories = useJsonFixture('github/example-saved-github-repositories.json');
+        $expectedLanguages = useJsonFixture('github/example-saved-github-languages.json');
 
+        $controller->runSync();
+        Language::calculateLanguageStatistics();
+
+        $repositories = Repository::all()->toArray();
         $languages = Language::all()->toArray();
+
+        $this->assertDatabaseCount('repositories', 2);
         $this->assertDatabaseCount('languages', 6);
+
+        foreach($repositories as $index => $repo) {
+            $this->assertSame(
+                $expectedRepositories[$index],
+                Arr::except($repo, ['created_at', 'updated_at'])
+            );
+        }
 
         foreach($languages as $index => $language) {
             $this->assertSame(
@@ -93,7 +95,7 @@ class GithubControllerTest extends TestCase
         ];
 
         $controller = new MockGithubApiService($apiParams);
-        $response = $controller->fetchLanguagesFromGithub();
+        $response = $controller->runSync();
 
         $this->assertSame(json_encode($repoResponse), $response);
     }
@@ -101,7 +103,7 @@ class GithubControllerTest extends TestCase
     public function test_fail_to_fetch_project_from_github(): void
     {
 
-        $repoResponse = useJsonFixture('github-repo-response-example.json');
+        $repoResponse = useJsonFixture('github/github-repo-response-example.json');
 
         $projectResponse = [
             "message" => "API rate limit exceeded for xxx.xxx.xxx.xxx. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)",
@@ -127,7 +129,7 @@ class GithubControllerTest extends TestCase
         ];
 
         $controller = new MockGithubApiService($apiParams);
-        $response = $controller->fetchLanguagesFromGithub();
+        $response = $controller->runSync();
 
         $this->assertSame($response, $expectedResponse);
     }
