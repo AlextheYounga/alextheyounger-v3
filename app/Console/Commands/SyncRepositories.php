@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Http\Controllers\GithubController;
-// use App\Http\Controllers\GitlabController;
+use App\Http\Controllers\GitlabController;
 use App\Models\Language;
 
 class SyncRepositories extends Command
@@ -31,8 +31,8 @@ class SyncRepositories extends Command
         $github = new GithubController();
         $github->runSync();
 
-        // $gitlab = new GitlabController();
-        // $gitlab->runSync();
+        $gitlab = new GitlabController();
+        $gitlab->runSync();
 
         Language::calculateLanguageStatistics();
     }

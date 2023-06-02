@@ -19,7 +19,7 @@ class GitlabControllerTest extends TestCase
         parent::setup();
     }
 
-    public function test_fetch_languages_from_github(): void
+    public function test_run_gitlab_sync(): void
     {
         $repoResponse = useJsonFixture('gitlab/gitlab-projects-response-example.json');
         $gptLanguagesResponse = useJsonFixture('gitlab/gitlab-languages-gpt-response.json');
@@ -42,27 +42,17 @@ class GitlabControllerTest extends TestCase
         $controller = new MockGitlabApiService($apiParams);
 
         $expectedRepositories = useJsonFixture('gitlab/example-saved-gitlab-repositories.json');
-        $expectedLanguages = useJsonFixture('gitlab/example-saved-gitlab-languages.json');
 
         $controller->runSync();
 
         $repositories = Repository::all()->toArray();
-        $languages = Language::all()->toArray();
 
         $this->assertDatabaseCount('repositories', 2);
-        $this->assertDatabaseCount('languages', 5);
 
         foreach($repositories as $index => $repo) {
             $this->assertSame(
                 $expectedRepositories[$index],
                 Arr::except($repo, ['created_at', 'updated_at'])
-            );
-        }
-
-        foreach($languages as $index => $language) {
-            $this->assertSame(
-                $expectedLanguages[$index],
-                Arr::except($language, ['created_at', 'updated_at'])
             );
         }
     }

@@ -20,7 +20,7 @@ class GitlabController extends Controller
     {
         $token = env('GITLAB_PERSONAL_TOKEN');
         $params['private_token'] = $token;
-        
+
         return Http::get($url, $params);
     }
 
@@ -54,7 +54,7 @@ class GitlabController extends Controller
                     'properties' => [
                         'repoId' => $repo['id'],
                         'url' => $repo['_links']['self'],
-                        'languages_url' => $repo['_links']['self'] . '/languages',
+                        'languagesUrl' => $repo['_links']['self'] . '/languages',
                         'statistics' => $repo['statistics'],
                     ]
                 ]
@@ -71,7 +71,8 @@ class GitlabController extends Controller
 
         foreach($repos as $repo) {
             try {
-                $languageUrl = $repo->properties['languages_url'];
+                $properties = $repo->properties;
+                $languageUrl = $repo->properties['languagesUrl'];
                 $languagesResponse = $this->client($languageUrl, []);
 
                 if (empty($languagesResponse) || $languagesResponse->failed()) {
@@ -80,7 +81,8 @@ class GitlabController extends Controller
 
                 $languagesArray = json_decode($languagesResponse, true);
 
-                $repo->languages = $languagesArray;
+                $properties['languagesResponse'] = $languagesArray;
+                $repo->properties = $properties;
                 $repo->save();
 
                 array_push($updatedRepos, $repo->name);
@@ -103,6 +105,22 @@ class GitlabController extends Controller
         }
     }
 
+    public function saveLanguageStatistics()
+    {
+        $repos = Repository::where('host', 'gitlab')->get();
+
+        foreach($repos as $repo) {
+            $stats = $repo->properties['statistics'];
+            $languages = $repo->properties['languagesResponse'];
+
+            $languagesConvertedStats = Language::convertLanguageWeightToBytes($languages, $stats);
+            $languagesAdjustedWeight = Language::suppressLanguageWeights($repo->name, $languagesConvertedStats);
+
+            $repo->languages = $languagesAdjustedWeight;
+            $repo->save();
+        }
+    }
+
 
     public function runSync()
     {
@@ -118,35 +136,6 @@ class GitlabController extends Controller
             return $languagesResponse;
         }
 
-        $this->calculateLanguageStatistics();
+        $this->saveLanguageStatistics();
     }
-
-    private function calculateLanguageStatistics()
-    {
-        $languageStats = [];
-        $repos = Repository::where('host', 'gitlab')->get();
-
-        foreach($repos as $repo) {
-            $stats = $repo->properties['statistics'];
-            $languages = $repo->languages;
-
-            $languagesConvertedStats = $this->convertLanguageWeightToBytes($languages, $stats);
-            $languagesAdjustedWeight = Language::suppressLanguageWeights($repo->name, $languagesConvertedStats);
-
-            foreach ($languagesAdjustedWeight as $lang => $value) {
-                if (!array_key_exists($lang, $languageStats)) {
-                    $languageStats[$lang] = $value;
-                    continue;
-                }
-                $languageStats[$lang] += $value;
-            }
-        }
-
-        foreach ($languageStats as $lang => $value) {
-            Language::updateOrCreate(['language' => $lang], ['value' => $value]);
-            Log::info('Updated ' . $lang . ' with value ' . $value);
-        }
-    }
-
-
 }

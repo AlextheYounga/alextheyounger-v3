@@ -5,16 +5,16 @@
         "path": "alextheyounger\/gpt-conversations",
         "host": "gitlab",
         "languages": {
-            "PHP": 65.26,
-            "Vue": 31.94,
-            "JavaScript": 1.58,
-            "Blade": 0.79,
-            "Shell": 0.41
+            "PHP": 1053823,
+            "Vue": 515769,
+            "JavaScript": 25513,
+            "Blade": 12756,
+            "Shell": 6620
         },
         "properties": {
             "repoId": 44900025,
             "url": "https:\/\/gitlab.com\/api\/v4\/projects\/44900025",
-            "languages_url": "https:\/\/gitlab.com\/api\/v4\/projects\/44900025\/languages",
+            "languagesUrl": "https:\/\/gitlab.com\/api\/v4\/projects\/44900025\/languages",
             "statistics": {
                 "commit_count": 66,
                 "storage_size": 1649767,
@@ -26,6 +26,13 @@
                 "packages_size": 0,
                 "snippets_size": 0,
                 "uploads_size": 0
+            },
+            "languagesResponse": {
+                "PHP": 65.26,
+                "Vue": 31.94,
+                "JavaScript": 1.58,
+                "Blade": 0.79,
+                "Shell": 0.41
             }
         },
         "visibility": "private",
@@ -37,16 +44,16 @@
         "path": "lucriv\/wanderers-workplace",
         "host": "gitlab",
         "languages": {
-            "PHP": 48.97,
-            "Vue": 33.43,
-            "Blade": 16.02,
-            "JavaScript": 1.03,
-            "Shell": 0.43
+            "PHP": 3229837,
+            "Vue": 2204890,
+            "Blade": 1056605,
+            "JavaScript": 67934,
+            "Shell": 28360
         },
         "properties": {
             "repoId": 38760816,
             "url": "https:\/\/gitlab.com\/api\/v4\/projects\/38760816",
-            "languages_url": "https:\/\/gitlab.com\/api\/v4\/projects\/38760816\/languages",
+            "languagesUrl": "https:\/\/gitlab.com\/api\/v4\/projects\/38760816\/languages",
             "statistics": {
                 "commit_count": 41,
                 "storage_size": 6595543,
@@ -58,6 +65,13 @@
                 "packages_size": 0,
                 "snippets_size": 0,
                 "uploads_size": 0
+            },
+            "languagesResponse": {
+                "PHP": 48.97,
+                "Vue": 33.43,
+                "Blade": 16.02,
+                "JavaScript": 1.03,
+                "Shell": 0.43
             }
         },
         "visibility": "private",

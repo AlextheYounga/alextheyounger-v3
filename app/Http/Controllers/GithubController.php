@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Repository;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use App\Models\Language;
 
 class GithubController extends Controller
 {
@@ -58,7 +59,7 @@ class GithubController extends Controller
                     'properties' => [
                         'repoId' => $repo['id'],
                         'url' => $repo['html_url'],
-                        'languages_url' => $repo['languages_url'],
+                        'languagesUrl' => $repo['languages_url'],
                         'primaryLanguage' => $repo['language'],
                     ]
                 ]
@@ -75,7 +76,8 @@ class GithubController extends Controller
 
         foreach($repos as $repo) {
             try {
-                $languageUrl = $repo->properties['languages_url'];
+                $properties = $repo->properties;
+                $languageUrl = $repo->properties['languagesUrl'];
                 $languagesResponse = $this->client($languageUrl);
 
                 if (empty($languagesResponse) || $languagesResponse->failed()) {
@@ -84,13 +86,14 @@ class GithubController extends Controller
 
                 $languagesArray = json_decode($languagesResponse, true);
 
-                $repo->languages = $languagesArray;
+                $properties['languagesResponse'] = $languagesArray;
+                $repo->properties = $properties;
                 $repo->save();
 
                 array_push($updatedRepos, $repo->name);
 
                 Log::info('Updated ' . $repo->name . ' with languages ' . json_encode($languagesArray));
-
+                sleep(0.5);
             } catch (\Exception $e) {
                 Log::error($e->getMessage());
                 continue;
@@ -104,6 +107,20 @@ class GithubController extends Controller
             $this->error = true;
 
             return $message;
+        }
+    }
+
+    public function saveLanguageStatistics()
+    {
+        $repos = Repository::where('host', 'github')->get();
+
+        foreach($repos as $repo) {
+            $languages = $repo->properties['languagesResponse'];
+
+            $languagesAdjustedWeight = Language::suppressLanguageWeights($repo->name, $languages);
+
+            $repo->languages = $languagesAdjustedWeight;
+            $repo->save();
         }
     }
 
@@ -121,5 +138,7 @@ class GithubController extends Controller
         if ($this->error === true) {
             return $languagesResponse;
         }
+
+        $this->saveLanguageStatistics();
     }
 }
