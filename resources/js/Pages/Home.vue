@@ -67,8 +67,8 @@
                     <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.rugdoctor.com/" target="_blank">Rugdoctor</a>.
                 </p>
 
-                <p class="py-2 text-gray-700">I'm considered the Software Architect at the startup <a
-                        class="text-burgandy hover:text-red-600 font-semibold" href="https://www.learnarena.com/" target="_blank">LearnArena</a>.
+                <p class="py-2 text-gray-700">I'm the Software Architect as well as a consultant at the startup <a
+                        class="text-burgandy hover:text-red-600 font-semibold" href="https://www.learnarena.com/" target="_blank">Learn Arena</a>.
                     As a founding developer for Learn Arena, a groundbreaking competitive learning platform, I spearheaded its transformation from a
                     hobbyist React and Firebase app to a scalable NextJS application. Learn Arena is the first-of-its-kind competitive learning platform,
                     where students with the greatest academic achievement have the potential to win back the costs of the course, or even make a profit.
@@ -160,7 +160,6 @@ const linkedIcon = 'https://img.icons8.com/color/48/linkedin.png'
 const githubIcon = 'https://img.icons8.com/color/48/github--v1.png'
 const emailIcon = 'https://img.icons8.com/emoji/48/e-mail.png'
 const resumeIcon = 'https://img.icons8.com/nolan/64/resume.png'
-const codepenIcon = 'https://img.icons8.com/ios/50/codepen.png'
 
 const links = [
     { name: 'Twitter', url: 'https://github.com/AlextheYounga', icon: twitterIcon, alt: "twitter--v1", hint: 'Twitter' },
