@@ -8,36 +8,38 @@
                 </div>
 
                 <div class="w-2/3 ml-auto flex justify-end">
-                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-6">Reading List <span aria-hidden="true">&#x1F4DA;</span></Link>
-                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-6">Projects <span aria-hidden="true">&#x1F5A5;</span></Link>
-                    <button @click="terrain.redraw" class="cursor-pointer text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
+                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-6">Reading List <span
+                        aria-hidden="true">&#x1F4DA;</span></Link>
+                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600 pr-6">Projects <span
+                        aria-hidden="true">&#x1F5A5;</span></Link>
+                    <button @click="terrain.redraw" class="cursor-pointer text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span
+                            aria-hidden="true">&#x1F3D4;</span></button>
                 </div>
             </div>
         </div>
     </div>
     <!-- Mobile -->
     <nav class="mobile sm:hidden">
-        <button @click="toggleMenu">
-            <div class="mobile-nav-button absolute m-6 right-0 top-0 z-50">
-                <div class="mobile-nav-button__line w-full relative bg-stone-800"></div>
-                <div class="mobile-nav-button__line w-full relative bg-stone-800"></div>
-                <div class="mobile-nav-button__line w-full relative bg-stone-800"></div>
-            </div>
-        </button>
+        <div @click="toggleMenu" id="hamburger" class="hamburger absolute top-0 right-0 z-50 h-5">
+            <a id="hamburger-click" class="main-nav-toggle" href="#main-nav"><i>Menu</i></a>
+        </div>
 
-        <div class="mobile-menu block max-w-md w-full h-screen top-0 absolute bg-transparent z-negative">
+        <div class="mobile-menu block max-w-md w-full h-screen absolute bg-transparent z-negative">
             <ul class="relative p-0 mx-auto text-center hidden">
                 <li class="py-4">
                     <Link href="/" class="text-burgandy font-semibold text-xl w-42 hover:text-red-600">Home</Link>
                 </li>
                 <li class="py-4">
-                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600">Reading List <span aria-hidden="true">&#x1F4DA;</span></Link>
+                    <Link :href="route('pages.books')" class="text-burgandy font-semibold text-xl hover:text-red-600">Reading List <span
+                        aria-hidden="true">&#x1F4DA;</span></Link>
                 </li>
                 <li class="py-4">
-                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600">Projects <span aria-hidden="true">&#x1F5A5;</span></Link>
+                    <Link :href="route('pages.projects')" class="text-burgandy font-semibold text-xl hover:text-red-600">Projects <span
+                        aria-hidden="true">&#x1F5A5;</span></Link>
                 </li>
                 <li class="py-4">
-                    <button @click="terrain.redraw" class="text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span aria-hidden="true">&#x1F3D4;</span></button>
+                    <button @click="terrain.redraw" class="text-burgandy font-semibold text-xl hover:text-red-600">Redraw Terrain <span
+                            aria-hidden="true">&#x1F3D4;</span></button>
                 </li>
             </ul>
         </div>
@@ -55,20 +57,16 @@ function toggleMenu() {
 
     const mobileMenu = document.querySelector('.mobile-menu');
     const footer = document.getElementById('footer');
-    const menuLines = document.querySelectorAll('.mobile-nav-button__line');
-
-    menuLines[0].classList.toggle('mobile-nav-button__line--1');
-    menuLines[1].classList.toggle('mobile-nav-button__line--2');
-    menuLines[2].classList.toggle('mobile-nav-button__line--3');
+    const hamburger = document.getElementById('hamburger-click');
 
     mobileMenu.classList.toggle('mobile-menu--open');
     mobileMenu.classList.toggle('z-negative');
     mobileMenu.classList.toggle('z-40');
 
+    hamburger.classList.toggle('active-menu');
+
     pageContainer.classList.toggle('hidden')
-    footer.classList.toggle('relative')
-    footer.classList.toggle('absolute')
-    footer.classList.toggle('bottom-0')
+    footer.classList.toggle('hidden')
     mobileMenu.querySelector('ul').classList.toggle('hidden');
 }
 
@@ -77,36 +75,6 @@ function toggleMenu() {
 <style>
 .z-negative {
     z-index: -1;
-}
-
-.mobile-nav-button {
-    width: 28px;
-    cursor: pointer;
-}
-
-.mobile-nav-button .mobile-nav-button__line {
-    height: 2px;
-    transition: 1s ease;
-}
-
-.mobile-nav-button .mobile-nav-button__line:nth-of-type(2) {
-    margin: 0.4rem 0;
-}
-
-.mobile-nav-button .mobile-nav-button__line--1 {
-    transform: rotate(45deg);
-    top: 13px;
-    position: absolute;
-}
-
-.mobile-nav-button .mobile-nav-button__line--2 {
-    display: none;
-}
-
-.mobile-nav-button .mobile-nav-button__line--3 {
-    transform: rotate(135deg);
-    top: 13px;
-    position: absolute;
 }
 
 .mobile-menu {
@@ -145,15 +113,51 @@ function toggleMenu() {
     opacity: 1;
 }
 
-/* @media (max-width: 768px) {
-    nav.desktop {
-        display: none !important;
-    }
+.hamburger a.main-nav-toggle {
+  display: block;
+  width: 30px;
+  position: absolute;
+  height: 16px;
+  left: -50px;
+  top: 30px;
 }
-
-@media (min-width: 767px) {
-    nav.mobile {
-        display: none !important;
-    }
-} */
+.hamburger a.main-nav-toggle:after, .hamburger a.main-nav-toggle:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 0;
+  border-bottom: 4px solid #bbb;
+  width: 100%;
+  left: 0;
+  right: 0;
+  transition: all ease-out 0.3s;
+}
+.hamburger a.main-nav-toggle:after {
+  top: 100%;
+}
+.hamburger a.main-nav-toggle i {
+  display: block;
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 4px;
+  background-color: #bbb;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transition: all ease-out 0.1s;
+}
+.hamburger a.main-nav-toggle.active-menu:after {
+  transform: rotate(-45deg);
+  transform-origin: center;
+  top: 50%;
+}
+.hamburger a.main-nav-toggle.active-menu:before {
+  transform: rotate(45deg);
+  transform-origin: center;
+  top: 50%;
+}
+.hamburger a.main-nav-toggle.active-menu i {
+  opacity: 0;
+}
 </style>
