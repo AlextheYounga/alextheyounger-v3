@@ -2,6 +2,7 @@
     <div class="bg-transparent">
 
         <Head title="Terrain Playgound" />
+        <Navbar />
         <div class="absolute bottom-5 left-5 sm:top-10 sm:bottom-0 sm:left-10">
             <div class="neuron-activation text-sm sm:text-base text-gray-700 font-extrabold font-sans -mb-4 sm:-mb-6 tracking-tight">Neuron activation</div>
             <img class="w-20 h-20 sm:w-28 sm:h-28" src="/images/monkey-brain.png.webp" alt="neuron activation meme" />
@@ -16,6 +17,7 @@
 
 <script setup>
 import { Head } from '@inertiajs/vue3';
+import Navbar from '@/Components/Navbar.vue';
 import { onMounted } from 'vue';
 import { getCurrentInstance } from 'vue';
 import { terrainLoaded } from '@/Components/Terrain.vue';

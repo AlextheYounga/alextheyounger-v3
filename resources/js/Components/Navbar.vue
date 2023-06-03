@@ -65,8 +65,9 @@ function toggleMenu() {
 
     hamburger.classList.toggle('active-menu');
 
-    pageContainer.classList.toggle('hidden')
-    footer.classList.toggle('hidden')
+    if (pageContainer) pageContainer.classList.toggle('hidden')
+    if (footer) footer.classList.toggle('hidden')
+
     mobileMenu.querySelector('ul').classList.toggle('hidden');
 }
 
