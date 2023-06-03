@@ -21,7 +21,7 @@
     <!-- Mobile -->
     <nav class="mobile sm:hidden">
         <div @click="toggleMenu" id="hamburger" class="hamburger absolute top-0 right-0 z-50 h-5">
-            <a id="hamburger-click" class="main-nav-toggle" href="#main-nav"><i>Menu</i></a>
+            <button id="hamburger-click" class="main-nav-toggle"><i>Menu</i></button>
         </div>
 
         <div class="mobile-menu block max-w-md w-full h-screen absolute bg-transparent z-negative">
@@ -113,7 +113,7 @@ function toggleMenu() {
     opacity: 1;
 }
 
-.hamburger a.main-nav-toggle {
+.hamburger button.main-nav-toggle {
   display: block;
   width: 30px;
   position: absolute;
@@ -121,7 +121,7 @@ function toggleMenu() {
   left: -50px;
   top: 30px;
 }
-.hamburger a.main-nav-toggle:after, .hamburger a.main-nav-toggle:before {
+.hamburger button.main-nav-toggle:after, .hamburger button.main-nav-toggle:before {
   content: '';
   position: absolute;
   top: 0;
@@ -132,10 +132,10 @@ function toggleMenu() {
   right: 0;
   transition: all ease-out 0.3s;
 }
-.hamburger a.main-nav-toggle:after {
+.hamburger button.main-nav-toggle:after {
   top: 100%;
 }
-.hamburger a.main-nav-toggle i {
+.hamburger button.main-nav-toggle i {
   display: block;
   text-indent: 100%;
   overflow: hidden;
@@ -147,17 +147,17 @@ function toggleMenu() {
   top: 50%;
   transition: all ease-out 0.1s;
 }
-.hamburger a.main-nav-toggle.active-menu:after {
+.hamburger button.main-nav-toggle.active-menu:after {
   transform: rotate(-45deg);
   transform-origin: center;
   top: 50%;
 }
-.hamburger a.main-nav-toggle.active-menu:before {
+.hamburger button.main-nav-toggle.active-menu:before {
   transform: rotate(45deg);
   transform-origin: center;
   top: 50%;
 }
-.hamburger a.main-nav-toggle.active-menu i {
+.hamburger button.main-nav-toggle.active-menu i {
   opacity: 0;
 }
 </style>
