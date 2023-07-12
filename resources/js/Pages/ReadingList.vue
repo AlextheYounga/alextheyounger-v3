@@ -9,7 +9,7 @@
             <div class="category-menu">
                 <ul class="flex flex-wrap w-full justify-center p-0">
                     <li class="text-center p-2 border-r border-gray-300">
-                        <button id="showall" @click="showAll" class="normal-font text-sm text-purple-900 hover:text-purple-300">Show All</button>
+                        <button id="showall" @click="showAll" class="border-0 normal-font text-sm text-purple-900 hover:text-purple-300">Show All ({{ books.length }})</button>
                     </li>
                     <li v-for="(category, index) in categories" :key="index" class="text-center p-2" :class="{ 'border-r border-gray-300': index !== categories.length - 1 }">
                         <button @click="selectCategory(category.selector)" :class="category.selector + ' normal-font text-sm text-purple-900 hover:text-purple-300'">
