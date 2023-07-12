@@ -1,12 +1,30 @@
 [
     {
+        "name": "observer_pattern",
+        "host": "local",
+        "languages": {
+            "Python": 689,
+            "JavaScript": 596
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 53.62,
+                    "bytes": 689
+                },
+                "JavaScript": {
+                    "percentage": 46.38,
+                    "bytes": 596
+                }
+            }
+        }
+    },
+    {
         "name": "plunge_alert_bot",
-        "path": "\/Users\/alexyounger\/Development\/Python\/plunge_alert_bot",
         "host": "local",
         "languages": {
             "Python": 8517
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -18,12 +36,10 @@
     },
     {
         "name": "fractalgeometrycalculator",
-        "path": "\/Users\/alexyounger\/Development\/Python\/fractalgeometrycalculator",
         "host": "local",
         "languages": {
             "Python": 28438
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -35,12 +51,10 @@
     },
     {
         "name": "stopaganda",
-        "path": "\/Users\/alexyounger\/Development\/Python\/stopaganda",
         "host": "local",
         "languages": {
             "Python": 22539
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -52,12 +66,10 @@
     },
     {
         "name": "fintwit_bot",
-        "path": "\/Users\/alexyounger\/Development\/Python\/fintwit_bot",
         "host": "local",
         "languages": {
             "Python": 22120
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -68,14 +80,52 @@
         }
     },
     {
+        "name": "nbdev-test",
+        "host": "local",
+        "languages": {
+            "Python": 3085,
+            "Notebook": 2769,
+            "CSS": 600
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 47.8,
+                    "bytes": 3085
+                },
+                "Notebook": {
+                    "percentage": 42.9,
+                    "bytes": 2769
+                },
+                "CSS": {
+                    "percentage": 9.3,
+                    "bytes": 600
+                }
+            }
+        }
+    },
+    {
+        "name": "tweet-language-model",
+        "host": "local",
+        "languages": {
+            "Python": 15042
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 15042
+                }
+            }
+        }
+    },
+    {
         "name": "tax_lab",
-        "path": "\/Users\/alexyounger\/Development\/Python\/tax_lab",
         "host": "local",
         "languages": {
             "Notebook": 7225,
             "Python": 2736
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Notebook": {
@@ -91,12 +141,10 @@
     },
     {
         "name": "misc_py_scripts",
-        "path": "\/Users\/alexyounger\/Development\/Python\/misc_py_scripts",
         "host": "local",
         "languages": {
             "Python": 5321
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -108,13 +156,11 @@
     },
     {
         "name": "amasswealth",
-        "path": "\/Users\/alexyounger\/Development\/Python\/amasswealth",
         "host": "local",
         "languages": {
             "HTML": 174521,
             "Python": 57551
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "HTML": {
@@ -130,12 +176,10 @@
     },
     {
         "name": "word-frequency-calculator",
-        "path": "\/Users\/alexyounger\/Development\/Python\/word-frequency-calculator",
         "host": "local",
         "languages": {
             "Python": 5202
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -146,30 +190,26 @@
         }
     },
     {
-        "name": "algorithms",
-        "path": "\/Users\/alexyounger\/Development\/Python\/algorithms",
+        "name": "climate-data-lab",
         "host": "local",
         "languages": {
-            "Python": 697266
+            "Python": 46427
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
                     "percentage": 100,
-                    "bytes": 697266
+                    "bytes": 46427
                 }
             }
         }
     },
     {
         "name": "quant_bot",
-        "path": "\/Users\/alexyounger\/Development\/Python\/quant_bot",
         "host": "local",
         "languages": {
             "Python": 13672
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -181,12 +221,10 @@
     },
     {
         "name": "tello-controller",
-        "path": "\/Users\/alexyounger\/Development\/Python\/tello-controller",
         "host": "local",
         "languages": {
             "Python": 3446
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -198,12 +236,10 @@
     },
     {
         "name": "roboccountant",
-        "path": "\/Users\/alexyounger\/Development\/Python\/roboccountant",
         "host": "local",
         "languages": {
             "Python": 5405
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -214,13 +250,26 @@
         }
     },
     {
+        "name": "universal-scraper",
+        "host": "local",
+        "languages": {
+            "Python": 45634
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 45634
+                }
+            }
+        }
+    },
+    {
         "name": "vix-vol-calculator",
-        "path": "\/Users\/alexyounger\/Development\/Python\/vix-vol-calculator",
         "host": "local",
         "languages": {
             "Python": 26914
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -231,13 +280,26 @@
         }
     },
     {
+        "name": "lexicon",
+        "host": "local",
+        "languages": {
+            "Python": 6974
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 6974
+                }
+            }
+        }
+    },
+    {
         "name": "fractalmarketslab",
-        "path": "\/Users\/alexyounger\/Development\/Python\/fractalmarketslab",
         "host": "local",
         "languages": {
             "Python": 214407
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -249,12 +311,10 @@
     },
     {
         "name": "budget_database",
-        "path": "\/Users\/alexyounger\/Development\/Python\/archived\/budget_database",
         "host": "local",
         "languages": {
             "Python": 8732
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
@@ -266,7 +326,6 @@
     },
     {
         "name": "hazlitt-data",
-        "path": "\/Users\/alexyounger\/Development\/Python\/hazlitt-data",
         "host": "local",
         "languages": {
             "CSS": 4233565,
@@ -275,7 +334,6 @@
             "JavaScript": 3260,
             "SCSS": 673
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "CSS": {
@@ -303,24 +361,21 @@
     },
     {
         "name": "job-boards-scraper",
-        "path": "\/Users\/alexyounger\/Development\/Python\/job-boards-scraper",
         "host": "local",
         "languages": {
-            "Python": 17895
+            "Python": 22398
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Python": {
                     "percentage": 100,
-                    "bytes": 17895
+                    "bytes": 22398
                 }
             }
         }
     },
     {
         "name": "vultron-js",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/vultron-js",
         "host": "local",
         "languages": {
             "Vue": 38045,
@@ -328,7 +383,6 @@
             "HTML": 611,
             "CSS": 61
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Vue": {
@@ -351,45 +405,7 @@
         }
     },
     {
-        "name": "wanderers-workplace",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/wanderers\/wanderers-workplace",
-        "host": "local",
-        "languages": {
-            "PHP": 124682,
-            "Vue": 80550,
-            "Blade": 39533,
-            "JavaScript": 2547,
-            "CSS": 276
-        },
-        "visibility": "private",
-        "properties": {
-            "languageStatistics": {
-                "PHP": {
-                    "percentage": 50.36,
-                    "bytes": 124682
-                },
-                "Vue": {
-                    "percentage": 32.53,
-                    "bytes": 80550
-                },
-                "Blade": {
-                    "percentage": 15.97,
-                    "bytes": 39533
-                },
-                "JavaScript": {
-                    "percentage": 1.03,
-                    "bytes": 2547
-                },
-                "CSS": {
-                    "percentage": 0.11,
-                    "bytes": 276
-                }
-            }
-        }
-    },
-    {
         "name": "lucriv-api",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/lucriv\/lucriv-api",
         "host": "local",
         "languages": {
             "JavaScript": 2279791,
@@ -398,7 +414,6 @@
             "CSS": 48818,
             "Blade": 904
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "JavaScript": {
@@ -426,7 +441,6 @@
     },
     {
         "name": "lucriv-js",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/lucriv\/lucriv-js",
         "host": "local",
         "languages": {
             "Vue": 118679,
@@ -434,7 +448,6 @@
             "HTML": 579,
             "CSS": 61
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Vue": {
@@ -458,13 +471,11 @@
     },
     {
         "name": "cloudfunctions",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/LearnArena\/cloudfunctions",
         "host": "local",
         "languages": {
             "TypeScript": 55391,
             "JavaScript": 8321
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "TypeScript": {
@@ -479,62 +490,7 @@
         }
     },
     {
-        "name": "db-migrate",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/LearnArena\/db-migrate",
-        "host": "local",
-        "languages": {
-            "JavaScript": 85398,
-            "Shell": 2080
-        },
-        "visibility": "private",
-        "properties": {
-            "languageStatistics": {
-                "JavaScript": {
-                    "percentage": 97.62,
-                    "bytes": 85398
-                },
-                "Shell": {
-                    "percentage": 2.38,
-                    "bytes": 2080
-                }
-            }
-        }
-    },
-    {
-        "name": "learnroi-app",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/LearnArena\/learnroi-app",
-        "host": "local",
-        "languages": {
-            "JavaScript": 238468,
-            "CSS": 3447,
-            "HTML": 1961,
-            "Shell": 741
-        },
-        "visibility": "private",
-        "properties": {
-            "languageStatistics": {
-                "JavaScript": {
-                    "percentage": 97.49,
-                    "bytes": 238468
-                },
-                "CSS": {
-                    "percentage": 1.41,
-                    "bytes": 3447
-                },
-                "HTML": {
-                    "percentage": 0.8,
-                    "bytes": 1961
-                },
-                "Shell": {
-                    "percentage": 0.3,
-                    "bytes": 741
-                }
-            }
-        }
-    },
-    {
         "name": "learnroi-website",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/LearnArena\/learnroi-website",
         "host": "local",
         "languages": {
             "JavaScript": 383524,
@@ -542,7 +498,6 @@
             "HTML": 3841,
             "Shell": 739
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "JavaScript": {
@@ -565,25 +520,53 @@
         }
     },
     {
-        "name": "next-learnarena",
-        "path": "\/Users\/alexyounger\/Development\/Projects\/LearnArena\/next-learnarena",
+        "name": "learnroi-app",
         "host": "local",
         "languages": {
-            "TypeScript": 588849,
+            "JavaScript": 238468,
+            "CSS": 3447,
+            "HTML": 1961,
+            "Shell": 741
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 97.49,
+                    "bytes": 238468
+                },
+                "CSS": {
+                    "percentage": 1.41,
+                    "bytes": 3447
+                },
+                "HTML": {
+                    "percentage": 0.8,
+                    "bytes": 1961
+                },
+                "Shell": {
+                    "percentage": 0.3,
+                    "bytes": 741
+                }
+            }
+        }
+    },
+    {
+        "name": "next-learnarena",
+        "host": "local",
+        "languages": {
+            "TypeScript": 593099,
             "JavaScript": 5485,
             "CSS": 1495,
             "Perl": 1308,
             "Shell": 263
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "TypeScript": {
-                    "percentage": 98.57,
-                    "bytes": 588849
+                    "percentage": 98.58,
+                    "bytes": 593099
                 },
                 "JavaScript": {
-                    "percentage": 0.92,
+                    "percentage": 0.91,
                     "bytes": 5485
                 },
                 "CSS": {
@@ -602,13 +585,31 @@
         }
     },
     {
+        "name": "db-migrate",
+        "host": "local",
+        "languages": {
+            "JavaScript": 85398,
+            "Shell": 2080
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 97.62,
+                    "bytes": 85398
+                },
+                "Shell": {
+                    "percentage": 2.38,
+                    "bytes": 2080
+                }
+            }
+        }
+    },
+    {
         "name": "rust-playground",
-        "path": "\/Users\/alexyounger\/Development\/Rust\/rust-playground",
         "host": "local",
         "languages": {
             "Rust": 1673
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Rust": {
@@ -620,12 +621,10 @@
     },
     {
         "name": "rust-game-of-life",
-        "path": "\/Users\/alexyounger\/Development\/Rust\/wasm\/rust-game-of-life",
         "host": "local",
         "languages": {
             "Rust": 1067
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Rust": {
@@ -637,32 +636,30 @@
     },
     {
         "name": "gpt-conversations",
-        "path": "\/Users\/alexyounger\/Development\/AI\/gpt-conversations",
         "host": "local",
         "languages": {
-            "PHP": 170383,
-            "Vue": 83398,
+            "PHP": 172723,
+            "Vue": 97820,
             "JavaScript": 2871,
             "Blade": 2051,
             "CSS": 61
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 65.84,
-                    "bytes": 170383
+                    "percentage": 62.69,
+                    "bytes": 172723
                 },
                 "Vue": {
-                    "percentage": 32.23,
-                    "bytes": 83398
+                    "percentage": 35.5,
+                    "bytes": 97820
                 },
                 "JavaScript": {
-                    "percentage": 1.11,
+                    "percentage": 1.04,
                     "bytes": 2871
                 },
                 "Blade": {
-                    "percentage": 0.79,
+                    "percentage": 0.74,
                     "bytes": 2051
                 },
                 "CSS": {
@@ -673,14 +670,92 @@
         }
     },
     {
+        "name": "helicopter-weights-balance-calculator",
+        "host": "local",
+        "languages": {
+            "JavaScript": 9240
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 100,
+                    "bytes": 9240
+                }
+            }
+        }
+    },
+    {
+        "name": "next-playground",
+        "host": "local",
+        "languages": {
+            "TypeScript": 2782,
+            "CSS": 2272,
+            "JavaScript": 137
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 53.59,
+                    "bytes": 2782
+                },
+                "CSS": {
+                    "percentage": 43.77,
+                    "bytes": 2272
+                },
+                "JavaScript": {
+                    "percentage": 2.64,
+                    "bytes": 137
+                }
+            }
+        }
+    },
+    {
+        "name": "frontend-experiments",
+        "host": "local",
+        "languages": {
+            "JavaScript": 27880,
+            "HTML": 12002,
+            "SCSS": 1619
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 67.18,
+                    "bytes": 27880
+                },
+                "HTML": {
+                    "percentage": 28.92,
+                    "bytes": 12002
+                },
+                "SCSS": {
+                    "percentage": 3.9,
+                    "bytes": 1619
+                }
+            }
+        }
+    },
+    {
+        "name": "gitignore-it",
+        "host": "local",
+        "languages": {
+            "JavaScript": 2715
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 100,
+                    "bytes": 2715
+                }
+            }
+        }
+    },
+    {
         "name": "insanity-chrome-extension",
-        "path": "\/Users\/alexyounger\/Development\/Javascript\/insanity-chrome-extension",
         "host": "local",
         "languages": {
             "JavaScript": 5609,
             "HTML": 4030
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "JavaScript": {
@@ -695,77 +770,66 @@
         }
     },
     {
-        "name": "helicopter-weights-balance-calculator",
-        "path": "\/Users\/alexyounger\/Development\/Javascript\/helicopter-weights-balance-calculator",
+        "name": "lc3-c-vm",
         "host": "local",
         "languages": {
-            "JavaScript": 9240
+            "C": 11139
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
-                "JavaScript": {
+                "C": {
                     "percentage": 100,
-                    "bytes": 9240
+                    "bytes": 11139
                 }
             }
         }
     },
     {
-        "name": "react-playground",
-        "path": "\/Users\/alexyounger\/Development\/React\/react-playground",
+        "name": "misc-php-scripts",
         "host": "local",
         "languages": {
-            "JavaScript": 1877,
-            "HTML": 1721,
-            "CSS": 930
+            "PHP": 81499,
+            "Blade": 2953
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
-                "JavaScript": {
-                    "percentage": 41.45,
-                    "bytes": 1877
+                "PHP": {
+                    "percentage": 96.5,
+                    "bytes": 81499
                 },
-                "HTML": {
-                    "percentage": 38.01,
-                    "bytes": 1721
-                },
-                "CSS": {
-                    "percentage": 20.54,
-                    "bytes": 930
+                "Blade": {
+                    "percentage": 3.5,
+                    "bytes": 2953
                 }
             }
         }
     },
     {
         "name": "alextheyounger-v3",
-        "path": "\/Users\/alexyounger\/Development\/Laravel\/alextheyounger-v3",
         "host": "local",
         "languages": {
-            "PHP": 243046,
-            "Vue": 91778,
+            "PHP": 250057,
+            "Vue": 95122,
             "Blade": 30258,
             "JavaScript": 2902,
             "CSS": 59
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 66.04,
-                    "bytes": 243046
+                    "percentage": 66.08,
+                    "bytes": 250057
                 },
                 "Vue": {
-                    "percentage": 24.94,
-                    "bytes": 91778
+                    "percentage": 25.14,
+                    "bytes": 95122
                 },
                 "Blade": {
-                    "percentage": 8.22,
+                    "percentage": 8,
                     "bytes": 30258
                 },
                 "JavaScript": {
-                    "percentage": 0.79,
+                    "percentage": 0.77,
                     "bytes": 2902
                 },
                 "CSS": {
@@ -777,14 +841,12 @@
     },
     {
         "name": "lucriv",
-        "path": "\/Users\/alexyounger\/Development\/Laravel\/lucriv",
         "host": "local",
         "languages": {
             "PHP": 173165,
             "Vue": 108959,
             "Blade": 1782
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "PHP": {
@@ -804,14 +866,12 @@
     },
     {
         "name": "robo-accountant",
-        "path": "\/Users\/alexyounger\/Development\/Laravel\/robo-accountant",
         "host": "local",
         "languages": {
             "PHP": 138480,
             "Blade": 14878,
             "Vue": 8414
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "PHP": {
@@ -831,7 +891,6 @@
     },
     {
         "name": "purposal-app",
-        "path": "\/Users\/alexyounger\/Development\/Laravel\/purposal-app",
         "host": "local",
         "languages": {
             "HTML": 436756,
@@ -839,7 +898,6 @@
             "Blade": 65152,
             "ASP.NET": 27272
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "HTML": {
@@ -863,13 +921,11 @@
     },
     {
         "name": "graph-my-wallet",
-        "path": "\/Users\/alexyounger\/Development\/Laravel\/graph-my-wallet",
         "host": "local",
         "languages": {
             "PHP": 139048,
             "Blade": 15151
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "PHP": {
@@ -885,14 +941,12 @@
     },
     {
         "name": "hazlitt-data",
-        "path": "\/Users\/alexyounger\/Development\/Laravel\/hazlitt-data",
         "host": "local",
         "languages": {
             "PHP": 144902,
             "Blade": 7944,
             "Vue": 2254
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "PHP": {
@@ -911,8 +965,42 @@
         }
     },
     {
+        "name": "wanderers-workplace",
+        "host": "local",
+        "languages": {
+            "PHP": 125053,
+            "Vue": 80549,
+            "Blade": 39533,
+            "JavaScript": 2547,
+            "CSS": 276
+        },
+        "properties": {
+            "languageStatistics": {
+                "PHP": {
+                    "percentage": 50.43,
+                    "bytes": 125053
+                },
+                "Vue": {
+                    "percentage": 32.48,
+                    "bytes": 80549
+                },
+                "Blade": {
+                    "percentage": 15.94,
+                    "bytes": 39533
+                },
+                "JavaScript": {
+                    "percentage": 1.03,
+                    "bytes": 2547
+                },
+                "CSS": {
+                    "percentage": 0.11,
+                    "bytes": 276
+                }
+            }
+        }
+    },
+    {
         "name": "commands-library",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/commands-library",
         "host": "local",
         "languages": {
             "Ruby": 30238,
@@ -921,7 +1009,6 @@
             "SCSS": 1267,
             "CSS": 61
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
@@ -948,8 +1035,37 @@
         }
     },
     {
+        "name": "oneclip-api",
+        "host": "local",
+        "languages": {
+            "Ruby": 31747,
+            "HTML": 5718,
+            "JavaScript": 1033,
+            "CSS": 709
+        },
+        "properties": {
+            "languageStatistics": {
+                "Ruby": {
+                    "percentage": 80.97,
+                    "bytes": 31747
+                },
+                "HTML": {
+                    "percentage": 14.58,
+                    "bytes": 5718
+                },
+                "JavaScript": {
+                    "percentage": 2.63,
+                    "bytes": 1033
+                },
+                "CSS": {
+                    "percentage": 1.81,
+                    "bytes": 709
+                }
+            }
+        }
+    },
+    {
         "name": "marketplacer_store",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/marketplacer_store",
         "host": "local",
         "languages": {
             "Ruby": 33375,
@@ -958,7 +1074,6 @@
             "CSS": 866,
             "Shell": 150
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
@@ -986,12 +1101,10 @@
     },
     {
         "name": "image-factory",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/image-factory",
         "host": "local",
         "languages": {
             "Ruby": 23849
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
@@ -1002,8 +1115,37 @@
         }
     },
     {
+        "name": "graphqi-playground",
+        "host": "local",
+        "languages": {
+            "Ruby": 35213,
+            "HTML": 5653,
+            "JavaScript": 3858,
+            "CSS": 709
+        },
+        "properties": {
+            "languageStatistics": {
+                "Ruby": {
+                    "percentage": 77.51,
+                    "bytes": 35213
+                },
+                "HTML": {
+                    "percentage": 12.44,
+                    "bytes": 5653
+                },
+                "JavaScript": {
+                    "percentage": 8.49,
+                    "bytes": 3858
+                },
+                "CSS": {
+                    "percentage": 1.56,
+                    "bytes": 709
+                }
+            }
+        }
+    },
+    {
         "name": "deep-work-planner",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/deep-work-planner",
         "host": "local",
         "languages": {
             "Ruby": 29449,
@@ -1012,7 +1154,6 @@
             "SCSS": 3068,
             "CSS": 60
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
@@ -1040,7 +1181,6 @@
     },
     {
         "name": "alextheyounger-v2",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/alextheyounger-v2",
         "host": "local",
         "languages": {
             "Ruby": 92927,
@@ -1049,7 +1189,6 @@
             "SCSS": 8196,
             "CSS": 58
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
@@ -1077,7 +1216,6 @@
     },
     {
         "name": "misc-scripts",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/misc-scripts",
         "host": "local",
         "languages": {
             "Ruby": 46081,
@@ -1085,7 +1223,6 @@
             "JavaScript": 1156,
             "CSS": 709
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
@@ -1109,7 +1246,6 @@
     },
     {
         "name": "randombullishsentiment",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/randombullishsentiment",
         "host": "local",
         "languages": {
             "Ruby": 21116,
@@ -1118,7 +1254,6 @@
             "SCSS": 939,
             "CSS": 60
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
@@ -1145,77 +1280,7 @@
         }
     },
     {
-        "name": "markets-research-factory",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/markets-research-factory",
-        "host": "local",
-        "languages": {
-            "Ruby": 62820,
-            "HTML": 9480,
-            "SCSS": 1666,
-            "JavaScript": 1608
-        },
-        "visibility": "private",
-        "properties": {
-            "languageStatistics": {
-                "Ruby": {
-                    "percentage": 83.12,
-                    "bytes": 62820
-                },
-                "HTML": {
-                    "percentage": 12.54,
-                    "bytes": 9480
-                },
-                "SCSS": {
-                    "percentage": 2.2,
-                    "bytes": 1666
-                },
-                "JavaScript": {
-                    "percentage": 2.13,
-                    "bytes": 1608
-                }
-            }
-        }
-    },
-    {
-        "name": "github_language_statistics",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/github_language_statistics",
-        "host": "local",
-        "languages": {
-            "Ruby": 5598,
-            "JavaScript": 2407,
-            "SCSS": 927,
-            "HTML": 848,
-            "Shell": 131
-        },
-        "visibility": "private",
-        "properties": {
-            "languageStatistics": {
-                "Ruby": {
-                    "percentage": 56.48,
-                    "bytes": 5598
-                },
-                "JavaScript": {
-                    "percentage": 24.29,
-                    "bytes": 2407
-                },
-                "SCSS": {
-                    "percentage": 9.35,
-                    "bytes": 927
-                },
-                "HTML": {
-                    "percentage": 8.56,
-                    "bytes": 848
-                },
-                "Shell": {
-                    "percentage": 1.32,
-                    "bytes": 131
-                }
-            }
-        }
-    },
-    {
         "name": "alpha-blog",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/archived\/alpha-blog",
         "host": "local",
         "languages": {
             "HTML": 77351,
@@ -1224,7 +1289,6 @@
             "SCSS": 21011,
             "CSS": 742
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "HTML": {
@@ -1252,7 +1316,6 @@
     },
     {
         "name": "smartereverypage",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/archived\/smartereverypage",
         "host": "local",
         "languages": {
             "HTML": 97648,
@@ -1260,7 +1323,6 @@
             "SCSS": 7386,
             "JavaScript": 1869
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "HTML": {
@@ -1283,65 +1345,66 @@
         }
     },
     {
-        "name": "oneclip-api",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/oneclip-api",
+        "name": "markets-research-factory",
         "host": "local",
         "languages": {
-            "Ruby": 31747,
-            "HTML": 5718,
-            "JavaScript": 1033,
-            "CSS": 709
+            "Ruby": 62820,
+            "HTML": 9480,
+            "SCSS": 1666,
+            "JavaScript": 1608
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
-                    "percentage": 80.97,
-                    "bytes": 31747
+                    "percentage": 83.12,
+                    "bytes": 62820
                 },
                 "HTML": {
-                    "percentage": 14.58,
-                    "bytes": 5718
+                    "percentage": 12.54,
+                    "bytes": 9480
+                },
+                "SCSS": {
+                    "percentage": 2.2,
+                    "bytes": 1666
                 },
                 "JavaScript": {
-                    "percentage": 2.63,
-                    "bytes": 1033
-                },
-                "CSS": {
-                    "percentage": 1.81,
-                    "bytes": 709
+                    "percentage": 2.13,
+                    "bytes": 1608
                 }
             }
         }
     },
     {
-        "name": "graphqi-playground",
-        "path": "\/Users\/alexyounger\/Development\/Rails\/graphqi-playground",
+        "name": "github_language_statistics",
         "host": "local",
         "languages": {
-            "Ruby": 35213,
-            "HTML": 5653,
-            "JavaScript": 3858,
-            "CSS": 709
+            "Ruby": 5598,
+            "JavaScript": 2407,
+            "SCSS": 927,
+            "HTML": 848,
+            "Shell": 131
         },
-        "visibility": "private",
         "properties": {
             "languageStatistics": {
                 "Ruby": {
-                    "percentage": 77.51,
-                    "bytes": 35213
-                },
-                "HTML": {
-                    "percentage": 12.44,
-                    "bytes": 5653
+                    "percentage": 56.48,
+                    "bytes": 5598
                 },
                 "JavaScript": {
-                    "percentage": 8.49,
-                    "bytes": 3858
+                    "percentage": 24.29,
+                    "bytes": 2407
                 },
-                "CSS": {
-                    "percentage": 1.56,
-                    "bytes": 709
+                "SCSS": {
+                    "percentage": 9.35,
+                    "bytes": 927
+                },
+                "HTML": {
+                    "percentage": 8.56,
+                    "bytes": 848
+                },
+                "Shell": {
+                    "percentage": 1.32,
+                    "bytes": 131
                 }
             }
         }
