@@ -3,10 +3,8 @@
         <div class="bar w-full mb-4">
             <template v-if="typeof languages === 'object'">
                 <template v-for="language in languages">
-                    <span @mouseenter="displayHint" @mouseleave="displayHint" :style="{ width: (language.width + '%'), backgroundColor: language.color }" :id="`bar-item-${language.properties?.slug}`"
-                        class="bar-item">
-                        <p :id="`hint-${language.properties?.slug}`" 
-                            class="bg-gray-300 opacity-50 invisible absolute top-16 text-black rounded text-xs z-20">
+                    <span @mouseenter="displayHint" @mouseleave="displayHint" :style="{ width: (language.width + '%'), backgroundColor: language.color }" :id="`bar-item-${language.properties?.slug}`" class="bar-item">
+                        <p :id="`hint-${language.properties?.slug}`" class="bg-gray-300 opacity-50 invisible absolute top-16 text-black rounded text-xs z-20">
                             {{ `${language.language}: ${language.width}%` }}
                         </p>
                     </span>
@@ -30,13 +28,16 @@
             </template>
         </ul>
         <div class="mt-6">
-            <div class="stats mb-4 text-sm">
-                <p>Projects Scanned: <span class="text-burgandy font-semibold">{{ repoStats.count }}</span></p>
-                <p>Projects Total Size: <span class="text-burgandy font-semibold">{{ repoStats.size }}GB</span></p>
+            <div class="stats text-sm">
+                <p>Projects Scanned: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.count }}</a></p>
+                <p>Projects Total Size: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.size }}GB</a></p>
             </div>
-            <small class="italic">
-                These stats are not arbitrary. They're calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and represent real bytes of code.
-            </small>
+            <h3 class="mt-6">What am I looking at?</h3>
+            <p class="text-sm italic">These stats are not arbitrary. They're calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and represent real
+                bytes of code.</p>
+            <p class="text-sm italic">You can see how I did this <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php">here</a>.
+                You can even see all the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repos</a> I scanned from my machine to create this, all
+                of which I either have legal ownership of or significantly contributed to the project, and many (but not all) can be found on my <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga">Github</a>.</p>
         </div>
     </div>
 </template>
