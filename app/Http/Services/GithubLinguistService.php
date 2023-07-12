@@ -15,41 +15,59 @@ class GithubLinguistService
 
     public function runLinguist()
     {
-        $directories = $this->buildDirectoryPaths();
+        $directories = $this->getDirectoryPaths();
+        $blacklist = json_decode(file_get_contents('storage/app/linguist-blacklist.json'), true);
+        $repositories = [];
         $statistics = [];
 
         foreach($directories as $dir) {
             $output = [];
             $command = 'github-linguist ' . $dir;
 
-            exec($command, $output);
+            $pathParts = explode('/', $dir);
+            $name = end($pathParts);
 
-            if (str_contains($output[0], "invalid revision 'HEAD'")) {
+            if (\in_array($name, $blacklist)) {
+                print($dir . " in blacklist. Skipping...\n");
                 continue;
             }
 
-            $pathParts = explode('/', $dir);
-            $name = end($pathParts);
+            exec($command, $output);
+
+            if (empty($output) || str_contains($output[0], "invalid revision 'HEAD'")) {
+                print('Failed to parse ' . $dir . "...\n");
+                continue;
+            }
+            
             $parsedStatistics = $this->parseStatistics($output);
             $standardizedStatistics = $this->languageBytes($parsedStatistics);
 
-            $data = [
+            $repository = [
                 'name' => $name,
-                'path' => $dir,
                 'host' => 'local',
                 'languages' => $standardizedStatistics,
-                'visibility' => 'private',
                 'properties' => [
                     'languageStatistics' => $parsedStatistics
                 ]
             ];
 
+            $data = [
+                'name' => $name,
+                'path' => $dir,
+                'languages' => $parsedStatistics,
+            ];
+
+            array_push($repositories, $repository);
             array_push($statistics, $data);
         }
 
         if (App::environment('local')) {
             file_put_contents(
                 'storage/data/repositories.json',
+                json_encode($repositories, JSON_PRETTY_PRINT)
+            );
+            file_put_contents(
+                'storage/app/linguist.json',
                 json_encode($statistics, JSON_PRETTY_PRINT)
             );
         }
@@ -57,18 +75,27 @@ class GithubLinguistService
         return $statistics;
     }
 
-    private function buildDirectoryPaths()
+    private function getDirectoryPaths()
     {
-        $paths = [];
-        $directoriesJson = file_get_contents($this->directories);
-        $directories  = json_decode($directoriesJson, true);
+        $output = [];
+        $fullPaths = [];
+        $devDirectory = env('DEVELOPMENT_FOLDER');
 
-        foreach($directories as $dir) {
-            $fullPath = env('DEVELOPMENT_FOLDER') . $dir;
-            array_push($paths, $fullPath);
+        // Get git enabled directories.
+        $command = 'find ' . $devDirectory . ' -maxdepth 6 -name ".git" -print';
+        exec($command, $output);
+
+        foreach($output as $dir) {
+            if (str_contains($dir, 'Cloned/') || str_contains($dir, 'Forks/')) {
+                continue;
+            }
+
+            $correctDirectory = str_replace('.git', '', $dir);
+            $trimmedDirectory = rtrim($correctDirectory, '/');
+            array_push($fullPaths, $trimmedDirectory);
         }
 
-        return $paths;
+        return $fullPaths;
     }
 
     private function parseStatistics($output)
