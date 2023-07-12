@@ -36,36 +36,87 @@ class Language extends Model
         return $this->where('active', true);
     }
 
+    public function incrementOrCreate()
+    {
+        $record = Language::where('language', $this->language);
+
+        if ($record->exists()) {
+            $record->increment('value', $this->value);
+            $record->increment('display_value', $this->display_value);
+        } else {
+            $this->save();
+        }
+
+        Log::info('Updated ' . $this->language . ' with value ' . $this->value);
+    }
+
+    public function runRepoSpecificValueAdjustments($repoName)
+    {
+        $repoSettings = Language::settings('repo-specific');
+
+        if (array_key_exists($repoName, $repoSettings)) {
+            $suppressLanguage = $repoSettings[$repoName]["language"];
+
+            if ($suppressLanguage === $this->language) {
+                $suppressBy = $repoSettings[$repoName]["suppressBy"];
+                $this->display_value = (int) ($this->value * $suppressBy);
+            }
+        }
+    }
+
     public static function settings($name) {
         $settings = Yaml::parseFile('storage/app/language-settings.yml');
         return $settings[$name];
+    }
+
+    public static function getLanguageColor($language) {
+        $colors = json_decode(file_get_contents('resources/data/language-colors.json'), true);
+        return $colors[$language];
     }
 
     public static function getTotalBytes() {
         return DB::table('languages')->sum('value');
     }
 
-    public static function incrementOrCreate($language)
+    public static function runWeightAdjustments()
     {
-        $name = $language['language'];
-        $record = Language::where('language', $name);
+        $languages = Language::all();
 
-        if ($record->exists()) {
-            $record->increment('value', $language['value']);
-            $record->increment('display_value', $language['display_value']);
-        } else {
-            Language::create($language);
+        $additions = Language::settings('additions');
+        $subtractions = Language::settings('subtractions');
+
+        foreach($languages as $lang) {
+            if (array_key_exists($lang->language, $additions)) {
+                $lang->display_value += $additions[$lang->language];
+            }
+
+            if (array_key_exists($lang->language, $subtractions)) {
+                $lang->display_value *= $subtractions[$lang->language];
+            }
+
+            $lang->save();
         }
-
-        Log::info('Updated ' . $name . ' with value ' . $language['value']);
     }
 
-    public static function getLanguagesWithWidths()
+    public static function slugifyLanguage($language) {
+        if (strpos($language, "+") !== false) {
+            $language = str_replace("+", "plus", $language);
+        }
+    
+        $language = preg_replace("/[^a-zA-Z0-9]+/", "-", $language);
+        return strtolower($language);
+    }
+
+    public static function calculateTableWidths()
     {
-        return Language::active()
-            ->whereNotNull('width')
-            ->orderBy('width', 'desc')
-            ->select(['language', 'width'])
-            ->get();
+        $languages = Language::active()->get();
+        $total = Language::active()->sum('display_value');
+
+        foreach ($languages as $language) {
+            $width = round(($language->display_value / $total) * 100, 2);
+            $language->width = $width;
+
+            $language->save();
+        }
     }
 }

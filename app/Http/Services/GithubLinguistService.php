@@ -10,29 +10,22 @@ class GithubLinguistService
 
     public function __construct($directoriesList = null)
     {
-        $this->directories = $directoriesList ?? 'storage/data/directories.json';
+        // Requires directories to be scanned first. Run app:scan-repos first.
+        $this->directories = $directoriesList ?? 'storage/app/directories.json';
     }
 
     public function runLinguist()
     {
-        $directories = $this->getDirectoryPaths();
-        $blacklist = json_decode(file_get_contents('storage/app/linguist-blacklist.json'), true);
         $repositories = [];
         $statistics = [];
 
-        foreach($directories as $dir) {
+        foreach($this->directories as $dir) {
             $output = [];
             $command = 'github-linguist ' . $dir;
+            exec($command, $output);
 
             $pathParts = explode('/', $dir);
             $name = end($pathParts);
-
-            if (\in_array($name, $blacklist)) {
-                print($dir . " in blacklist. Skipping...\n");
-                continue;
-            }
-
-            exec($command, $output);
 
             if (empty($output) || str_contains($output[0], "invalid revision 'HEAD'")) {
                 print('Failed to parse ' . $dir . "...\n");
@@ -73,29 +66,6 @@ class GithubLinguistService
         }
 
         return $statistics;
-    }
-
-    private function getDirectoryPaths()
-    {
-        $output = [];
-        $fullPaths = [];
-        $devDirectory = env('DEVELOPMENT_FOLDER');
-
-        // Get git enabled directories.
-        $command = 'find ' . $devDirectory . ' -maxdepth 6 -name ".git" -print';
-        exec($command, $output);
-
-        foreach($output as $dir) {
-            if (str_contains($dir, 'Cloned/') || str_contains($dir, 'Forks/')) {
-                continue;
-            }
-
-            $correctDirectory = str_replace('.git', '', $dir);
-            $trimmedDirectory = rtrim($correctDirectory, '/');
-            array_push($fullPaths, $trimmedDirectory);
-        }
-
-        return $fullPaths;
     }
 
     private function parseStatistics($output)

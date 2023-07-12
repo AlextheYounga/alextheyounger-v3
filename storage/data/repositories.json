@@ -808,8 +808,8 @@
         "name": "alextheyounger-v3",
         "host": "local",
         "languages": {
-            "PHP": 250057,
-            "Vue": 95122,
+            "PHP": 252695,
+            "Vue": 94314,
             "Blade": 30258,
             "JavaScript": 2902,
             "CSS": 59
@@ -817,19 +817,19 @@
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 66.08,
-                    "bytes": 250057
+                    "percentage": 66.46,
+                    "bytes": 252695
                 },
                 "Vue": {
-                    "percentage": 25.14,
-                    "bytes": 95122
+                    "percentage": 24.8,
+                    "bytes": 94314
                 },
                 "Blade": {
-                    "percentage": 8,
+                    "percentage": 7.96,
                     "bytes": 30258
                 },
                 "JavaScript": {
-                    "percentage": 0.77,
+                    "percentage": 0.76,
                     "bytes": 2902
                 },
                 "CSS": {

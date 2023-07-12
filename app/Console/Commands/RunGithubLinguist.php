@@ -7,7 +7,6 @@ use App\Http\Services\GithubLinguistService;
 use Illuminate\Support\Facades\App;
 use Database\Seeders\RepositorySeeder;
 use Database\Seeders\LanguageSeeder;
-use App\Models\Language;
 
 class RunGithubLinguist extends Command
 {
