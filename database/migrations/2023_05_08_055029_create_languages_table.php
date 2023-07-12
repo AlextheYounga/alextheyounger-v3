@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('display_value');
             $table->float('width')->nullable();
             $table->string('color');
+            $table->integer('project_count')->nullable();
             $table->boolean('active')->default(true);
             $table->json('properties')->nullable();
             $table->timestamps();

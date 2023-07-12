@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Yaml\Yaml;
+use App\Models\Repository;
 
 class Language extends Model
 {
@@ -62,6 +63,19 @@ class Language extends Model
                 $this->display_value = (int) ($this->value * $suppressBy);
             }
         }
+    }
+
+    public function getProjectCount()
+    {
+        $count = 0;
+        $repos = Repository::pluck('languages')->toArray();
+        foreach ($repos as $repo) {
+            if (array_key_exists($this->language, $repo)) {
+                $count++;
+            }
+        }
+
+        $this->project_count = $count;
     }
 
     public static function settings($name) {

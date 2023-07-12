@@ -4,7 +4,7 @@
             <template v-if="typeof languages === 'object'">
                 <template v-for="language in languages">
                     <span @mouseenter="displayHint" @mouseleave="displayHint" :style="{ width: (language.width + '%'), backgroundColor: language.color }" :id="`bar-item-${language.properties?.slug}`" class="bar-item">
-                        <p :id="`hint-${language.properties?.slug}`" class="bg-gray-300 opacity-50 invisible absolute top-16 text-black rounded text-xs z-20">
+                        <p :id="`hint-${language.properties?.slug}`" class="bg-gray-300 opacity-70 invisible absolute top-16 text-black rounded text-xs z-20">
                             {{ `${language.language}: ${language.width}%` }}
                         </p>
                     </span>
@@ -16,7 +16,7 @@
             <template v-if="typeof languages === 'object'">
                 <template v-for="language in languages">
                     <li class="lang-item w-48">
-                        <div class="item-wrapper inline-flex flex-nowrap no-underline text-sm mr-3">
+                        <div class="item-wrapper inline-flex flex-nowrap no-underline text-sm mr-3 items-center">
                             <svg :style="{ color: language.color }" :class="['octicon', language.properties?.slug, 'octicon-dot-fill', 'mr-2']" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path>
                             </svg>
@@ -33,11 +33,14 @@
                 <p>Projects Total Size: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.size }}GB</a></p>
             </div>
             <h3 class="mt-6">What am I looking at?</h3>
-            <p class="text-sm italic">These stats are not arbitrary. They're calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and represent real
-                bytes of code.</p>
+            <p class="text-sm italic pb-1">These statistics are not random. They were calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately
+                represent the number of bytes of code.</p>
             <p class="text-sm italic">You can see how I did this <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php">here</a>.
-                You can even see all the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repos</a> I scanned from my machine to create this, all
-                of which I either have legal ownership of or significantly contributed to the project, and many (but not all) can be found on my <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga">Github</a>.</p>
+                You can even see the list of <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repositories</a> I scanned from my machine to
+                generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-burgandy hover:text-red-600 font-semibold"
+                    href="https://github.com/AlextheYounga">Github</a>.
+            </p>
+
         </div>
     </div>
 </template>
@@ -73,6 +76,12 @@ export default {
     overflow: hidden;
     background-color: #e1e4e8;
     border-radius: 6px;
+}
+
+.project-count {
+    font-size: 10px;
+    margin-left: -3px;
+    padding: 0 4px 12px 0;
 }
 
 .language-stats #language-bar ul {
