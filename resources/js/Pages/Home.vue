@@ -17,7 +17,7 @@
         <section class="bg-neutral-50 my-8 p-2 py-8 shadow relative rounded z-10 text-gray-700">
             <div class="language-stats">
                 <h2 class="mb-3 text-3xl text-gray-700 sm:px-8">Skills</h2>
-                <LanguageBar :languages="languages" />
+                <LanguageBar :languages="languages" :repoStats=repoStats />
             </div>
         </section>
 
@@ -150,6 +150,10 @@ defineProps({
         required: true,
     },
     projects: {
+        type: Object,
+        required: true,
+    },
+    repoStats: {
         type: Object,
         required: true,
     },
