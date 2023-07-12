@@ -12,6 +12,7 @@ return new class () extends Migration {
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->nullable();
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('image_name')->nullable();
