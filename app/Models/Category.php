@@ -14,6 +14,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'type',
+        'position',
         'properties',
         'active',
     ];
@@ -26,7 +27,7 @@ class Category extends Model
         'properties' => 'json'
     ];
 
-    public function books()
+    public function categories()
     {
         return $this->hasMany(Book::class);
     }
@@ -37,6 +38,29 @@ class Category extends Model
             return $this->properties["html_selector"];
         }
         return null;
+    }
+
+    public function reorderPositions()
+    {
+        $oldPosition = $this->getOriginal('position');
+        $newPosition = $this->position;
+        if ($oldPosition === $newPosition) {
+            return $this;
+        }
+        
+        $categories = Category::where('position', '>=', $newPosition)->orderBy('position')->get();
+
+        foreach ($categories as $category) {
+            if ($this->id == $category->id) {
+                continue;
+            }
+
+            $newPosition++;
+            $category->position = $newPosition;
+            $category->save();
+        }
+
+        return $this;
     }
 
     public function scopeActive()

@@ -22,6 +22,7 @@ class CategorySeeder extends Seeder
             Category::create([
                 'name' => $category['name'],
                 'type' => $category['type'] ?? 'Book::class',
+                'position' => $category['position'],
                 'properties' => [
                     'html_selector' => $category['html_selector'],
                 ],

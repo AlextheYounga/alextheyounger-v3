@@ -5,6 +5,10 @@ namespace App\Orchid\Screens\Category;
 use App\Models\Category;
 use App\Orchid\Layouts\CategoryListLayout;
 use Orchid\Screen\Actions\Link;
+use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Layouts\Modal;
+use Orchid\Screen\Fields\Input;
+use Illuminate\Http\Request;
 use Orchid\Screen\Screen;
 
 class CategoryListScreen extends Screen
@@ -17,7 +21,7 @@ class CategoryListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'categories' => Category::all()
+            'categories' => Category::orderBy('position', 'asc')->get()
         ];
     }
 
@@ -61,7 +65,44 @@ class CategoryListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            CategoryListLayout::class
+            CategoryListLayout::class,
+            Layout::modal('positionModal', [
+                Layout::rows([
+                    Input::make('category.position')
+                    ->type('number')
+                    ->title('Position')
+                    ->help('Where in the list should this category sit; 1 is the top.'),
+                ]),
+            ])->type(Modal::TYPE_RIGHT)
+                ->size(Modal::SIZE_SM)
+                ->async('asyncGetCategory')
         ];
+    }
+
+    /**
+     * @param Category $category
+     *
+     * @return array
+     */
+    public function asyncGetCategory(Category $category): array
+    {
+        return [
+            'category' => $category,
+        ];
+    }
+
+    /**
+     * @param Category    $category
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updatePosition(Category $category, Request $request)
+    {
+        $category->fill($request->input('category'))
+            ->reorderPositions()
+            ->save();
+
+        return redirect()->route('platform.category.list');
     }
 }

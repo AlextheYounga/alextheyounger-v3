@@ -6,6 +6,7 @@ use App\Models\Category;
 use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
+use Orchid\Screen\Actions\ModalToggle;
 use Carbon\Carbon;
 
 class CategoryListLayout extends Table
@@ -23,6 +24,16 @@ class CategoryListLayout extends Table
     public function columns(): array
     {
         return [
+            TD::make('position', __('Position'))
+            ->render(function (Category $category) {
+                return ModalToggle::make($category->position)
+                    ->modal('positionModal')
+                    ->modalTitle('Category Position')
+                    ->method('updatePosition')
+                    ->asyncParameters([
+                        'category' => $category->id,
+                    ]);
+            }),
             TD::make('name', 'Name')
                 ->render(function (Category $category) {
                     return Link::make($category->name)

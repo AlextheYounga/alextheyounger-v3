@@ -92,6 +92,11 @@ class CategoryEditScreen extends Screen
                     ->title('Type')
                     ->placeholder('Category::class')
                     ->help('Class for type of category'),
+
+                Input::make('category.position')
+                    ->title('Position')
+                    ->type('number')
+                    ->help('Where in the list should this category sit; 1 is the top.'),
                     
                 Code::make('category.properties')
                     ->title('Properties')

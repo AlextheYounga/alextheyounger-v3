@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->string('name');
+            $table->integer('position')->nullable();;
             $table->json('properties')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();

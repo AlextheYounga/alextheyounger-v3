@@ -1,62 +1,77 @@
 [
   {
     "name": "Better Living",
+    "position": 1,
     "html_selector": "better-living"
   },
   {
     "name": "Philosophy",
+    "position": 2,
     "html_selector": "philosophy"
   },
   {
     "name": "People Skills",
+    "position": 3,
     "html_selector": "peopleskill"
   },
   {
     "name": "Economics",
+    "position": 4,
     "html_selector": "econ"
   },
   {
     "name": "History",
+    "position": 5,
     "html_selector": "history"
   },
   {
     "name": "Finance",
+    "position": 6,
     "html_selector": "finance"
   },
   {
     "name": "Technology",
+    "position": 7,
     "html_selector": "tech"
   },
   {
     "name": "Science",
+    "position": 8,
     "html_selector": "science"
   },
   {
     "name": "Psychology",
+    "position": 9,
     "html_selector": "psych"
   },
   {
     "name": "Productivity",
+    "position": 10,
     "html_selector": "productivity"
   },
   {
     "name": "Biography",
+    "position": 11,    
     "html_selector": "bio"
   },
   {
     "name": "Politics",
+    "position": 12,
     "html_selector": "pol"
   },
   {
     "name": "Business",
+    "position": 13,
     "html_selector": "biz"
   },
   {
     "name": "Miscellaneous",
+    "position": 15,
     "html_selector": "misc"
   },
   {
     "name": "Fiction",
+    "position": 14,
     "html_selector": "fiction"
   }
 ]

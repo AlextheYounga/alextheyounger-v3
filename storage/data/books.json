@@ -10,7 +10,7 @@
     "subtitle": "The Only Book You Need to Lead You to Success",
     "position": 1,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList How to Win Friends and Influence People by Dale Carnegie\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 1,
@@ -23,7 +23,7 @@
     "subtitle": "366 Meditations on Wisdom, Perseverance, and the Art of Living",
     "position": 2,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Daily Stoic by Ryan Holiday\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 2,
@@ -36,7 +36,7 @@
     "subtitle": null,
     "position": 3,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Foundations of Morality by Henry Hazlitt\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 1,
@@ -49,7 +49,7 @@
     "subtitle": "Happiness For People Who Can't Stand Positive Thinking",
     "position": 34,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Antidote: Happiness For People Who Can't Stand Positive Thinking by Oliver Burkeman\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 2,
@@ -62,7 +62,7 @@
     "subtitle": "The Foundations of Knowledge",
     "position": 4,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Square One: The Foundations of Knowledge by Steve Patterson\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -75,7 +75,7 @@
     "subtitle": null,
     "position": 6,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Making Economic Sense by Murray Rothbard\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -88,7 +88,7 @@
     "subtitle": "",
     "position": 27,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Rich Dad Poor Dad by Robert Kiyosaki\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -101,7 +101,7 @@
     "subtitle": "How Creating Value for Others Built One of the World's Most Successful Companies",
     "position": 7,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Good Profit by Charles Koch\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 1,
@@ -114,7 +114,7 @@
     "subtitle": "",
     "position": 40,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Meditations by Marcus Aurelius\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 1,
@@ -125,9 +125,9 @@
     "external_link": "https://www.amazon.com/Guide-Good-Life-Ancient-Stoic/dp/0195374614/ref=sr_1_1?s=books&ie=UTF8&qid=1515918746&sr=1-1&keywords=a+guide+to+the+good+life",
     "external_image_link": null,
     "subtitle": "The Ancient Art of Stoic Joy",
-    "position": 55,
+    "position": 57,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList A Guide to the Good Life by William B. Irvine\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 1,
@@ -140,7 +140,7 @@
     "subtitle": "Break Free from the Shyness That Holds You Back",
     "position": 9,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Solution to Social Anxiety by Dr. Aziz Gazipura\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 12,
@@ -153,7 +153,7 @@
     "subtitle": "",
     "position": 8,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Notes on Democracy by H.L. Mencken\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -166,7 +166,7 @@
     "subtitle": "The Unfinished Quest for the Meaning of Quantum Physics",
     "position": 23,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList What is Real by Adam Becker\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 2,
@@ -179,7 +179,7 @@
     "subtitle": "A Guide to Spirituality Without Religion",
     "position": 25,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Waking Up by Sam Harris\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 2,
@@ -192,7 +192,7 @@
     "subtitle": "Essential Listening from the Alan Watts Archives",
     "position": 10,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Out of Your Mind\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 2,
@@ -205,7 +205,7 @@
     "subtitle": "On Hiding, Seeking, and Being Found",
     "position": 36,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList You're It by Alan Watts\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -218,7 +218,7 @@
     "subtitle": "",
     "position": 13,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Street Smarts by Jim Rogers\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 3,
@@ -231,7 +231,7 @@
     "subtitle": "How Anyone Can Master the Art and Science of Personal Magnetism",
     "position": 5,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Charisma Myth by Olivia Fox Cabane\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -244,7 +244,7 @@
     "subtitle": "",
     "position": 15,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Extraordinary Popular Delusions and the Madness of Crowds by Charles Mackay\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -255,9 +255,9 @@
     "external_link": "https://www.amazon.com/Troublesome-Inheritance-Genes-Human-History/dp/0143127160/ref=sr_1_1?s=books&ie=UTF8&qid=1515921233&sr=1-1&keywords=a+troublesome+inheritance+by+nicholas+wade",
     "external_image_link": null,
     "subtitle": "Genes, Race, and Human History",
-    "position": 106,
+    "position": 112,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList A Troublesome Inheritance by Nicholas Wade\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -270,7 +270,7 @@
     "subtitle": "Unlocking the Power of Sleep and Dreams",
     "position": 26,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Why We Sleep by Matthew Walker, PhD\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -283,7 +283,7 @@
     "subtitle": "",
     "position": 24,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Black Rednecks and White Liberals by Thomas Sowell\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -294,9 +294,9 @@
     "external_link": "https://www.amazon.com/Fools-Errand-Time-End-Afghanistan/dp/1548650218",
     "external_image_link": null,
     "subtitle": "Time to End the War in Afghanistan",
-    "position": 58,
+    "position": 60,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList https:\\/\\/images-na.ssl-images-amazon.com\\/images\\/I\\/51zrL6zS1ZL._SX331_BO1,204,203,200_.jpg\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -309,7 +309,7 @@
     "subtitle": "An Analysis of the Keynesian Fallacies",
     "position": 41,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Failure of the New Economics by Henry Hazlitt\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 9,
@@ -320,9 +320,9 @@
     "external_link": "https://www.amazon.com/Righteous-Mind-Divided-Politics-Religion/dp/0307455777/ref=sr_1_1?s=books&ie=UTF8&qid=1515921478&sr=1-1&keywords=jonathan+haidt+the+righteous+mind",
     "external_image_link": null,
     "subtitle": "Why Good People are Divided by Politics and Religion",
-    "position": 50,
+    "position": 52,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Righteous Mind by Jonathan Haidt\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 9,
@@ -335,7 +335,7 @@
     "subtitle": "Discover the Perfect Career for You Through the Secrets of Personality Type",
     "position": 46,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Do What You Are by Paul D. Tieger, Barbara Barron, and Kelly Tieger\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 10,
@@ -348,7 +348,7 @@
     "subtitle": "",
     "position": 47,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Mindfulness in Plain English by Bhante Gunaratana\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 10,
@@ -361,7 +361,7 @@
     "subtitle": "Rules for Focused Success in a Distracted World",
     "position": 14,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Deep Work by Cal Newport\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 14,
@@ -372,9 +372,9 @@
     "external_link": "https://www.amazon.com/Deep-Thoughts-Inspiration-Jack-Handey/dp/0425133656",
     "external_image_link": null,
     "subtitle": "Inspiration for the Uninspired",
-    "position": 51,
+    "position": 53,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Deep Thoughts by Jack Handey\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 11,
@@ -385,9 +385,9 @@
     "external_link": "https://www.amazon.com/Total-Recall-Unbelievably-True-Story/dp/1451662440/ref=sr_1_1?s=books&ie=UTF8&qid=1521363393&sr=1-1&keywords=total+recall+arnold+schwarzenegger",
     "external_image_link": null,
     "subtitle": "My Unbelievably True Life Story",
-    "position": 52,
+    "position": 54,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Total Recall by Arnold Schwarzenegger\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -398,9 +398,9 @@
     "external_link": "https://www.amazon.com/Hot-Commodities-Anyone-Invest-Profitably-ebook/dp/B000FC2OO8/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1515983311&sr=1-1&keywords=hot+commodities+jim+rogers",
     "external_image_link": null,
     "subtitle": "How Anyone Can Invest Profitably in the World's Best Market",
-    "position": 53,
+    "position": 55,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Hot Commodities by Jim Rogers\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -413,7 +413,7 @@
     "subtitle": "The Surprising Secrets of America's Wealthy",
     "position": 22,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Millionaire Next Door by Thomas J. Stanley & William D. Danko\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -424,9 +424,9 @@
     "external_link": "https://www.amazon.com/Road-Ruin-Global-Elites-Financial/dp/1591848083/ref=sr_1_1?s=books&ie=UTF8&qid=1515984429&sr=1-1&keywords=The+Road+to+Ruin+by+James+Rickards",
     "external_image_link": null,
     "subtitle": "The Global Elites' Secret Plan for the Next Financial Crisis",
-    "position": 57,
+    "position": 59,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Road to Ruin by Jim Rickards\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -439,7 +439,7 @@
     "subtitle": "The Case for Reason, Science, Humanism, and Progress",
     "position": 43,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Enlightenment Now by Steven Pinker\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 10,
@@ -450,9 +450,9 @@
     "external_link": "https://www.amazon.com/Willpower-Instinct-Self-Control-Works-Matters/dp/1583335080/ref=sr_1_2?s=books&ie=UTF8&qid=1515923129&sr=1-2&keywords=willpower+instinct+by+kelly+mcgonigal",
     "external_image_link": null,
     "subtitle": "How Self Control Works, Why it Matters, and What You Can Do to Get More of It",
-    "position": 59,
+    "position": 62,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Willpower Instinct by Kelly McGonigal, Phd\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -463,9 +463,9 @@
     "external_link": "https://www.amazon.com/Henry-Hazlitt-Economics-One-Lesson/dp/B004LNZ5H0/ref=sr_1_5?s=books&ie=UTF8&qid=1515985408&sr=1-5&keywords=economics+in+one+lesson+henry+hazlitt",
     "external_image_link": null,
     "subtitle": "The Shortest and Surest Way to Understand Basic Economics",
-    "position": 48,
+    "position": 49,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Economics in One Lesson by Henry Hazlitt\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -478,7 +478,7 @@
     "subtitle": "",
     "position": 21,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Richest Man in Babylon by George Clason\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -489,9 +489,9 @@
     "external_link": "https://www.amazon.com/Gulag-Archipelago-Aleksandr-Solzhenitsyn/dp/1843430851",
     "external_image_link": null,
     "subtitle": "1918-1956: An Experiment in Literary Investigation",
-    "position": 61,
+    "position": 64,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Gulag Archipeligo by Alexander Solzhenitsyn\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -502,9 +502,9 @@
     "external_link": "https://www.amazon.com/What-Life-Autobiographical-Sketches-Classics/dp/1107604664/ref=sr_1_1",
     "external_image_link": null,
     "subtitle": "",
-    "position": 80,
+    "position": 86,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList What is Life by Erwin Schrodinger\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 2,
@@ -515,9 +515,9 @@
     "external_link": "https://www.amazon.com/Free-Will-Harris-Sam-Paperback/dp/B011SJZJ8O/ref=sr_1_3",
     "external_image_link": null,
     "subtitle": null,
-    "position": 63,
+    "position": 66,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Free Will by Sam Harris\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 9,
@@ -528,9 +528,9 @@
     "external_link": "https://www.amazon.com/Influence-Psychology-Persuasion-Robert-Cialdini/dp/006124189X/ref=sr_1_1",
     "external_image_link": null,
     "subtitle": "The Psychology of Persuasion",
-    "position": 64,
+    "position": 67,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Influence by Robert Cialdini\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 9,
@@ -541,9 +541,9 @@
     "external_link": "https://www.amazon.com/Mans-Search-Meaning-Viktor-Frankl/dp/0807014273/ref=sr_1_1",
     "external_image_link": null,
     "subtitle": null,
-    "position": 65,
+    "position": 68,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Man's Search for Meaning by Viktor Frankl\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -554,9 +554,9 @@
     "external_link": "https://www.amazon.com/Ordinary-Men-Reserve-Battalion-Solution/dp/0062303023/ref=pd_lpo_sbs_14_img_0?_encoding=UTF8&psc=1&refRID=905FVFHBW6S35NKN4CWB",
     "external_image_link": null,
     "subtitle": "Reserve Police Battalion 101 and the Final Solution in Poland",
-    "position": 66,
+    "position": 69,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Ordinary Men by Christopher R. Browning\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -567,9 +567,9 @@
     "external_link": "https://www.amazon.com/Fatal-Conceit-Errors-Socialism-Collected/dp/0226320669/ref=sr_1_1?s=books&ie=UTF8&qid=1551050285&sr=1-1&keywords=fatal+conceit+hayek",
     "external_image_link": null,
     "subtitle": "The Errors of Socialism",
-    "position": 68,
+    "position": 72,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Fatal Conceit by F.A. Hayek\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -580,9 +580,9 @@
     "external_link": "https://mises.org/library/socialism-economic-and-sociological-analysis",
     "external_image_link": null,
     "subtitle": "An Economic and Sociological Analysis",
-    "position": 88,
+    "position": 92,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Socialism by Ludwig Von Mises\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 9,
@@ -593,9 +593,9 @@
     "external_link": "https://www.amazon.com/Power-Body-Language-Ex-FBI-Speed-Reading/dp/B00OH795TO/ref=sr_1_2?ie=UTF8&qid=1515983461&sr=8-2&keywords=the+power+of+body+language+joe+navarro",
     "external_image_link": null,
     "subtitle": "An Ex-FBI Agent's System for Speed Reading People",
-    "position": 85,
+    "position": 89,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Power of Body Language by Joe Navarro\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -608,7 +608,7 @@
     "subtitle": "and The Case for a 100 Percent Gold Dollar",
     "position": 19,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList What Has Government Done to Our Money by Murray Rothbard\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 7,
@@ -619,9 +619,9 @@
     "external_link": "https://www.amazon.com/Computer-Science-Distilled-Computational-Problems/dp/0997316020",
     "external_image_link": null,
     "subtitle": "Learn the Art of Computational Problem Solving",
-    "position": 103,
+    "position": 108,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Computer Science Distilled by Wladston Ferreira Filho\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 10,
@@ -632,9 +632,9 @@
     "external_link": "https://www.amazon.com/Show-Your-Work-Austin-Kleon/dp/076117897X/ref=sr_1_1?s=books&ie=UTF8&qid=1520050953&sr=1-1&keywords=show+your+work",
     "external_image_link": null,
     "subtitle": "10 Ways to Share Your Creativity and Get Discovered",
-    "position": 69,
+    "position": 75,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Show Your Work by Austin Kleon\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -645,9 +645,9 @@
     "external_link": "https://www.amazon.com/Moonwalking-Einstein-Science-Remembering-Everything/dp/0143120530/ref=sr_1_1?s=books&ie=UTF8&qid=1551049996&sr=1-1&keywords=moonwalking+with+einstein+by+joshua+foer",
     "external_image_link": null,
     "subtitle": "The Art and Science of Remembering Everything",
-    "position": 71,
+    "position": 77,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Moonwalking With Einstein by Joshua Foer\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -658,9 +658,9 @@
     "external_link": "https://www.amazon.com/Basic-Economics-Thomas-Sowell/dp/0465060730/ref=sr_1_1?hvadid=241666587059&hvdev=c&hvlocphy=9028905&hvnetw=g&hvpos=1t1&hvqmt=e&hvrand=17298452046633619559&hvtargid=kwd-437964245&keywords=basic+economics+thomas+sowell&qid=1555298558&s=gateway&sr=8-1",
     "external_image_link": null,
     "subtitle": "A Common Sense Guide to the Economy",
-    "position": 62,
+    "position": 65,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Basic Economics by Thomas Sowell\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -671,12 +671,12 @@
     "external_link": "https://www.amazon.com/Book-Rental-Property-Investing-Intelligent/dp/099071179X/ref=sr_1_3?s=books&ie=UTF8&qid=1533872549&sr=1-3&keywords=rental+property+investing",
     "external_image_link": null,
     "subtitle": "How to new wealth and passive income through smart buy & hold real estate investing",
-    "position": 72,
+    "position": 78,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Book on Rental Property Investing by Brandon Turner\"}",
-    "active": "1"
+    "active": true
   },
   {
-    "category_id": 10,
+    "category_id": 3,
     "title": "Steal the Show",
     "author": "Michael Port",
     "description": null,
@@ -684,9 +684,9 @@
     "external_link": "https://www.amazon.com/Steal-Show-Interviews-Deal-Closing-Performances/dp/0544800842/ref=sr_1_1?s=books&ie=UTF8&qid=1515984539&sr=1-1&keywords=Steal+the+Show+by+Michael+Port",
     "external_image_link": null,
     "subtitle": "How to Guarantee a Standing Ovation for All the Performances in Your Life",
-    "position": 74,
+    "position": 80,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Steal the Show by Michael Port\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 3,
@@ -697,9 +697,9 @@
     "external_link": "https://www.amazon.com/Crucial-Conversations-Talking-Stakes-Second/dp/0071771328/ref=sr_1_1?s=books&ie=UTF8&qid=1515984205&sr=1-1&keywords=crucial+conversations",
     "external_image_link": null,
     "subtitle": "Tools for Talking When the Stakes are High",
-    "position": 75,
+    "position": 81,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Crucial Conversations by Kelly Patterson\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -712,7 +712,7 @@
     "subtitle": "",
     "position": 18,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList What You Should Know About Inflation by Henry Hazlitt\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -723,9 +723,9 @@
     "external_link": "https://www.amazon.com/Behave-Biology-Humans-Best-Worst-ebook/dp/B01IAUGC5S/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1515981537&sr=1-1&keywords=behave+robert+sapolsky",
     "external_image_link": null,
     "subtitle": "The Biology of Humans at Our Best and at Our Worst",
-    "position": 76,
+    "position": 82,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Behave by Robert M. Sapolsky\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 12,
@@ -736,9 +736,9 @@
     "external_link": "https://www.amazon.com/Conflict-Visions-Ideological-Political-Struggles/dp/0465002056/ref=sr_1_1?s=books&ie=UTF8&qid=1551050535&sr=1-1&keywords=conflict+of+visions",
     "external_image_link": null,
     "subtitle": "Ideological Origins of Political Struggles",
-    "position": 82,
+    "position": 87,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList A Conflict of Visions by Thomas Sowell\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -749,9 +749,9 @@
     "external_link": "https://mises.org/library/americas-great-depression",
     "external_image_link": null,
     "subtitle": null,
-    "position": 83,
+    "position": 61,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList America's Great Depression by Murray Rothbard\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -762,9 +762,9 @@
     "external_link": "https://www.amazon.com/Little-Book-Moves-Updated-Expanded/dp/0470643994/ref=sr_1_2?s=books&ie=UTF8&qid=1515983796&sr=1-2&keywords=the+little+book+of+bull+moves+peter+schiff",
     "external_image_link": null,
     "subtitle": "How to Keep Your Portfolio Up When the Market is Up, Down, or Sideways",
-    "position": 84,
+    "position": 88,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Little Book of Bull Moves by Peter Schiff\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -775,9 +775,9 @@
     "external_link": "https://www.amazon.com/4-Hour-Workweek-Escape-Live-Anywhere/dp/0307465357/ref=sr_1_1?s=books&ie=UTF8&qid=1515985483&sr=1-1&keywords=the+four+hour+work+week",
     "external_image_link": null,
     "subtitle": "Escape 9-5, Live Anywhere, and Join the New Rich",
-    "position": 86,
+    "position": 90,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The 4 Hour Workweek by Tim Ferriss\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 9,
@@ -788,9 +788,9 @@
     "external_link": "https://www.amazon.com/48-Laws-Power-Robert-Greene/dp/0140280197/ref=sr_1_1?keywords=48+laws+of+power&qid=1555294105&s=gateway&sr=8-1",
     "external_image_link": null,
     "subtitle": null,
-    "position": 87,
+    "position": 91,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The 48 Laws of Power by Robert Greene\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 11,
@@ -801,9 +801,9 @@
     "external_link": "https://www.amazon.com/Hawk-Occupation-Skateboarder-Tony/dp/0060958316/ref=sr_1_2?ie=UTF8&qid=1521363258&sr=8-2&keywords=hawk+by+tony+hawk&dpID=51TnMCb8ToL&preST=_SY291_BO1,204,203,200_QL40_&dpSrc=srch",
     "external_image_link": null,
     "subtitle": "Occupation: Skateboarder",
-    "position": 89,
+    "position": 93,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Hawk by Tony Hawk\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -814,9 +814,9 @@
     "external_link": "https://www.amazon.com/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661/ref=sr_1_1?s=books&ie=UTF8&qid=1515987281&sr=1-1&keywords=the+intelligent+investor+by+benjamin+graham",
     "external_image_link": null,
     "subtitle": "The Definitive Book on Value Investing",
-    "position": 90,
+    "position": 94,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Intelligent Investor by Benjamin Graham\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -827,9 +827,9 @@
     "external_link": "https://www.amazon.com/General-History-Pyrates-Settlement-Providence/dp/B01M3YA557/ref=tmm_aud_swatch_0?_encoding=UTF8&qid=1573021706&sr=8-1",
     "external_image_link": null,
     "subtitle": "From Their First Rise and Settlement in the Island of Providence, to the Present",
-    "position": 91,
+    "position": 95,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList A General History of the Pyrates by Daniel Defoe\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -840,9 +840,9 @@
     "external_link": "https://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898/ref=sr_1_3?s=books&ie=UTF8&qid=1515983642&sr=1-3&keywords=the+lean+startup+eric+ries",
     "external_image_link": null,
     "subtitle": "How Today's Entrepreneurs Use Continuous Innovation to new Radically Successful Businesses",
-    "position": 92,
+    "position": 96,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Lean Startup by Eric Ries\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -853,9 +853,9 @@
     "external_link": "https://www.amazon.com/Progressive-Era-Murray-Rothbard-ebook/dp/B076B4SW5T/ref=sr_1_1?s=books&ie=UTF8&qid=1551050667&sr=1-1&keywords=progressive+era+murray",
     "external_image_link": null,
     "subtitle": null,
-    "position": 95,
+    "position": 99,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Progressive Era by Murray N. Rothbard\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -866,9 +866,9 @@
     "external_link": "https://www.amazon.com/Buccaneers-America-Alexander-Exquemelin/dp/1537698621/ref=sr_1_1_sspa?crid=3ATUWUL7J53GB&keywords=buccaneers+of+america&qid=1562205455&s=books&sprefix=bucanneers+of%2Cstripbooks%2C164&sr=1-1-spons&psc=1",
     "external_image_link": null,
     "subtitle": "",
-    "position": 104,
+    "position": 109,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Buccaneers of America by Alexander O. Exquemelin\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -879,9 +879,9 @@
     "external_link": "https://www.amazon.com/Sell-Human-Surprising-Moving-Others/dp/1594631905/ref=sr_1_3?s=books&ie=UTF8&qid=1515985359&sr=1-3&keywords=to+sell+is+human",
     "external_image_link": null,
     "subtitle": "The Surprising Truth About Moving Others",
-    "position": 96,
+    "position": 101,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList To Sell is Human by Daniel H. Pink\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -892,9 +892,9 @@
     "external_link": "https://www.amazon.com/Born-This-Find-Work-Meant/dp/1101903988/ref=sr_1_1?s=books&ie=UTF8&qid=1515985831&sr=1-1&keywords=born+for+this+chris+guillebeau",
     "external_image_link": null,
     "subtitle": null,
-    "position": 97,
+    "position": 102,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Born for This by Chris Guillebeau\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -905,9 +905,9 @@
     "external_link": "https://www.amazon.com/100-Startup-Reinvent-Living-new/dp/0307951529/ref=sr_1_1?s=books&ie=UTF8&qid=1515986114&sr=1-1&keywords=the+%24100+startup+by+chris+guillebeau",
     "external_image_link": null,
     "subtitle": "Reinvent the Way You Make a Living, Do What You Love, and new a New Future",
-    "position": 98,
+    "position": 103,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The $100 Startup by Chris Guillebeau\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -918,9 +918,9 @@
     "external_link": "https://www.amazon.com/Becoming-Your-Banker-Nelson-Nash-ebook/dp/B0080K8EL4",
     "external_image_link": null,
     "subtitle": "Unlock the Infinite Banking Concept",
-    "position": 100,
+    "position": 105,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Becoming Your Own Banker by R. Nelson Nash\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -931,9 +931,9 @@
     "external_link": "https://www.amazon.com/Why-Zebras-Dont-Ulcers-Third/dp/0805073698/ref=sr_1_1?s=books&ie=UTF8&qid=1515986523&sr=1-1&keywords=Why+Zebras+Don%27t+Get+Ulcers+by+Robert+M.+Sapolsky",
     "external_image_link": null,
     "subtitle": "The Acclaimed Guide to Stress, Stress-Related Diseases, and Coping",
-    "position": 101,
+    "position": 106,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Why Zebras Don't Get Ulcers by Robert M. Sapolsky\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 12,
@@ -944,9 +944,9 @@
     "external_link": "https://www.amazon.com/Three-Languages-Politics-Talking-Political/dp/1944424466/ref=sr_1_1?s=books&ie=UTF8&qid=1515986807&sr=1-1&keywords=The+Three+Languages+of+Politics+by+Arnold+Kling",
     "external_image_link": null,
     "subtitle": "Talking Across the Political Divides",
-    "position": 102,
+    "position": 107,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Three Languages of Politics by Arnold Kling\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 3,
@@ -957,9 +957,9 @@
     "external_link": "https://www.amazon.com/Never-Eat-Alone-Expanded-Updated/dp/0385346654/ref=sr_1_1?s=books&ie=UTF8&qid=1515987002&sr=1-1&keywords=never+eat+alone+by+keith+ferrazzi",
     "external_image_link": null,
     "subtitle": "And Other Secrets to Success, One Relationship at a Time",
-    "position": 94,
+    "position": 98,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Never Eat Alone by Keith Ferrazzi\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -970,9 +970,9 @@
     "external_link": "https://mises.org/library/economic-controversies",
     "external_image_link": null,
     "subtitle": null,
-    "position": 105,
+    "position": 111,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Economic Controversies by Murry Rothbard\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 9,
@@ -985,7 +985,7 @@
     "subtitle": "The Disturbing World of the Psychopaths Among Us",
     "position": 16,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Without Conscience by Robert D. Hare\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -996,9 +996,9 @@
     "external_link": "https://www.amazon.com/Rework-Jason-Fried/dp/0307463745",
     "external_image_link": "https://m.media-amazon.com/images/I/41woojfwaaL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 93,
+    "position": 97,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Rework by Jason Fried & David Heinemeier Hansson\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -1011,7 +1011,7 @@
     "subtitle": "Conversations with America's Top Traders",
     "position": 45,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The New Market Wizards by Jack D. Schwager\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 5,
@@ -1024,7 +1024,7 @@
     "subtitle": "Stock Market Meltdowns That Defined a Nation ",
     "position": 17,
     "properties": "{\"image_alt\":\"Alex Younger Readling List A History of the United States in Five Crashes by Scott Nations\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -1037,7 +1037,7 @@
     "subtitle": "The Rise and Fall of Long-Term Capital Management ",
     "position": 35,
     "properties": "{\"image_alt\":\"Alex Younger Readling List When Genius Failed by Roger Lowenstein\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -1048,9 +1048,9 @@
     "external_link": "https://www.amazon.com/The-Misbehavior-of-Markets-audiobook/dp/B07PCSM62Z/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/51cbCRKmvjL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "A Fractal View of Financial Turbulence ",
-    "position": 60,
+    "position": 63,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Misbehavior of Markets by Benoit Mandelbrot\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 1,
@@ -1063,7 +1063,7 @@
     "subtitle": "",
     "position": 39,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Discourses of Epictetus and the Enchiridion by Epictetus\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 9,
@@ -1076,7 +1076,7 @@
     "subtitle": "The Psychology of Thought Control, Menticide, and Brainwashing",
     "position": 28,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Rape of the Mind by Joost A.M. Meerloo\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -1087,9 +1087,9 @@
     "external_link": "https://www.amazon.com/Lifespan-audiobook/dp/B07QGH1Q43/ref=sr_1_2",
     "external_image_link": "https://m.media-amazon.com/images/I/41OHsYaqo3L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "Why We Age - and Why We Don't Have To",
-    "position": 56,
+    "position": 58,
     "properties": "{\"image_alt\":\"Alex Younger Readling List LifeSpan by David Sinclair\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -1100,9 +1100,9 @@
     "external_link": "https://www.amazon.com/Little-Red-Book-of-Selling-audiobook/dp/B001FVJIYM/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/51aorfJ3bXL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "12.5 Principles of Sales Greatness",
-    "position": 67,
+    "position": 70,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Little Red Book of Selling by Jeffrey Gitomer \"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 11,
@@ -1115,7 +1115,7 @@
     "subtitle": "A Memoir",
     "position": 37,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Based on a True Story by Norm MacDonald\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 2,
@@ -1126,9 +1126,9 @@
     "external_link": "https://www.amazon.com/dp/B00U5LC17Y",
     "external_image_link": "https://m.media-amazon.com/images/I/51h+sJKnWoL.jpg",
     "subtitle": "Discovering Universal Truth in Logic and Math",
-    "position": 79,
+    "position": 85,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Euclid in the Rainforest by Joseph Mazur\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 12,
@@ -1141,7 +1141,7 @@
     "subtitle": "",
     "position": 42,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Road to Serfdom by F. A. Hayek\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 8,
@@ -1152,9 +1152,9 @@
     "external_link": "https://www.amazon.com/This-Explains-Everything-Beautiful-Theories-ebook/dp/B0089LOGDO",
     "external_image_link": "https://m.media-amazon.com/images/I/512ZeHYaMeL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "150 Deep, Beautiful, and Elegant Theories of How the World Works",
-    "position": 49,
+    "position": 51,
     "properties": "{\"image_alt\":\"Alex Younger Readling List This Explains Everything by John Brockman\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 7,
@@ -1165,9 +1165,9 @@
     "external_link": "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM",
     "external_image_link": "https://m.media-amazon.com/images/I/41xShlnTZTL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "A Handbook of Agile Software Craftsmanship",
-    "position": 70,
+    "position": 76,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Clean Code by Martin Robert C.\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 10,
@@ -1180,7 +1180,7 @@
     "subtitle": "The Disciplined Pursuit of Less",
     "position": 44,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Essentialism by Greg Mckeown\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 15,
@@ -1193,7 +1193,7 @@
     "subtitle": "",
     "position": 29,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Dune by Frank Herbert\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 6,
@@ -1204,9 +1204,9 @@
     "external_link": "https://www.amazon.com/Fooled-Randomness-Hidden-Markets-Incerto-ebook/dp/B001FA0W5W",
     "external_image_link": "https://m.media-amazon.com/images/I/412MBJ9ojxL.jpg",
     "subtitle": "The Hidden Role of Chance in Life and in the Markets",
-    "position": 99,
+    "position": 104,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Fooled by Randomness by Nassim Taleb\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 15,
@@ -1217,9 +1217,9 @@
     "external_link": "https://www.amazon.com/Alas-Babylon-Harper-Perennial-Olive-ebook/dp/B00CD360ZQ/ref=sr_1_1?crid=3PA00QJIXG6XG&keywords=alas+babylon&qid=1663968005&sprefix=alas+bab%2Caps%2C137&sr=8-1",
     "external_image_link": "https://m.media-amazon.com/images/I/41yjE5E2MUL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 54,
+    "position": 56,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Alas, Babylon by Pat Frank\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 15,
@@ -1230,9 +1230,9 @@
     "external_link": "https://www.amazon.com/Children-Time-Adrian-Tchaikovsky-ebook/dp/B07DN8BQMD",
     "external_image_link": "https://m.media-amazon.com/images/I/51glJgVC1IL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 73,
+    "position": 79,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Children of Time by Adrian Tchaikovsky\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 1,
@@ -1245,7 +1245,7 @@
     "subtitle": "The Tactics, Routines, and Habits of Billionaires, Icons, and World-Class Performers",
     "position": 38,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Tools of Titans by Tim Ferriss\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 11,
@@ -1256,9 +1256,9 @@
     "external_link": "https://www.amazon.com/Dancing-Naked-Mind-Field-Mullis/dp/0679774009",
     "external_image_link": "https://m.media-amazon.com/images/I/51WBOlBeaML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 81,
+    "position": 48,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Dancing Naked in the Mind Field by Kary Mullis\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 13,
@@ -1269,9 +1269,9 @@
     "external_link": "https://www.amazon.com/How-to-Get-Meeting-with-Anyone-audiobook/dp/B01AKJJDL2/ref=sr_1_1?crid=EMWP0OL0QF1E",
     "external_image_link": "https://m.media-amazon.com/images/I/51zEjfy6eML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "The Untapped Selling Power of Contact Marketing",
-    "position": 78,
+    "position": 84,
     "properties": "{\"image_alt\":\"Alex Younger Readling List How to Get a Meeting with Anyone by Stu Heinecke\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 10,
@@ -1282,9 +1282,9 @@
     "external_link": "https://www.amazon.com/Indistractable-Control-Your-Attention-Choose-ebook/dp/B07PG2W6DC/ref=tmm_kin_swatch_0",
     "external_image_link": "https://m.media-amazon.com/images/I/41OWvxYMt0S._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "How to Control Your Attention and Choose Your Life",
-    "position": 77,
+    "position": 83,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Indistractable by Nir Eyal, Julie Li\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 15,
@@ -1297,7 +1297,7 @@
     "subtitle": "",
     "position": 30,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Dune Messiah by Frank Herbert\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 15,
@@ -1310,7 +1310,7 @@
     "subtitle": "",
     "position": 33,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Three Body Problem by Cixin Liu\"}",
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 4,
@@ -1323,7 +1323,7 @@
     "subtitle": null,
     "position": 20,
     "properties": null,
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 15,
@@ -1336,7 +1336,7 @@
     "subtitle": null,
     "position": 31,
     "properties": null,
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 15,
@@ -1349,7 +1349,7 @@
     "subtitle": null,
     "position": 32,
     "properties": null,
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 3,
@@ -1362,7 +1362,7 @@
     "subtitle": null,
     "position": 12,
     "properties": null,
-    "active": "1"
+    "active": true
   },
   {
     "category_id": 11,
@@ -1375,6 +1375,84 @@
     "subtitle": "Tesla, SpaceX, and the Quest for a Fantastic Future",
     "position": 11,
     "properties": null,
-    "active": "1"
+    "active": true
+  },
+  {
+    "category_id": 8,
+    "title": "Consciousness and the Brain",
+    "author": "Stanislas Dehaene",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Consciousness-Brain-Deciphering-Codes-Thoughts/dp/0143126261/ref=tmm_pap_swatch_0",
+    "external_image_link": "https://m.media-amazon.com/images/I/51SNrOZzALL._SY445_SX342_.jpg",
+    "subtitle": "Deciphering How the Brain Codes Our Thoughts",
+    "position": 71,
+    "properties": null,
+    "active": true
+  },
+  {
+    "category_id": 8,
+    "title": "The Origins of Order",
+    "author": "Stuart A. Kauffman",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Origins-Order-Self-Organization-Selection-Evolution/dp/0195079515/ref=sr_1_1",
+    "external_image_link": "https://m.media-amazon.com/images/I/61kYECvJbIL._SY466_.jpg",
+    "subtitle": "Self-Organization and Selection in Evolution",
+    "position": 73,
+    "properties": null,
+    "active": true
+  },
+  {
+    "category_id": 5,
+    "title": "The Source of Measures",
+    "author": "James Ralston Skinner",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Source-Measures-Annotated-Hebrew-Egyptian-Mystery/dp/B09MC7Q1MS/ref=sr_1_1",
+    "external_image_link": "https://m.media-amazon.com/images/I/71CxLyhxzaL._SY466_.jpg",
+    "subtitle": "Key to the Hebrew-Egyptian Mystery",
+    "position": 110,
+    "properties": null,
+    "active": true
+  },
+  {
+    "category_id": 5,
+    "title": "Timaeus and Critias",
+    "author": "Plato",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Timaeus-Critias-Penguin-Classics-Plato/dp/0140455043/ref=sr_1_2",
+    "external_image_link": "https://m.media-amazon.com/images/I/51XccUtsWUL._SY445_SX342_.jpg",
+    "subtitle": null,
+    "position": 50,
+    "properties": null,
+    "active": true
+  },
+  {
+    "category_id": 5,
+    "title": "The Epic of Gilgamesh",
+    "author": "Unknown",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Epic-Gilgamesh/dp/014044100X/ref=sr_1_1",
+    "external_image_link": "https://m.media-amazon.com/images/I/51z5G2ScUfL._SY466_.jpg",
+    "subtitle": "the Babylonian epic poem",
+    "position": 74,
+    "properties": null,
+    "active": true
+  },
+  {
+    "category_id": 9,
+    "title": "The Power of Habit",
+    "author": "Charles Duhigg",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/The-Power-of-Habit-Charles-Duhigg-audiobook/dp/B007EJSMC8/ref=sr_1_1",
+    "external_image_link": "https://m.media-amazon.com/images/I/71ReUWzM0XL._SY466_.jpg",
+    "subtitle": "Why We Do What We Do in Life and Business",
+    "position": 100,
+    "properties": null,
+    "active": true
   }
 ]
