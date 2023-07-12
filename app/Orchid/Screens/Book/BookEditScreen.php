@@ -101,7 +101,8 @@ class BookEditScreen extends Screen
                     ->title('Category')
                     ->applyScope('active')
                     ->fromModel(Category::class, 'name')
-                    ->value(Category::find($this->book->category_id)->name ?? null),
+                    ->value(Category::find($this->book->category_id)->name ?? null)
+                    ->chunk(20),
 
                 Input::make('book.position')
                     ->title('Position')
