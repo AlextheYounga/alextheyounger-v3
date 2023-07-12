@@ -4,22 +4,37 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Language;
+use App\Models\Repository;
 use App\Models\Project;
 use App\Models\Book;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+
 
 class PagesController extends Controller
 {
     public function home()
     {
-        $languages = Language::getLanguagesWithWidths();
+        $languages = Language::active()
+            ->orderBy('width', 'desc')
+            ->get();
+            
         $projects = Project::active()
             ->orderBy('position', 'asc')
             ->get();
 
+        $repoCount = Repository::all()->count();
+
+        $bytes = Language::getTotalBytes();
+        $megabytes = $bytes ? round($bytes / 1000000, 2) : 0;
+
         return Inertia::render('Home', [
             'languages' => $languages,
             'projects' => $projects,
+            'repoStats' => [
+                'count' => $repoCount,
+                'size' => $megabytes,
+            ]
         ]);
     }
 

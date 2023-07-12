@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Book;
-use App\Models\BookCategory;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
@@ -14,15 +13,15 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        BookCategory::truncate();
         Book::truncate();
 
         $booksJson = file_get_contents('storage/data/books.json');
         $books = json_decode($booksJson, true);
 
         foreach($books as $book) {
-            $new_book = Book::create([
+            Book::create([
                 'title' => $book['title'],
+                'category_id' => $book['book_category_id'],
                 'author' => $book['author'],
                 'description' => $book['description'],
                 'image_name' => $book['image_name'],
@@ -30,13 +29,9 @@ class BookSeeder extends Seeder
                 'external_image_link' => $book['external_image_link'] ?? null,
                 'subtitle' => $book['subtitle'],
                 'position' => $book['position'],
-                'properties' => [
-                    'image_alt' => $book['image_alt'],
-                ],
+                'properties' => \json_decode($book['properties'], true),
                 'active' => $book['active'] ?? true,
             ]);
-
-            $new_book->categories()->attach($book['book_category_id']);
         }
     }
 }

@@ -12,6 +12,7 @@ class Book extends Model
     use AsSource;
 
     protected $fillable = [
+        'category_id',
         'title',
         'author',
         'description',
@@ -56,15 +57,15 @@ class Book extends Model
         return $this;
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class, 'book_categories');
+        return $this->belongsTo(Category::class);
     }
 
     public function getSelectorAttribute()
     {
-        if ($this->categories) {
-            $category = $this->categories[0];
+        if ($this->category) {
+            $category = $this->category;
             return $category->selector;
         }
     }

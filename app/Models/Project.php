@@ -12,6 +12,7 @@ class Project extends Model
     use AsSource;
 
     protected $fillable = [
+        'category_id',
         'title',
         'description',
         'image_name',
@@ -29,6 +30,11 @@ class Project extends Model
         'properties' => 'json',
         'techstack' => 'array',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function reorderPositions()
     {
