@@ -40,8 +40,8 @@
     "html_selector": "productivity"
   },
   {
-    "name": "Autobiography",
-    "html_selector": "autobio"
+    "name": "Biography",
+    "html_selector": "bio"
   },
   {
     "name": "Politics",

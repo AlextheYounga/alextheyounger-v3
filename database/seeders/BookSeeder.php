@@ -21,7 +21,7 @@ class BookSeeder extends Seeder
         foreach($books as $book) {
             Book::create([
                 'title' => $book['title'],
-                'category_id' => $book['book_category_id'],
+                'category_id' => $book['category_id'],
                 'author' => $book['author'],
                 'description' => $book['description'],
                 'image_name' => $book['image_name'],
