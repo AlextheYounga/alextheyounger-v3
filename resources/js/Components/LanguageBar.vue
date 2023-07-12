@@ -32,7 +32,7 @@
         <div class="mt-6">
             <div class="stats mb-4 text-sm">
                 <p>Projects Scanned: <span class="text-burgandy font-semibold">{{ repoStats.count }}</span></p>
-                <p>Code Scanned: <span class="text-burgandy font-semibold">{{ repoStats.size }}MB</span></p>
+                <p>Projects Total Size: <span class="text-burgandy font-semibold">{{ repoStats.size }}GB</span></p>
             </div>
             <small class="italic">
                 These stats are not arbitrary. They're calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and represent real bytes of code.

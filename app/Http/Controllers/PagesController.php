@@ -25,15 +25,15 @@ class PagesController extends Controller
 
         $repoCount = Repository::all()->count();
 
-        $bytes = Language::getTotalBytes();
-        $megabytes = $bytes ? round($bytes / 1000000, 2) : 0;
+        $bytes = Repository::getTotalSize();
+        $gigabytes = $bytes ? round($bytes / 1000000000, 2) : 0;
 
         return Inertia::render('Home', [
             'languages' => $languages,
             'projects' => $projects,
             'repoStats' => [
                 'count' => $repoCount,
-                'size' => $megabytes,
+                'size' => $gigabytes,
             ]
         ]);
     }

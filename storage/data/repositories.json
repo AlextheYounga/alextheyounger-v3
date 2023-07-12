@@ -2,6 +2,7 @@
     {
         "name": "observer_pattern",
         "host": "local",
+        "size": 184000,
         "languages": {
             "Python": 689,
             "JavaScript": 596
@@ -22,6 +23,7 @@
     {
         "name": "plunge_alert_bot",
         "host": "local",
+        "size": 220000,
         "languages": {
             "Python": 8517
         },
@@ -37,6 +39,7 @@
     {
         "name": "fractalgeometrycalculator",
         "host": "local",
+        "size": 334000000,
         "languages": {
             "Python": 28438
         },
@@ -52,6 +55,7 @@
     {
         "name": "stopaganda",
         "host": "local",
+        "size": 682000000,
         "languages": {
             "Python": 22539
         },
@@ -67,6 +71,7 @@
     {
         "name": "fintwit_bot",
         "host": "local",
+        "size": 340000,
         "languages": {
             "Python": 22120
         },
@@ -82,6 +87,7 @@
     {
         "name": "nbdev-test",
         "host": "local",
+        "size": 464000,
         "languages": {
             "Python": 3085,
             "Notebook": 2769,
@@ -107,6 +113,7 @@
     {
         "name": "tweet-language-model",
         "host": "local",
+        "size": 152000,
         "languages": {
             "Python": 15042
         },
@@ -122,6 +129,7 @@
     {
         "name": "tax_lab",
         "host": "local",
+        "size": 33000000,
         "languages": {
             "Notebook": 7225,
             "Python": 2736
@@ -142,6 +150,7 @@
     {
         "name": "misc_py_scripts",
         "host": "local",
+        "size": 176000,
         "languages": {
             "Python": 5321
         },
@@ -157,6 +166,7 @@
     {
         "name": "amasswealth",
         "host": "local",
+        "size": 383000000,
         "languages": {
             "HTML": 174521,
             "Python": 57551
@@ -177,6 +187,7 @@
     {
         "name": "word-frequency-calculator",
         "host": "local",
+        "size": 744000,
         "languages": {
             "Python": 5202
         },
@@ -192,6 +203,7 @@
     {
         "name": "climate-data-lab",
         "host": "local",
+        "size": 444000,
         "languages": {
             "Python": 46427
         },
@@ -207,6 +219,7 @@
     {
         "name": "quant_bot",
         "host": "local",
+        "size": 248000,
         "languages": {
             "Python": 13672
         },
@@ -222,6 +235,7 @@
     {
         "name": "tello-controller",
         "host": "local",
+        "size": 133000000,
         "languages": {
             "Python": 3446
         },
@@ -237,6 +251,7 @@
     {
         "name": "roboccountant",
         "host": "local",
+        "size": 192000,
         "languages": {
             "Python": 5405
         },
@@ -252,6 +267,7 @@
     {
         "name": "universal-scraper",
         "host": "local",
+        "size": 563000000,
         "languages": {
             "Python": 45634
         },
@@ -267,6 +283,7 @@
     {
         "name": "vix-vol-calculator",
         "host": "local",
+        "size": 197000000,
         "languages": {
             "Python": 26914
         },
@@ -282,6 +299,7 @@
     {
         "name": "lexicon",
         "host": "local",
+        "size": 152000,
         "languages": {
             "Python": 6974
         },
@@ -297,6 +315,7 @@
     {
         "name": "fractalmarketslab",
         "host": "local",
+        "size": 1000000000,
         "languages": {
             "Python": 214407
         },
@@ -312,6 +331,7 @@
     {
         "name": "budget_database",
         "host": "local",
+        "size": 748000,
         "languages": {
             "Python": 8732
         },
@@ -327,6 +347,7 @@
     {
         "name": "hazlitt-data",
         "host": "local",
+        "size": 494000000,
         "languages": {
             "CSS": 4233565,
             "Python": 352681,
@@ -362,6 +383,7 @@
     {
         "name": "job-boards-scraper",
         "host": "local",
+        "size": 1000000000,
         "languages": {
             "Python": 22398
         },
@@ -377,6 +399,7 @@
     {
         "name": "vultron-js",
         "host": "local",
+        "size": 1000000000,
         "languages": {
             "Vue": 38045,
             "JavaScript": 35576,
@@ -407,6 +430,7 @@
     {
         "name": "lucriv-api",
         "host": "local",
+        "size": 183000000,
         "languages": {
             "JavaScript": 2279791,
             "PHP": 134802,
@@ -442,6 +466,7 @@
     {
         "name": "lucriv-js",
         "host": "local",
+        "size": 1000000000,
         "languages": {
             "Vue": 118679,
             "JavaScript": 41594,
@@ -472,6 +497,7 @@
     {
         "name": "cloudfunctions",
         "host": "local",
+        "size": 332000000,
         "languages": {
             "TypeScript": 55391,
             "JavaScript": 8321
@@ -492,6 +518,7 @@
     {
         "name": "learnroi-website",
         "host": "local",
+        "size": 52000000,
         "languages": {
             "JavaScript": 383524,
             "CSS": 4482,
@@ -522,6 +549,7 @@
     {
         "name": "learnroi-app",
         "host": "local",
+        "size": 3000000,
         "languages": {
             "JavaScript": 238468,
             "CSS": 3447,
@@ -552,6 +580,7 @@
     {
         "name": "next-learnarena",
         "host": "local",
+        "size": 2000000000,
         "languages": {
             "TypeScript": 593099,
             "JavaScript": 5485,
@@ -587,6 +616,7 @@
     {
         "name": "db-migrate",
         "host": "local",
+        "size": 919000000,
         "languages": {
             "JavaScript": 85398,
             "Shell": 2080
@@ -607,6 +637,7 @@
     {
         "name": "rust-playground",
         "host": "local",
+        "size": 2000000,
         "languages": {
             "Rust": 1673
         },
@@ -622,6 +653,7 @@
     {
         "name": "rust-game-of-life",
         "host": "local",
+        "size": 158000000,
         "languages": {
             "Rust": 1067
         },
@@ -637,6 +669,7 @@
     {
         "name": "gpt-conversations",
         "host": "local",
+        "size": 277000000,
         "languages": {
             "PHP": 172723,
             "Vue": 97820,
@@ -672,6 +705,7 @@
     {
         "name": "helicopter-weights-balance-calculator",
         "host": "local",
+        "size": 160000,
         "languages": {
             "JavaScript": 9240
         },
@@ -687,6 +721,7 @@
     {
         "name": "next-playground",
         "host": "local",
+        "size": 215000000,
         "languages": {
             "TypeScript": 2782,
             "CSS": 2272,
@@ -712,6 +747,7 @@
     {
         "name": "frontend-experiments",
         "host": "local",
+        "size": 632000,
         "languages": {
             "JavaScript": 27880,
             "HTML": 12002,
@@ -737,6 +773,7 @@
     {
         "name": "gitignore-it",
         "host": "local",
+        "size": 1000000,
         "languages": {
             "JavaScript": 2715
         },
@@ -752,6 +789,7 @@
     {
         "name": "insanity-chrome-extension",
         "host": "local",
+        "size": 168000,
         "languages": {
             "JavaScript": 5609,
             "HTML": 4030
@@ -772,6 +810,7 @@
     {
         "name": "lc3-c-vm",
         "host": "local",
+        "size": 156000,
         "languages": {
             "C": 11139
         },
@@ -787,6 +826,7 @@
     {
         "name": "misc-php-scripts",
         "host": "local",
+        "size": 780000,
         "languages": {
             "PHP": 81499,
             "Blade": 2953
@@ -807,9 +847,10 @@
     {
         "name": "alextheyounger-v3",
         "host": "local",
+        "size": 233000000,
         "languages": {
-            "PHP": 252695,
-            "Vue": 94314,
+            "PHP": 249395,
+            "Vue": 94344,
             "Blade": 30258,
             "JavaScript": 2902,
             "CSS": 59
@@ -817,19 +858,19 @@
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 66.46,
-                    "bytes": 252695
+                    "percentage": 66.16,
+                    "bytes": 249395
                 },
                 "Vue": {
-                    "percentage": 24.8,
-                    "bytes": 94314
+                    "percentage": 25.03,
+                    "bytes": 94344
                 },
                 "Blade": {
-                    "percentage": 7.96,
+                    "percentage": 8.03,
                     "bytes": 30258
                 },
                 "JavaScript": {
-                    "percentage": 0.76,
+                    "percentage": 0.77,
                     "bytes": 2902
                 },
                 "CSS": {
@@ -842,6 +883,7 @@
     {
         "name": "lucriv",
         "host": "local",
+        "size": 582000000,
         "languages": {
             "PHP": 173165,
             "Vue": 108959,
@@ -867,6 +909,7 @@
     {
         "name": "robo-accountant",
         "host": "local",
+        "size": 314000000,
         "languages": {
             "PHP": 138480,
             "Blade": 14878,
@@ -892,6 +935,7 @@
     {
         "name": "purposal-app",
         "host": "local",
+        "size": 1000000000,
         "languages": {
             "HTML": 436756,
             "PHP": 248494,
@@ -922,6 +966,7 @@
     {
         "name": "graph-my-wallet",
         "host": "local",
+        "size": 221000000,
         "languages": {
             "PHP": 139048,
             "Blade": 15151
@@ -942,6 +987,7 @@
     {
         "name": "hazlitt-data",
         "host": "local",
+        "size": 15000000,
         "languages": {
             "PHP": 144902,
             "Blade": 7944,
@@ -967,6 +1013,7 @@
     {
         "name": "wanderers-workplace",
         "host": "local",
+        "size": 159000000,
         "languages": {
             "PHP": 125053,
             "Vue": 80549,
@@ -1002,6 +1049,7 @@
     {
         "name": "commands-library",
         "host": "local",
+        "size": 135000000,
         "languages": {
             "Ruby": 30238,
             "HTML": 17627,
@@ -1037,6 +1085,7 @@
     {
         "name": "oneclip-api",
         "host": "local",
+        "size": 1000000,
         "languages": {
             "Ruby": 31747,
             "HTML": 5718,
@@ -1067,6 +1116,7 @@
     {
         "name": "marketplacer_store",
         "host": "local",
+        "size": 21000000,
         "languages": {
             "Ruby": 33375,
             "HTML": 21574,
@@ -1102,6 +1152,7 @@
     {
         "name": "image-factory",
         "host": "local",
+        "size": 512000,
         "languages": {
             "Ruby": 23849
         },
@@ -1117,6 +1168,7 @@
     {
         "name": "graphqi-playground",
         "host": "local",
+        "size": 620000,
         "languages": {
             "Ruby": 35213,
             "HTML": 5653,
@@ -1147,6 +1199,7 @@
     {
         "name": "deep-work-planner",
         "host": "local",
+        "size": 170000000,
         "languages": {
             "Ruby": 29449,
             "HTML": 23196,
@@ -1182,6 +1235,7 @@
     {
         "name": "alextheyounger-v2",
         "host": "local",
+        "size": 583000000,
         "languages": {
             "Ruby": 92927,
             "JavaScript": 78691,
@@ -1217,6 +1271,7 @@
     {
         "name": "misc-scripts",
         "host": "local",
+        "size": 72000000,
         "languages": {
             "Ruby": 46081,
             "HTML": 5629,
@@ -1247,6 +1302,7 @@
     {
         "name": "randombullishsentiment",
         "host": "local",
+        "size": 130000000,
         "languages": {
             "Ruby": 21116,
             "JavaScript": 11850,
@@ -1282,6 +1338,7 @@
     {
         "name": "alpha-blog",
         "host": "local",
+        "size": 28000000,
         "languages": {
             "HTML": 77351,
             "JavaScript": 38200,
@@ -1317,6 +1374,7 @@
     {
         "name": "smartereverypage",
         "host": "local",
+        "size": 39000000,
         "languages": {
             "HTML": 97648,
             "Ruby": 35004,
@@ -1347,6 +1405,7 @@
     {
         "name": "markets-research-factory",
         "host": "local",
+        "size": 121000000,
         "languages": {
             "Ruby": 62820,
             "HTML": 9480,
@@ -1377,6 +1436,7 @@
     {
         "name": "github_language_statistics",
         "host": "local",
+        "size": 180000,
         "languages": {
             "Ruby": 5598,
             "JavaScript": 2407,

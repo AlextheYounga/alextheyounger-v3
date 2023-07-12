@@ -11,7 +11,7 @@ class GithubLinguistService
     public function __construct($directoriesList = null)
     {
         // Requires directories to be scanned first. Run app:scan-repos first.
-        $this->directories = $directoriesList ?? 'storage/app/directories.json';
+        $this->directories = $directoriesList ?? json_decode(file_get_contents('storage/app/directories.json'), true);
     }
 
     public function runLinguist()
@@ -20,24 +20,27 @@ class GithubLinguistService
         $statistics = [];
 
         foreach($this->directories as $dir) {
-            $output = [];
-            $command = 'github-linguist ' . $dir;
-            exec($command, $output);
+
+            print('Scanning ' . $dir . "...\n");
+
+            $data = $this->getLinguistStatistics($dir);
+            $size = $this->getDirectorySize($dir);
 
             $pathParts = explode('/', $dir);
             $name = end($pathParts);
 
-            if (empty($output) || str_contains($output[0], "invalid revision 'HEAD'")) {
+            if (empty($data) || str_contains($data[0], "invalid revision 'HEAD'")) {
                 print('Failed to parse ' . $dir . "...\n");
                 continue;
             }
-            
-            $parsedStatistics = $this->parseStatistics($output);
+
+            $parsedStatistics = $this->parseStatistics($data);
             $standardizedStatistics = $this->languageBytes($parsedStatistics);
 
             $repository = [
                 'name' => $name,
                 'host' => 'local',
+                'size' => $size,
                 'languages' => $standardizedStatistics,
                 'properties' => [
                     'languageStatistics' => $parsedStatistics
@@ -68,11 +71,48 @@ class GithubLinguistService
         return $statistics;
     }
 
-    private function parseStatistics($output)
+    private function getLinguistStatistics($dir)
+    {
+        $data = [];
+
+        // Run Linguist command
+        $command = 'github-linguist ' . $dir;
+        exec($command, $data);
+
+        return $data;
+    }
+
+    private function getDirectorySize($dir)
+    {
+        $conversions = [
+            'K' => 1000,
+            'M' => 1000000,
+            'G' => 1000000000,
+        ];
+
+        $size = [];
+
+        // Run size command
+        $command = 'du -sh ' . $dir;
+        exec($command, $size);
+
+        if (!empty($size)) {
+            $size = explode("\t", $size[0])[0];
+            $byteMeasure = $size[-1];
+            
+            $size = (int) $size * $conversions[$byteMeasure];
+
+            return $size;
+        }
+        
+        return null;
+    }
+
+    private function parseStatistics($data)
     {
         $parsedStatistics = [];
 
-        foreach($output as $item) {
+        foreach($data as $item) {
             $unfilteredParts = explode(' ', $item);
             $parts = array_values(array_filter($unfilteredParts, function ($value) {
                 return $value !== '';

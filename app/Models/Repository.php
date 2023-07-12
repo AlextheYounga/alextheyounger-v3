@@ -24,6 +24,11 @@ class Repository extends Model
         'properties' => 'json'
     ];
 
+    public static function getTotalSize()
+    {
+        return Repository::sum('size');
+    }
+
     public function scopeActive()
     {
         return $this->where('active', true);

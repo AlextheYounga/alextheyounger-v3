@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->string('path')->nullable();
             $table->string('host')->nullable();
+            $table->float('size')->nullable();
             $table->json('languages')->nullable();
             $table->json('properties')->nullable();
             $table->string('visibility')->nullable();
