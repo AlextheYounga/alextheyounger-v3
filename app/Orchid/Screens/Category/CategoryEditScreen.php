@@ -111,8 +111,10 @@ class CategoryEditScreen extends Screen
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function createOrUpdate(Category $category, Request $request)
+    public function createOrUpdate(Request $request)
     {
+        $category = Category::where('name', $request->get('category')['name'])->first() ?? new Category();
+
         $fields = $request->get('category');
 
         $fields['properties'] = json_decode($fields['properties']);

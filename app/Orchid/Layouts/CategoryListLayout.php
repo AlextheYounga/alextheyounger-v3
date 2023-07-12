@@ -34,7 +34,7 @@ class CategoryListLayout extends Table
             TD::make('updated_at', 'Last edit')
                 ->render(fn (Category $category) => $this->formatDate($category->updated_at)),
             TD::make('active', 'Active')
-                ->render(fn (Category $category) => (boolean) $category->active ? 'True' : 'False'),
+                ->render(fn (Category $category) => (boolean) $category->active ? 'active' : 'inactive'),
         ];
     }
 

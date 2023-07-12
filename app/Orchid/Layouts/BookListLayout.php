@@ -50,7 +50,7 @@ class BookListLayout extends Table
             TD::make('updated_at', 'Last edit')
                 ->render(fn (Book $book) => $this->formatDate($book->updated_at)),
             TD::make('active', 'Active')
-                ->render(fn (Book $book) => (boolean) $book->active ? 'True' : 'False'),
+                ->render(fn (Book $book) => (boolean) $book->active ? 'active' : 'inactive'),
         ];
     }
 

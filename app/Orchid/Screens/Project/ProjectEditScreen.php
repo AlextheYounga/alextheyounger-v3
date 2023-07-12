@@ -86,15 +86,17 @@ class ProjectEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('project.position')
-                    ->title('Position')
-                    ->type('number')
-                    ->help('Where in the list should this project sit; 1 is the top.'),
+
 
                 Input::make('project.title')
                     ->title('Title')
                     ->placeholder('Attractive but mysterious title')
                     ->help('Specify a short descriptive title for this project.'),
+                
+                Input::make('project.position')
+                    ->title('Position')
+                    ->type('number')
+                    ->help('Where in the list should this project sit; 1 is the top.'),
 
                 Input::make('project.external_link')
                     ->title('External Link')
@@ -135,6 +137,7 @@ class ProjectEditScreen extends Screen
 
                 Switcher::make('project.active')
                     ->sendTrueOrFalse()
+                    ->value($this->project->active ?? true)
                     ->title('Active')
             ])
         ];
@@ -146,8 +149,10 @@ class ProjectEditScreen extends Screen
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function createOrUpdate(Project $project, Request $request)
+    public function createOrUpdate(Request $request)
     {
+        $project = Project::where('title', $request->get('project')['title'])->first() ?? new Project();
+
         $fields = $request->get('project');
 
         $fields['techstack'] = json_decode($fields['techstack']);

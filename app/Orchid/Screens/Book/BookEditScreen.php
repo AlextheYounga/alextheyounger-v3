@@ -7,11 +7,13 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Code;
 use Orchid\Screen\Fields\Switcher;
+use Orchid\Screen\Fields\Relation;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use App\Models\Book;
+use App\Models\Category;
 
 class BookEditScreen extends Screen
 {
@@ -60,8 +62,8 @@ class BookEditScreen extends Screen
     {
         return [
             Button::make('Create book')
-                ->icon('pencil')
                 ->method('createOrUpdate')
+                ->icon('pencil')
                 ->canSee(!$this->book->exists),
 
             Button::make('Update')
@@ -85,11 +87,6 @@ class BookEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('book.position')
-                    ->title('Position')
-                    ->type('number')
-                    ->help('Where in the list should this book sit; 1 is the top.'),
-
                 Input::make('book.title')
                     ->title('Title')
                     ->placeholder('Attractive but mysterious title')
@@ -99,6 +96,17 @@ class BookEditScreen extends Screen
                     ->title('Subtitle')
                     ->placeholder('Attractive but mysterious subtitle')
                     ->help('Specify a short descriptive title for this book.'),
+
+                Relation::make('book.category_id')
+                    ->title('Category')
+                    ->applyScope('active')
+                    ->fromModel(Category::class, 'name')
+                    ->value(Category::find($this->book->category_id)->name ?? null),
+
+                Input::make('book.position')
+                    ->title('Position')
+                    ->type('number')
+                    ->help('Where in the list should this book sit; 1 is the top.'),
 
                 Input::make('book.external_link')
                     ->title('External Link')
@@ -129,6 +137,7 @@ class BookEditScreen extends Screen
 
                 Switcher::make('book.active')
                     ->sendTrueOrFalse()
+                    ->value($this->book->active ?? true)
                     ->title('Active')
             ])
         ];
@@ -140,8 +149,10 @@ class BookEditScreen extends Screen
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function createOrUpdate(Book $book, Request $request)
+    public function createOrUpdate(Request $request)
     {
+        $book = Book::where('title', $request->get('book')['title'])->first() ?? new Book();
+        
         $fields = $request->get('book');
 
         $fields['properties'] = json_decode($fields['properties']);
@@ -151,7 +162,7 @@ class BookEditScreen extends Screen
             ->save();
 
         Alert::info('You have successfully created a book.');
-
+        
         return redirect()->route('platform.book.list');
     }
 

@@ -40,7 +40,7 @@ class ProjectListLayout extends Table
                         ]);
                 }),
             TD::make('active', 'Active')
-                ->render(fn (Project $project) => (boolean) $project->active ? 'True' : 'False'),
+                ->render(fn (Project $project) => (boolean) $project->active ? 'active' : 'inactive'),
             TD::make('title', 'Title')
                 ->render(function (Project $project) {
                     return Link::make($project->title)
