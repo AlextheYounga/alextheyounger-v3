@@ -65,5 +65,8 @@
     "Visual Basic .NET": "#a791b4",
     ".NET": "#a791b4",
     "NET": "#a791b4",
-    "NextJS": "#000"
+    "NextJS": "#000",
+    "Jupyter Notebook": "#DA5B0B",
+    "Notebook": "#DA5B0B",
+    "ASP.NET": "#178600"
 }

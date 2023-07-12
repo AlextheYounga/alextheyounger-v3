@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Http\Services\GithubLinguistService;
 use Illuminate\Support\Facades\App;
 use Database\Seeders\RepositorySeeder;
+use Database\Seeders\LanguageSeeder;
 use App\Models\Language;
 
 class RunGithubLinguist extends Command
@@ -34,8 +35,8 @@ class RunGithubLinguist extends Command
             $linguist->runLinguist();
 
             $this->call(RepositorySeeder::class);
-            
-            Language::calculateLanguageStatistics();
+            $this->call(LanguageSeeder::class);
+
         } else {
             $this->error('This command only runs in local environments');
         }

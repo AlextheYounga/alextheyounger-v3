@@ -1,0 +1,30 @@
+# Accounting for repos I can't legally keep on my computer.
+additions:
+  Ruby: 4204694
+  PHP: 3000000
+  JavaScript: 611638
+
+# Arbitrary adjustments to better represent the realities of framework generated code. 
+# (Lower number means subtracting more, i.e. 0.4 = keep 40% of total code)
+subtractions:
+  Ruby: 0.6 # Rails generates a lot of Ruby code.
+  PHP: 0.6 # Laravel generates a lot of PHP code.
+  JavaScript: 0.4 # Every framework contains generated JavaScript code.
+  HTML: 0.2 # Many frameworks contain generated HTML code.
+  Vue: 0.7 # Inertia and Breeze generate some Vue code.
+
+# Arbitrary suppressions to certain repos.
+# Will suppress by whatever value you pass into suppressBy.
+# If a Django project has 4259089 bytes of CSS code, but only 364 bytes are yours: 364 / 4259089 = 0.000085
+repo-specific:
+  hazlitt-data:
+    language: "CSS"
+    suppressBy: 0.000085
+
+# Global ignore
+ignore: [
+  'Markdown', 
+  'ASP.NET',
+  'Perl',
+  'Shell'
+]

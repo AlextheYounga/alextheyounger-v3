@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('language');
             $table->float('value');
+            $table->float('display_value');
+            $table->float('width')->nullable();
+            $table->string('color');
+            $table->boolean('active')->default(true);
+            $table->json('properties')->nullable();
             $table->timestamps();
         });
     }

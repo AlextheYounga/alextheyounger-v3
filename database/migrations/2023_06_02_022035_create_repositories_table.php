@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('repositories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('url')->nullable();
             $table->string('path')->nullable();
             $table->string('host')->nullable();
             $table->json('languages')->nullable();

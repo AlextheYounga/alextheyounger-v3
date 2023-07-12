@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BookSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(RepositorySeeder::class);
+        $this->call(LanguageSeeder::class);
     }
 }
