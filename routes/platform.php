@@ -22,6 +22,8 @@ use App\Orchid\Screens\Project\ProjectEditScreen;
 use App\Orchid\Screens\Project\ProjectListScreen;
 use App\Orchid\Screens\Category\CategoryEditScreen;
 use App\Orchid\Screens\Category\CategoryListScreen;
+use App\Orchid\Screens\PageContent\PageContentEditScreen;
+use App\Orchid\Screens\PageContent\PageContentListScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -39,6 +41,13 @@ use Tabuna\Breadcrumbs\Trail;
 // Main
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
+
+// Page Content
+Route::screen('content/{id}', PageContentEditScreen::class)
+->name('platform.content.edit');
+
+Route::screen('contents', PageContentListScreen::class)
+->name('platform.content.list');
 
 // Categories
 Route::screen('category/{category?}', CategoryEditScreen::class)
