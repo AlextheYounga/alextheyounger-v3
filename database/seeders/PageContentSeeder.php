@@ -28,6 +28,23 @@ class PageContentSeeder extends Seeder
         \App\Models\PageContent::create($homeTitle);
         //------------- End Home Title
 
+        /**
+        * Home Bio
+        */
+        $bio = [
+            'view' => 'Home',
+            'name' => 'Home Bio',
+            'key' => 'bio',
+            'html_id' => 'home-bio',
+        ];
+
+        $bio['content'] = <<<HTML
+<h2 class="mb-3 text-3xl text-gray-700">Bio</h2>
+<p class="py-2 text-gray-700">I am a professional software engineer writing in multiple languages, doing web development, drone programming, and AI. I love freedom, adrenaline, and working to improve the world any way I can.</p>
+HTML;
+
+        \App\Models\PageContent::create($bio);
+        //------------- End Home Bio
 
         /**
         * Home Quote
@@ -46,7 +63,7 @@ class PageContentSeeder extends Seeder
 HTML;
 
         \App\Models\PageContent::create($homeQuote);
-        //------------- End Home Title
+        //------------- End Home Quote
 
 
         /**

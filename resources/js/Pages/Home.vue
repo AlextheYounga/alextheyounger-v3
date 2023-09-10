@@ -20,6 +20,9 @@
             </div>
         </section>
 
+        <!-- Bio -->
+        <section id="home-bio" class="relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded"></section>
+
         <!-- Quote Box -->
         <section class="home-quote relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
             <div class="image-quote sm:flex justify-between">
@@ -114,13 +117,12 @@ const props = defineProps({
 
 // Content
 onMounted(() => {
-    const homeTagline = props.content.homeTagline
-    const homeQuote = props.content.quote
-    const aboutDescription = props.content.aboutDescription
-
-    document.getElementById(homeTagline.html_id).innerHTML = homeTagline.content
-    document.getElementById(homeQuote.html_id).innerHTML = homeQuote.content
-    document.getElementById(aboutDescription.html_id).innerHTML = aboutDescription.content
+    for (const key in props.content) {
+        const contentItem = props.content[key]
+        if (contentItem && contentItem.html_id) {
+            document.getElementById(contentItem.html_id).innerHTML = contentItem.content
+        }
+    }
 });
 
 
