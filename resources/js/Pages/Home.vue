@@ -25,12 +25,7 @@
             <div class="image-quote sm:flex justify-between">
                 <img src="/images/frozen-lake.jpg.webp" class="border-burgandy border-2 flex mx-auto relative text-center w-full"
                     alt="alex younger developer marketing about me" />
-                <div class="text-gray-700 text-sm w-full mt-4 sm:mt-0 sm:text-right sm:ml-auto sm:pt-16 sm:w-2/3 pt-2">
-                    <p class="italic text-md">"The man who grasps principles can successfully handle his own
-                        methods. The man who tries methods, ignoring principles is sure to have trouble"
-                    </p>
-                    <p class="italic pt-4"> -Ralph Waldo Emerson</p>
-                </div>
+                <div id="home-quote" class="text-gray-700 w-full mt-4 sm:mt-0 sm:text-right sm:ml-auto sm:pt-16 sm:w-2/3 pt-2"></div>
             </div>
             <div class="flex justify-between mx-auto text-center w-full sm:w-5/6 py-8">
                 <a v-for="link in links" :href="link.url" target="_blank" class="w-8 sm:w-12 no-underline burgandy text-gray-600">
@@ -120,9 +115,11 @@ const props = defineProps({
 // Content
 onMounted(() => {
     const homeTagline = props.content.homeTagline
+    const homeQuote = props.content.quote
     const aboutDescription = props.content.aboutDescription
 
     document.getElementById(homeTagline.html_id).innerHTML = homeTagline.content
+    document.getElementById(homeQuote.html_id).innerHTML = homeQuote.content
     document.getElementById(aboutDescription.html_id).innerHTML = aboutDescription.content
 });
 

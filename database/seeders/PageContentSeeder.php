@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PageContentSeeder extends Seeder
@@ -15,7 +14,9 @@ class PageContentSeeder extends Seeder
 
         \App\Models\PageContent::truncate();
 
-        // Home
+        /**
+        * Home
+        */
         $homeTitle = [
             'view' => 'Home',
             'name' => 'Home Tagline',
@@ -28,7 +29,29 @@ class PageContentSeeder extends Seeder
         //------------- End Home Title
 
 
+        /**
+        * Home Quote
+        */
+        $homeQuote = [
+            'view' => 'Home',
+            'name' => 'Home Quote',
+            'key' => 'quote',
+            'html_id' => 'home-quote',
+            'content' => 'Software Engineer, Data Scientist, Entrepreneur'
+        ];
 
+        $homeQuote['content'] = <<<HTML
+<p class="italic text-md">"The man who grasps principles can successfully handle his own methods. The man who tries methods, ignoring principles is sure to have trouble"</p>
+<p class="italic pt-4"> -Ralph Waldo Emerson</p>
+HTML;
+
+        \App\Models\PageContent::create($homeQuote);
+        //------------- End Home Title
+
+
+        /**
+        * About Description
+        */
         $aboutDescription = [
             'view' => 'Home',
             'name' => 'About Description',
@@ -62,20 +85,43 @@ HTML;
         //--------- End About Description
 
 
-        // Language Description
-        $languageDescription = [
+        /**
+        * Language Bar
+        */
+        $languageBar = [
             'view' => 'LanguageBar',
             'name' => 'Language Description',
             'key' => 'languageDescription',
             'html_id' => 'language-description',
         ];
 
-        $languageDescription['content'] = <<<HTML
+        $languageBar['content'] = <<<HTML
 <p class="text-sm italic pb-1">These statistics are not random. They were calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately represent the number of bytes of code.</p>
 <p class="text-sm italic">You can see how I did this <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php">here</a>. You can even see the list of <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repositories</a> I scanned from my machine to generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga">Github</a>.</p>
 HTML;
 
-        \App\Models\PageContent::create($languageDescription);
+        \App\Models\PageContent::create($languageBar);
+        // --------- End Language Description
+
+
+
+        /**
+        * Footer
+        */
+        $footer = [
+            'view' => 'Footer',
+            'name' => 'Footer Description',
+            'key' => 'footer',
+            'html_id' => 'footer-description',
+        ];
+
+        $footer['content'] = <<<HTML
+<p class="block normal-font text-center text-sm">Not a fan of copyright, take whatever you want. Here's the <a class="text-burgandy" href="https://github.com/AlextheYounga/alextheyounger-v3">repo</a> for this site. <a href="https://alextheyounger.me" class="text-burgandy">alextheyounger.me</a> by Alex Younger.</p>
+<p class="block normal-font text-center text-sm mt-2">This site was built with PHP Laravel with Orchid, InertiaJS, Vue3, and TailwindCSS.</p>
+HTML;
+        \App\Models\PageContent::create($footer);
+
+        // --------- End Footer
 
     }
 }
