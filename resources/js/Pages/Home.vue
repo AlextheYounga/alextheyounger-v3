@@ -9,15 +9,14 @@
 
         <section class="title mb-8 bg-neutral-50 shadow rounded relative">
             <h1 class="text-5xl text-gray-700 text-center">Alex Younger</h1>
-            <p class="py-2 text-gray-700 text-center text-lg">Software Engineer, Data Scientist,
-                Entrepreneur</p>
+            <p id="tagline" class="py-2 text-gray-700 text-center text-lg"></p>
         </section>
 
         <!-- Skills -->
         <section class="bg-neutral-50 my-8 p-2 py-8 shadow relative rounded z-10 text-gray-700">
             <div class="language-stats">
                 <h2 class="mb-3 text-3xl text-gray-700 sm:px-8">Skills</h2>
-                <LanguageBar :languages="languages" :repoStats=repoStats />
+                <LanguageBar />
             </div>
         </section>
 
@@ -49,44 +48,7 @@
         </section>
 
         <!-- Description -->
-        <section class="home-description relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
-            <h2 class="mb-3 text-3xl text-gray-700">About Me</h2>
-            <div class="description leading-normal ml-auto">
-                <p class="py-2 text-gray-700">I recently left <a class="text-burgandy hover:text-red-600 font-semibold" target="_blank"
-                        href="https://marketplacer.com/">Marketplacer</a>, which allows enterprises
-                    to manage a fleet of eCommerce websites from a unified dashboard, incorporating major platforms like Shopify, Adobe Commerce,
-                    Salesforce, and BigCommerce. Here I built critical Shopify and Adobe Commerce connectors, enabling seamless data flow through an
-                    extensive Rails API system.
-                </p>
-
-                <p class="py-2 text-gray-700">I've built and maintained websites for an extensive list of small and large companies including
-                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.bluehawaiian.com/en" target="_blank">Blue Hawaiian
-                        Helicopters</a>,
-                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.intelligentoffice.com/" target="_blank">Intelligent
-                        Office</a>, and
-                    <a class="text-burgandy hover:text-red-600 font-semibold" href="https://www.rugdoctor.com/" target="_blank">Rugdoctor</a>.
-                </p>
-
-                <p class="py-2 text-gray-700">I'm the Software Architect as well as a consultant at the startup <a
-                        class="text-burgandy hover:text-red-600 font-semibold" href="https://www.learnarena.com/" target="_blank">Learn Arena</a>.
-                    As a founding developer for Learn Arena, a groundbreaking competitive learning platform, I spearheaded its transformation from a
-                    hobbyist React and Firebase app to a scalable NextJS application. Learn Arena is the first-of-its-kind competitive learning platform,
-                    where students with the greatest academic achievement have the potential to win back the costs of the course, or even make a profit.
-                </p>
-
-                <p class="py-2 text-gray-700">I recently launched a unique application that enables LLM models to autonomously interact, simulating
-                    intriguing AI-generated conversations. called <a class="text-burgandy hover:text-red-600 font-semibold"
-                        href="https://www.gptconversations.app/" target="_blank">
-                        GPT Conversations</a>. Currently it's set up to continuously talk to itself on "phenomena lacking clear explanations but solvable
-                    using all human knowledge."
-                </p>
-                <p class="py-2 text-gray-700">Check out my latest
-                    <Link class="text-burgandy hover:text-red-600 font-semibold" :href="route('pages.projects')">projects</Link>
-                </p>
-                <p>Or my <a class="text-burgandy hover:text-red-600 font-semibold"
-                        href="https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing" target="_blank">Resume</a>.</p>
-            </div>
-        </section>
+        <section id="home-description" class="relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded"></section>
 
         <!-- Projects List -->
         <section class="projects-home sm:p-8 relative mb-8 bg-neutral-50 rounded">
@@ -144,8 +106,8 @@ import { terrainLoaded } from '@/Components/Terrain.vue';
 import { onMounted } from 'vue';
 import { getCurrentInstance } from 'vue';
 
-defineProps({
-    languages: {
+const props = defineProps({
+    content: {
         type: Object,
         required: true,
     },
@@ -153,11 +115,17 @@ defineProps({
         type: Object,
         required: true,
     },
-    repoStats: {
-        type: Object,
-        required: true,
-    },
 });
+
+// Content
+onMounted(() => {
+    const homeTagline = props.content.homeTagline
+    const aboutDescription = props.content.aboutDescription
+
+    document.getElementById(homeTagline.html_id).innerHTML = homeTagline.content
+    document.getElementById(aboutDescription.html_id).innerHTML = aboutDescription.content
+});
+
 
 const twitterIcon = 'https://img.icons8.com/color/48/twitter--v1.png'
 const linkedIcon = 'https://img.icons8.com/color/48/linkedin.png'
@@ -173,8 +141,8 @@ const links = [
     { name: 'Resume', url: 'https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing', icon: resumeIcon, alt: 'resume', hint: 'Resume' },
 ];
 
+// Terrain
 const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
-
 function reveal() {
     const wrapper = document.getElementById('page-wrapper');
     wrapper.classList.add('opacity-100')
@@ -215,22 +183,6 @@ onMounted(() => {
     max-width: 200px;
     padding: 0;
     margin: 0;
-}
-
-.language-stats #language-bar .bar {
-    display: flex;
-    height: 8px;
-    overflow: hidden;
-    background-color: #e1e4e8;
-    border-radius: 6px;
-}
-
-.language-stats #language-bar ul {
-    list-style-type: none;
-}
-
-.language-stats #language-bar ul .octicon {
-    fill: currentColor;
 }
 
 .projects-home ul {
