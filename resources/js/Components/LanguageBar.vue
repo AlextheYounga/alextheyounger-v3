@@ -43,16 +43,7 @@
                 </div>
             </div>
 
-            <div v-if="description" class="pt-3">
-                <p class="text-sm italic pb-1">These statistics are not random. They were calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and
-                    accurately
-                    represent the number of bytes of code.</p>
-                <p class="text-sm italic">You can see how I did this <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php">here</a>.
-                    You can even see the list of <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repositories</a> I scanned from my machine to
-                    generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-burgandy hover:text-red-600 font-semibold"
-                        href="https://github.com/AlextheYounga">Github</a>.
-                </p>
-            </div>
+            <div id="language-description" :class="[descriptionOpen ? 'block' : 'hidden', 'pt-3']"></div>
         </div>
     </div>
 </template>
@@ -62,29 +53,34 @@ import {
     QuestionMarkCircleIcon
 } from '@heroicons/vue/24/outline';
 
+const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. They were calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and
+                    accurately
+                    represent the number of bytes of code.</p>
+                <p class="text-sm italic">You can see how I did this <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php">here</a>.
+                    You can even see the list of <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repositories</a> I scanned from my machine to
+                    generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-burgandy hover:text-red-600 font-semibold"
+                        href="https://github.com/AlextheYounga">Github</a>.
+                </p>`
+
 export default {
     components: {
         QuestionMarkCircleIcon,
     },
-    props: {
-        languages: {
-            type: Object,
-            required: true,
-        },
-        repoStats: {
-            type: Object,
-            required: true,
-        },
-    },
     data() {
         return {
-            description: false
+            descriptionOpen: false,
+            descriptionContent: defaultDescriptionContent,
+            languages: [],
+            repoStats: {
+                count: 0,
+                size: 0,
+            }
         }
     },
     methods: {
         openDescription() {
-            console.log(this.$data.description)
-            this.$data.description = !this.$data.description;
+            console.log(this.$data.descriptionOpen)
+            this.$data.descriptionOpen = !this.$data.descriptionOpen;
         },
         displayHint(event) {
             const id = event.target.id;
@@ -92,7 +88,23 @@ export default {
             const hint = document.getElementById(`hint-${slug}`);
             hint.classList.toggle('invisible');
         },
+
     },
+    mounted() {
+        // Ajax fetch data
+        axios.get('/languages/setup')
+            .then(response => {
+                this.languages = response.data.languages;
+                this.repoStats = response.data.repoStats;
+
+                const descriptionContent = response.data.content.languageDescription
+                document.getElementById(descriptionContent.html_id).innerHTML = descriptionContent.content;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                this.threads = [];
+            });
+    }
 
 };
 </script>

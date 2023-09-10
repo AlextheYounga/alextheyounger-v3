@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\LanguageBarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'home']);
 
+Route::redirect('/resume', '/');
+
 Route::get('/books', [
     PagesController::class, 'readingList'
 ])->name('pages.books');
@@ -28,3 +31,8 @@ Route::get('/projects', [
 Route::get('/terrain', [
     PagesController::class, 'terrainPlayground'
 ])->name('pages.terrain-playground');
+
+// Ajax
+Route::get('/languages/setup', [
+    LanguageBarController::class, 'setup'
+])->name('languages.setup');
