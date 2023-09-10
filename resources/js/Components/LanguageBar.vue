@@ -28,25 +28,44 @@
             </template>
         </ul>
         <div class="mt-6">
-            <div class="stats text-sm">
-                <p>Projects Scanned: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.count }}</a></p>
-                <p>Projects Total Size: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.size }}GB</a></p>
+            <div class="flex justify-between items-end">
+                <div class="w-1/2">
+                    <button @click="openDescription" class="mt-6 flex">
+                        <span class="text-burgandy">
+                            <QuestionMarkCircleIcon class="w-6 h-6 mr-1" />
+                        </span>
+                        <span class="text-burgandy">What am I looking at?</span>
+                    </button>
+                </div>
+                <div class="w-1/2 stats text-sm text-right">
+                    <p>Projects Scanned: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.count }}</a></p>
+                    <p>Projects Total Size: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.size }}GB</a></p>
+                </div>
             </div>
-            <h3 class="mt-6">What am I looking at?</h3>
-            <p class="text-sm italic pb-1">These statistics are not random. They were calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately
-                represent the number of bytes of code.</p>
-            <p class="text-sm italic">You can see how I did this <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php">here</a>.
-                You can even see the list of <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repositories</a> I scanned from my machine to
-                generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-burgandy hover:text-red-600 font-semibold"
-                    href="https://github.com/AlextheYounga">Github</a>.
-            </p>
 
+            <div v-if="description" class="pt-3">
+                <p class="text-sm italic pb-1">These statistics are not random. They were calculated using the <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and
+                    accurately
+                    represent the number of bytes of code.</p>
+                <p class="text-sm italic">You can see how I did this <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php">here</a>.
+                    You can even see the list of <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repositories</a> I scanned from my machine to
+                    generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-burgandy hover:text-red-600 font-semibold"
+                        href="https://github.com/AlextheYounga">Github</a>.
+                </p>
+            </div>
         </div>
     </div>
 </template>
   
 <script>
+import {
+    QuestionMarkCircleIcon
+} from '@heroicons/vue/24/outline';
+
 export default {
+    components: {
+        QuestionMarkCircleIcon,
+    },
     props: {
         languages: {
             type: Object,
@@ -57,7 +76,16 @@ export default {
             required: true,
         },
     },
+    data() {
+        return {
+            description: false
+        }
+    },
     methods: {
+        openDescription() {
+            console.log(this.$data.description)
+            this.$data.description = !this.$data.description;
+        },
         displayHint(event) {
             const id = event.target.id;
             const slug = id.split('-')[2];
