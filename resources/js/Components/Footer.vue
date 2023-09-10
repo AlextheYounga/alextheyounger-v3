@@ -1,10 +1,7 @@
 <template>
     <footer id="footer" class="relative py-4 text-center w-full bg-white">
         <div class="container mx-auto px-2">
-            <p class="block normal-font text-center text-sm">
-                Not a fan of copyright, take whatever you want. Here's the <a class="text-burgandy" href="https://github.com/AlextheYounga/alextheyounger-v3">repo</a> for this site. <a href="https://alextheyounger.me" class="text-burgandy">alextheyounger.me</a> by Alex Younger.
-            </p>
-            <p class="block normal-font text-center text-sm mt-2">This site was built with PHP Laravel with Orchid, InertiaJS, Vue3, and TailwindCSS.</p>
+            <div id="footer-description"></div>
             <div class="flex justify-center mx-auto py-4 text-center w-full sm:w-2/3">
                 <a v-for="link in links" :href="link.url" class="w-10 sm:w-16 no-underline burgandy" target="_blank">
                     <img :src="link.icon" width="25" height="25" :alt="link.alt" />
@@ -36,6 +33,7 @@ const links = [
     // { name: 'Substack', url: 'https://apeswithnukes.substack.com/', icon: substackIcon, alt: 'substack' },
 ];
 
+const defaultFooterCopy = `Not a fan of copyright, take whatever you want. Here's the <a class="text-burgandy" href="https://github.com/AlextheYounga/alextheyounger-v3">repo</a> for this site. <a href="https://alextheyounger.me" class="text-burgandy">alextheyounger.me</a> by Alex Younger.`
 
 export default {
     data() {
@@ -43,5 +41,19 @@ export default {
             links
         };
     },
+    mounted() {
+        // Ajax fetch data
+        axios.get('/footer/setup')
+            .then(response => {
+                const footerContent = response.data?.footer;
+                const footerCopy = footerContent ?? defaultFooterCopy;
+
+                document.getElementById(footerContent.html_id).innerHTML = footerCopy.content;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                this.threads = [];
+            });
+    }
 };
 </script>

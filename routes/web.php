@@ -36,3 +36,7 @@ Route::get('/terrain', [
 Route::get('/languages/setup', [
     LanguageBarController::class, 'setup'
 ])->name('languages.setup');
+
+Route::get('/footer/setup', [
+    PagesController::class, 'setupFooter'
+])->name('footer.setup');

@@ -66,4 +66,13 @@ class PagesController extends Controller
     {
         return Inertia::render('TerrainPlayground');
     }
+
+    public function setupFooter()
+    {
+        $pageContent = PageContent::where('view', '=', 'Footer')
+            ->get()
+            ->keyBy('key');
+
+        return response()->json($pageContent);
+    }
 }
