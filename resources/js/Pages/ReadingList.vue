@@ -2,10 +2,11 @@
     <Head title="Reading List" />
     <NavBar />
     <div id="page-wrapper">
-        <h1 class="sm:text-3xl text-2xl font-medium mb-4 pt-16 sm:pt-24 text-gray-900 text-center">
-            My Favorite Books & Audio
-        </h1>
-        <div class="container mx-auto">
+        <div class="container pt-16 pb-10 mx-auto">
+            <div class="bg-white border shadow-lg py-2 mt-4 mb-8 mx-auto rounded text-center sm:w-3/5">
+                <h1 class="sm:text-3xl text-2xl font-medium fancy-font text-gray-900">My Favorite Books & Audio</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Books that have made an impact on my life</p>
+            </div>
             <div class="category-menu">
                 <ul class="flex flex-wrap w-full justify-center p-0">
                     <li class="text-center p-2 border-r border-gray-300">
@@ -21,7 +22,7 @@
         </div>
 
         <div class="container mx-auto">
-            <div class="covers flex flex-wrap my-8 w-full">
+            <div class="covers flex flex-wrap w-full">
                 <template v-for="book in this.books" :key="book.id">
                     <div :class="book.selector + ' cover lg:w-1/4 md:w-1/3 sm:w-1/2 text-center my-12 relative duration-500 transition-transform'">
                         <a :href="book.external_link" target="_blank" rel="nofollow" class="no-underline">

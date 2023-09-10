@@ -2,10 +2,9 @@
     <Head title="Project Gallery" />
     <NavBar />
     <section id="page-wrapper" class="text-gray-600 body-font projects ">
-
-        <div class="container px-5 py-12 mx-auto">
-            <div class="bg-white flex flex-col mb-16 mx-auto py-2 rounded shadow-lg text-center sm:w-3/5 border">
-                <h1 class="sm:text-3xl text-2xl font-medium fancy-font mb-4 text-gray-900">Project Gallery</h1>
+        <div class="container px-5 pt-16 pb-10 mx-auto">
+            <div class="bg-white border shadow-lg py-2 mt-4 flex flex-col mb-16 mx-auto rounded text-center sm:w-3/5">
+                <h1 class="sm:text-3xl text-2xl font-medium fancy-font text-gray-900">Project Gallery</h1>
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Here are some of my proudest projects, personal and professional.</p>
             </div>
             <div id="projects-container" class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-6xl lg:grid-cols-3">
