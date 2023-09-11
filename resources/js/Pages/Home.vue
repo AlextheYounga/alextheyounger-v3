@@ -15,13 +15,13 @@
         <!-- Skills -->
         <section class="bg-neutral-50 my-8 p-2 py-8 shadow relative rounded z-10 text-gray-700">
             <div class="language-stats">
-                <h2 class="mb-3 text-3xl text-gray-700 sm:px-8">Skills</h2>
+                <h2 class="mb-3 text-3xl text-gray-700 px-8">Skills</h2>
                 <LanguageBar />
             </div>
         </section>
 
         <!-- Bio -->
-        <section id="home-bio" class="relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded"></section>
+        <section id="home-bio" class="relative bg-neutral-50 my-8 mb-8 py-4 px-8 sm:p-8 shadow rounded"></section>
 
         <!-- Quote Box -->
         <section class="home-quote relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
@@ -50,7 +50,7 @@
 
         <!-- Projects List -->
         <section class="projects-home sm:p-8 relative mb-8 bg-neutral-50 rounded">
-            <div class="flex justify-between mb-4 p-2 sm:p-0">
+            <div class="flex justify-between mb-4 py-2 px-8 sm:p-0">
                 <h3 class="text-left w-1/2 text-3xl text-gray-700">Projects</h3>
                 <Link
                     class="bg-red-900 text-white border border-red-800 hover:bg-white hover:text-burgandy no-underline p-1 rounded shadow-lg text-center w-24"

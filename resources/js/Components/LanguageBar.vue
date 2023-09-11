@@ -8,14 +8,13 @@
                             {{ `${language.language}: ${language.width}%` }}
                         </p>
                     </span>
-
                 </template>
             </template>
         </div>
         <ul class="flex flex-wrap">
             <template v-if="typeof languages === 'object'">
                 <template v-for="language in languages">
-                    <li class="lang-item w-48">
+                    <li class="lang-item w-32 sm:w-48">
                         <div class="item-wrapper inline-flex flex-nowrap no-underline text-sm mr-3 items-center">
                             <svg :style="{ color: language.color }" :class="['octicon', language.properties?.slug, 'octicon-dot-fill', 'mr-2']" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path>
@@ -28,8 +27,8 @@
             </template>
         </ul>
         <div class="mt-6">
-            <div class="flex justify-between items-end">
-                <div class="w-1/2">
+            <div class="w-full flex-col-reverse flex md:flex-row justify-between items-end">
+                <div class="w-full md:w-1/2">
                     <button @click="openDescription" class="mt-6 flex">
                         <span class="text-burgandy">
                             <QuestionMarkCircleIcon class="w-6 h-6 mr-1" />
@@ -37,7 +36,7 @@
                         <span class="text-burgandy">What am I looking at?</span>
                     </button>
                 </div>
-                <div class="w-1/2 stats text-sm text-right">
+                <div class="w-full md:w-1/2 stats text-sm md:text-right">
                     <p>Projects Scanned: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.count }}</a></p>
                     <p>Projects Total Size: <a class="text-burgandy hover:text-red-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.size }}GB</a></p>
                 </div>
