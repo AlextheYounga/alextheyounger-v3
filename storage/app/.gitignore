@@ -1,4 +1,6 @@
 *
 !public/
 !.gitignore
+!data/
+!data/**/*
 !language-settings.yml

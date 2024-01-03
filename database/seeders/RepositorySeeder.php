@@ -15,7 +15,7 @@ class RepositorySeeder extends Seeder
     {
         Repository::truncate();
 
-        $repositoriesJson = file_get_contents('storage/data/repositories.json');
+        $repositoriesJson = file_get_contents('storage/app/data/repositories.json');
         $repositories  = json_decode($repositoriesJson, true);
 
         foreach($repositories as $repository) {

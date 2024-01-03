@@ -15,7 +15,7 @@ class BookSeeder extends Seeder
     {
         Book::truncate();
 
-        $booksJson = file_get_contents('storage/data/books.json');
+        $booksJson = file_get_contents('storage/app/data/books.json');
         $books = json_decode($booksJson, true);
 
         foreach($books as $book) {

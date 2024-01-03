@@ -1,495 +1,52 @@
 [
     {
-        "name": "observer_pattern",
+        "name": "wanderers-workplace-og",
         "host": "local",
-        "size": 184000,
+        "size": 11000000,
         "languages": {
-            "Python": 689,
-            "JavaScript": 596
+            "PHP": 125053,
+            "Vue": 80549,
+            "Blade": 39533,
+            "JavaScript": 2547,
+            "CSS": 276
         },
         "properties": {
             "languageStatistics": {
-                "Python": {
-                    "percentage": 53.62,
-                    "bytes": 689
-                },
-                "JavaScript": {
-                    "percentage": 46.38,
-                    "bytes": 596
-                }
-            }
-        }
-    },
-    {
-        "name": "plunge_alert_bot",
-        "host": "local",
-        "size": 220000,
-        "languages": {
-            "Python": 8517
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 8517
-                }
-            }
-        }
-    },
-    {
-        "name": "fractalgeometrycalculator",
-        "host": "local",
-        "size": 334000000,
-        "languages": {
-            "Python": 28438
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 28438
-                }
-            }
-        }
-    },
-    {
-        "name": "stopaganda",
-        "host": "local",
-        "size": 682000000,
-        "languages": {
-            "Python": 22539
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 22539
-                }
-            }
-        }
-    },
-    {
-        "name": "fintwit_bot",
-        "host": "local",
-        "size": 340000,
-        "languages": {
-            "Python": 22120
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 22120
-                }
-            }
-        }
-    },
-    {
-        "name": "nbdev-test",
-        "host": "local",
-        "size": 464000,
-        "languages": {
-            "Python": 3085,
-            "Notebook": 2769,
-            "CSS": 600
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 47.8,
-                    "bytes": 3085
-                },
-                "Notebook": {
-                    "percentage": 42.9,
-                    "bytes": 2769
-                },
-                "CSS": {
-                    "percentage": 9.3,
-                    "bytes": 600
-                }
-            }
-        }
-    },
-    {
-        "name": "tweet-language-model",
-        "host": "local",
-        "size": 152000,
-        "languages": {
-            "Python": 15042
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 15042
-                }
-            }
-        }
-    },
-    {
-        "name": "tax_lab",
-        "host": "local",
-        "size": 33000000,
-        "languages": {
-            "Notebook": 7225,
-            "Python": 2736
-        },
-        "properties": {
-            "languageStatistics": {
-                "Notebook": {
-                    "percentage": 72.53,
-                    "bytes": 7225
-                },
-                "Python": {
-                    "percentage": 27.47,
-                    "bytes": 2736
-                }
-            }
-        }
-    },
-    {
-        "name": "misc_py_scripts",
-        "host": "local",
-        "size": 176000,
-        "languages": {
-            "Python": 5321
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 5321
-                }
-            }
-        }
-    },
-    {
-        "name": "amasswealth",
-        "host": "local",
-        "size": 383000000,
-        "languages": {
-            "HTML": 174521,
-            "Python": 57551
-        },
-        "properties": {
-            "languageStatistics": {
-                "HTML": {
-                    "percentage": 75.2,
-                    "bytes": 174521
-                },
-                "Python": {
-                    "percentage": 24.8,
-                    "bytes": 57551
-                }
-            }
-        }
-    },
-    {
-        "name": "word-frequency-calculator",
-        "host": "local",
-        "size": 744000,
-        "languages": {
-            "Python": 5202
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 5202
-                }
-            }
-        }
-    },
-    {
-        "name": "climate-data-lab",
-        "host": "local",
-        "size": 444000,
-        "languages": {
-            "Python": 46427
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 46427
-                }
-            }
-        }
-    },
-    {
-        "name": "quant_bot",
-        "host": "local",
-        "size": 248000,
-        "languages": {
-            "Python": 13672
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 13672
-                }
-            }
-        }
-    },
-    {
-        "name": "tello-controller",
-        "host": "local",
-        "size": 133000000,
-        "languages": {
-            "Python": 3446
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 3446
-                }
-            }
-        }
-    },
-    {
-        "name": "roboccountant",
-        "host": "local",
-        "size": 192000,
-        "languages": {
-            "Python": 5405
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 5405
-                }
-            }
-        }
-    },
-    {
-        "name": "universal-scraper",
-        "host": "local",
-        "size": 563000000,
-        "languages": {
-            "Python": 45634
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 45634
-                }
-            }
-        }
-    },
-    {
-        "name": "vix-vol-calculator",
-        "host": "local",
-        "size": 197000000,
-        "languages": {
-            "Python": 26914
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 26914
-                }
-            }
-        }
-    },
-    {
-        "name": "lexicon",
-        "host": "local",
-        "size": 152000,
-        "languages": {
-            "Python": 6974
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 6974
-                }
-            }
-        }
-    },
-    {
-        "name": "fractalmarketslab",
-        "host": "local",
-        "size": 1000000000,
-        "languages": {
-            "Python": 214407
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 214407
-                }
-            }
-        }
-    },
-    {
-        "name": "budget_database",
-        "host": "local",
-        "size": 748000,
-        "languages": {
-            "Python": 8732
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 8732
-                }
-            }
-        }
-    },
-    {
-        "name": "hazlitt-data",
-        "host": "local",
-        "size": 494000000,
-        "languages": {
-            "CSS": 4233565,
-            "Python": 352681,
-            "HTML": 16798,
-            "JavaScript": 3260,
-            "SCSS": 673
-        },
-        "properties": {
-            "languageStatistics": {
-                "CSS": {
-                    "percentage": 91.89,
-                    "bytes": 4233565
-                },
-                "Python": {
-                    "percentage": 7.66,
-                    "bytes": 352681
-                },
-                "HTML": {
-                    "percentage": 0.36,
-                    "bytes": 16798
-                },
-                "JavaScript": {
-                    "percentage": 0.07,
-                    "bytes": 3260
-                },
-                "SCSS": {
-                    "percentage": 0.01,
-                    "bytes": 673
-                }
-            }
-        }
-    },
-    {
-        "name": "job-boards-scraper",
-        "host": "local",
-        "size": 1000000000,
-        "languages": {
-            "Python": 22398
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 22398
-                }
-            }
-        }
-    },
-    {
-        "name": "vultron-js",
-        "host": "local",
-        "size": 1000000000,
-        "languages": {
-            "Vue": 38045,
-            "JavaScript": 35576,
-            "HTML": 611,
-            "CSS": 61
-        },
-        "properties": {
-            "languageStatistics": {
-                "Vue": {
-                    "percentage": 51.21,
-                    "bytes": 38045
-                },
-                "JavaScript": {
-                    "percentage": 47.89,
-                    "bytes": 35576
-                },
-                "HTML": {
-                    "percentage": 0.82,
-                    "bytes": 611
-                },
-                "CSS": {
-                    "percentage": 0.08,
-                    "bytes": 61
-                }
-            }
-        }
-    },
-    {
-        "name": "lucriv-api",
-        "host": "local",
-        "size": 183000000,
-        "languages": {
-            "JavaScript": 2279791,
-            "PHP": 134802,
-            "Vue": 134797,
-            "CSS": 48818,
-            "Blade": 904
-        },
-        "properties": {
-            "languageStatistics": {
-                "JavaScript": {
-                    "percentage": 87.71,
-                    "bytes": 2279791
-                },
                 "PHP": {
-                    "percentage": 5.19,
-                    "bytes": 134802
+                    "percentage": 50.43,
+                    "bytes": 125053
                 },
                 "Vue": {
-                    "percentage": 5.19,
-                    "bytes": 134797
-                },
-                "CSS": {
-                    "percentage": 1.88,
-                    "bytes": 48818
+                    "percentage": 32.48,
+                    "bytes": 80549
                 },
                 "Blade": {
-                    "percentage": 0.03,
-                    "bytes": 904
+                    "percentage": 15.94,
+                    "bytes": 39533
+                },
+                "JavaScript": {
+                    "percentage": 1.03,
+                    "bytes": 2547
+                },
+                "CSS": {
+                    "percentage": 0.11,
+                    "bytes": 276
                 }
             }
         }
     },
     {
-        "name": "lucriv-js",
+        "name": "course-creator",
         "host": "local",
-        "size": 1000000000,
+        "size": 3000000,
         "languages": {
-            "Vue": 118679,
-            "JavaScript": 41594,
-            "HTML": 579,
-            "CSS": 61
+            "Python": 19599
         },
         "properties": {
             "languageStatistics": {
-                "Vue": {
-                    "percentage": 73.75,
-                    "bytes": 118679
-                },
-                "JavaScript": {
-                    "percentage": 25.85,
-                    "bytes": 41594
-                },
-                "HTML": {
-                    "percentage": 0.36,
-                    "bytes": 579
-                },
-                "CSS": {
-                    "percentage": 0.04,
-                    "bytes": 61
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 19599
                 }
             }
         }
@@ -497,7 +54,7 @@
     {
         "name": "cloudfunctions",
         "host": "local",
-        "size": 332000000,
+        "size": 214000000,
         "languages": {
             "TypeScript": 55391,
             "JavaScript": 8321
@@ -578,45 +135,9 @@
         }
     },
     {
-        "name": "next-learnarena",
-        "host": "local",
-        "size": 2000000000,
-        "languages": {
-            "TypeScript": 593099,
-            "JavaScript": 5485,
-            "CSS": 1495,
-            "Perl": 1308,
-            "Shell": 263
-        },
-        "properties": {
-            "languageStatistics": {
-                "TypeScript": {
-                    "percentage": 98.58,
-                    "bytes": 593099
-                },
-                "JavaScript": {
-                    "percentage": 0.91,
-                    "bytes": 5485
-                },
-                "CSS": {
-                    "percentage": 0.25,
-                    "bytes": 1495
-                },
-                "Perl": {
-                    "percentage": 0.22,
-                    "bytes": 1308
-                },
-                "Shell": {
-                    "percentage": 0.04,
-                    "bytes": 263
-                }
-            }
-        }
-    },
-    {
         "name": "db-migrate",
         "host": "local",
-        "size": 919000000,
+        "size": 267000000,
         "languages": {
             "JavaScript": 85398,
             "Shell": 2080
@@ -635,17 +156,543 @@
         }
     },
     {
-        "name": "rust-playground",
+        "name": "next-learnarena",
+        "host": "local",
+        "size": 2000000000,
+        "languages": {
+            "TypeScript": 769709,
+            "JavaScript": 7419,
+            "Shell": 5558,
+            "CSS": 4272,
+            "HTML": 6
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 97.81,
+                    "bytes": 769709
+                },
+                "JavaScript": {
+                    "percentage": 0.94,
+                    "bytes": 7419
+                },
+                "Shell": {
+                    "percentage": 0.71,
+                    "bytes": 5558
+                },
+                "CSS": {
+                    "percentage": 0.54,
+                    "bytes": 4272
+                },
+                "HTML": {
+                    "percentage": 0,
+                    "bytes": 6
+                }
+            }
+        }
+    },
+    {
+        "name": "next-learnarena",
+        "host": "local",
+        "size": 230000000,
+        "languages": {
+            "TypeScript": 870509,
+            "JavaScript": 6507,
+            "CSS": 3587,
+            "Shell": 2576,
+            "HTML": 6
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 98.56,
+                    "bytes": 870509
+                },
+                "JavaScript": {
+                    "percentage": 0.74,
+                    "bytes": 6507
+                },
+                "CSS": {
+                    "percentage": 0.41,
+                    "bytes": 3587
+                },
+                "Shell": {
+                    "percentage": 0.29,
+                    "bytes": 2576
+                },
+                "HTML": {
+                    "percentage": 0,
+                    "bytes": 6
+                }
+            }
+        }
+    },
+    {
+        "name": "observer_pattern",
+        "host": "local",
+        "size": 184000,
+        "languages": {
+            "Python": 689,
+            "JavaScript": 596
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 53.62,
+                    "bytes": 689
+                },
+                "JavaScript": {
+                    "percentage": 46.38,
+                    "bytes": 596
+                }
+            }
+        }
+    },
+    {
+        "name": "plunge_alert_bot",
+        "host": "local",
+        "size": 220000,
+        "languages": {
+            "Python": 8517
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 8517
+                }
+            }
+        }
+    },
+    {
+        "name": "fractalgeometrycalculator",
+        "host": "local",
+        "size": 1000000,
+        "languages": {
+            "Python": 28438
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 28438
+                }
+            }
+        }
+    },
+    {
+        "name": "stopaganda",
+        "host": "local",
+        "size": 4000000,
+        "languages": {
+            "Python": 22539
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 22539
+                }
+            }
+        }
+    },
+    {
+        "name": "fintwit_bot",
+        "host": "local",
+        "size": 340000,
+        "languages": {
+            "Python": 22120
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 22120
+                }
+            }
+        }
+    },
+    {
+        "name": "companies-db",
+        "host": "local",
+        "size": 141000000,
+        "languages": {
+            "Python": 138988,
+            "Notebook": 2658
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 98.12,
+                    "bytes": 138988
+                },
+                "Notebook": {
+                    "percentage": 1.88,
+                    "bytes": 2658
+                }
+            }
+        }
+    },
+    {
+        "name": "marketdata_api",
         "host": "local",
         "size": 2000000,
         "languages": {
-            "Rust": 1673
+            "Python": 19341
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 19341
+                }
+            }
+        }
+    },
+    {
+        "name": "tweet-language-model",
+        "host": "local",
+        "size": 152000,
+        "languages": {
+            "Python": 15042
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 15042
+                }
+            }
+        }
+    },
+    {
+        "name": "tax_lab",
+        "host": "local",
+        "size": 13000000,
+        "languages": {
+            "Notebook": 7225,
+            "Python": 2736
+        },
+        "properties": {
+            "languageStatistics": {
+                "Notebook": {
+                    "percentage": 72.53,
+                    "bytes": 7225
+                },
+                "Python": {
+                    "percentage": 27.47,
+                    "bytes": 2736
+                }
+            }
+        }
+    },
+    {
+        "name": "amasswealth",
+        "host": "local",
+        "size": 173000000,
+        "languages": {
+            "HTML": 1092290,
+            "Python": 46390
+        },
+        "properties": {
+            "languageStatistics": {
+                "HTML": {
+                    "percentage": 95.93,
+                    "bytes": 1092290
+                },
+                "Python": {
+                    "percentage": 4.07,
+                    "bytes": 46390
+                }
+            }
+        }
+    },
+    {
+        "name": "chatgpt-programmatic",
+        "host": "local",
+        "size": 1000000,
+        "languages": {
+            "Python": 2608
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 2608
+                }
+            }
+        }
+    },
+    {
+        "name": "linkedin-db",
+        "host": "local",
+        "size": 20000000,
+        "languages": {
+            "Python": 91888
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 91888
+                }
+            }
+        }
+    },
+    {
+        "name": "word-frequency-calculator",
+        "host": "local",
+        "size": 744000,
+        "languages": {
+            "Python": 5202
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 5202
+                }
+            }
+        }
+    },
+    {
+        "name": "climate-data-lab",
+        "host": "local",
+        "size": 444000,
+        "languages": {
+            "Python": 46427
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 46427
+                }
+            }
+        }
+    },
+    {
+        "name": "quant_bot",
+        "host": "local",
+        "size": 248000,
+        "languages": {
+            "Python": 13672
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 13672
+                }
+            }
+        }
+    },
+    {
+        "name": "tello-controller",
+        "host": "local",
+        "size": 11000000,
+        "languages": {
+            "Python": 8949
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 8949
+                }
+            }
+        }
+    },
+    {
+        "name": "universal-scraper",
+        "host": "local",
+        "size": 170000000,
+        "languages": {
+            "Python": 45634
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 45634
+                }
+            }
+        }
+    },
+    {
+        "name": "vix-vol-calculator",
+        "host": "local",
+        "size": 62000000,
+        "languages": {
+            "Python": 31346
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 31346
+                }
+            }
+        }
+    },
+    {
+        "name": "marketdata-api",
+        "host": "local",
+        "size": 196000,
+        "languages": {
+            "Python": 19341
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 19341
+                }
+            }
+        }
+    },
+    {
+        "name": "lexicon",
+        "host": "local",
+        "size": 152000,
+        "languages": {
+            "Python": 6974
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 6974
+                }
+            }
+        }
+    },
+    {
+        "name": "math-notes",
+        "host": "local",
+        "size": 416000,
+        "languages": {
+            "Notebook": 59348,
+            "Python": 1739
+        },
+        "properties": {
+            "languageStatistics": {
+                "Notebook": {
+                    "percentage": 97.15,
+                    "bytes": 59348
+                },
+                "Python": {
+                    "percentage": 2.85,
+                    "bytes": 1739
+                }
+            }
+        }
+    },
+    {
+        "name": "fractalmarketslab",
+        "host": "local",
+        "size": 615000000,
+        "languages": {
+            "Python": 214407
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 214407
+                }
+            }
+        }
+    },
+    {
+        "name": "hazlitt-data",
+        "host": "local",
+        "size": 107000000,
+        "languages": {
+            "CSS": 4233565,
+            "Python": 352681,
+            "HTML": 16798,
+            "JavaScript": 3260,
+            "SCSS": 673
+        },
+        "properties": {
+            "languageStatistics": {
+                "CSS": {
+                    "percentage": 91.89,
+                    "bytes": 4233565
+                },
+                "Python": {
+                    "percentage": 7.66,
+                    "bytes": 352681
+                },
+                "HTML": {
+                    "percentage": 0.36,
+                    "bytes": 16798
+                },
+                "JavaScript": {
+                    "percentage": 0.07,
+                    "bytes": 3260
+                },
+                "SCSS": {
+                    "percentage": 0.01,
+                    "bytes": 673
+                }
+            }
+        }
+    },
+    {
+        "name": "directory_word_processor",
+        "host": "local",
+        "size": 108000000,
+        "languages": {
+            "Elixir": 52050,
+            "CSS": 10310,
+            "JavaScript": 4237,
+            "HTML": 2403,
+            "SCSS": 629,
+            "Dockerfile": 415
+        },
+        "properties": {
+            "languageStatistics": {
+                "Elixir": {
+                    "percentage": 74.31,
+                    "bytes": 52050
+                },
+                "CSS": {
+                    "percentage": 14.72,
+                    "bytes": 10310
+                },
+                "JavaScript": {
+                    "percentage": 6.05,
+                    "bytes": 4237
+                },
+                "HTML": {
+                    "percentage": 3.43,
+                    "bytes": 2403
+                },
+                "SCSS": {
+                    "percentage": 0.9,
+                    "bytes": 629
+                },
+                "Dockerfile": {
+                    "percentage": 0.59,
+                    "bytes": 415
+                }
+            }
+        }
+    },
+    {
+        "name": "rust-playground",
+        "host": "local",
+        "size": 5000000,
+        "languages": {
+            "Rust": 7492
         },
         "properties": {
             "languageStatistics": {
                 "Rust": {
                     "percentage": 100,
-                    "bytes": 1673
+                    "bytes": 7492
                 }
             }
         }
@@ -667,37 +714,95 @@
         }
     },
     {
+        "name": "opencrd",
+        "host": "local",
+        "size": 319000000,
+        "languages": {
+            "JavaScript": 1454,
+            "Rust": 1195,
+            "HTML": 235
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 50.42,
+                    "bytes": 1454
+                },
+                "Rust": {
+                    "percentage": 41.44,
+                    "bytes": 1195
+                },
+                "HTML": {
+                    "percentage": 8.15,
+                    "bytes": 235
+                }
+            }
+        }
+    },
+    {
         "name": "gpt-conversations",
         "host": "local",
-        "size": 277000000,
+        "size": 705000000,
         "languages": {
-            "PHP": 172723,
-            "Vue": 97820,
-            "JavaScript": 2871,
-            "Blade": 2051,
-            "CSS": 61
+            "PHP": 193848,
+            "Vue": 126934,
+            "Blade": 2872,
+            "JavaScript": 2751,
+            "CSS": 58
         },
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 62.69,
-                    "bytes": 172723
+                    "percentage": 59.38,
+                    "bytes": 193848
                 },
                 "Vue": {
-                    "percentage": 35.5,
-                    "bytes": 97820
-                },
-                "JavaScript": {
-                    "percentage": 1.04,
-                    "bytes": 2871
+                    "percentage": 38.88,
+                    "bytes": 126934
                 },
                 "Blade": {
-                    "percentage": 0.74,
-                    "bytes": 2051
+                    "percentage": 0.88,
+                    "bytes": 2872
+                },
+                "JavaScript": {
+                    "percentage": 0.84,
+                    "bytes": 2751
                 },
                 "CSS": {
                     "percentage": 0.02,
-                    "bytes": 61
+                    "bytes": 58
+                }
+            }
+        }
+    },
+    {
+        "name": "language-models-starter-kit",
+        "host": "local",
+        "size": 224000,
+        "languages": {
+            "Python": 24316
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 24316
+                }
+            }
+        }
+    },
+    {
+        "name": "cloud-llm-experiments",
+        "host": "local",
+        "size": 1000000,
+        "languages": {
+            "Python": 13470
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 13470
                 }
             }
         }
@@ -745,6 +850,136 @@
         }
     },
     {
+        "name": "vultron-js",
+        "host": "local",
+        "size": 1000000000,
+        "languages": {
+            "Vue": 38045,
+            "JavaScript": 35576,
+            "HTML": 611,
+            "CSS": 61
+        },
+        "properties": {
+            "languageStatistics": {
+                "Vue": {
+                    "percentage": 51.21,
+                    "bytes": 38045
+                },
+                "JavaScript": {
+                    "percentage": 47.89,
+                    "bytes": 35576
+                },
+                "HTML": {
+                    "percentage": 0.82,
+                    "bytes": 611
+                },
+                "CSS": {
+                    "percentage": 0.08,
+                    "bytes": 61
+                }
+            }
+        }
+    },
+    {
+        "name": "vueblog",
+        "host": "local",
+        "size": 97000000,
+        "languages": {
+            "Vue": 32966,
+            "CSS": 9003,
+            "JavaScript": 7451,
+            "HTML": 1112
+        },
+        "properties": {
+            "languageStatistics": {
+                "Vue": {
+                    "percentage": 65.24,
+                    "bytes": 32966
+                },
+                "CSS": {
+                    "percentage": 17.82,
+                    "bytes": 9003
+                },
+                "JavaScript": {
+                    "percentage": 14.75,
+                    "bytes": 7451
+                },
+                "HTML": {
+                    "percentage": 2.2,
+                    "bytes": 1112
+                }
+            }
+        }
+    },
+    {
+        "name": "alwaysforwardjs",
+        "host": "local",
+        "size": 263000000,
+        "languages": {
+            "TypeScript": 13237,
+            "CSS": 1767,
+            "JavaScript": 921,
+            "HTML": 366
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 81.25,
+                    "bytes": 13237
+                },
+                "CSS": {
+                    "percentage": 10.85,
+                    "bytes": 1767
+                },
+                "JavaScript": {
+                    "percentage": 5.65,
+                    "bytes": 921
+                },
+                "HTML": {
+                    "percentage": 2.25,
+                    "bytes": 366
+                }
+            }
+        }
+    },
+    {
+        "name": "gitignore-it",
+        "host": "local",
+        "size": 1000000,
+        "languages": {
+            "JavaScript": 2715
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 100,
+                    "bytes": 2715
+                }
+            }
+        }
+    },
+    {
+        "name": "alwaysforward_nestjs",
+        "host": "local",
+        "size": 289000000,
+        "languages": {
+            "TypeScript": 18727,
+            "JavaScript": 666
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 96.57,
+                    "bytes": 18727
+                },
+                "JavaScript": {
+                    "percentage": 3.43,
+                    "bytes": 666
+                }
+            }
+        }
+    },
+    {
         "name": "frontend-experiments",
         "host": "local",
         "size": 632000,
@@ -771,17 +1006,182 @@
         }
     },
     {
-        "name": "gitignore-it",
+        "name": "tina-playground",
         "host": "local",
-        "size": 1000000,
+        "size": 1000000000,
         "languages": {
-            "JavaScript": 2715
+            "TypeScript": 76443,
+            "JavaScript": 7786,
+            "MDX": 3588,
+            "CSS": 59
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 86.99,
+                    "bytes": 76443
+                },
+                "JavaScript": {
+                    "percentage": 8.86,
+                    "bytes": 7786
+                },
+                "MDX": {
+                    "percentage": 4.08,
+                    "bytes": 3588
+                },
+                "CSS": {
+                    "percentage": 0.07,
+                    "bytes": 59
+                }
+            }
+        }
+    },
+    {
+        "name": "vuepress",
+        "host": "local",
+        "size": 190000000,
+        "languages": {
+            "Shell": 4902,
+            "JavaScript": 1004
+        },
+        "properties": {
+            "languageStatistics": {
+                "Shell": {
+                    "percentage": 83,
+                    "bytes": 4902
+                },
+                "JavaScript": {
+                    "percentage": 17,
+                    "bytes": 1004
+                }
+            }
+        }
+    },
+    {
+        "name": "alwaysforward_node",
+        "host": "local",
+        "size": 225000000,
+        "languages": {
+            "TypeScript": 15735,
+            "CSS": 1767,
+            "JavaScript": 485,
+            "HTML": 366
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 85.74,
+                    "bytes": 15735
+                },
+                "CSS": {
+                    "percentage": 9.63,
+                    "bytes": 1767
+                },
+                "JavaScript": {
+                    "percentage": 2.64,
+                    "bytes": 485
+                },
+                "HTML": {
+                    "percentage": 1.99,
+                    "bytes": 366
+                }
+            }
+        }
+    },
+    {
+        "name": "electron-vite-vue",
+        "host": "local",
+        "size": 19000000,
+        "languages": {
+            "TypeScript": 9517,
+            "Vue": 1927,
+            "CSS": 1452,
+            "HTML": 463
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 71.24,
+                    "bytes": 9517
+                },
+                "Vue": {
+                    "percentage": 14.42,
+                    "bytes": 1927
+                },
+                "CSS": {
+                    "percentage": 10.87,
+                    "bytes": 1452
+                },
+                "HTML": {
+                    "percentage": 3.47,
+                    "bytes": 463
+                }
+            }
+        }
+    },
+    {
+        "name": "lucriv-api",
+        "host": "local",
+        "size": 184000000,
+        "languages": {
+            "JavaScript": 2279791,
+            "PHP": 134802,
+            "Vue": 134797,
+            "CSS": 48818,
+            "Blade": 904
         },
         "properties": {
             "languageStatistics": {
                 "JavaScript": {
-                    "percentage": 100,
-                    "bytes": 2715
+                    "percentage": 87.71,
+                    "bytes": 2279791
+                },
+                "PHP": {
+                    "percentage": 5.19,
+                    "bytes": 134802
+                },
+                "Vue": {
+                    "percentage": 5.19,
+                    "bytes": 134797
+                },
+                "CSS": {
+                    "percentage": 1.88,
+                    "bytes": 48818
+                },
+                "Blade": {
+                    "percentage": 0.03,
+                    "bytes": 904
+                }
+            }
+        }
+    },
+    {
+        "name": "lucriv-js",
+        "host": "local",
+        "size": 1000000000,
+        "languages": {
+            "Vue": 118679,
+            "JavaScript": 41594,
+            "HTML": 579,
+            "CSS": 61
+        },
+        "properties": {
+            "languageStatistics": {
+                "Vue": {
+                    "percentage": 73.75,
+                    "bytes": 118679
+                },
+                "JavaScript": {
+                    "percentage": 25.85,
+                    "bytes": 41594
+                },
+                "HTML": {
+                    "percentage": 0.36,
+                    "bytes": 579
+                },
+                "CSS": {
+                    "percentage": 0.04,
+                    "bytes": 61
                 }
             }
         }
@@ -808,6 +1208,22 @@
         }
     },
     {
+        "name": "electron-icon-maker",
+        "host": "local",
+        "size": 228000,
+        "languages": {
+            "JavaScript": 3821
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 100,
+                    "bytes": 3821
+                }
+            }
+        }
+    },
+    {
         "name": "lc3-c-vm",
         "host": "local",
         "size": 156000,
@@ -819,6 +1235,42 @@
                 "C": {
                     "percentage": 100,
                     "bytes": 11139
+                }
+            }
+        }
+    },
+    {
+        "name": "autocms",
+        "host": "local",
+        "size": 125000000,
+        "languages": {
+            "PHP": 103550,
+            "Vue": 72937,
+            "Blade": 29331,
+            "JavaScript": 1896,
+            "CSS": 59
+        },
+        "properties": {
+            "languageStatistics": {
+                "PHP": {
+                    "percentage": 49.84,
+                    "bytes": 103550
+                },
+                "Vue": {
+                    "percentage": 35.1,
+                    "bytes": 72937
+                },
+                "Blade": {
+                    "percentage": 14.12,
+                    "bytes": 29331
+                },
+                "JavaScript": {
+                    "percentage": 0.91,
+                    "bytes": 1896
+                },
+                "CSS": {
+                    "percentage": 0.03,
+                    "bytes": 59
                 }
             }
         }
@@ -845,12 +1297,38 @@
         }
     },
     {
+        "name": "mammoth-intel",
+        "host": "local",
+        "size": 1000000,
+        "languages": {
+            "PHP": 84930,
+            "Blade": 31104,
+            "JavaScript": 285
+        },
+        "properties": {
+            "languageStatistics": {
+                "PHP": {
+                    "percentage": 73.01,
+                    "bytes": 84930
+                },
+                "Blade": {
+                    "percentage": 26.74,
+                    "bytes": 31104
+                },
+                "JavaScript": {
+                    "percentage": 0.25,
+                    "bytes": 285
+                }
+            }
+        }
+    },
+    {
         "name": "alextheyounger-v3",
         "host": "local",
-        "size": 233000000,
+        "size": 257000000,
         "languages": {
-            "PHP": 249395,
-            "Vue": 94344,
+            "PHP": 265466,
+            "Vue": 94155,
             "Blade": 30258,
             "JavaScript": 2902,
             "CSS": 59
@@ -858,19 +1336,19 @@
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 66.16,
-                    "bytes": 249395
+                    "percentage": 67.58,
+                    "bytes": 265466
                 },
                 "Vue": {
-                    "percentage": 25.03,
-                    "bytes": 94344
+                    "percentage": 23.97,
+                    "bytes": 94155
                 },
                 "Blade": {
-                    "percentage": 8.03,
+                    "percentage": 7.7,
                     "bytes": 30258
                 },
                 "JavaScript": {
-                    "percentage": 0.77,
+                    "percentage": 0.74,
                     "bytes": 2902
                 },
                 "CSS": {
@@ -964,6 +1442,47 @@
         }
     },
     {
+        "name": "alwaysforward",
+        "host": "local",
+        "size": 1000000000,
+        "languages": {
+            "PHP": 168284,
+            "JavaScript": 144900,
+            "Shell": 52997,
+            "Blade": 29662,
+            "HTML": 1954,
+            "CSS": 1159
+        },
+        "properties": {
+            "languageStatistics": {
+                "PHP": {
+                    "percentage": 42.18,
+                    "bytes": 168284
+                },
+                "JavaScript": {
+                    "percentage": 36.32,
+                    "bytes": 144900
+                },
+                "Shell": {
+                    "percentage": 13.28,
+                    "bytes": 52997
+                },
+                "Blade": {
+                    "percentage": 7.43,
+                    "bytes": 29662
+                },
+                "HTML": {
+                    "percentage": 0.49,
+                    "bytes": 1954
+                },
+                "CSS": {
+                    "percentage": 0.29,
+                    "bytes": 1159
+                }
+            }
+        }
+    },
+    {
         "name": "graph-my-wallet",
         "host": "local",
         "size": 221000000,
@@ -1013,35 +1532,35 @@
     {
         "name": "wanderers-workplace",
         "host": "local",
-        "size": 159000000,
+        "size": 136000000,
         "languages": {
-            "PHP": 125053,
-            "Vue": 80549,
-            "Blade": 39533,
-            "JavaScript": 2547,
-            "CSS": 276
+            "PHP": 103550,
+            "Vue": 72937,
+            "Blade": 29331,
+            "JavaScript": 1896,
+            "CSS": 59
         },
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 50.43,
-                    "bytes": 125053
+                    "percentage": 49.84,
+                    "bytes": 103550
                 },
                 "Vue": {
-                    "percentage": 32.48,
-                    "bytes": 80549
+                    "percentage": 35.1,
+                    "bytes": 72937
                 },
                 "Blade": {
-                    "percentage": 15.94,
-                    "bytes": 39533
+                    "percentage": 14.12,
+                    "bytes": 29331
                 },
                 "JavaScript": {
-                    "percentage": 1.03,
-                    "bytes": 2547
+                    "percentage": 0.91,
+                    "bytes": 1896
                 },
                 "CSS": {
-                    "percentage": 0.11,
-                    "bytes": 276
+                    "percentage": 0.03,
+                    "bytes": 59
                 }
             }
         }

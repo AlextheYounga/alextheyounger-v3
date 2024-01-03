@@ -1,4 +1,6 @@
-# Accounting for repos I can't legally keep on my computer.
+# Settings for Linguist language program detection.
+
+# Accounting for commercially private repos.
 additions:
   Ruby: 4204694
   PHP: 3000000
@@ -9,8 +11,7 @@ additions:
 subtractions:
   Ruby: 0.7 # Rails generates a lot of Ruby code.
   PHP: 0.7 # Laravel generates a lot of PHP code.
-  JavaScript: 0.4 # Every framework contains generated JavaScript code.
-  HTML: 0.7 # Many frameworks contain generated HTML code.
+  JavaScript: 0.5 # Every framework contains generated JavaScript code.
   Vue: 0.7 # Inertia and Breeze generate some Vue code.
 
 # Arbitrary suppressions to certain repos.
@@ -26,5 +27,11 @@ ignore: [
   'Markdown', 
   'ASP.NET',
   'Perl',
-  'Shell'
+  'MDX',
+  'Dockerfile',
+  'Elixir',
+  'HTML',
+  'CSS',
+  'SCSS',
+  'Blade'
 ]

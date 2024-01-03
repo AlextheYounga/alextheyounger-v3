@@ -15,7 +15,7 @@ class ProjectSeeder extends Seeder
     {
         Project::truncate();
 
-        $projectsJson = file_get_contents('storage/data/projects.json');
+        $projectsJson = file_get_contents('storage/app/data/projects.json');
         $projects  = json_decode($projectsJson, true);
 
         foreach($projects as $project) {
