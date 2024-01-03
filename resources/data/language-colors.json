@@ -35,6 +35,8 @@
     "Puppet": "#302B6D",
     "TypeScript": "#2b7489",
     "OCaml": "#3be133",
+    "Dockerfile": "#0db7ed",
+    "MDX": "#005b96",
     "Objective-C++": "#6866fb",
     "Objective-CPlusPlus": "#6866fb",
     "Common Lisp": "#3fb68b",

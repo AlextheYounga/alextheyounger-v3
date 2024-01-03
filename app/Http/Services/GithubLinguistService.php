@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 
 class GithubLinguistService
 {
@@ -11,7 +12,7 @@ class GithubLinguistService
     public function __construct($directoriesList = null)
     {
         // Requires directories to be scanned first. Run app:scan-repos first.
-        $this->directories = $directoriesList ?? json_decode(file_get_contents('storage/app/directories.json'), true);
+        $this->directories = $directoriesList ?? json_decode(Storage::disk('public')->get('directories.json'));
     }
 
     public function runLinguist()
@@ -58,13 +59,10 @@ class GithubLinguistService
         }
 
         if (App::environment('local')) {
+            Storage::disk('public')->put('linguist.json', json_encode($statistics, JSON_PRETTY_PRINT));
             file_put_contents(
-                'storage/data/repositories.json',
+                'storage/app/data/repositories.json',
                 json_encode($repositories, JSON_PRETTY_PRINT)
-            );
-            file_put_contents(
-                'storage/app/linguist.json',
-                json_encode($statistics, JSON_PRETTY_PRINT)
             );
         }
 

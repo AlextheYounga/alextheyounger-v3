@@ -78,17 +78,26 @@ class Language extends Model
         $this->project_count = $count;
     }
 
-    public static function settings($name) {
+    public static function settings($name)
+    {
         $settings = Yaml::parseFile('storage/app/language-settings.yml');
         return $settings[$name];
     }
 
-    public static function getLanguageColor($language) {
+    public static function getLanguageColor($language)
+    {
         $colors = json_decode(file_get_contents('resources/data/language-colors.json'), true);
-        return $colors[$language];
+        if (array_key_exists($language, $colors)) {
+            return $colors[$language];
+        }
+
+        print('No color found for language ' . $language . "\n");
+        $randomColor = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        return $randomColor;
     }
 
-    public static function getTotalBytes() {
+    public static function getTotalBytes()
+    {
         return DB::table('languages')->sum('value');
     }
 
@@ -112,11 +121,12 @@ class Language extends Model
         }
     }
 
-    public static function slugifyLanguage($language) {
+    public static function slugifyLanguage($language)
+    {
         if (strpos($language, "+") !== false) {
             $language = str_replace("+", "plus", $language);
         }
-    
+
         $language = preg_replace("/[^a-zA-Z0-9]+/", "-", $language);
         return strtolower($language);
     }

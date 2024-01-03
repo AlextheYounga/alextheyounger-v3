@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 
 class ScanMachineRepos extends Command
 {
@@ -32,14 +33,18 @@ class ScanMachineRepos extends Command
             $directories = [];
             $devDirectory = env('DEVELOPMENT_FOLDER');
 
-            $blacklist = json_decode(file_get_contents('storage/app/linguist-blacklist.json'), true);
+            
+            $blacklist = json_decode(Storage::disk('public')->get('linguist-blacklist.json'));
 
             // Get git enabled directories.
             $command = 'find ' . $devDirectory . ' -maxdepth 6 -name ".git" -print';
             exec($command, $output);
 
             foreach($output as $dir) {
-                if (str_contains($dir, 'Cloned/') || str_contains($dir, 'Forks/')) {
+                if (str_contains($dir, 'Cloned/') ||
+                    str_contains($dir, 'Forks/') ||
+                    str_contains($dir, '__cloned__') ||
+                    str_contains($dir, '__forks__')) {
                     continue;
                 }
 
@@ -48,7 +53,7 @@ class ScanMachineRepos extends Command
 
                 $pathParts = explode('/', $trimmedDirectory);
                 $name = end($pathParts);
-    
+
                 if (in_array($name, $blacklist)) {
                     $this->warn('Found ' . $trimmedDirectory . " in blacklist. Skipping...");
                     continue;
@@ -59,10 +64,7 @@ class ScanMachineRepos extends Command
                 $this->info('Found ' . $trimmedDirectory . '...');
             }
 
-            file_put_contents(
-                'storage/app/directories.json',
-                json_encode($directories, JSON_PRETTY_PRINT)
-            );
+            Storage::disk('public')->put('directories.json', json_encode($directories));
 
         }
     }
