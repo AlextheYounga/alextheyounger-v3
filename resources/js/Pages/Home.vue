@@ -100,7 +100,7 @@ import { Link } from '@inertiajs/vue3'
 import LanguageBar from '@/Components/LanguageBar.vue';
 import NavBar from '@/Components/Navbar.vue';
 import { generateTechColors } from '@/Components/ProjectColors.vue';
-import { terrainLoaded } from '@/Components/Terrain.vue';
+import { terrainLoaded } from '../terrain.js';
 import { onMounted } from 'vue';
 import { getCurrentInstance } from 'vue';
 

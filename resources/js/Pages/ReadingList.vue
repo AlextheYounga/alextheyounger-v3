@@ -47,7 +47,7 @@ import { Head } from '@inertiajs/vue3';
 import Footer from '@/Components/Footer.vue';
 import { Link } from '@inertiajs/vue3'
 import NavBar from '@/Components/Navbar.vue';
-import { terrainLoaded } from '@/Components/Terrain.vue';
+import { terrainLoaded } from '../terrain.js';
 import { getCurrentInstance } from 'vue';
 import '@/jquery.min.js'
 

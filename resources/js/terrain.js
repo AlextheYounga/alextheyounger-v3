@@ -1,4 +1,3 @@
-<script>
 function random() {
     /*  
         This is a basic Lehmer random number generator.
@@ -1208,29 +1207,3 @@ export function redraw() {
         drawTerrain()
     }
 }
-
-</script>
-
-<style>
-#terrain-container {
-    position: fixed;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-}
-
-#terrain-container #terrain {
-    width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    max-width: 100vw;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-</style>

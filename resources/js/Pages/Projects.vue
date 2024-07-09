@@ -89,7 +89,7 @@ import Modal from '@/Components/Modal.vue';
 import { Head } from '@inertiajs/vue3';
 import Footer from '@/Components/Footer.vue';
 import { generateTechColors } from '@/Components/ProjectColors.vue';
-import { terrainLoaded } from '@/Components/Terrain.vue';
+import { terrainLoaded } from '../terrain.js';
 import { getCurrentInstance } from 'vue';
 
 export default {

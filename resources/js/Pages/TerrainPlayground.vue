@@ -20,7 +20,7 @@ import { Head } from '@inertiajs/vue3';
 import Navbar from '@/Components/Navbar.vue';
 import { onMounted } from 'vue';
 import { getCurrentInstance } from 'vue';
-import { terrainLoaded } from '@/Components/Terrain.vue';
+import { terrainLoaded } from '../terrain.js';
 
 const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
 
