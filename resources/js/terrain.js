@@ -13,83 +13,57 @@ function random() {
 }
 
 function setup() {
-    var randomLevel = 60; // A semi-perfect number, being 10 times the Euclidean 'perfect number' of 6.
-    var nbits = size.toString(2).length - 1; // 9
+    // Setup variables
+    var randomLevel = 60; // Initial level for randomness factor
+    var nbits = size.toString(2).length - 1; // Number of levels of detail based on the size
 
-    var rnd = function rnd() {
-        /*
-            Always come out with a float that is less than 100.
-            I don't know why...
-        */
+    // Custom random function that generates a float less than 100
+    var rnd = function () {
         return randomLevel * (-1 + 2 * random());
     };
 
-    line = new Float32Array(size + 1); //Creates array
+    // Initialize height map array
+    hmap = new Array(size + 1).fill().map(() => new Float32Array(size + 1));
+    line = new Float32Array(size + 1);
 
-    for (var i = 0; i <= size; i++) {
-        /* Main array of lines */
-        hmap[i] = new Float32Array(size + 1);
-    }
-
+    // Diamond-Square Algorithm to generate terrain
     var t = 1;
-    var x = size / 2; // 256
+    var x = size / 2; // Start with the midpoint
 
+    // Perform the algorithm for each level of detail
     for (var s = 1; s <= nbits; s++) {
+        // Square steps
         for (var v = 0; v <= size; v += 2 * x) {
             for (var n = 1; n <= t; n += 2) {
-                hmap[n * x][v] = (hmap[(n - 1) * x][v] + hmap[(n + 1) * x][v]) / 2 + rnd();
-                hmap[v][n * x] = (hmap[v][(n - 1) * x] + hmap[v][(n + 1) * x]) / 2 + rnd();
+                var avgVertical = (hmap[(n - 1) * x][v] + hmap[(n + 1) * x][v]) / 2;
+                hmap[n * x][v] = avgVertical + rnd();
+                var avgHorizontal = (hmap[v][(n - 1) * x] + hmap[v][(n + 1) * x]) / 2;
+                hmap[v][n * x] = avgHorizontal + rnd();
             }
         }
 
+        // Diamond steps
         for (var _n = 1; _n <= t; _n += 2) {
             for (var m = 1; m <= t; m += 2) {
-                hmap[_n * x][m * x] = 0.25 * (hmap[_n * x + x][m * x] + hmap[_n * x - x][m * x] + hmap[_n * x][m * x + x] + hmap[_n * x][m * x - x]) + rnd();
+                var cornerSum = hmap[_n * x + x][m * x] + hmap[_n * x - x][m * x] +
+                    hmap[_n * x][m * x + x] + hmap[_n * x][m * x - x];
+                hmap[_n * x][m * x] = cornerSum / 4 + rnd();
             }
         }
 
+        // Prepare for the next iteration
         t = 2 * t + 1;
         x /= 2;
         randomLevel /= 2;
     }
 
+    // Clamp negative heights to zero
     for (var w = 0; w <= size; w++) {
         for (var z = 0; z <= size; z++) {
             if (hmap[w][z] < 0) hmap[w][z] = 0;
         }
     }
 }
-
-function _createForOfIteratorHelperLoose(o, allowArrayLike) {
-    var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-        if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-            if (it) o = it; var i = 0; return function () {
-                if (i >= o.length) return { done: true };
-                return { done: false, value: o[i++] };
-            };
-        }
-        throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-    it = o[Symbol.iterator]();
-    return it.next.bind(it);
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for (var i = 0, arr2 = new Array(len); i < len; i++) {
-        arr2[i] = arr[i];
-    }
-    return arr2;
-}
-
 
 var size = 512; // 512 bytes is a common disk sector size, and exactly a half of kibibyte.
 var water = 2; // 0 for no water
@@ -120,7 +94,7 @@ export function drawTerrain() {
             if (typeof setup === "function") init = setup;
             init();
             if (typeof draw === "function") render();
-        }; ///////////////////////////////////////////////////////////////////////
+        };
 
         var initSVG = function initSVG(opt) {
             var terrainElement = document.getElementById("terrain");
@@ -146,10 +120,9 @@ export function drawTerrain() {
             }
         };
 
-        var _initSVG = initSVG(opt),
-            svgElem = _initSVG[0],
-            inside = _initSVG[1],
-            outside = _initSVG[2]; ///////////////////////////////////////////////////////////////////////////
+        var _initSVG = initSVG(opt), inside = _initSVG[1];
+        // svgElem = _initSVG[0],
+        // outside = _initSVG[2]; 
 
 
         var start = function start() {
@@ -164,48 +137,70 @@ export function drawTerrain() {
             if (typeof draw === "function") render();
         };
 
-        var moveTo = function moveTo(x0, y0) {
-            var x, y;
-
-            if (Array.isArray(x0)) {
-                y = x0[1];
-                x = x0[0];
-            } else {
-                x = x0;
-                y = y0;
+        function moveTo(x, y) {
+            // Check if the first argument is an array (supporting both coordinate pair formats)
+            if (Array.isArray(x)) {
+                y = x[1];
+                x = x[0];
             }
 
-            if (matrixTransform === true) {
-                matrix.transform(x, y);
-            } else {
-                px = x;
-                py = y;
+            // Apply matrix transformation if enabled
+            if (matrixTransform) {
+                const transformed = applyMatrixTransform(x, y);
+                x = transformed.x;
+                y = transformed.y;
             }
 
-            if (polyline.length > 0) polylineSVG(true);
+            // Update the current position
+            px = x;
+            py = y;
+
+            // Clear the existing polyline data if it exists
+            finalizePolyline();
+
+            // Add the current position to the polyline
             polyline.push(px, py);
-        };
+        }
 
-        var lineTo = function lineTo(x0, y0) {
-            var x, y;
+        // Helper function to apply matrix transformations
+        function applyMatrixTransform(x, y) {
+            // Assuming matrix is an object that provides a method to transform coordinates
+            return matrix.transform(x, y);
+        }
 
-            if (Array.isArray(x0)) {
-                y = x0[1];
-                x = x0[0];
-            } else {
-                x = x0;
-                y = y0;
+        // Helper function to finalize current polyline
+        function finalizePolyline() {
+            if (polyline.length > 0) {
+                polylineSVG(true); // Assume this function finalizes the current polyline
+            }
+        }
+        
+        function lineTo(x, y) {
+            // Support for passing coordinates as a single array argument
+            if (Array.isArray(x)) {
+                y = x[1];
+                x = x[0];
             }
 
-            if (matrixTransform === true) {
-                matrix.transform(x, y);
-            } else {
-                px = x;
-                py = y;
+            // Apply any matrix transformation if enabled
+            if (matrixTransform) {
+                const transformed = applyMatrixTransform(x, y);
+                x = transformed.x;
+                y = transformed.y;
             }
 
-            if (py === polyline[polyline.length - 1] && py === polyline[polyline.length - 3]) polyline[polyline.length - 2] = px; else if (px === polyline[polyline.length - 2] && px === polyline[polyline.length - 4]) polyline[polyline.length - 1] = py; else polyline.push(px, py);
-        };
+            // Update the current position to the new point
+            px = x;
+            py = y;
+
+            // Add the new point to the current polyline
+            addToPolyline(px, py);
+        }
+
+        // Helper function to add points to the current polyline
+        function addToPolyline(x, y) {
+            polyline.push(x, y);
+        }
 
         var _line = function line(x0, y0, x1, y1) {
             if (x0 !== px || y0 !== py) moveTo(x0, y0);
@@ -229,21 +224,27 @@ export function drawTerrain() {
             }
         };
 
-        var quadraticCurveTo = function quadraticCurveTo(cx, cy, x1, y1, steps) {
-            if (steps === void 0) {
-                steps = 20;
+        var quadraticCurveTo = function quadraticCurveTo(controlX, controlY, endX, endY, steps = 20) {
+            // Define the increment for the parameter t based on the number of steps
+            const stepSize = 1 / steps;
+
+            // Initial point is the current point (px, py)
+            let startX = px;
+            let startY = py;
+
+            // Loop through the values of t from 0 to 1 in increments of stepSize
+            for (let t = 0; t <= 1; t += stepSize) {
+                // Calculate the point on the quadratic curve using the parametric equation
+                let xt = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * controlX + t * t * endX;
+                let yt = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * controlY + t * t * endY;
+
+                // Draw a line to the calculated point from the current point
+                lineTo(xt, yt);
             }
 
-            var s = 1 / steps;
-            var x0 = px;
-            var y0 = py;
-
-            for (var t = 0; t < 1; t += s) {
-                lineTo((1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * cx + t * t * x1, (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * cy + t * t * y1);
-            }
-
-            lineTo(x1, y1);
-        };
+            // Ensure the curve reaches the exact end point
+            lineTo(endX, endY);
+        }
 
         var ellipse = function ellipse(x, y, w, h, start, end) {
             if (h === void 0) {
@@ -277,7 +278,7 @@ export function drawTerrain() {
         ////////////////////////////////////////////////////////////////
 
 
-        var Polygons = /*#__PURE__*/function () {
+        var Polygons = function () {
             function Polygons() {
                 this.list = [];
             }
@@ -287,7 +288,7 @@ export function drawTerrain() {
             _proto.draw = function draw(p) {
                 var vis = true;
 
-                for (var _iterator = _createForOfIteratorHelperLoose(this.list), _step; !(_step = _iterator()).done;) {
+                for (const _step of this.list) {
                     var p1 = _step.value;
 
                     // AABB overlapping test - still O(N2) but very fast
@@ -316,7 +317,7 @@ export function drawTerrain() {
             return Polygons;
         }();
 
-        var Polygon = /*#__PURE__*/function () {
+        var Polygon = function () {
             function Polygon() {
                 this.cp = [];
                 this.dp = [];
@@ -366,7 +367,7 @@ export function drawTerrain() {
                 var ymin = 2000;
                 var ymax = -2000;
 
-                for (var _iterator2 = _createForOfIteratorHelperLoose(this.cp), _step2; !(_step2 = _iterator2()).done;) {
+                for (const _step2 of this.cp) {
                     var cp = _step2.value;
                     var x = cp[0];
                     var y = cp[1];
@@ -400,7 +401,7 @@ export function drawTerrain() {
 
                 tp.boolean(this, 1);
 
-                for (var _iterator3 = _createForOfIteratorHelperLoose(tp.dp), _step3; !(_step3 = _iterator3()).done;) {
+                for (const _step3 of tp.dp) {
                     var dp = _step3.value;
                     this.dp.push(dp);
                 }
@@ -483,7 +484,7 @@ export function drawTerrain() {
             };
 
             return Polygon;
-        }(); /////////////////////////////////////////////////////////////////////////////
+        }();
         // adapted from https://turtletoy.net/js/turtlesvg.js
 
 
@@ -556,17 +557,22 @@ export function drawTerrain() {
             }) : polyline;
             var clippedPaths = target === inside ? clip(points, 5, 195) : [points];
 
-            for (var _iterator4 = _createForOfIteratorHelperLoose(clippedPaths), _step4; !(_step4 = _iterator4()).done;) {
-                var _points = _step4.value;
-                var poly = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+            for (let points of clippedPaths) {
+                let poly = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
 
-                var svgPoints = _points.map(function (n) {
-                    return +n.toFixed(2);
-                });
+                // Format each coordinate in points array to two decimal places and convert to string
+                let svgPoints = points.map(n => n.toFixed(2)).join(' ');
 
-                poly.setAttribute("points", svgPoints.toString());
+                // Set the formatted points to the polyline
+                poly.setAttribute("points", svgPoints);
+
+                // Append the new polyline element to the target container
                 target.appendChild(poly);
-                if (target === inside) polylines.push(_points);
+
+                // If the target is the 'inside' container, also store the points array in polylines array
+                if (target === inside) {
+                    polylines.push(points);
+                }
             }
 
             polyline = [];
@@ -593,10 +599,10 @@ export function drawTerrain() {
                 terrainLoaded = true;
             }
 
-        }; //////////////////////////////////////////////////////
+        };
 
 
-        var ContextFree = /*#__PURE__*/function () {
+        var ContextFree = function () {
             function ContextFree() {
                 var _this = this;
 
@@ -798,7 +804,7 @@ export function drawTerrain() {
             return ContextFree;
         }();
 
-        var Mat2D = /*#__PURE__*/function () {
+        var Mat2D = function () {
             function Mat2D(m) {
                 this.m = m;
                 this.type = 0;
@@ -918,7 +924,7 @@ export function drawTerrain() {
         }; //////////////////////////////////////////////////////
         // http://mrl.nyu.edu/~perlin/noise/
 
-        var Perlin = /*#__PURE__*/function () {
+        var Perlin = function () {
             function Perlin(setup) {
                 this.p = new Uint8Array(512);
                 this.octaves = setup.octaves || 1;
@@ -985,7 +991,7 @@ export function drawTerrain() {
         }(); // https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.js
 
 
-        var Simplex = /*#__PURE__*/function () {
+        var Simplex = function () {
             function Simplex(setup) {
                 this.octaves = setup.octaves || 1;
                 this.F2 = 0.5 * (Math.sqrt(3.0) - 1.0);
