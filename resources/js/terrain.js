@@ -64,10 +64,10 @@ function setup() {
         }
     }
 }
-
-var size = 512; // 512 bytes is a common disk sector size, and exactly a half of kibibyte.
+// Was at 512, but bumped it to 1024 for increased detail
+// 512 bytes is a common disk sector size, and exactly a half of kibibyte.
+var size = 512; 
 var water = 2; // 0 for no water
-
 var seed = Math.random() * 100000 | 0;
 var hmap = [];
 var line;
@@ -100,30 +100,31 @@ export function drawTerrain() {
             var terrainElement = document.getElementById("terrain");
             if (typeof (terrainElement) != 'undefined' && terrainElement != null) {
                 if (opt.centerOrigin !== undefined && opt.centerOrigin === true) offset = 95; //Not sure this does anything.				
-
                 if (opt.cpuTime !== undefined) cpuTime = opt.cpuTime;
-                var svgElem = document.querySelector("#terrain");
+
+                let svgElem = document.querySelector("#terrain");
                 svgElem.setAttribute("viewBox", opt.viewBox || "0 0 200 200");
                 svgElem.setAttribute("style", "background:" + (opt.background || "#fff"));
                 svgElem.setAttribute("viewport-fill", opt.background || "#fff");
-                var inside = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+                let inside = document.createElementNS("http://www.w3.org/2000/svg", "g");
                 inside.setAttribute("stroke-linejoin", "round");
                 inside.setAttribute("style", "fill:none;stroke:" + (opt.stroke || "#000") + ";stroke-width:" + (opt.strokeWidth || 0.2) + ";opacity:" + (opt.opacity || 1));
                 svgElem.appendChild(inside);
                 target = inside;
-                // var outside = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                // outside.setAttribute("style", "fill:none;stroke:" + (opt.stroke || "#000") + ";stroke-width:0.3;");
-                // svgElem.appendChild(outside);
+
+                let outside = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                outside.setAttribute("style", "fill:none;stroke:" + (opt.stroke || "#000") + ";stroke-width:0.3;");
+                svgElem.appendChild(outside);
                 requestAnimationFrame(autorun);
-                // return [svgElem, inside, outside];
-                return [svgElem, inside];
+
+                return [svgElem, inside, outside];
             }
         };
 
-        var _initSVG = initSVG(opt), inside = _initSVG[1];
-        // svgElem = _initSVG[0],
-        // outside = _initSVG[2]; 
-
+        var _initSVG = initSVG(opt);
+        var inside = _initSVG[1];
+        var outside = _initSVG[2];
 
         var start = function start() {
             matrixTransform = false;
@@ -132,7 +133,7 @@ export function drawTerrain() {
             polyline = [];
             polylines.length = 0;
             inside.innerHTML = "";
-            // outside.innerHTML = "";
+            outside.innerHTML = "";
             init();
             if (typeof draw === "function") render();
         };
@@ -174,7 +175,7 @@ export function drawTerrain() {
                 polylineSVG(true); // Assume this function finalizes the current polyline
             }
         }
-        
+
         function lineTo(x, y) {
             // Support for passing coordinates as a single array argument
             if (Array.isArray(x)) {
@@ -589,8 +590,8 @@ export function drawTerrain() {
                 moveTo(px, py);
                 iter = 0;
                 matrixTransform = false;
-                // target = outside;
-                // target.innerHTML = "";
+                target = outside;
+                target.innerHTML = "";
                 polyline = [];
             }
             // Program is finished when run is false.
@@ -1165,11 +1166,11 @@ export function drawTerrain() {
     var viewbox = '57 40 84 84'; //desktop
 
     var svg = SVG({
-        // size: 500, // millimeters
+        size: 500, // millimeters
         background: "#fafaf9",
         stroke: "#a8a29e",
         strokeWidth: 0.1,
-        cpuTime: 7, // milliseconds / frame  
+        cpuTime: 6, // milliseconds / frame  
         viewBox: viewbox,
     });
 
@@ -1196,14 +1197,6 @@ export function drawTerrain() {
 }
 
 export function redraw() {
-    size = 512; // 512 bytes is a common disk sector size, and exactly a half of kibibyte.
-    water = 2; // 0 for no water
-
-    seed = Math.random() * 100000 | 0;
-    hmap = [];
-    line;
-    pen = false;
-
     if (document.getElementById("terrain-container")) {
         const terrainContainer = document.getElementById("terrain-container");
         const terrainSvg = document.getElementById("terrain");
