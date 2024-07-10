@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { createStars } from './_createStars.js';
-import { createDysonSwarm } from './_createDysonSwarm.js';
+import { createDysonSphere } from './_createDysonSphere.js';
 
 // Set up the scene, camera, and renderer
 let scene = new THREE.Scene();
@@ -14,8 +14,23 @@ document.body.appendChild(renderer.domElement);
 
 // Add stars to the scene
 const stars = 12109 // The smallest prime formed from reverse concatenation of three consecutive composite numbers
-scene = createStars(stars, scene);
-// scene = createDysonSwarm(scene, renderer, camera);
+const mediumStars = stars * 0.80;
+const smallStars = stars * 0.145;
+const largeStars = stars * 0.05;
+const giantStars = stars * 0.005;
+
+const starFieldMedium = createStars(mediumStars, 3);
+const starFieldLarge = createStars(largeStars, 10)
+const starFieldSmall = createStars(smallStars, 2)
+const starFieldGiant = createStars(giantStars, 25)
+
+const starField = new THREE.Group();
+starField.add(starFieldMedium);
+starField.add(starFieldSmall);
+starField.add(starFieldLarge);
+starField.add(starFieldGiant);
+
+scene.add(starField);
 
 // Camera positioning
 camera.position.z = 1000;

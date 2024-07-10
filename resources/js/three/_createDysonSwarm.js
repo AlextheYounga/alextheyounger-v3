@@ -14,9 +14,9 @@ export function createDysonSwarm(scene, renderer, camera) {
     orbitGroup.add(star);
     
     // Create an orbiting swarm node
-    const swarmCount = 100;
+    const swarmCount = 20;
     for (let i = 0; i < swarmCount; i++) {
-        const orbitSpeed = 0.001; // radians per frame
+        const orbitSpeed = 0.0005; // radians per frame
         const orbitRadius = starSize * 1.05; // distance from the star
         const inclination = Math.random() * 10; // Random inclination up to 45 degrees
 

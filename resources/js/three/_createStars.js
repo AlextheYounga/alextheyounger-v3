@@ -11,7 +11,7 @@ function createStarTexture() {
         size / 2, size / 2, 0,
         size / 2, size / 2, size / 2
     );
-    gradient.addColorStop(0, 'rgba(255,255,255,1)');
+    gradient.addColorStop(0.1, 'rgba(255,255,255,1)');
     gradient.addColorStop(0.2, 'rgba(255,255,255,0.8)');
     gradient.addColorStop(0.4, 'rgba(255,255,255,0.5)');
     gradient.addColorStop(1, 'rgba(255,255,255,0)');
@@ -24,11 +24,10 @@ function createStarTexture() {
     return texture;
 }
 
-export function createStars(count, scene) {
+export function createStars(count, size = 3) {
     const geometry = new THREE.BufferGeometry();
     const positions = [];
     const colors = [];
-    const sizes = []; // Array to store sizes of each star
 
     for (let i = 0; i < count; i++) {
         positions.push((Math.random() - 0.5) * 2000); // x
@@ -45,18 +44,13 @@ export function createStars(count, scene) {
 
         color.setHSL(hue, saturation, lightness);  // Reapply the modified HSL values
         colors.push(color.r, color.g, color.b);
-
-        // Assign a slightly varied size
-        const size = 1 + Math.random() * 0.5; // Base size of 1, with small random variation
-        sizes.push(size);
     }
 
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-    geometry.setAttribute('size', new THREE.BufferAttribute(new Float32Array(sizes), 1)); // Add size attribute
 
     const material = new THREE.PointsMaterial({
-        size: 3,
+        size: size,
         map: createStarTexture(),
         transparent: true,
         depthWrite: false,
@@ -65,8 +59,7 @@ export function createStars(count, scene) {
     });
 
     const stars = new THREE.Points(geometry, material);
-    scene.add(stars)
 
-    return scene
+    return stars
 }
 
