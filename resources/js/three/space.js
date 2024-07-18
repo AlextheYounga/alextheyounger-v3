@@ -2,12 +2,15 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { createStars } from './_createStars.js';
-import { createDysonSphere } from './_createDysonSphere.js';
+import { createStarshipEnterprise } from './ _createStarshipEnterprise.js';
+
+// import { createDysonSphere } from './_createDysonSphere.js';
 
 // Set up the scene, camera, and renderer
 let scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
 const renderer = new THREE.WebGLRenderer();
+
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -30,6 +33,9 @@ starField.add(starFieldSmall);
 starField.add(starFieldLarge);
 starField.add(starFieldGiant);
 
+// Add Enterprise
+createStarshipEnterprise(starField)
+
 scene.add(starField);
 
 // Camera positioning
@@ -47,8 +53,8 @@ controls.maxPolarAngle = Math.PI / 2;
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
-    // starField.rotation.x += 0.0005;
-    // starField.rotation.y += 0.0005;
+    starField.rotation.x += 0.0001;
+    starField.rotation.y += 0.0001;
     renderer.render(scene, camera);
     controls.update();
 }

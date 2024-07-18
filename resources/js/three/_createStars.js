@@ -45,7 +45,7 @@ export function createStars(count, size = 3) {
         color.setHSL(hue, saturation, lightness);  // Reapply the modified HSL values
         colors.push(color.r, color.g, color.b);
     }
-
+    
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
