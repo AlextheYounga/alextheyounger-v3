@@ -32,7 +32,7 @@ export function createStarshipEnterprise(starField) {
     // Add Starship Enterprise
     return loader.load('CAD/enterprise1701.gltf', function (gltf) {
         gltf.scene.scale.set(35, 35, 35)
-        const x = (Math.random() - 0.5) * 1000
+        const x = (Math.random() - 0.5) * 500
         const y = (Math.random() - 0.5) * 0
         const z = (Math.random() - 0.5) * 200
         gltf.scene.position.set(x, y, z);

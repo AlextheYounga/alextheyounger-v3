@@ -5,7 +5,6 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-import { drawTerrain, redraw } from './terrain.js';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -20,11 +19,6 @@ createInertiaApp({
   
       // config global property after createApp and before mount
       VueApp.config.globalProperties.$route = route;
-      VueApp.config.globalProperties.$terrain = {
-        draw: drawTerrain,
-        redraw: redraw,
-      }
-  
       VueApp.mount(el);
 
       return VueApp;
