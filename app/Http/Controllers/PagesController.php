@@ -30,41 +30,41 @@ class PagesController extends Controller
         ]);
     }
 
-    public function resume()
+    // public function resume()
+    // {
+    //     return Inertia::render('Resume');
+    // }
+
+    // public function readingList()
+    // {
+    //     $books = Book::with('categories')
+    //         ->active()
+    //         ->orderBy('position', 'asc')
+    //         ->get();
+
+    //     $categories = Category::active()
+    //         ->where('type', '=', 'Book::class')
+    //         ->orderBy('position', 'asc')
+    //         ->get();
+
+    //     return Inertia::render('ReadingList', [
+    //         'books' => $books,
+    //         'categories' => $categories,
+    //     ]);
+    // }
+
+    // public function projects()
+    // {
+    //     return Inertia::render('Projects', [
+    //         'projects' => Project::active()
+    //             ->orderBy('position', 'asc')
+    //             ->get()
+    //     ]);
+    // }
+
+    public function starfield()
     {
-        return Inertia::render('Resume');
-    }
-
-    public function readingList()
-    {
-        $books = Book::with('categories')
-            ->active()
-            ->orderBy('position', 'asc')
-            ->get();
-
-        $categories = Category::active()
-            ->where('type', '=', 'Book::class')
-            ->orderBy('position', 'asc')
-            ->get();
-
-        return Inertia::render('ReadingList', [
-            'books' => $books,
-            'categories' => $categories,
-        ]);
-    }
-
-    public function projects()
-    {
-        return Inertia::render('Projects', [
-            'projects' => Project::active()
-                ->orderBy('position', 'asc')
-                ->get()
-        ]);
-    }
-
-    public function terrainPlayground()
-    {
-        return Inertia::render('TerrainPlayground');
+        return Inertia::render('StarField');
     }
 
     public function setupFooter()
