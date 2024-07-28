@@ -9,8 +9,7 @@ let space = null;
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
-    space.starField.rotation.x += 0.00005;
-    space.starField.rotation.y += 0.00008;
+    space.starField.rotation.y +=  0.00001;
     space.renderer.render(space.scene, space.camera);
     space.controls.update();
 }
@@ -61,8 +60,8 @@ function enableCameraControls(camera, renderer) {
     controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
     controls.dampingFactor = 0.05;
     controls.screenSpacePanning = false;
-    controls.minDistance = 100;
-    controls.maxDistance = 500;
+    controls.minDistance = 10;
+    controls.maxDistance = 2000;
     controls.maxPolarAngle = Math.PI / 2;
 
     return controls

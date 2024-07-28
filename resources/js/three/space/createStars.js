@@ -30,9 +30,9 @@ export function createStars(count, size = 3) {
     const colors = [];
 
     for (let i = 0; i < count; i++) {
-        positions.push((Math.random() - 0.5) * 2000); // x
-        positions.push((Math.random() - 0.5) * 2000); // y
-        positions.push((Math.random() - 0.5) * 6000); // z
+        positions.push((Math.random() - 0.5) * 4000); // x
+        positions.push((Math.random() - 0.5) * 4000); // y
+        positions.push((Math.random() - 0.5) * 4000); // z
 
         // Set a random luminance on a white color
         // Generate a random color biased towards red or blue
