@@ -2,29 +2,20 @@
 import * as THREE from 'three';
 import { createStars } from './space/createStars.js';
 import { createStarshipEnterprise } from './space/createStarshipEnterprise.js';
-import { enableCameraControls } from './cameraControls.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const space = {
-    starfield: null,
-    interactive: false,
-}
+let space = null;
 
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
-    space.starfield.starField.rotation.x += 0.0001;
-    space.starfield.starField.rotation.y += 0.0001;
-    space.starfield.renderer.render(
-        space.starfield.scene,
-        space.starfield.camera
-    );
-
-    if (space.interactive) {
-        space.starfield.controls.update();
-    }
+    space.starField.rotation.x += 0.00005;
+    space.starField.rotation.y += 0.00008;
+    space.renderer.render(space.scene, space.camera);
+    space.controls.update();
 }
 
-function createStarField() {
+function createStarField(scale = 1) {
     // Set up the scene, camera, and renderer
     let scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
@@ -35,7 +26,7 @@ function createStarField() {
     starfieldDiv.appendChild(renderer.domElement);
 
     // Add stars to the scene
-    const stars = 12109 // The smallest prime formed from reverse concatenation of three consecutive composite numbers
+    const stars = 12109 * scale // The smallest prime formed from reverse concatenation of three consecutive composite numbers
     const mediumStars = stars * 0.80;
     const smallStars = stars * 0.145;
     const largeStars = stars * 0.05;
@@ -65,29 +56,29 @@ function createStarField() {
     }
 }
 
+function enableCameraControls(camera, renderer) {
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+    controls.dampingFactor = 0.05;
+    controls.screenSpacePanning = false;
+    controls.minDistance = 100;
+    controls.maxDistance = 500;
+    controls.maxPolarAngle = Math.PI / 2;
 
-export const renderStaticStarfield = async () => {
-    space.interactive = false;
-    if (document.getElementById("starfield")) {
-        if (!space.starfield) {
-            space.starfield = createStarField(true)
-        }
-        animate(); // Start the animation
-    }
+    return controls
 }
 
-export const renderInteractiveStarfield = async () => {
-    space.interactive = true;
+export const renderStarfield = async () => {
     if (document.getElementById("starfield")) {
-        if (!space.starfield) {
-            space.starfield = createStarField(true)
+        if (!space) {
+            space = createStarField()
         }
 
-        space.starfield.controls = enableCameraControls(
-            space.starfield.camera,
-            space.starfield.renderer
+        space.controls = enableCameraControls(
+            space.camera,
+            space.renderer
         )
-        
+
         animate(); // Start the animation
     }
 }

@@ -36,7 +36,7 @@ import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
 // import Footer from '@/Components/Footer.vue';
 // import LanguageBar from '@/Components/LanguageBar.vue';
 // import { generateTechColors } from '@/Components/ProjectColors.vue';
-import { renderStaticStarfield } from '@/three/space';
+import { renderStarfield } from '@/three/space';
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -88,7 +88,7 @@ export default {
         }
     },
     mounted() {
-        renderStaticStarfield();
+        renderStarfield();
         writeContent(this.$props.content);
         reveal();
     }

@@ -7,7 +7,7 @@
 
 <script>
 import { Head } from '@inertiajs/vue3';
-import { renderInteractiveStarfield } from '../three/space.js';
+import { renderStarfield } from '../three/space.js';
 import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
 
 export default {
@@ -16,7 +16,7 @@ export default {
         AnimatedButtonMenu
     },
     created() {
-        renderInteractiveStarfield();
+        renderStarfield();
     }
 }
 </script>
