@@ -18,7 +18,13 @@ class RepositorySeeder extends Seeder
         $repositories  = json_decode($repositoriesJson, true);
 
         foreach($repositories as $repository) {
-            Repository::create($repository);
+            Repository::create([
+                'name' => $repository['name'],
+                'size' => $repository['size'],
+                'host' => $repository['host'],
+                'languages' => $repository['languages'],
+                'properties' => $repository['properties'],
+            ]);
         }
     }
 }
