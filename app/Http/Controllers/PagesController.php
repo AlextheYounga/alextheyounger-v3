@@ -18,13 +18,8 @@ class PagesController extends Controller
         $pageContent = PageContent::where('view', '=', 'Home')
             ->get()
             ->keyBy('key');
-            
-        $projects = Project::active()
-            ->orderBy('position', 'asc')
-            ->get();
 
         return Inertia::render('Home', [
-            'projects' => $projects,
             'content' => $pageContent,
         ]);
     }

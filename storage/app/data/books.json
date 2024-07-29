@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "category_id": 3,
     "title": "How to Win Friends and Influence People",
     "author": "Dale Carnegie",
@@ -10,9 +11,12 @@
     "subtitle": "The Only Book You Need to Lead You to Success",
     "position": 1,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList How to Win Friends and Influence People by Dale Carnegie\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 2,
     "category_id": 1,
     "title": "The Daily Stoic",
     "author": "Ryan Holiday",
@@ -23,9 +27,12 @@
     "subtitle": "366 Meditations on Wisdom, Perseverance, and the Art of Living",
     "position": 2,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Daily Stoic by Ryan Holiday\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 3,
     "category_id": 2,
     "title": "Foundations of Morality",
     "author": "Henry Hazlitt",
@@ -36,9 +43,12 @@
     "subtitle": null,
     "position": 3,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Foundations of Morality by Henry Hazlitt\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 4,
     "category_id": 1,
     "title": "The Antidote",
     "author": "Oliver Burkeman",
@@ -47,11 +57,14 @@
     "external_link": "https://www.amazon.com/Antidote-Happiness-People-Positive-Thinking/dp/0865478015/ref=sr_1_1?s=books&ie=UTF8&qid=1515919681&sr=1-1&keywords=the+antidote+happiness+for+people+who+can%27t+stand+positive+thinking",
     "external_image_link": null,
     "subtitle": "Happiness For People Who Can't Stand Positive Thinking",
-    "position": 34,
+    "position": 40,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Antidote: Happiness For People Who Can't Stand Positive Thinking by Oliver Burkeman\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:13"
   },
   {
+    "id": 5,
     "category_id": 2,
     "title": "Square One",
     "author": "Steve Patterson",
@@ -62,9 +75,12 @@
     "subtitle": "The Foundations of Knowledge",
     "position": 4,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Square One: The Foundations of Knowledge by Steve Patterson\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 6,
     "category_id": 4,
     "title": "Making Economic Sense",
     "author": "Murray Rothbard",
@@ -75,9 +91,12 @@
     "subtitle": null,
     "position": 6,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Making Economic Sense by Murray Rothbard\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 7,
     "category_id": 13,
     "title": "Rich Dad Poor Dad",
     "author": "Robert Kiyosaki",
@@ -86,11 +105,14 @@
     "external_link": "https://www.amazon.com/Rich-Robert-Lechter-Sharon-Kiyosaki/dp/3898798828/ref=sr_1_2",
     "external_image_link": null,
     "subtitle": "",
-    "position": 27,
+    "position": 30,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Rich Dad Poor Dad by Robert Kiyosaki\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:11:57"
   },
   {
+    "id": 8,
     "category_id": 13,
     "title": "Good Profit",
     "author": "Charles Koch",
@@ -101,9 +123,12 @@
     "subtitle": "How Creating Value for Others Built One of the World's Most Successful Companies",
     "position": 7,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Good Profit by Charles Koch\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 9,
     "category_id": 1,
     "title": "Meditations",
     "author": "Marcus Aurelius",
@@ -112,11 +137,14 @@
     "external_link": "https://www.amazon.com/Meditations-Marcus-Aurelius/dp/1545565678/ref=sr_1_4?crid=2W17I979DHML0&keywords=meditations+marcus+aurelius&qid=1558935312&s=gateway&sprefix=meditations+marcus+aur%2Caps%2C281&sr=8-4",
     "external_image_link": null,
     "subtitle": "",
-    "position": 40,
+    "position": 47,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Meditations by Marcus Aurelius\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:31"
   },
   {
+    "id": 10,
     "category_id": 1,
     "title": "A Guide to the Good Life",
     "author": "William B. Irvine",
@@ -125,11 +153,14 @@
     "external_link": "https://www.amazon.com/Guide-Good-Life-Ancient-Stoic/dp/0195374614/ref=sr_1_1?s=books&ie=UTF8&qid=1515918746&sr=1-1&keywords=a+guide+to+the+good+life",
     "external_image_link": null,
     "subtitle": "The Ancient Art of Stoic Joy",
-    "position": 57,
+    "position": 98,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList A Guide to the Good Life by William B. Irvine\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 11,
     "category_id": 1,
     "title": "The Solution to Social Anxiety",
     "author": "Dr. Aziz Gazipura",
@@ -140,9 +171,12 @@
     "subtitle": "Break Free from the Shyness That Holds You Back",
     "position": 9,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Solution to Social Anxiety by Dr. Aziz Gazipura\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 12,
     "category_id": 12,
     "title": "Notes on Democracy",
     "author": "H.L. Mencken",
@@ -153,9 +187,12 @@
     "subtitle": "",
     "position": 8,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Notes on Democracy by H.L. Mencken\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 13,
     "category_id": 8,
     "title": "What is Real",
     "author": "Adam Becker",
@@ -166,9 +203,12 @@
     "subtitle": "The Unfinished Quest for the Meaning of Quantum Physics",
     "position": 23,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList What is Real by Adam Becker\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 14,
     "category_id": 2,
     "title": "Waking Up",
     "author": "Sam Harris",
@@ -177,11 +217,14 @@
     "external_link": "https://www.amazon.com/Waking-Up-Spirituality-Without-Religion/dp/1451636024/ref=sr_1_1?s=books&ie=UTF8&qid=1515920029&sr=1-1&keywords=waking+up+sam+harris",
     "external_image_link": null,
     "subtitle": "A Guide to Spirituality Without Religion",
-    "position": 25,
+    "position": 39,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Waking Up by Sam Harris\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:13"
   },
   {
+    "id": 15,
     "category_id": 2,
     "title": "Out of Your Mind",
     "author": "Alan Watts",
@@ -192,9 +235,12 @@
     "subtitle": "Essential Listening from the Alan Watts Archives",
     "position": 10,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Out of Your Mind\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 16,
     "category_id": 2,
     "title": "You're It",
     "author": "Alan Watts",
@@ -203,11 +249,14 @@
     "external_link": "https://www.amazon.com/Youre-Hiding-Seeking-Being-Found/dp/1591797349",
     "external_image_link": null,
     "subtitle": "On Hiding, Seeking, and Being Found",
-    "position": 36,
+    "position": 43,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList You're It by Alan Watts\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:31"
   },
   {
+    "id": 17,
     "category_id": 6,
     "title": "Street Smarts",
     "author": "Jim Rogers",
@@ -218,9 +267,12 @@
     "subtitle": "",
     "position": 13,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Street Smarts by Jim Rogers\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 18,
     "category_id": 3,
     "title": "The Charisma Myth",
     "author": "Olivia Fox Cabane",
@@ -231,9 +283,12 @@
     "subtitle": "How Anyone Can Master the Art and Science of Personal Magnetism",
     "position": 5,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Charisma Myth by Olivia Fox Cabane\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 19,
     "category_id": 5,
     "title": "Extraordinary Popular Delusions and the Madness of Crowds",
     "author": "Charles Mackay",
@@ -244,9 +299,12 @@
     "subtitle": "",
     "position": 15,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Extraordinary Popular Delusions and the Madness of Crowds by Charles Mackay\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 20,
     "category_id": 8,
     "title": "A Troublesome Inheritance",
     "author": "Nicholas Wade",
@@ -255,11 +313,14 @@
     "external_link": "https://www.amazon.com/Troublesome-Inheritance-Genes-Human-History/dp/0143127160/ref=sr_1_1?s=books&ie=UTF8&qid=1515921233&sr=1-1&keywords=a+troublesome+inheritance+by+nicholas+wade",
     "external_image_link": null,
     "subtitle": "Genes, Race, and Human History",
-    "position": 112,
+    "position": 122,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList A Troublesome Inheritance by Nicholas Wade\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 21,
     "category_id": 8,
     "title": "Why We Sleep",
     "author": "Matthew Walker, PhD",
@@ -268,11 +329,14 @@
     "external_link": "https://www.amazon.com/Why-We-Sleep-Unlocking-Dreams/dp/1501144316",
     "external_image_link": null,
     "subtitle": "Unlocking the Power of Sleep and Dreams",
-    "position": 26,
+    "position": 29,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Why We Sleep by Matthew Walker, PhD\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:11:57"
   },
   {
+    "id": 22,
     "category_id": 5,
     "title": "Black Rednecks and White Liberals",
     "author": "Thomas Sowell",
@@ -283,9 +347,12 @@
     "subtitle": "",
     "position": 24,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Black Rednecks and White Liberals by Thomas Sowell\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 23,
     "category_id": 5,
     "title": "Fool's Errand",
     "author": "Scott Horton",
@@ -294,11 +361,14 @@
     "external_link": "https://www.amazon.com/Fools-Errand-Time-End-Afghanistan/dp/1548650218",
     "external_image_link": null,
     "subtitle": "Time to End the War in Afghanistan",
-    "position": 60,
+    "position": 67,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList https:\\/\\/images-na.ssl-images-amazon.com\\/images\\/I\\/51zrL6zS1ZL._SX331_BO1,204,203,200_.jpg\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 24,
     "category_id": 4,
     "title": "The Failure of the New Economics",
     "author": "Henry Hazlitt",
@@ -307,11 +377,14 @@
     "external_link": "https://mises.org/library/failure-new-economics-0",
     "external_image_link": null,
     "subtitle": "An Analysis of the Keynesian Fallacies",
-    "position": 41,
+    "position": 48,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Failure of the New Economics by Henry Hazlitt\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:31"
   },
   {
+    "id": 25,
     "category_id": 9,
     "title": "The Righteous Mind",
     "author": "Jonathan Haidt",
@@ -320,11 +393,14 @@
     "external_link": "https://www.amazon.com/Righteous-Mind-Divided-Politics-Religion/dp/0307455777/ref=sr_1_1?s=books&ie=UTF8&qid=1515921478&sr=1-1&keywords=jonathan+haidt+the+righteous+mind",
     "external_image_link": null,
     "subtitle": "Why Good People are Divided by Politics and Religion",
-    "position": 52,
+    "position": 61,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Righteous Mind by Jonathan Haidt\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 26,
     "category_id": 9,
     "title": "Do What You Are",
     "author": "Paul D. Tieger, Barbara Barron, and Kelly Tieger",
@@ -333,11 +409,14 @@
     "external_link": "https://www.amazon.com/Do-What-You-Are-Personality/dp/031623673X/ref=sr_1_2?s=books&ie=UTF8&qid=1515924039&sr=1-2&keywords=do+what+you+are+paul+tieger",
     "external_image_link": null,
     "subtitle": "Discover the Perfect Career for You Through the Secrets of Personality Type",
-    "position": 46,
+    "position": 55,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Do What You Are by Paul D. Tieger, Barbara Barron, and Kelly Tieger\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 27,
     "category_id": 10,
     "title": "Mindfulness in Plain English",
     "author": "Bhante Gunaratana",
@@ -346,11 +425,14 @@
     "external_link": "https://www.amazon.com/Mindfulness-Plain-English-Revised-Expanded/dp/0861713214/ref=sr_1_3?s=books&ie=UTF8&qid=1517263300&sr=1-3&keywords=mindfulness+in+plain+english",
     "external_image_link": null,
     "subtitle": "",
-    "position": 47,
+    "position": 56,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Mindfulness in Plain English by Bhante Gunaratana\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 28,
     "category_id": 10,
     "title": "Deep Work",
     "author": "Cal Newport",
@@ -361,9 +443,12 @@
     "subtitle": "Rules for Focused Success in a Distracted World",
     "position": 14,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Deep Work by Cal Newport\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 29,
     "category_id": 14,
     "title": "Deep Thoughts",
     "author": "Jack Handey",
@@ -372,11 +457,14 @@
     "external_link": "https://www.amazon.com/Deep-Thoughts-Inspiration-Jack-Handey/dp/0425133656",
     "external_image_link": null,
     "subtitle": "Inspiration for the Uninspired",
-    "position": 53,
+    "position": 62,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Deep Thoughts by Jack Handey\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 30,
     "category_id": 11,
     "title": "Total Recall",
     "author": "Arnold Schwarzenegger",
@@ -385,11 +473,14 @@
     "external_link": "https://www.amazon.com/Total-Recall-Unbelievably-True-Story/dp/1451662440/ref=sr_1_1?s=books&ie=UTF8&qid=1521363393&sr=1-1&keywords=total+recall+arnold+schwarzenegger",
     "external_image_link": null,
     "subtitle": "My Unbelievably True Life Story",
-    "position": 54,
+    "position": 63,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Total Recall by Arnold Schwarzenegger\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 31,
     "category_id": 6,
     "title": "Hot Commodities",
     "author": "Jim Rogers",
@@ -398,11 +489,14 @@
     "external_link": "https://www.amazon.com/Hot-Commodities-Anyone-Invest-Profitably-ebook/dp/B000FC2OO8/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1515983311&sr=1-1&keywords=hot+commodities+jim+rogers",
     "external_image_link": null,
     "subtitle": "How Anyone Can Invest Profitably in the World's Best Market",
-    "position": 55,
+    "position": 64,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Hot Commodities by Jim Rogers\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 32,
     "category_id": 6,
     "title": "The Millionaire Next Door",
     "author": "Thomas J. Stanley & William D. Danko",
@@ -413,9 +507,12 @@
     "subtitle": "The Surprising Secrets of America's Wealthy",
     "position": 22,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Millionaire Next Door by Thomas J. Stanley & William D. Danko\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 33,
     "category_id": 4,
     "title": "The Road to Ruin",
     "author": "Jim Rickards",
@@ -424,11 +521,14 @@
     "external_link": "https://www.amazon.com/Road-Ruin-Global-Elites-Financial/dp/1591848083/ref=sr_1_1?s=books&ie=UTF8&qid=1515984429&sr=1-1&keywords=The+Road+to+Ruin+by+James+Rickards",
     "external_image_link": null,
     "subtitle": "The Global Elites' Secret Plan for the Next Financial Crisis",
-    "position": 59,
+    "position": 66,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Road to Ruin by Jim Rickards\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 34,
     "category_id": 8,
     "title": "Enlightenment Now",
     "author": "Steven Pinker",
@@ -437,11 +537,14 @@
     "external_link": "https://www.amazon.com/Enlightenment-Now-Science-Humanism-Progress/dp/0525427570/ref=sr_1_2?s=books&ie=UTF8&qid=1526181530&sr=1-2&keywords=enlightenment+now+by+steven+pinker",
     "external_image_link": null,
     "subtitle": "The Case for Reason, Science, Humanism, and Progress",
-    "position": 43,
+    "position": 50,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Enlightenment Now by Steven Pinker\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:31"
   },
   {
+    "id": 35,
     "category_id": 10,
     "title": "The Willpower Instinct",
     "author": "Kelly McGonigal, Phd",
@@ -450,11 +553,14 @@
     "external_link": "https://www.amazon.com/Willpower-Instinct-Self-Control-Works-Matters/dp/1583335080/ref=sr_1_2?s=books&ie=UTF8&qid=1515923129&sr=1-2&keywords=willpower+instinct+by+kelly+mcgonigal",
     "external_image_link": null,
     "subtitle": "How Self Control Works, Why it Matters, and What You Can Do to Get More of It",
-    "position": 62,
+    "position": 70,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Willpower Instinct by Kelly McGonigal, Phd\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 36,
     "category_id": 4,
     "title": "Economics in One Lesson",
     "author": "Henry Hazlitt",
@@ -463,11 +569,14 @@
     "external_link": "https://www.amazon.com/Henry-Hazlitt-Economics-One-Lesson/dp/B004LNZ5H0/ref=sr_1_5?s=books&ie=UTF8&qid=1515985408&sr=1-5&keywords=economics+in+one+lesson+henry+hazlitt",
     "external_image_link": null,
     "subtitle": "The Shortest and Surest Way to Understand Basic Economics",
-    "position": 49,
+    "position": 58,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Economics in One Lesson by Henry Hazlitt\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 37,
     "category_id": 6,
     "title": "The Richest Man in Babylon",
     "author": "George Clason",
@@ -478,9 +587,12 @@
     "subtitle": "",
     "position": 21,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Richest Man in Babylon by George Clason\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 38,
     "category_id": 5,
     "title": "The Gulag Archipeligo",
     "author": "Alexander Solzhenitsyn",
@@ -489,11 +601,14 @@
     "external_link": "https://www.amazon.com/Gulag-Archipelago-Aleksandr-Solzhenitsyn/dp/1843430851",
     "external_image_link": null,
     "subtitle": "1918-1956: An Experiment in Literary Investigation",
-    "position": 64,
+    "position": 71,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Gulag Archipeligo by Alexander Solzhenitsyn\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 39,
     "category_id": 8,
     "title": "What is Life?",
     "author": "Erwin Schrodinger",
@@ -502,11 +617,14 @@
     "external_link": "https://www.amazon.com/What-Life-Autobiographical-Sketches-Classics/dp/1107604664/ref=sr_1_1",
     "external_image_link": null,
     "subtitle": "",
-    "position": 86,
+    "position": 96,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList What is Life by Erwin Schrodinger\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 40,
     "category_id": 2,
     "title": "Free Will",
     "author": "Sam Harris",
@@ -515,11 +633,14 @@
     "external_link": "https://www.amazon.com/Free-Will-Harris-Sam-Paperback/dp/B011SJZJ8O/ref=sr_1_3",
     "external_image_link": null,
     "subtitle": null,
-    "position": 66,
+    "position": 73,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Free Will by Sam Harris\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 41,
     "category_id": 9,
     "title": "Influence",
     "author": "Robert Cialdini",
@@ -528,11 +649,14 @@
     "external_link": "https://www.amazon.com/Influence-Psychology-Persuasion-Robert-Cialdini/dp/006124189X/ref=sr_1_1",
     "external_image_link": null,
     "subtitle": "The Psychology of Persuasion",
-    "position": 67,
+    "position": 74,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Influence by Robert Cialdini\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 42,
     "category_id": 9,
     "title": "Man's Search for Meaning",
     "author": "Viktor Frankl",
@@ -541,11 +665,14 @@
     "external_link": "https://www.amazon.com/Mans-Search-Meaning-Viktor-Frankl/dp/0807014273/ref=sr_1_1",
     "external_image_link": null,
     "subtitle": null,
-    "position": 68,
+    "position": 75,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Man's Search for Meaning by Viktor Frankl\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 43,
     "category_id": 5,
     "title": "Ordinary Men",
     "author": "Christopher R. Browning",
@@ -554,11 +681,14 @@
     "external_link": "https://www.amazon.com/Ordinary-Men-Reserve-Battalion-Solution/dp/0062303023/ref=pd_lpo_sbs_14_img_0?_encoding=UTF8&psc=1&refRID=905FVFHBW6S35NKN4CWB",
     "external_image_link": null,
     "subtitle": "Reserve Police Battalion 101 and the Final Solution in Poland",
-    "position": 69,
+    "position": 76,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Ordinary Men by Christopher R. Browning\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 44,
     "category_id": 4,
     "title": "The Fatal Conceit",
     "author": "F.A. Hayek",
@@ -567,11 +697,14 @@
     "external_link": "https://www.amazon.com/Fatal-Conceit-Errors-Socialism-Collected/dp/0226320669/ref=sr_1_1?s=books&ie=UTF8&qid=1551050285&sr=1-1&keywords=fatal+conceit+hayek",
     "external_image_link": null,
     "subtitle": "The Errors of Socialism",
-    "position": 72,
+    "position": 79,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Fatal Conceit by F.A. Hayek\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 45,
     "category_id": 4,
     "title": "Socialism",
     "author": "Ludwig Von Mises",
@@ -580,11 +713,14 @@
     "external_link": "https://mises.org/library/socialism-economic-and-sociological-analysis",
     "external_image_link": null,
     "subtitle": "An Economic and Sociological Analysis",
-    "position": 92,
+    "position": 42,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Socialism by Ludwig Von Mises\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:31"
   },
   {
+    "id": 46,
     "category_id": 9,
     "title": "The Power of Body Language",
     "author": "Joe Navarro",
@@ -593,11 +729,14 @@
     "external_link": "https://www.amazon.com/Power-Body-Language-Ex-FBI-Speed-Reading/dp/B00OH795TO/ref=sr_1_2?ie=UTF8&qid=1515983461&sr=8-2&keywords=the+power+of+body+language+joe+navarro",
     "external_image_link": null,
     "subtitle": "An Ex-FBI Agent's System for Speed Reading People",
-    "position": 89,
+    "position": 100,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Power of Body Language by Joe Navarro\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 47,
     "category_id": 4,
     "title": "What Has Government Done to Our Money",
     "author": "Murray Rothbard",
@@ -606,11 +745,14 @@
     "external_link": "https://mises.org/library/what-has-government-done-our-money",
     "external_image_link": null,
     "subtitle": "and The Case for a 100 Percent Gold Dollar",
-    "position": 19,
+    "position": 20,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList What Has Government Done to Our Money by Murray Rothbard\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 04:59:26"
   },
   {
+    "id": 48,
     "category_id": 7,
     "title": "Computer Science Distilled",
     "author": "Wladston Ferreira Filho",
@@ -619,11 +761,14 @@
     "external_link": "https://www.amazon.com/Computer-Science-Distilled-Computational-Problems/dp/0997316020",
     "external_image_link": null,
     "subtitle": "Learn the Art of Computational Problem Solving",
-    "position": 108,
+    "position": 118,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Computer Science Distilled by Wladston Ferreira Filho\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 49,
     "category_id": 10,
     "title": "Show Your Work",
     "author": "Austin Kleon",
@@ -632,11 +777,14 @@
     "external_link": "https://www.amazon.com/Show-Your-Work-Austin-Kleon/dp/076117897X/ref=sr_1_1?s=books&ie=UTF8&qid=1520050953&sr=1-1&keywords=show+your+work",
     "external_image_link": null,
     "subtitle": "10 Ways to Share Your Creativity and Get Discovered",
-    "position": 75,
+    "position": 83,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Show Your Work by Austin Kleon\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 50,
     "category_id": 8,
     "title": "Moonwalking With Einstein",
     "author": "Joshua Foer",
@@ -645,11 +793,14 @@
     "external_link": "https://www.amazon.com/Moonwalking-Einstein-Science-Remembering-Everything/dp/0143120530/ref=sr_1_1?s=books&ie=UTF8&qid=1551049996&sr=1-1&keywords=moonwalking+with+einstein+by+joshua+foer",
     "external_image_link": null,
     "subtitle": "The Art and Science of Remembering Everything",
-    "position": 77,
+    "position": 86,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Moonwalking With Einstein by Joshua Foer\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 51,
     "category_id": 4,
     "title": "Basic Economics",
     "author": "Thomas Sowell",
@@ -658,11 +809,14 @@
     "external_link": "https://www.amazon.com/Basic-Economics-Thomas-Sowell/dp/0465060730/ref=sr_1_1?hvadid=241666587059&hvdev=c&hvlocphy=9028905&hvnetw=g&hvpos=1t1&hvqmt=e&hvrand=17298452046633619559&hvtargid=kwd-437964245&keywords=basic+economics+thomas+sowell&qid=1555298558&s=gateway&sr=8-1",
     "external_image_link": null,
     "subtitle": "A Common Sense Guide to the Economy",
-    "position": 65,
+    "position": 72,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Basic Economics by Thomas Sowell\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 52,
     "category_id": 6,
     "title": "The Book on Rental Property Investing",
     "author": "Brandon Turner",
@@ -671,11 +825,14 @@
     "external_link": "https://www.amazon.com/Book-Rental-Property-Investing-Intelligent/dp/099071179X/ref=sr_1_3?s=books&ie=UTF8&qid=1533872549&sr=1-3&keywords=rental+property+investing",
     "external_image_link": null,
     "subtitle": "How to new wealth and passive income through smart buy & hold real estate investing",
-    "position": 78,
+    "position": 87,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Book on Rental Property Investing by Brandon Turner\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 53,
     "category_id": 3,
     "title": "Steal the Show",
     "author": "Michael Port",
@@ -684,11 +841,14 @@
     "external_link": "https://www.amazon.com/Steal-Show-Interviews-Deal-Closing-Performances/dp/0544800842/ref=sr_1_1?s=books&ie=UTF8&qid=1515984539&sr=1-1&keywords=Steal+the+Show+by+Michael+Port",
     "external_image_link": null,
     "subtitle": "How to Guarantee a Standing Ovation for All the Performances in Your Life",
-    "position": 80,
+    "position": 90,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Steal the Show by Michael Port\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 54,
     "category_id": 3,
     "title": "Crucial Conversations",
     "author": "Kelly Patterson",
@@ -697,11 +857,14 @@
     "external_link": "https://www.amazon.com/Crucial-Conversations-Talking-Stakes-Second/dp/0071771328/ref=sr_1_1?s=books&ie=UTF8&qid=1515984205&sr=1-1&keywords=crucial+conversations",
     "external_image_link": null,
     "subtitle": "Tools for Talking When the Stakes are High",
-    "position": 81,
+    "position": 91,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Crucial Conversations by Kelly Patterson\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 55,
     "category_id": 4,
     "title": "What You Should Know About Inflation",
     "author": "Henry Hazlitt",
@@ -710,11 +873,14 @@
     "external_link": "https://mises.org/library/what-you-should-know-about-inflation-0",
     "external_image_link": null,
     "subtitle": "",
-    "position": 18,
+    "position": 19,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList What You Should Know About Inflation by Henry Hazlitt\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 04:59:26"
   },
   {
+    "id": 56,
     "category_id": 8,
     "title": "Behave",
     "author": "Robert M. Sapolsky",
@@ -723,11 +889,14 @@
     "external_link": "https://www.amazon.com/Behave-Biology-Humans-Best-Worst-ebook/dp/B01IAUGC5S/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1515981537&sr=1-1&keywords=behave+robert+sapolsky",
     "external_image_link": null,
     "subtitle": "The Biology of Humans at Our Best and at Our Worst",
-    "position": 82,
+    "position": 92,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Behave by Robert M. Sapolsky\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 57,
     "category_id": 12,
     "title": "A Conflict of Visions",
     "author": "Thomas Sowell",
@@ -736,11 +905,14 @@
     "external_link": "https://www.amazon.com/Conflict-Visions-Ideological-Political-Struggles/dp/0465002056/ref=sr_1_1?s=books&ie=UTF8&qid=1551050535&sr=1-1&keywords=conflict+of+visions",
     "external_image_link": null,
     "subtitle": "Ideological Origins of Political Struggles",
-    "position": 87,
+    "position": 97,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList A Conflict of Visions by Thomas Sowell\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 58,
     "category_id": 5,
     "title": "America's Great Depression",
     "author": "Murray Rothbard",
@@ -749,11 +921,14 @@
     "external_link": "https://mises.org/library/americas-great-depression",
     "external_image_link": null,
     "subtitle": null,
-    "position": 61,
+    "position": 69,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList America's Great Depression by Murray Rothbard\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 59,
     "category_id": 6,
     "title": "The Little Book of Bull Moves",
     "author": "Peter Schiff",
@@ -762,11 +937,14 @@
     "external_link": "https://www.amazon.com/Little-Book-Moves-Updated-Expanded/dp/0470643994/ref=sr_1_2?s=books&ie=UTF8&qid=1515983796&sr=1-2&keywords=the+little+book+of+bull+moves+peter+schiff",
     "external_image_link": null,
     "subtitle": "How to Keep Your Portfolio Up When the Market is Up, Down, or Sideways",
-    "position": 88,
+    "position": 99,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Little Book of Bull Moves by Peter Schiff\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 60,
     "category_id": 13,
     "title": "The 4-Hour Workweek",
     "author": "Tim Ferriss",
@@ -775,11 +953,14 @@
     "external_link": "https://www.amazon.com/4-Hour-Workweek-Escape-Live-Anywhere/dp/0307465357/ref=sr_1_1?s=books&ie=UTF8&qid=1515985483&sr=1-1&keywords=the+four+hour+work+week",
     "external_image_link": null,
     "subtitle": "Escape 9-5, Live Anywhere, and Join the New Rich",
-    "position": 90,
+    "position": 101,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The 4 Hour Workweek by Tim Ferriss\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 61,
     "category_id": 9,
     "title": "The 48 Laws of Power",
     "author": "Robert Greene",
@@ -788,11 +969,14 @@
     "external_link": "https://www.amazon.com/48-Laws-Power-Robert-Greene/dp/0140280197/ref=sr_1_1?keywords=48+laws+of+power&qid=1555294105&s=gateway&sr=8-1",
     "external_image_link": null,
     "subtitle": null,
-    "position": 91,
+    "position": 102,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The 48 Laws of Power by Robert Greene\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 62,
     "category_id": 11,
     "title": "Hawk",
     "author": "Tony Hawk",
@@ -801,11 +985,14 @@
     "external_link": "https://www.amazon.com/Hawk-Occupation-Skateboarder-Tony/dp/0060958316/ref=sr_1_2?ie=UTF8&qid=1521363258&sr=8-2&keywords=hawk+by+tony+hawk&dpID=51TnMCb8ToL&preST=_SY291_BO1,204,203,200_QL40_&dpSrc=srch",
     "external_image_link": null,
     "subtitle": "Occupation: Skateboarder",
-    "position": 93,
+    "position": 103,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Hawk by Tony Hawk\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 63,
     "category_id": 6,
     "title": "The Intelligent Investor",
     "author": "Benjamin Graham",
@@ -814,11 +1001,14 @@
     "external_link": "https://www.amazon.com/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661/ref=sr_1_1?s=books&ie=UTF8&qid=1515987281&sr=1-1&keywords=the+intelligent+investor+by+benjamin+graham",
     "external_image_link": null,
     "subtitle": "The Definitive Book on Value Investing",
-    "position": 94,
+    "position": 104,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Intelligent Investor by Benjamin Graham\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 64,
     "category_id": 5,
     "title": "A General History of the Pyrates",
     "author": "Daniel Defoe",
@@ -827,11 +1017,14 @@
     "external_link": "https://www.amazon.com/General-History-Pyrates-Settlement-Providence/dp/B01M3YA557/ref=tmm_aud_swatch_0?_encoding=UTF8&qid=1573021706&sr=8-1",
     "external_image_link": null,
     "subtitle": "From Their First Rise and Settlement in the Island of Providence, to the Present",
-    "position": 95,
+    "position": 105,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList A General History of the Pyrates by Daniel Defoe\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 65,
     "category_id": 13,
     "title": "The Lean Startup",
     "author": "Eric Ries",
@@ -840,11 +1033,14 @@
     "external_link": "https://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898/ref=sr_1_3?s=books&ie=UTF8&qid=1515983642&sr=1-3&keywords=the+lean+startup+eric+ries",
     "external_image_link": null,
     "subtitle": "How Today's Entrepreneurs Use Continuous Innovation to new Radically Successful Businesses",
-    "position": 96,
+    "position": 106,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Lean Startup by Eric Ries\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 66,
     "category_id": 5,
     "title": "The Progressive Era",
     "author": "Murray N. Rothbard",
@@ -853,11 +1049,14 @@
     "external_link": "https://www.amazon.com/Progressive-Era-Murray-Rothbard-ebook/dp/B076B4SW5T/ref=sr_1_1?s=books&ie=UTF8&qid=1551050667&sr=1-1&keywords=progressive+era+murray",
     "external_image_link": null,
     "subtitle": null,
-    "position": 99,
+    "position": 109,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Progressive Era by Murray N. Rothbard\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 67,
     "category_id": 5,
     "title": "The Buccaneers of America",
     "author": "Alexander O. Exquemelin",
@@ -866,11 +1065,14 @@
     "external_link": "https://www.amazon.com/Buccaneers-America-Alexander-Exquemelin/dp/1537698621/ref=sr_1_1_sspa?crid=3ATUWUL7J53GB&keywords=buccaneers+of+america&qid=1562205455&s=books&sprefix=bucanneers+of%2Cstripbooks%2C164&sr=1-1-spons&psc=1",
     "external_image_link": null,
     "subtitle": "",
-    "position": 109,
+    "position": 119,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Buccaneers of America by Alexander O. Exquemelin\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 68,
     "category_id": 13,
     "title": "To Sell is Human",
     "author": "Daniel H. Pink",
@@ -879,11 +1081,14 @@
     "external_link": "https://www.amazon.com/Sell-Human-Surprising-Moving-Others/dp/1594631905/ref=sr_1_3?s=books&ie=UTF8&qid=1515985359&sr=1-3&keywords=to+sell+is+human",
     "external_image_link": null,
     "subtitle": "The Surprising Truth About Moving Others",
-    "position": 101,
+    "position": 111,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList To Sell is Human by Daniel H. Pink\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 69,
     "category_id": 13,
     "title": "Born for This",
     "author": "Chris Guillebeau",
@@ -892,11 +1097,14 @@
     "external_link": "https://www.amazon.com/Born-This-Find-Work-Meant/dp/1101903988/ref=sr_1_1?s=books&ie=UTF8&qid=1515985831&sr=1-1&keywords=born+for+this+chris+guillebeau",
     "external_image_link": null,
     "subtitle": null,
-    "position": 102,
+    "position": 112,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Born for This by Chris Guillebeau\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 70,
     "category_id": 13,
     "title": "The $100 Startup",
     "author": "Chris Guillebeau",
@@ -905,11 +1113,14 @@
     "external_link": "https://www.amazon.com/100-Startup-Reinvent-Living-new/dp/0307951529/ref=sr_1_1?s=books&ie=UTF8&qid=1515986114&sr=1-1&keywords=the+%24100+startup+by+chris+guillebeau",
     "external_image_link": null,
     "subtitle": "Reinvent the Way You Make a Living, Do What You Love, and new a New Future",
-    "position": 103,
+    "position": 113,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The $100 Startup by Chris Guillebeau\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 71,
     "category_id": 6,
     "title": "Becoming Your Own Banker",
     "author": "R. Nelson Nash",
@@ -918,11 +1129,14 @@
     "external_link": "https://www.amazon.com/Becoming-Your-Banker-Nelson-Nash-ebook/dp/B0080K8EL4",
     "external_image_link": null,
     "subtitle": "Unlock the Infinite Banking Concept",
-    "position": 105,
+    "position": 115,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Becoming Your Own Banker by R. Nelson Nash\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 72,
     "category_id": 8,
     "title": "Why Zebras Don't Get Ulcers",
     "author": "Robert M. Sapolsky",
@@ -931,11 +1145,14 @@
     "external_link": "https://www.amazon.com/Why-Zebras-Dont-Ulcers-Third/dp/0805073698/ref=sr_1_1?s=books&ie=UTF8&qid=1515986523&sr=1-1&keywords=Why+Zebras+Don%27t+Get+Ulcers+by+Robert+M.+Sapolsky",
     "external_image_link": null,
     "subtitle": "The Acclaimed Guide to Stress, Stress-Related Diseases, and Coping",
-    "position": 106,
+    "position": 116,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Why Zebras Don't Get Ulcers by Robert M. Sapolsky\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 73,
     "category_id": 12,
     "title": "The Three Languages of Politics",
     "author": "Arnold Kling",
@@ -944,11 +1161,14 @@
     "external_link": "https://www.amazon.com/Three-Languages-Politics-Talking-Political/dp/1944424466/ref=sr_1_1?s=books&ie=UTF8&qid=1515986807&sr=1-1&keywords=The+Three+Languages+of+Politics+by+Arnold+Kling",
     "external_image_link": null,
     "subtitle": "Talking Across the Political Divides",
-    "position": 107,
+    "position": 117,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList The Three Languages of Politics by Arnold Kling\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 74,
     "category_id": 3,
     "title": "Never Eat Alone",
     "author": "Keith Ferrazzi",
@@ -957,11 +1177,14 @@
     "external_link": "https://www.amazon.com/Never-Eat-Alone-Expanded-Updated/dp/0385346654/ref=sr_1_1?s=books&ie=UTF8&qid=1515987002&sr=1-1&keywords=never+eat+alone+by+keith+ferrazzi",
     "external_image_link": null,
     "subtitle": "And Other Secrets to Success, One Relationship at a Time",
-    "position": 98,
+    "position": 108,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Never Eat Alone by Keith Ferrazzi\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 75,
     "category_id": 4,
     "title": "Economic Controversies",
     "author": "Murray Rothbard",
@@ -970,11 +1193,14 @@
     "external_link": "https://mises.org/library/economic-controversies",
     "external_image_link": null,
     "subtitle": null,
-    "position": 111,
+    "position": 121,
     "properties": "{\"image_alt\":\"Alex Younger ReadingList Economic Controversies by Murry Rothbard\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 76,
     "category_id": 9,
     "title": "Without Conscience",
     "author": "Robert D. Hare",
@@ -985,9 +1211,12 @@
     "subtitle": "The Disturbing World of the Psychopaths Among Us",
     "position": 16,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Without Conscience by Robert D. Hare\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 77,
     "category_id": 13,
     "title": "Rework",
     "author": "Jason Fried & David Heinemeier Hansson",
@@ -996,11 +1225,14 @@
     "external_link": "https://www.amazon.com/Rework-Jason-Fried/dp/0307463745",
     "external_image_link": "https://m.media-amazon.com/images/I/41woojfwaaL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 97,
+    "position": 107,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Rework by Jason Fried & David Heinemeier Hansson\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 78,
     "category_id": 6,
     "title": "The New Market Wizards",
     "author": "Jack D. Schwager",
@@ -1009,11 +1241,14 @@
     "external_link": "https://www.amazon.com/The-New-Market-Wizards-audiobook/dp/B01FN8IAQE/ref=sr_1_2?crid=ISL1J8Z7VOHV&dchild=1&keywords=the+new+market+wizards&qid=1607666427&s=books&sprefix=the+new+market+%2Cstripbooks%2C189&sr=1-2",
     "external_image_link": "https://m.media-amazon.com/images/I/41qBjK5QYjL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "Conversations with America's Top Traders",
-    "position": 45,
+    "position": 53,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The New Market Wizards by Jack D. Schwager\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:54"
   },
   {
+    "id": 79,
     "category_id": 5,
     "title": "A History of the United States in Five Crashes",
     "author": "Scott Nations",
@@ -1022,11 +1257,14 @@
     "external_link": "https://www.amazon.com/History-United-States-Five-Crashes/dp/B06Y4B7XZ4/ref=sr_1_1?crid=2I9L66N14PEDQ&dchild=1&keywords=a+history+of+the+united+states+in+five+crashes&qid=1607666530&sprefix=a+history+of+the+uni%2Caudible%2C192&sr=8-1",
     "external_image_link": "https://m.media-amazon.com/images/I/41XAKWS6HrL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "Stock Market Meltdowns That Defined a Nation ",
-    "position": 17,
+    "position": 18,
     "properties": "{\"image_alt\":\"Alex Younger Readling List A History of the United States in Five Crashes by Scott Nations\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 04:59:26"
   },
   {
+    "id": 80,
     "category_id": 6,
     "title": "When Genius Failed",
     "author": "Roger Lowenstein",
@@ -1035,11 +1273,14 @@
     "external_link": "https://www.amazon.com/When-Genius-Failed-audiobook/dp/B00005QTH9/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/51XCGRS4UEL._SX323_BO1,204,203,200_.jpg",
     "subtitle": "The Rise and Fall of Long-Term Capital Management ",
-    "position": 35,
+    "position": 41,
     "properties": "{\"image_alt\":\"Alex Younger Readling List When Genius Failed by Roger Lowenstein\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:11:58"
   },
   {
+    "id": 81,
     "category_id": 6,
     "title": "The Misbehavior of Markets",
     "author": "Benoit Mandelbrot",
@@ -1048,11 +1289,14 @@
     "external_link": "https://www.amazon.com/The-Misbehavior-of-Markets-audiobook/dp/B07PCSM62Z/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/51cbCRKmvjL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "A Fractal View of Financial Turbulence ",
-    "position": 63,
+    "position": 51,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Misbehavior of Markets by Benoit Mandelbrot\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:54"
   },
   {
+    "id": 82,
     "category_id": 1,
     "title": "The Discourses of Epictetus and the Enchiridion",
     "author": "Epictetus",
@@ -1061,11 +1305,14 @@
     "external_link": "https://www.amazon.com/Discourses-Epictetus-Enchiridion-Collectors-Hardcover/dp/1774378531/ref=sr_1_5",
     "external_image_link": "https://m.media-amazon.com/images/I/51tMHcFrKvL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 39,
+    "position": 46,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Discourses of Epictetus and the Enchiridion by Epictetus\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:31"
   },
   {
+    "id": 83,
     "category_id": 9,
     "title": "The Rape of the Mind",
     "author": "Joost A.M. Meerloo",
@@ -1074,11 +1321,14 @@
     "external_link": "https://www.amazon.com/Rape-Mind-Psychology-Menticide-Brainwashing/dp/1614277877/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/31rOq-hTVFL._SX313_BO1,204,203,200_.jpg",
     "subtitle": "The Psychology of Thought Control, Menticide, and Brainwashing",
-    "position": 28,
+    "position": 31,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Rape of the Mind by Joost A.M. Meerloo\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:11:58"
   },
   {
+    "id": 84,
     "category_id": 8,
     "title": "LifeSpan",
     "author": "David Sinclair",
@@ -1087,11 +1337,14 @@
     "external_link": "https://www.amazon.com/Lifespan-audiobook/dp/B07QGH1Q43/ref=sr_1_2",
     "external_image_link": "https://m.media-amazon.com/images/I/41OHsYaqo3L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "Why We Age - and Why We Don't Have To",
-    "position": 58,
+    "position": 65,
     "properties": "{\"image_alt\":\"Alex Younger Readling List LifeSpan by David Sinclair\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 85,
     "category_id": 13,
     "title": "The Little Red Book of Selling",
     "author": "Jeffrey Gitomer ",
@@ -1100,11 +1353,14 @@
     "external_link": "https://www.amazon.com/Little-Red-Book-of-Selling-audiobook/dp/B001FVJIYM/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/51aorfJ3bXL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "12.5 Principles of Sales Greatness",
-    "position": 70,
+    "position": 77,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Little Red Book of Selling by Jeffrey Gitomer \"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 86,
     "category_id": 11,
     "title": "Based on a True Story",
     "author": "Norm MacDonald",
@@ -1113,11 +1369,14 @@
     "external_link": "https://www.amazon.com/Based-on-True-Story-audiobook/dp/B01L0GDSHY/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/518X2xV0QcL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "A Memoir",
-    "position": 37,
+    "position": 44,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Based on a True Story by Norm MacDonald\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:31"
   },
   {
+    "id": 87,
     "category_id": 2,
     "title": "Euclid in the Rainforest",
     "author": "Joseph Mazur",
@@ -1126,24 +1385,30 @@
     "external_link": "https://www.amazon.com/dp/B00U5LC17Y",
     "external_image_link": "https://m.media-amazon.com/images/I/51h+sJKnWoL.jpg",
     "subtitle": "Discovering Universal Truth in Logic and Math",
-    "position": 85,
+    "position": 95,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Euclid in the Rainforest by Joseph Mazur\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
-    "category_id": 12,
+    "id": 88,
+    "category_id": 4,
     "title": "The Road to Serfdom",
     "author": "F. A. Hayek",
     "description": null,
     "image_name": "serfdom.jpg",
     "external_link": "https://www.amazon.com/Road-Serfdom-Documents-Definitive-Collected-ebook/dp/B0048EJXCK/",
     "external_image_link": "https://m.media-amazon.com/images/I/41rZ-uK2wzL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
-    "subtitle": "",
-    "position": 42,
+    "subtitle": null,
+    "position": 49,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Road to Serfdom by F. A. Hayek\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:19:58"
   },
   {
+    "id": 89,
     "category_id": 8,
     "title": "This Explains Everything",
     "author": "John Brockman",
@@ -1152,11 +1417,14 @@
     "external_link": "https://www.amazon.com/This-Explains-Everything-Beautiful-Theories-ebook/dp/B0089LOGDO",
     "external_image_link": "https://m.media-amazon.com/images/I/512ZeHYaMeL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "150 Deep, Beautiful, and Elegant Theories of How the World Works",
-    "position": 51,
+    "position": 60,
     "properties": "{\"image_alt\":\"Alex Younger Readling List This Explains Everything by John Brockman\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 90,
     "category_id": 7,
     "title": "Clean Code",
     "author": "Martin Robert C.",
@@ -1165,11 +1433,14 @@
     "external_link": "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM",
     "external_image_link": "https://m.media-amazon.com/images/I/41xShlnTZTL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "A Handbook of Agile Software Craftsmanship",
-    "position": 76,
+    "position": 84,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Clean Code by Martin Robert C.\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 91,
     "category_id": 10,
     "title": "Essentialism",
     "author": "Greg Mckeown",
@@ -1178,11 +1449,14 @@
     "external_link": "https://www.amazon.com/dp/B00HELB6XI",
     "external_image_link": "https://m.media-amazon.com/images/I/41U831OHkJL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "The Disciplined Pursuit of Less",
-    "position": 44,
+    "position": 52,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Essentialism by Greg Mckeown\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:54"
   },
   {
+    "id": 92,
     "category_id": 15,
     "title": "Dune",
     "author": "Frank Herbert",
@@ -1191,11 +1465,14 @@
     "external_link": "https://www.amazon.com/Dune-Frank-Herbert-ebook/dp/B00B7NPRY8",
     "external_image_link": "https://m.media-amazon.com/images/I/41+L9Q+rCLL._SX277_BO1,204,203,200_.jpg",
     "subtitle": "",
-    "position": 29,
+    "position": 33,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Dune by Frank Herbert\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:13"
   },
   {
+    "id": 93,
     "category_id": 6,
     "title": "Fooled by Randomness",
     "author": "Nassim Taleb",
@@ -1204,11 +1481,14 @@
     "external_link": "https://www.amazon.com/Fooled-Randomness-Hidden-Markets-Incerto-ebook/dp/B001FA0W5W",
     "external_image_link": "https://m.media-amazon.com/images/I/412MBJ9ojxL.jpg",
     "subtitle": "The Hidden Role of Chance in Life and in the Markets",
-    "position": 104,
+    "position": 114,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Fooled by Randomness by Nassim Taleb\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 94,
     "category_id": 15,
     "title": "Alas, Babylon",
     "author": "Pat Frank",
@@ -1217,11 +1497,14 @@
     "external_link": "https://www.amazon.com/Alas-Babylon-Harper-Perennial-Olive-ebook/dp/B00CD360ZQ/ref=sr_1_1?crid=3PA00QJIXG6XG&keywords=alas+babylon&qid=1663968005&sprefix=alas+bab%2Caps%2C137&sr=8-1",
     "external_image_link": "https://m.media-amazon.com/images/I/41yjE5E2MUL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 56,
+    "position": 54,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Alas, Babylon by Pat Frank\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 95,
     "category_id": 15,
     "title": "Children of Time",
     "author": "Adrian Tchaikovsky",
@@ -1230,11 +1513,14 @@
     "external_link": "https://www.amazon.com/Children-Time-Adrian-Tchaikovsky-ebook/dp/B07DN8BQMD",
     "external_image_link": "https://m.media-amazon.com/images/I/51glJgVC1IL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 79,
+    "position": 89,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Children of Time by Adrian Tchaikovsky\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 96,
     "category_id": 1,
     "title": "Tools of Titans",
     "author": "Tim Ferriss",
@@ -1243,11 +1529,14 @@
     "external_link": "https://www.amazon.com/Tools-Titans-Billionaires-World-Class-Performers/dp/1328683788",
     "external_image_link": "https://m.media-amazon.com/images/I/51GiZ9gKyML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "The Tactics, Routines, and Habits of Billionaires, Icons, and World-Class Performers",
-    "position": 38,
+    "position": 45,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Tools of Titans by Tim Ferriss\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:16:31"
   },
   {
+    "id": 97,
     "category_id": 11,
     "title": "Dancing Naked in the Mind Field",
     "author": "Kary Mullis",
@@ -1256,11 +1545,14 @@
     "external_link": "https://www.amazon.com/Dancing-Naked-Mind-Field-Mullis/dp/0679774009",
     "external_image_link": "https://m.media-amazon.com/images/I/51WBOlBeaML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 48,
+    "position": 57,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Dancing Naked in the Mind Field by Kary Mullis\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 98,
     "category_id": 13,
     "title": "How to Get a Meeting with Anyone",
     "author": "Stu Heinecke",
@@ -1269,11 +1561,14 @@
     "external_link": "https://www.amazon.com/How-to-Get-Meeting-with-Anyone-audiobook/dp/B01AKJJDL2/ref=sr_1_1?crid=EMWP0OL0QF1E",
     "external_image_link": "https://m.media-amazon.com/images/I/51zEjfy6eML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "The Untapped Selling Power of Contact Marketing",
-    "position": 84,
+    "position": 94,
     "properties": "{\"image_alt\":\"Alex Younger Readling List How to Get a Meeting with Anyone by Stu Heinecke\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 99,
     "category_id": 10,
     "title": "Indistractable",
     "author": "Nir Eyal, Julie Li",
@@ -1282,11 +1577,14 @@
     "external_link": "https://www.amazon.com/Indistractable-Control-Your-Attention-Choose-ebook/dp/B07PG2W6DC/ref=tmm_kin_swatch_0",
     "external_image_link": "https://m.media-amazon.com/images/I/41OWvxYMt0S._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "How to Control Your Attention and Choose Your Life",
-    "position": 83,
+    "position": 93,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Indistractable by Nir Eyal, Julie Li\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 100,
     "category_id": 15,
     "title": "Dune Messiah",
     "author": "Frank Herbert",
@@ -1295,11 +1593,14 @@
     "external_link": "https://www.amazon.com/Dune-Messiah-Frank-Herbert/dp/0593098234/ref=asc_df_0593098234/",
     "external_image_link": "https://m.media-amazon.com/images/I/41sm9w77XyL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 30,
+    "position": 35,
     "properties": "{\"image_alt\":\"Alex Younger Readling List Dune Messiah by Frank Herbert\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:13"
   },
   {
+    "id": 101,
     "category_id": 15,
     "title": "The Three Body Problem",
     "author": "Cixin Liu",
@@ -1308,11 +1609,14 @@
     "external_link": "https://www.amazon.com/Three-Body-Problem-Cixin-Liu/dp/0765382032",
     "external_image_link": "https://m.media-amazon.com/images/I/51hshl7LRTL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
     "subtitle": "",
-    "position": 33,
+    "position": 38,
     "properties": "{\"image_alt\":\"Alex Younger Readling List The Three Body Problem by Cixin Liu\"}",
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:13"
   },
   {
+    "id": 102,
     "category_id": 4,
     "title": "Knowledge And Decisions",
     "author": "Thomas Sowell",
@@ -1321,11 +1625,14 @@
     "external_link": "https://www.amazon.com/Knowledge-Decisions-Thomas-Sowell/dp/0465037380",
     "external_image_link": "https://m.media-amazon.com/images/I/513sdur4U0L._SY466_.jpg",
     "subtitle": null,
-    "position": 20,
+    "position": 17,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 04:59:26"
   },
   {
+    "id": 103,
     "category_id": 15,
     "title": "Children of Dune",
     "author": "Frank Herbert",
@@ -1334,11 +1641,14 @@
     "external_link": "https://www.amazon.com/Children-Dune-Frank-Herbert/dp/0593098242/ref=tmm_pap_swatch_0",
     "external_image_link": "https://m.media-amazon.com/images/I/41Yv1aM9cLL._SY445_SX342_.jpg",
     "subtitle": null,
-    "position": 31,
+    "position": 36,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:13"
   },
   {
+    "id": 104,
     "category_id": 15,
     "title": "God Emperor of Dune",
     "author": "Frank Herbert",
@@ -1347,11 +1657,14 @@
     "external_link": "https://www.amazon.com/God-Emperor-Dune-Frank-Herbert/dp/0593098250/ref=tmm_pap_swatch_0",
     "external_image_link": "https://m.media-amazon.com/images/I/81BhvxPiePL._SY466_.jpg",
     "subtitle": null,
-    "position": 32,
+    "position": 37,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:13"
   },
   {
+    "id": 105,
     "category_id": 3,
     "title": "Public Speaking for Success",
     "author": "Dale Carnegie",
@@ -1360,11 +1673,14 @@
     "external_link": "https://www.amazon.com/Public-Speaking-Success-Complete-Program/dp/1585424927/ref=tmm_pap_swatch_0",
     "external_image_link": "https://m.media-amazon.com/images/I/81ds+WnCEdL._SY466_.jpg",
     "subtitle": null,
-    "position": 12,
+    "position": 88,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 106,
     "category_id": 11,
     "title": "Elon Musk",
     "author": "Ashlee Vance",
@@ -1375,9 +1691,12 @@
     "subtitle": "Tesla, SpaceX, and the Quest for a Fantastic Future",
     "position": 11,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2023-07-12 04:48:58"
   },
   {
+    "id": 107,
     "category_id": 8,
     "title": "Consciousness and the Brain",
     "author": "Stanislas Dehaene",
@@ -1386,11 +1705,14 @@
     "external_link": "https://www.amazon.com/Consciousness-Brain-Deciphering-Codes-Thoughts/dp/0143126261/ref=tmm_pap_swatch_0",
     "external_image_link": "https://m.media-amazon.com/images/I/51SNrOZzALL._SY445_SX342_.jpg",
     "subtitle": "Deciphering How the Brain Codes Our Thoughts",
-    "position": 71,
+    "position": 78,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 108,
     "category_id": 8,
     "title": "The Origins of Order",
     "author": "Stuart A. Kauffman",
@@ -1399,11 +1721,14 @@
     "external_link": "https://www.amazon.com/Origins-Order-Self-Organization-Selection-Evolution/dp/0195079515/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/61kYECvJbIL._SY466_.jpg",
     "subtitle": "Self-Organization and Selection in Evolution",
-    "position": 73,
+    "position": 80,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 109,
     "category_id": 5,
     "title": "The Source of Measures",
     "author": "James Ralston Skinner",
@@ -1412,11 +1737,14 @@
     "external_link": "https://www.amazon.com/Source-Measures-Annotated-Hebrew-Egyptian-Mystery/dp/B09MC7Q1MS/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/71CxLyhxzaL._SY466_.jpg",
     "subtitle": "Key to the Hebrew-Egyptian Mystery",
-    "position": 110,
+    "position": 120,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
   },
   {
+    "id": 110,
     "category_id": 5,
     "title": "Timaeus and Critias",
     "author": "Plato",
@@ -1425,11 +1753,14 @@
     "external_link": "https://www.amazon.com/Timaeus-Critias-Penguin-Classics-Plato/dp/0140455043/ref=sr_1_2",
     "external_image_link": "https://m.media-amazon.com/images/I/51XccUtsWUL._SY445_SX342_.jpg",
     "subtitle": null,
-    "position": 50,
+    "position": 59,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:17:30"
   },
   {
+    "id": 111,
     "category_id": 5,
     "title": "The Epic of Gilgamesh",
     "author": "Unknown",
@@ -1438,11 +1769,14 @@
     "external_link": "https://www.amazon.com/Epic-Gilgamesh/dp/014044100X/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/51z5G2ScUfL._SY466_.jpg",
     "subtitle": "the Babylonian epic poem",
-    "position": 74,
+    "position": 81,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:05"
   },
   {
+    "id": 112,
     "category_id": 9,
     "title": "The Power of Habit",
     "author": "Charles Duhigg",
@@ -1451,8 +1785,122 @@
     "external_link": "https://www.amazon.com/The-Power-of-Habit-Charles-Duhigg-audiobook/dp/B007EJSMC8/ref=sr_1_1",
     "external_image_link": "https://m.media-amazon.com/images/I/71ReUWzM0XL._SY466_.jpg",
     "subtitle": "Why We Do What We Do in Life and Business",
-    "position": 100,
+    "position": 110,
     "properties": null,
-    "active": true
+    "active": "1",
+    "created_at": "2023-07-12 04:48:58",
+    "updated_at": "2024-05-30 05:18:44"
+  },
+  {
+    "id": 113,
+    "category_id": 11,
+    "title": "Isaac Newton",
+    "author": "James Gleick",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Isaac-Newton-James-Gleick/dp/1400032954/ref=asc_df_1400032954/",
+    "external_image_link": "data:image/jpeg;base64,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",
+    "subtitle": null,
+    "position": 27,
+    "properties": null,
+    "active": "1",
+    "created_at": "2024-05-30 05:02:01",
+    "updated_at": "2024-05-30 05:04:20"
+  },
+  {
+    "id": 114,
+    "category_id": 8,
+    "title": "Time Reborn",
+    "author": "Lee Smolin",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Time-Reborn-Lee-Smolin-audiobook/dp/B00DC3Q1PA/ref=sr_1_1",
+    "external_image_link": "data:image/jpeg;base64,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",
+    "subtitle": "From the Crisis in Physics to the Future of the Universe",
+    "position": 25,
+    "properties": null,
+    "active": "1",
+    "created_at": "2024-05-30 05:04:20",
+    "updated_at": "2024-05-30 05:04:20"
+  },
+  {
+    "id": 115,
+    "category_id": 5,
+    "title": "Hijacking Bitcoin",
+    "author": "Roger Ver, Steve Patterson",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Hijacking-Bitcoin-Hidden-History-BTC/dp/B0CXWBCWDR",
+    "external_image_link": "data:image/jpeg;base64,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",
+    "subtitle": "The Hidden History of BTC",
+    "position": 34,
+    "properties": null,
+    "active": "1",
+    "created_at": "2024-05-30 05:07:03",
+    "updated_at": "2024-05-30 05:18:13"
+  },
+  {
+    "id": 116,
+    "category_id": 4,
+    "title": "Barbarians Inside the Gates and Other Controversial Essays",
+    "author": "Thomas Sowell",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Barbarians-inside-Controversial-Institution-Publication/dp/081799582X",
+    "external_image_link": "data:image/jpeg;base64,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",
+    "subtitle": null,
+    "position": 68,
+    "properties": null,
+    "active": "1",
+    "created_at": "2024-05-30 05:08:29",
+    "updated_at": "2024-05-30 05:18:05"
+  },
+  {
+    "id": 117,
+    "category_id": 12,
+    "title": "America's Cultural Revolution",
+    "author": "Christopher Rufo",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Americas-Cultural-Revolution-Conquered-Everything/dp/0063227533",
+    "external_image_link": "data:image/jpeg;base64,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",
+    "subtitle": "How the Radical Left Conquered Everything",
+    "position": 82,
+    "properties": null,
+    "active": "1",
+    "created_at": "2024-05-30 05:09:53",
+    "updated_at": "2024-05-30 05:20:27"
+  },
+  {
+    "id": 118,
+    "category_id": 15,
+    "title": "Blood Music",
+    "author": "Greg Bear",
+    "description": "Great scifi about what happens when cells learn to think!",
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Blood-Music-Greg-Bear-audiobook/dp/B001K56P0I/ref=sr_1_1?crid=2TWZ5KHSFDXAB&dib=eyJ2IjoiMSJ9.3eRPM7eHamWCvLEZqxps9QH4859OjkQ45T3xInLSS2E1SA5LHLDfDatAwT0o8V3Gdcw1AH69eKhchVlSjvw4oVAYFBHiPeWJmN_2yaq30cDpqVRI1Pqs1l0A1fiKtOrw2s3cxhLxDCsz815b2lBQVhA1uPNAWzMrCDn8gvzL61E19H53YIhN2IE121FH-Hq0BxqxnZPSLIBd-WDpzxdli4samvTVKX1Hnt2BWPlpHyU.QUxV6M1tIao0mdEjxG47pEfXOHAFMd_mf6Yztqcb2wk&dib_tag=se&keywords=blood+music+greg&qid=1717045873&s=books&sprefix=blood+music+greg%2Cstripbooks%2C148&sr=1-1",
+    "external_image_link": "data:image/jpeg;base64,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",
+    "subtitle": null,
+    "position": 28,
+    "properties": null,
+    "active": "1",
+    "created_at": "2024-05-30 05:11:58",
+    "updated_at": "2024-05-30 05:11:58"
+  },
+  {
+    "id": 119,
+    "category_id": 5,
+    "title": "On the Historicity of Jesus",
+    "author": "Richard Carrier",
+    "description": null,
+    "image_name": null,
+    "external_link": "https://www.amazon.com/Historicity-Jesus-Might-Reason-Doubt/dp/1909697494",
+    "external_image_link": "https://m.media-amazon.com/images/I/61li5pD4OiL._AC_UF1000,1000_QL80_.jpg",
+    "subtitle": "Why We Might Have Reason for Doubt",
+    "position": 85,
+    "properties": null,
+    "active": "1",
+    "created_at": "2024-05-30 05:13:56",
+    "updated_at": "2024-05-30 05:18:05"
   }
 ]

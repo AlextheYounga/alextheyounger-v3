@@ -26,7 +26,6 @@ import { Head } from '@inertiajs/vue3';
 import { renderStarfield } from '../three/space.js';
 import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
 
-
 export default {
     components: {
         Head,
@@ -37,22 +36,8 @@ export default {
             items: ['Starship Enterprise'],
         }
     },
-    methods: {
-        autoShowHint() {
-            // Auto close hint after 5 seconds
-            const delay = 5000
-            this.$refs.hint.focus();
-            setTimeout(() => {
-                this.$refs.hint.blur();
-            }, delay);
-        }
-    },
     created() {
         renderStarfield();
-
     },
-    mounted() {
-        this.autoShowHint();
-    }
 }
 </script>
