@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-function createStarTexture() {
+export function createStarTexture() {
     const canvas = document.createElement('canvas');
     const size = 128; // Size of the texture
     canvas.width = size;
@@ -23,6 +23,32 @@ function createStarTexture() {
     texture.needsUpdate = true;
     return texture;
 }
+
+export function createStar(position, color, size = 3) {
+    const geometry = new THREE.BufferGeometry();
+    const {x,y,z} = position
+
+    // Set a random luminance on a white color
+    // Generate a random color biased towards red or blue
+
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute([x,y,z], 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute([color.r, color.g, color.b], 3));
+
+    const material = new THREE.PointsMaterial({
+        size: size,
+        map: createStarTexture(),
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+        vertexColors: true,
+    });
+
+    const star = new THREE.Points(geometry, material);
+
+    return star
+}
+
+
 
 export function createStars(count, size = 3) {
     const geometry = new THREE.BufferGeometry();

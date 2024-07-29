@@ -9,7 +9,6 @@ use App\Models\Project;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\PageContent;
-use Illuminate\Support\Facades\DB;
 
 
 class PagesController extends Controller
@@ -48,14 +47,14 @@ class PagesController extends Controller
         ]);
     }
 
-    // public function projects()
-    // {
-    //     return Inertia::render('Projects', [
-    //         'projects' => Project::active()
-    //             ->orderBy('position', 'asc')
-    //             ->get()
-    //     ]);
-    // }
+    public function projects()
+    {
+        return Inertia::render('Projects', [
+            'projects' => Project::active()
+                ->orderBy('position', 'asc')
+                ->get()
+        ]);
+    }
 
     public function starfield()
     {

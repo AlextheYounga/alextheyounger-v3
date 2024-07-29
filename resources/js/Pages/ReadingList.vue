@@ -6,7 +6,7 @@
 
     <div id="page-wrapper">
         <div class="py-24 px-12 px-bg-transparent shadow shadow-sky-100">
-            <div class="rounded-md border-2 border-sky-600 pt-12">
+            <div class="rounded-md border-2 border-sky-600 py-12">
                 <div class="mx-auto max-w-3xl">
                     <h1 class="text-white text-4xl font-semibold text-center">My Favorite Books & Audio</h1>
                     <p class="text-center text-sky-300 mx-auto leading-relaxed text-base pb-4">Books that have made an impact on my life</p>
@@ -14,7 +14,7 @@
                 <div class="mx-auto category-menu">
                     <ul class="flex flex-wrap w-full justify-center p-0">
                         <li class="text-center p-2 border-r border-gray-300">
-                            <button id="showall" @click="showAll" class="border-0 normal-font text-sm">
+                            <button id="showall" @click="showAll" class="border-0 text-sm">
                                 <span class="inline-flex items-center rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-sky-50 ring-1 ring-inset ring-blue-400/30 hover:text-sky-300">
                                     Show All ({{ books.length }})
                                 </span>
@@ -36,17 +36,16 @@
                                     <img v-if="book.external_image_link" :src="book.external_image_link" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
                                     <img v-else :src="`/images/books/${book.image_name}.webp`" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
                                 </a>
-                                <div class="book-description bg-sky-800 bg-opacity-50 w-4/5 p-4 rounded-lg mx-auto border border-sky-100 shadow shadow-sky-50">
+                                <div class="book-description bg-sky-800 bg-opacity-25 w-4/5 p-4 rounded-lg mx-auto border border-sky-100 shadow shadow-sky-50">
                                     <p class="font-semibold fancy-font text-md text-sky-50">{{ book.title }}</p>
-                                    <p class="normal-font text-sm text-sky-200 py-2">{{ book.subtitle }}</p>
-                                    <p class="normal-font text-sm text-sky-100">by {{ book.author }}</p>
+                                    <p class="text-sm text-sky-200 py-2">{{ book.subtitle }}</p>
+                                    <p class="text-sm text-sky-100 font-semibold">by {{ book.author }}</p>
                                 </div>
                             </div>
                         </template>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>

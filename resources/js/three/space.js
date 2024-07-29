@@ -42,9 +42,10 @@ function createStarField(scale = 1) {
     starField.add(starFieldLarge);
     starField.add(starFieldGiant);
 
-    createStarshipEnterprise(starField) // Add Enterprise to starfield
-
-    scene.add(starField); // Add entire starfield to the scene
+    // Add Enterprise to starfield asynchronously
+    // We load the Enterprise CAD model here and it's several megs
+    createStarshipEnterprise(scene, starField) 
+    
     camera.position.z = 2000; // Camera positioning
 
     return {
