@@ -1,6 +1,6 @@
 <template>
-  <div class="fixed top-5 left-12 z-50">
-    <button class="relative group">
+  <div class="fixed top-1 left-1 md:left-12 z-50">
+    <button class="relative group border-sky-100 border-2">
       <!-- button container -->
       <div @click="clickHandler" class="relative z-20 flex items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-8 ring-opacity-30 duration-200 shadow-md">
         <div class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 group-focus:-rotate-[45deg] origin-center">
@@ -34,6 +34,12 @@ const menuList = [
   { name: 'Reading List', link: "pages.books" },
   { name: 'Projects', link: "pages.projects" },
   { name: 'Explore Starfield', link: "pages.starfield" },
-]
+];
 
 </script>
+
+<style scoped>
+  button {
+    border-radius: 100px;
+  }
+</style>

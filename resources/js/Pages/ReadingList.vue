@@ -5,22 +5,22 @@
     <AnimatedButtonMenu />
 
     <div id="page-wrapper">
-        <div class="py-24 px-12 px-bg-transparent shadow shadow-sky-100">
-            <div class="rounded-md border-2 border-sky-600 py-12">
+        <div class="md:py-24 md:px-12 py-6 px-3 bg-transparent shadow shadow-sky-100">
+            <div class="rounded-md md:border-2 md:border-sky-600 py-12 px-3 md:px-0">
                 <div class="mx-auto max-w-3xl">
                     <h1 class="text-white text-4xl font-semibold text-center">My Favorite Books & Audio</h1>
                     <p class="text-center text-sky-300 mx-auto leading-relaxed text-base pb-4">Books that have made an impact on my life</p>
                 </div>
                 <div class="mx-auto category-menu">
-                    <ul class="flex flex-wrap w-full justify-center p-0">
-                        <li class="text-center p-2 border-r border-gray-300">
+                    <ul class="flex flex-wrap w-full justify-center md:justify-center p-0">
+                        <li class="text-center p-2 md:border-r md:border-gray-300">
                             <button id="showall" @click="showAll" class="border-0 text-sm">
                                 <span class="inline-flex items-center rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-sky-50 ring-1 ring-inset ring-blue-400/30 hover:text-sky-300">
                                     Show All ({{ books.length }})
                                 </span>
                             </button>
                         </li>
-                        <li v-for="(category, index) in categories" :key="index" class="text-center p-2" :class="{ 'border-r border-blue-300': index !== categories.length - 1 }">
+                        <li v-for="(category, index) in categories" :key="index" class="text-center p-2" :class="{ 'md:border-r md:border-blue-300': index !== categories.length - 1 }">
                             <button @click="selectCategory(category.selector)" :class="category.selector">
                                 <span class="inline-flex items-center rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-sky-50 ring-1 ring-inset ring-blue-400/30 hover:text-sky-300">{{ category.name }}</span>
                             </button>

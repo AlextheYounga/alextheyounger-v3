@@ -5,8 +5,8 @@
     <AnimatedButtonMenu />
 
     <div id="page-wrapper">
-        <div id="projects" class="py-24 px-12 px-bg-transparent shadow shadow-sky-100">
-            <div class="rounded-md border-2 border-sky-600 py-12">
+        <div id="projects" class="md:py-24 md:px-12 py-6 px-3 bg-transparent shadow shadow-sky-100">
+            <div class="rounded-md md:border-2 md:border-sky-600 px-3 md:px-0 py-12">
                 <div class="mx-auto max-w-3xl">
                     <h1 class="text-white text-4xl font-semibold text-center">Projects</h1>
                     <p class="text-center text-sky-300 mx-auto leading-relaxed text-base pb-4">Here are some of my proudest projects, personal and professional.</p>

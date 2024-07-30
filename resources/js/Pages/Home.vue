@@ -4,10 +4,12 @@
 
     <AnimatedButtonMenu />
 
-    <main id="page-wrapper" ref="page-wrapper" class="opacity-0 transition-opacity duration-500 pt-32">
-        <div class="flex justify-between w-full">
+    <main id="page-wrapper" ref="page-wrapper" class="opacity-0 transition-opacity duration-500">
+        <!-- TODO: Is there a better way to do mobile/desktop -->
+        <!-- Desktop View -->
+        <div id="desktop" class="hidden md:flex px-8 justify-between w-full pt-32">
             <div id="home-menu" class="w-1/3">
-                <section id="hero" class="w-1/3 mx-auto sm:mt-0 mb-4 relative rounded">
+                <section id="hero" class="mx-auto mb-4 relative rounded">
                     <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center border-sky border-2" alt="alex younger developer marketing about me" />
                 </section>
 
@@ -63,7 +65,7 @@
 
                         <div class="w-full pt-12">
                             <div class="w-1/2 flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto">
-                                <a v-for="link in links" :href="link.url" class="w-10 sm:w-16 no-underline" target="_blank">
+                                <a v-for="link in links" :href="link.url" class="w-16 no-underline" target="_blank">
                                     <img class="mx-auto" :src="link.icon" width="25" height="25" :alt="link.alt" />
                                 </a>
                             </div>
@@ -72,6 +74,79 @@
                 </section>
             </div>
         </div>
+        <!-- End Desktop View -->
+
+        <!-- Mobile View -->
+        <div id="mobile" class="block md:hidden w-full pt-12">
+            <div class="mx-auto">
+                <section id="hero" class="mx-auto mb-4 relative rounded">
+                    <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center border-sky border-2" alt="alex younger developer marketing about me" />
+                </section>
+
+                <section id="title" class="rounded relative mb-8">
+                    <h1 class="text-5xl text-sky-100 text-center glow">Alex Younger</h1>
+                    <p id="tagline" class="py-2 text-sky-200 text-center text-sm">
+                        {{ $props.content?.homeTagline?.content ?? '' }}
+                    </p>
+                </section>
+            </div>
+
+            <div id="home-menu" class="w-full">
+                <section class="menu-list container mx-auto max-w-md px-8">
+                    <ul class="flex flex-wrap justify-center">
+                        <li v-for="item in homeItems" class="py-1 text-sm px-2">
+                            <template v-if="item.link">
+                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{ item.name }}</Link>
+                            </template>
+                            <template v-else>
+                                <p @click="item.action(item.id)" class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer">{{ item.name }}</p>
+                            </template>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div id="hud" class="w-full container mx-auto max-w-md px-8 mt-6">
+                <section id="bio" v-if="this.selected == 'bio'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h2 class="text-sky-300 text-xl pb-4 font-semibold">Bio</h2>
+                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sky-100 text-sm"></div>
+                    </div>
+                </section>
+
+                <section id="about" v-if="this.selected == 'about'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h2 class="text-sky-300 text-xl pb-4 font-semibold">About</h2>
+                        <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100 text-sm"></div>
+                    </div>
+                </section>
+
+                <section id="skills" v-if="this.selected == 'skills'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h3 class="text-sky-300 text-xl pb-4 font-semibold">Skills</h3>
+                        <div class="text-sky-100 text-sm">
+                            <LanguageBar />
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" v-if="this.selected == 'contact'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h3 class="text-sky-300 text-xl pb-4 font-semibold">Contact</h3>
+                        <div id="contact-description" class="text-sm" v-html="$props.content?.contact?.content ?? ''"></div>
+
+                        <div class="w-full pt-6">
+                            <div class="w-full flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto">
+                                <a v-for="link in links" :href="link.url" class="w-16 no-underline" target="_blank">
+                                    <img class="mx-auto" :src="link.icon" width="25" height="25" :alt="link.alt" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- End Mobile View -->
     </main>
 </template>
 
@@ -80,7 +155,7 @@ import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3'
 import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
 import LanguageBar from '@/Components/LanguageBar.vue';
-import { renderStarfield } from '@/three/space';
+// import { renderStarfield } from '@/three/space';
 
 // Will grab this during the mounted lifecycle hook
 let pageWrapper = null;
@@ -103,8 +178,8 @@ async function reveal() {
     let delay = 1000
     const visited = localStorage.getItem('visited');
     if (visited) delay = 10 // Shorter delay for transition effect
-    
-    var object = {value: true, timestamp: new Date().getTime()}
+
+    var object = { value: true, timestamp: new Date().getTime() }
     setTimeout(() => {
         localStorage.setItem('visited', JSON.stringify(object));
         pageWrapper.classList.add('opacity-100');
@@ -146,7 +221,7 @@ export default {
     },
     mounted() {
         pageWrapper = document.getElementById('page-wrapper');
-        renderStarfield();
+        // renderStarfield();
         reveal()
     }
 }
@@ -157,8 +232,13 @@ export default {
     --glowy-text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ea5e9, 0 0 40px #0ea5e9, 0 0 50px #0ea5e9, 0 0 60px #0ea5e9, 0 0 70px #0ea5e9;
 }
 
-.large-description {
+#desktop #hud section > div:first-child {
     max-height: 65vh;
+    overflow: scroll;
+}
+
+#mobile #hud section > div:first-child{
+    max-height: 45vh;
     overflow: scroll;
 }
 
