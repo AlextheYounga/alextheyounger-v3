@@ -88,9 +88,8 @@
 import Modal from '@/Components/Modal.vue';
 import { Head } from '@inertiajs/vue3';
 import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
-import { getCurrentInstance } from 'vue';
 import { generateColors } from '@/projectColors';
-// import { renderStarfield } from '@/three/space';
+import { renderStarfield } from '@/three/space';
 
 export default {
     components: {
@@ -116,6 +115,7 @@ export default {
         },
     },
     mounted() {
+        renderStarfield();
         generateColors()
     },
     updated() {

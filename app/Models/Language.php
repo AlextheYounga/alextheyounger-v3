@@ -53,7 +53,10 @@ class Language extends Model
 
     public function runRepoSpecificValueAdjustments($repoName)
     {
-        $repoSettings = Language::settings('repo-specific');
+        $repoSettings = Language::settings('repoSpecific');
+        if (empty($repoSettings)) {
+            return;
+        }
 
         if (array_key_exists($repoName, $repoSettings)) {
             $suppressLanguage = $repoSettings[$repoName]["language"];
@@ -81,6 +84,9 @@ class Language extends Model
     public static function settings($name)
     {
         $settings = Yaml::parseFile('storage/app/language-settings.yml');
+        if (!array_key_exists($name, $settings)) {
+            return [];
+        }
         return $settings[$name];
     }
 

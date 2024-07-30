@@ -33,7 +33,10 @@ export default {
     },
     data() {
         return {
-            items: ['Starship Enterprise'],
+            items: [
+                'Starship Enterprise',
+                'Solar System'
+            ],
         }
     },
     created() {

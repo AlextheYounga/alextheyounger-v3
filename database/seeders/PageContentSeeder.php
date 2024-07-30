@@ -74,9 +74,7 @@ HTML;
     <a href="https://www.rugdoctor.com/" target="_blank">Rugdoctor</a>.
 </p>
 
-<p>Check out my latest
-    <Link :href="route('pages.projects')">projects</Link>
-</p>
+<p>Check out my latest <a :href="/projects">projects</a></p>
 <p>Or my <a href="https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing" target="_blank">Resume</a>.</p>
 HTML;
 

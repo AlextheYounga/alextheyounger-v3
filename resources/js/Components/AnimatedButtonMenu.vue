@@ -15,7 +15,7 @@
       <div class="absolute bg-white w-0 h-0 overflow-hidden rounded-md left-6 top-5 transition-all group-focus:h-[162px] group-focus:w-40 delay-150 duration-300 shadow-xl">
         <ul class="divide-y py-2 text-right text-sm text-sky-700">
           <li v-for="item in menuList" :key="item.name" class="flex justify-end hover:bg-gray-100">
-            <Link :href="route(item.link)" class="px-4 py-2">
+            <Link :href="route(item.link)" class="px-4 py-2 w-full">
             {{ item.name }}
             </Link>
           </li>
@@ -23,7 +23,6 @@
       </div>
     </button>
   </div>
-
 </template>
 
 

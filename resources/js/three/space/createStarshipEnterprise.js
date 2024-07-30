@@ -4,30 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { createStar } from './createStars';
 
 
-export async function createStarshipEnterprise(scene, starField) {
-    const loader = new GLTFLoader();
-    const x = 50
-    const y = 0
-    const z = 50
-
-    const position = {x,y,z}
-    createLighting(scene, position) // Add lighting to the scene
-
-    // Add Starship Enterprise
-    return loader.load('cad/Enterprise_Original.gltf', function (gltf) {
-        gltf.scene.scale.set(25, 25, 25)
-        gltf.scene.position.set(x, y, z);
-        gltf.scene.rotateX(2)
-        gltf.scene.rotateY(3)
-
-        starField.add(gltf.scene);
-        scene.add(starField); // Add entire starfield to the scene
-    }, undefined, function (error) {
-        console.error(error);
-    });
-}
-
-const createLighting = async (scene, position) => {
+const createLighting = async (starField, position) => {
     // Add lights to the scene
     let {x,y,z} = position
     x += 20
@@ -49,9 +26,33 @@ const createLighting = async (scene, position) => {
 
     const star = createStar({x,y,z}, color, 30)
 
-    scene.add(ambientLight);
-    scene.add(directionalLight);
-    scene.add(pointLight);
-    scene.add(star)
+    starField.add(ambientLight);
+    starField.add(directionalLight);
+    starField.add(pointLight);
+    starField.add(star)
+}
 
+
+export async function createStarshipEnterprise(starField) {
+    const loader = new GLTFLoader();
+    const x = 50
+    const y = 0
+    const z = 50
+
+    const position = {x,y,z}
+    createLighting(starField, position) // Add lighting to the scene
+
+    // Add Starship Enterprise
+    return loader.load('cad/Enterprise_Original.gltf', function (enterprise) {
+        enterprise.scene.name = 'enterprise'
+        enterprise.scene.scale.set(10, 10, 10)
+        enterprise.scene.position.set(x, y, z);
+        enterprise.scene.rotateX(2)
+        enterprise.scene.rotateY(3)
+    
+        starField.add(enterprise.scene);
+        
+    }, undefined, function (error) {
+        console.error(error);
+    });
 }

@@ -41,7 +41,7 @@
                 </section>
 
                 <section id="about" v-if="this.selected == 'about'" class="max-w-3xl mx-auto">
-                    <div class="rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
+                    <div class="large-description rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
                         <h2 class="text-sky-300 text-2xl pb-4 font-semibold">About</h2>
                         <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100"></div>
                     </div>
@@ -131,9 +131,9 @@ export default {
                 { name: 'Bio', link: false, id: 'bio', action: this.openSection },
                 { name: 'About', link: false, id: 'about', action: this.openSection },
                 { name: 'Skills', link: false, id: 'skills', action: this.openSection },
+                { name: 'Contact', link: false, id: 'contact', action: this.openSection },
                 { name: 'Reading List', link: 'pages.books' },
                 { name: 'Projects', link: 'pages.projects' },
-                { name: 'Contact', link: false, id: 'contact', action: this.openSection },
                 { name: 'Explore Starfield', link: 'pages.starfield' }
             ],
             selected: 'default' // default is nothing
@@ -155,6 +155,11 @@ export default {
 <style>
 #page-wrapper {
     --glowy-text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ea5e9, 0 0 40px #0ea5e9, 0 0 50px #0ea5e9, 0 0 60px #0ea5e9, 0 0 70px #0ea5e9;
+}
+
+.large-description {
+    max-height: 65vh;
+    overflow: scroll;
 }
 
 #hud p {
