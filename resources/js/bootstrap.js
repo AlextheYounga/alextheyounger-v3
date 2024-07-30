@@ -67,4 +67,4 @@ const neuronActivation = `
 asciiart.club
 `;
 
-console.info(neuronActivation)
+// console.info(neuronActivation)

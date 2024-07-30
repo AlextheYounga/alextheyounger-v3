@@ -6,6 +6,7 @@
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.11",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/forms": "^0.5.6",
         "@vitejs/plugin-vue": "^4.3.4",
         "autoprefixer": "^10.4.15",
@@ -19,6 +20,8 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
-        "lodash": "^4.17.21"
+        "lodash": "^4.17.21",
+        "mathjs": "^13.0.3",
+        "three": "^0.167.0"
     }
 }

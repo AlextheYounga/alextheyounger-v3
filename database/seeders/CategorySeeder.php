@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 
@@ -19,12 +18,14 @@ class CategorySeeder extends Seeder
         $categories = json_decode($categoriesJson, true);
 
         foreach($categories as $category) {
+            $properties = json_decode($category['properties'], true);
+
             Category::create([
                 'name' => $category['name'],
                 'type' => $category['type'] ?? 'Book::class',
                 'position' => $category['position'],
                 'properties' => [
-                    'html_selector' => $category['html_selector'],
+                    'html_selector' => $properties['html_selector'],
                 ],
                 'active' => $category['active'] ?? true,
             ]);

@@ -9,7 +9,6 @@ use App\Models\Project;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\PageContent;
-use Illuminate\Support\Facades\DB;
 
 
 class PagesController extends Controller
@@ -19,20 +18,10 @@ class PagesController extends Controller
         $pageContent = PageContent::where('view', '=', 'Home')
             ->get()
             ->keyBy('key');
-            
-        $projects = Project::active()
-            ->orderBy('position', 'asc')
-            ->get();
 
         return Inertia::render('Home', [
-            'projects' => $projects,
             'content' => $pageContent,
         ]);
-    }
-
-    public function resume()
-    {
-        return Inertia::render('Resume');
     }
 
     public function readingList()
@@ -62,9 +51,9 @@ class PagesController extends Controller
         ]);
     }
 
-    public function terrainPlayground()
+    public function starfield()
     {
-        return Inertia::render('TerrainPlayground');
+        return Inertia::render('StarField');
     }
 
     public function setupFooter()

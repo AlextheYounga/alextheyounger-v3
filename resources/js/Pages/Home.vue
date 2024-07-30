@@ -1,130 +1,164 @@
 <template>
-    <Head title="Welcome" />
-    <NavBar />
-    <div id="page-wrapper" class="opacity-0 transition-opacity duration-500 w-11/12 sm:w-3/5 mx-auto max-w-3xl pt-12">
-        <section class="hero mt-16 w-1/2 sm:w-1/3 mx-auto sm:mt-0 mb-4 relative rounded">
-            <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center border-burgandy border-2"
-                alt="alex younger developer marketing about me" />
-        </section>
 
-        <section class="title mb-8 bg-neutral-50 shadow rounded relative">
-            <h1 class="text-5xl text-gray-700 text-center">Alex Younger</h1>
-            <p id="tagline" class="py-2 text-gray-700 text-center text-lg"></p>
-        </section>
+    <Head title="Home" />
 
-        <!-- Skills -->
-        <section class="bg-neutral-50 my-8 p-2 py-8 shadow relative rounded z-10 text-gray-700">
-            <div class="language-stats">
-                <h2 class="mb-3 text-3xl text-gray-700 px-8">Skills</h2>
-                <LanguageBar />
-            </div>
-        </section>
+    <AnimatedButtonMenu />
 
-        <!-- Bio -->
-        <section id="home-bio" class="relative bg-neutral-50 my-8 mb-8 py-4 px-8 sm:p-8 shadow rounded"></section>
+    <main id="page-wrapper" ref="page-wrapper" class="opacity-0 transition-opacity duration-500">
+        <!-- TODO: Is there a better way to do mobile/desktop -->
+        <!-- Desktop View -->
+        <div id="desktop" class="hidden md:flex px-8 justify-between w-full pt-32">
+            <div id="home-menu" class="w-1/3">
+                <section id="hero" class="mx-auto mb-4 relative rounded">
+                    <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center border-sky border-2" alt="alex younger developer marketing about me" />
+                </section>
 
-        <!-- Quote Box -->
-        <section class="home-quote relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded">
-            <div class="image-quote sm:flex justify-between">
-                <img src="/images/frozen-lake.jpg.webp" class="border-burgandy border-2 flex mx-auto relative text-center w-full"
-                    alt="alex younger developer marketing about me" />
-                <div id="home-quote" class="text-gray-700 w-full mt-4 sm:mt-0 sm:text-right sm:ml-auto sm:pt-16 sm:w-2/3 pt-2"></div>
-            </div>
-            <div class="flex justify-between mx-auto text-center w-full sm:w-5/6 py-8">
-                <a v-for="link in links" :href="link.url" target="_blank" class="w-8 sm:w-12 no-underline burgandy text-gray-600">
-                    <img :src="link.icon" class="w-16 hover:shadow p-1 rounded" :alt="link.alt" />
-                    <small>{{ link.hint }}</small>
-                </a>
-            </div>
-            <div class="text-center">
-                <p class="text-sm text-gray-700 pb-2">Pssst! Are you bored? Wanna play with the terrain generator?
-                </p>
-                <Link
-                    class="block mx-auto text-sm bg-red-900 text-white border border-red-800 hover:bg-white hover:text-burgandy no-underline p-1 rounded shadow-lg text-center w-16"
-                    href="/terrain">play</Link>
-            </div>
-        </section>
+                <section id="title" class="rounded relative mb-8">
+                    <h1 class="text-5xl text-sky-100 text-center glow">Alex Younger</h1>
+                    <p id="tagline" class="py-2 text-sky-200 text-center text-sm">
+                        {{ $props.content?.homeTagline?.content ?? '' }}
+                    </p>
+                </section>
 
-        <!-- Description -->
-        <section id="home-description" class="relative bg-neutral-50 my-8 mb-8 p-8 shadow rounded"></section>
-
-        <!-- Projects List -->
-        <section class="projects-home sm:p-8 relative mb-8 bg-neutral-50 rounded">
-            <div class="flex justify-between mb-4 py-2 px-8 sm:p-0">
-                <h3 class="text-left w-1/2 text-3xl text-gray-700">Projects</h3>
-                <Link
-                    class="bg-red-900 text-white border border-red-800 hover:bg-white hover:text-burgandy no-underline p-1 rounded shadow-lg text-center w-24"
-                    :href="route('pages.projects')">
-                See All
-                </Link>
+                <section class="menu-list">
+                    <ul class="text-center">
+                        <li v-for="item in homeItems" class="py-1 text-xl">
+                            <template v-if="item.link">
+                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{ item.name }}</Link>
+                            </template>
+                            <template v-else>
+                                <p @click="item.action(item.id)" class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer">{{ item.name }}</p>
+                            </template>
+                        </li>
+                    </ul>
+                </section>
             </div>
 
-            <div class="overflow-hidden shadow sm:rounded-md">
-                <ul role="list" id="projects-container" class="divide-y divide-gray-400 overflow-scroll">
-                    <li v-for="project of projects" :key="project.id">
-                        <a :href="project.project_link" class="block">
-                            <div class="bg-stone-100 px-4 py-4 sm:px-6">
-                                <div class="flex items-center justify-between">
-                                    <p class="truncate text-sm sm:text-lg font-medium text-burgandy">
-                                        {{ project.title }}
-                                    </p>
-                                    <div class="ml-2 flex flex-shrink-0">
-                                        <p v-for="tech of project.techstack" :key="tech"
-                                            class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2"
-                                            :data-techstack="tech">
-                                            {{ tech }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="mt-2 sm:flex sm:justify-between">
-                                    <div class="sm:flex">
-                                        <p class="flex items-center text-xs text-gray-600 truncate">
-                                            {{ project.excerpt }}
-                                        </p>
-                                    </div>
-                                </div>
+            <div id="hud" class="w-2/3">
+                <section id="bio" v-if="this.selected == 'bio'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h2 class="text-sky-300 text-2xl pb-4 font-semibold">Bio</h2>
+                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sky-100"></div>
+                    </div>
+                </section>
+
+                <section id="about" v-if="this.selected == 'about'" class="max-w-3xl mx-auto">
+                    <div class="large-description rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h2 class="text-sky-300 text-2xl pb-4 font-semibold">About</h2>
+                        <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100"></div>
+                    </div>
+                </section>
+
+                <section id="skills" v-if="this.selected == 'skills'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h3 class="text-sky-300 text-2xl pb-4 font-semibold">Skills</h3>
+                        <div class="text-sky-100">
+                            <LanguageBar />
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" v-if="this.selected == 'contact'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h3 class="text-sky-300 text-2xl pb-4 font-semibold">Contact</h3>
+                        <div id="contact-description" v-html="$props.content?.contact?.content ?? ''"></div>
+
+                        <div class="w-full pt-12">
+                            <div class="w-1/2 flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto">
+                                <a v-for="link in links" :href="link.url" class="w-16 no-underline" target="_blank">
+                                    <img class="mx-auto" :src="link.icon" width="25" height="25" :alt="link.alt" />
+                                </a>
                             </div>
-                        </a>
-                    </li>
-                </ul>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
-    </div>
-    <Footer />
+        </div>
+        <!-- End Desktop View -->
+
+        <!-- Mobile View -->
+        <div id="mobile" class="block md:hidden w-full pt-12">
+            <div class="mx-auto">
+                <section id="hero" class="mx-auto mb-4 relative rounded">
+                    <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center border-sky border-2" alt="alex younger developer marketing about me" />
+                </section>
+
+                <section id="title" class="rounded relative mb-8">
+                    <h1 class="text-5xl text-sky-100 text-center glow">Alex Younger</h1>
+                    <p id="tagline" class="py-2 text-sky-200 text-center text-sm">
+                        {{ $props.content?.homeTagline?.content ?? '' }}
+                    </p>
+                </section>
+            </div>
+
+            <div id="home-menu" class="w-full">
+                <section class="menu-list container mx-auto max-w-md px-8">
+                    <ul class="flex flex-wrap justify-center">
+                        <li v-for="item in homeItems" class="py-1 text-sm px-2">
+                            <template v-if="item.link">
+                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{ item.name }}</Link>
+                            </template>
+                            <template v-else>
+                                <p @click="item.action(item.id)" class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer">{{ item.name }}</p>
+                            </template>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div id="hud" class="w-full container mx-auto max-w-md px-8 mt-6">
+                <section id="bio" v-if="this.selected == 'bio'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h2 class="text-sky-300 text-xl pb-4 font-semibold">Bio</h2>
+                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sky-100 text-sm"></div>
+                    </div>
+                </section>
+
+                <section id="about" v-if="this.selected == 'about'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h2 class="text-sky-300 text-xl pb-4 font-semibold">About</h2>
+                        <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100 text-sm"></div>
+                    </div>
+                </section>
+
+                <section id="skills" v-if="this.selected == 'skills'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h3 class="text-sky-300 text-xl pb-4 font-semibold">Skills</h3>
+                        <div class="text-sky-100 text-sm">
+                            <LanguageBar />
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" v-if="this.selected == 'contact'" class="max-w-3xl mx-auto">
+                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
+                        <h3 class="text-sky-300 text-xl pb-4 font-semibold">Contact</h3>
+                        <div id="contact-description" class="text-sm" v-html="$props.content?.contact?.content ?? ''"></div>
+
+                        <div class="w-full pt-6">
+                            <div class="w-full flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto">
+                                <a v-for="link in links" :href="link.url" class="w-16 no-underline" target="_blank">
+                                    <img class="mx-auto" :src="link.icon" width="25" height="25" :alt="link.alt" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- End Mobile View -->
+    </main>
 </template>
 
-<script setup>
+<script>
 import { Head } from '@inertiajs/vue3';
-import Footer from '@/Components/Footer.vue';
 import { Link } from '@inertiajs/vue3'
+import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
 import LanguageBar from '@/Components/LanguageBar.vue';
-import NavBar from '@/Components/Navbar.vue';
-import { generateTechColors } from '@/Components/ProjectColors.vue';
-import { terrainLoaded } from '@/Components/Terrain.vue';
-import { onMounted } from 'vue';
-import { getCurrentInstance } from 'vue';
+// import { renderStarfield } from '@/three/space';
 
-const props = defineProps({
-    content: {
-        type: Object,
-        required: true,
-    },
-    projects: {
-        type: Object,
-        required: true,
-    },
-});
-
-// Content
-onMounted(() => {
-    for (const key in props.content) {
-        const contentItem = props.content[key]
-        if (contentItem && contentItem.html_id) {
-            document.getElementById(contentItem.html_id).innerHTML = contentItem.content
-        }
-    }
-});
-
+// Will grab this during the mounted lifecycle hook
+let pageWrapper = null;
 
 const twitterIcon = 'https://img.icons8.com/color/48/twitter--v1.png'
 const linkedIcon = 'https://img.icons8.com/color/48/linkedin.png'
@@ -133,58 +167,105 @@ const emailIcon = 'https://img.icons8.com/emoji/48/e-mail.png'
 const resumeIcon = 'https://img.icons8.com/nolan/64/resume.png'
 
 const links = [
-    { name: 'Twitter', url: 'https://github.com/AlextheYounga', icon: twitterIcon, alt: "twitter--v1", hint: 'Twitter' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alexyounger/', icon: linkedIcon, alt: 'linkedin', hint: 'LinkedIn' },
-    { name: 'Github', url: 'https://github.com/AlextheYounga', icon: githubIcon, alt: 'github', hint: 'Github' },
-    { name: 'Email', url: 'mailto:alex@alextheyounger.me', icon: emailIcon, alt: 'e-mail', hint: 'Email' },
-    { name: 'Resume', url: 'https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing', icon: resumeIcon, alt: 'resume', hint: 'Resume' },
+    { name: 'Twitter', url: 'https://github.com/AlextheYounga', icon: twitterIcon, alt: "twitter--v1" },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alexyounger/', icon: linkedIcon, alt: 'linkedin' },
+    { name: 'Github', url: 'https://github.com/AlextheYounga', icon: githubIcon, alt: 'github' },
+    { name: 'Email', url: 'mailto:alex@alextheyounger.me', icon: emailIcon, alt: 'e-mail' },
+    { name: 'Resume', url: 'https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing', icon: resumeIcon, alt: 'resume' },
 ];
 
-// Terrain
-const terrain = getCurrentInstance().appContext.config.globalProperties.$terrain
-function reveal() {
-    const wrapper = document.getElementById('page-wrapper');
-    wrapper.classList.add('opacity-100')
+async function reveal() {
+    let delay = 1000
+    const visited = localStorage.getItem('visited');
+    if (visited) delay = 10 // Shorter delay for transition effect
+
+    var object = { value: true, timestamp: new Date().getTime() }
+    setTimeout(() => {
+        localStorage.setItem('visited', JSON.stringify(object));
+        pageWrapper.classList.add('opacity-100');
+    }, delay);
 }
 
-function terrainFinished() {
-    reveal()
-}
-
-function waitForTerrain() {
-    if (typeof terrainLoaded === "undefined" || !terrainLoaded) {
-        setTimeout(waitForTerrain, 400);
-        return
+export default {
+    components: {
+        Head,
+        Link,
+        AnimatedButtonMenu,
+        LanguageBar
+    },
+    props: {
+        content: {
+            type: Object,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            links,
+            homeItems: [
+                { name: 'Bio', link: false, id: 'bio', action: this.openSection },
+                { name: 'About', link: false, id: 'about', action: this.openSection },
+                { name: 'Skills', link: false, id: 'skills', action: this.openSection },
+                { name: 'Contact', link: false, id: 'contact', action: this.openSection },
+                { name: 'Reading List', link: 'pages.books' },
+                { name: 'Projects', link: 'pages.projects' },
+                { name: 'Explore Starfield', link: 'pages.starfield' }
+            ],
+            selected: 'default' // default is nothing
+        }
+    },
+    methods: {
+        openSection(sectionId) {
+            this.$data.selected = sectionId;
+        },
+    },
+    mounted() {
+        pageWrapper = document.getElementById('page-wrapper');
+        // renderStarfield();
+        reveal()
     }
-
-    terrainFinished()
 }
-
-onMounted(() => {
-    if (!terrainLoaded) {
-        terrain.draw()
-        waitForTerrain()
-    } else {
-        terrainFinished()
-    }
-    generateTechColors()
-});
-
 </script>
 
-<style scoped>
-.hero img {
+<style>
+#page-wrapper {
+    --glowy-text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ea5e9, 0 0 40px #0ea5e9, 0 0 50px #0ea5e9, 0 0 60px #0ea5e9, 0 0 70px #0ea5e9;
+}
+
+#desktop #hud section > div:first-child {
+    max-height: 65vh;
+    overflow: scroll;
+}
+
+#mobile #hud section > div:first-child{
+    max-height: 45vh;
+    overflow: scroll;
+}
+
+#hud p {
+    color: #e0f2fe;
+    margin-bottom: 1rem;
+}
+
+#hud a {
+    color: #38bdf8 !important;
+    text-decoration: underline;
+}
+
+#hero img {
     border-radius: 130px;
+    max-width: 175px;
 }
 
-.image-quote img {
-    border-radius: 100px;
-    max-width: 200px;
-    padding: 0;
-    margin: 0;
+.menu-list ul li:hover {
+    text-shadow: var(--glowy-text-shadow);
 }
 
-.projects-home ul {
-    height: 60vh;
+.glow-shadow {
+    box-shadow: var(--glowy-text-shadow);
+}
+
+.glow {
+    text-shadow: var(--glowy-text-shadow);
 }
 </style>

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PagesController::class, 'home']);
+Route::get('/', [PagesController::class, 'home'])->name('home');
 
 Route::redirect('/resume', '/');
 
@@ -28,9 +28,9 @@ Route::get('/projects', [
     PagesController::class, 'projects'
 ])->name('pages.projects');
 
-Route::get('/terrain', [
-    PagesController::class, 'terrainPlayground'
-])->name('pages.terrain-playground');
+Route::get('/starfield', [
+    PagesController::class, 'starfield'
+])->name('pages.starfield');
 
 // Ajax
 Route::get('/languages/setup', [

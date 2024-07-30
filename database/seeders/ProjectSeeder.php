@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Project;
 use Illuminate\Database\Seeder;
 
@@ -25,7 +24,7 @@ class ProjectSeeder extends Seeder
                 'image_name' => $project['image_name'],
                 'external_link' => $project['external_link'],
                 'external_image_link' => $project['external_image_link'] ?? null,
-                'techstack' => $project['techstack'],
+                'techstack' => json_decode($project['techstack'], true),
                 'excerpt' => $project['excerpt'],
                 'position' => $project['position'],
                 'scope' => $project['scope'],

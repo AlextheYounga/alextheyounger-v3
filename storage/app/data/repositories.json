@@ -36,22 +36,6 @@
         }
     },
     {
-        "name": "course-creator",
-        "host": "local",
-        "size": 3000000,
-        "languages": {
-            "Python": 19599
-        },
-        "properties": {
-            "languageStatistics": {
-                "Python": {
-                    "percentage": 100,
-                    "bytes": 19599
-                }
-            }
-        }
-    },
-    {
         "name": "cloudfunctions",
         "host": "local",
         "size": 214000000,
@@ -156,37 +140,187 @@
         }
     },
     {
+        "name": "graph",
+        "host": "local",
+        "size": 579000000,
+        "languages": {
+            "Perl": 19030
+        },
+        "properties": {
+            "languageStatistics": {
+                "Perl": {
+                    "percentage": 100,
+                    "bytes": 19030
+                }
+            }
+        }
+    },
+    {
+        "name": "dynamic-payouts",
+        "host": "local",
+        "size": 22000000,
+        "languages": {
+            "Python": 11851,
+            "JavaScript": 6350
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 65.11,
+                    "bytes": 11851
+                },
+                "JavaScript": {
+                    "percentage": 34.89,
+                    "bytes": 6350
+                }
+            }
+        }
+    },
+    {
+        "name": "learn-infinite",
+        "host": "local",
+        "size": 256000000,
+        "languages": {
+            "Python": 289559,
+            "Vue": 94852,
+            "JavaScript": 8184,
+            "CSS": 7358,
+            "Perl": 3216,
+            "Shell": 1187,
+            "HTML": 965,
+            "TypeScript": 306
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 71.39,
+                    "bytes": 289559
+                },
+                "Vue": {
+                    "percentage": 23.38,
+                    "bytes": 94852
+                },
+                "JavaScript": {
+                    "percentage": 2.02,
+                    "bytes": 8184
+                },
+                "CSS": {
+                    "percentage": 1.81,
+                    "bytes": 7358
+                },
+                "Perl": {
+                    "percentage": 0.79,
+                    "bytes": 3216
+                },
+                "Shell": {
+                    "percentage": 0.29,
+                    "bytes": 1187
+                },
+                "HTML": {
+                    "percentage": 0.24,
+                    "bytes": 965
+                },
+                "TypeScript": {
+                    "percentage": 0.08,
+                    "bytes": 306
+                }
+            }
+        }
+    },
+    {
+        "name": "learn-infinite-open",
+        "host": "local",
+        "size": 652000000,
+        "languages": {
+            "Python": 270279,
+            "Vue": 94852,
+            "JavaScript": 8184,
+            "CSS": 7358,
+            "HTML": 965,
+            "TypeScript": 306
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 70.76,
+                    "bytes": 270279
+                },
+                "Vue": {
+                    "percentage": 24.83,
+                    "bytes": 94852
+                },
+                "JavaScript": {
+                    "percentage": 2.14,
+                    "bytes": 8184
+                },
+                "CSS": {
+                    "percentage": 1.93,
+                    "bytes": 7358
+                },
+                "HTML": {
+                    "percentage": 0.25,
+                    "bytes": 965
+                },
+                "TypeScript": {
+                    "percentage": 0.08,
+                    "bytes": 306
+                }
+            }
+        }
+    },
+    {
         "name": "next-learnarena",
         "host": "local",
         "size": 2000000000,
         "languages": {
-            "TypeScript": 769709,
-            "JavaScript": 7419,
-            "Shell": 5558,
-            "CSS": 4272,
+            "TypeScript": 1076112,
+            "JavaScript": 6727,
+            "Shell": 6323,
+            "CSS": 3689,
             "HTML": 6
         },
         "properties": {
             "languageStatistics": {
                 "TypeScript": {
-                    "percentage": 97.81,
-                    "bytes": 769709
+                    "percentage": 98.47,
+                    "bytes": 1076112
                 },
                 "JavaScript": {
-                    "percentage": 0.94,
-                    "bytes": 7419
+                    "percentage": 0.62,
+                    "bytes": 6727
                 },
                 "Shell": {
-                    "percentage": 0.71,
-                    "bytes": 5558
+                    "percentage": 0.58,
+                    "bytes": 6323
                 },
                 "CSS": {
-                    "percentage": 0.54,
-                    "bytes": 4272
+                    "percentage": 0.34,
+                    "bytes": 3689
                 },
                 "HTML": {
                     "percentage": 0,
                     "bytes": 6
+                }
+            }
+        }
+    },
+    {
+        "name": "code_execution_dsl_poc",
+        "host": "local",
+        "size": 176000,
+        "languages": {
+            "JavaScript": 12489,
+            "ASL": 524
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 95.97,
+                    "bytes": 12489
+                },
+                "ASL": {
+                    "percentage": 4.03,
+                    "bytes": 524
                 }
             }
         }
@@ -223,6 +357,47 @@
                 "HTML": {
                     "percentage": 0,
                     "bytes": 6
+                }
+            }
+        }
+    },
+    {
+        "name": "natphi",
+        "host": "local",
+        "size": 173000000,
+        "languages": {
+            "PHP": 106737,
+            "Vue": 74581,
+            "Blade": 33823,
+            "JavaScript": 3027,
+            "Shell": 67,
+            "CSS": 59
+        },
+        "properties": {
+            "languageStatistics": {
+                "PHP": {
+                    "percentage": 48.9,
+                    "bytes": 106737
+                },
+                "Vue": {
+                    "percentage": 34.17,
+                    "bytes": 74581
+                },
+                "Blade": {
+                    "percentage": 15.49,
+                    "bytes": 33823
+                },
+                "JavaScript": {
+                    "percentage": 1.39,
+                    "bytes": 3027
+                },
+                "Shell": {
+                    "percentage": 0.03,
+                    "bytes": 67
+                },
+                "CSS": {
+                    "percentage": 0.03,
+                    "bytes": 59
                 }
             }
         }
@@ -366,6 +541,22 @@
         }
     },
     {
+        "name": "language-models-starter-kit",
+        "host": "local",
+        "size": 240000,
+        "languages": {
+            "Python": 24316
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 24316
+                }
+            }
+        }
+    },
+    {
         "name": "tax_lab",
         "host": "local",
         "size": 13000000,
@@ -389,20 +580,35 @@
     {
         "name": "amasswealth",
         "host": "local",
-        "size": 173000000,
+        "size": 210000000,
         "languages": {
-            "HTML": 1092290,
-            "Python": 46390
+            "Python": 46861,
+            "Vue": 13041,
+            "CSS": 2559,
+            "JavaScript": 1919,
+            "HTML": 331
         },
         "properties": {
             "languageStatistics": {
-                "HTML": {
-                    "percentage": 95.93,
-                    "bytes": 1092290
-                },
                 "Python": {
-                    "percentage": 4.07,
-                    "bytes": 46390
+                    "percentage": 72.42,
+                    "bytes": 46861
+                },
+                "Vue": {
+                    "percentage": 20.15,
+                    "bytes": 13041
+                },
+                "CSS": {
+                    "percentage": 3.95,
+                    "bytes": 2559
+                },
+                "JavaScript": {
+                    "percentage": 2.97,
+                    "bytes": 1919
+                },
+                "HTML": {
+                    "percentage": 0.51,
+                    "bytes": 331
                 }
             }
         }
@@ -467,6 +673,37 @@
                 "Python": {
                     "percentage": 100,
                     "bytes": 46427
+                }
+            }
+        }
+    },
+    {
+        "name": "leetcode-wb",
+        "host": "local",
+        "size": 2000000,
+        "languages": {
+            "Notebook": 50800,
+            "Rust": 6415,
+            "Ruby": 2287,
+            "PHP": 1115
+        },
+        "properties": {
+            "languageStatistics": {
+                "Notebook": {
+                    "percentage": 83.8,
+                    "bytes": 50800
+                },
+                "Rust": {
+                    "percentage": 10.58,
+                    "bytes": 6415
+                },
+                "Ruby": {
+                    "percentage": 3.77,
+                    "bytes": 2287
+                },
+                "PHP": {
+                    "percentage": 1.84,
+                    "bytes": 1115
                 }
             }
         }
@@ -570,19 +807,19 @@
     {
         "name": "math-notes",
         "host": "local",
-        "size": 416000,
+        "size": 1000000,
         "languages": {
-            "Notebook": 59348,
+            "Notebook": 457984,
             "Python": 1739
         },
         "properties": {
             "languageStatistics": {
                 "Notebook": {
-                    "percentage": 97.15,
-                    "bytes": 59348
+                    "percentage": 99.62,
+                    "bytes": 457984
                 },
                 "Python": {
-                    "percentage": 2.85,
+                    "percentage": 0.38,
                     "bytes": 1739
                 }
             }
@@ -641,42 +878,17 @@
         }
     },
     {
-        "name": "directory_word_processor",
+        "name": "cloud-llm-experiments",
         "host": "local",
-        "size": 108000000,
+        "size": 1000000,
         "languages": {
-            "Elixir": 52050,
-            "CSS": 10310,
-            "JavaScript": 4237,
-            "HTML": 2403,
-            "SCSS": 629,
-            "Dockerfile": 415
+            "Python": 13470
         },
         "properties": {
             "languageStatistics": {
-                "Elixir": {
-                    "percentage": 74.31,
-                    "bytes": 52050
-                },
-                "CSS": {
-                    "percentage": 14.72,
-                    "bytes": 10310
-                },
-                "JavaScript": {
-                    "percentage": 6.05,
-                    "bytes": 4237
-                },
-                "HTML": {
-                    "percentage": 3.43,
-                    "bytes": 2403
-                },
-                "SCSS": {
-                    "percentage": 0.9,
-                    "bytes": 629
-                },
-                "Dockerfile": {
-                    "percentage": 0.59,
-                    "bytes": 415
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 13470
                 }
             }
         }
@@ -700,7 +912,7 @@
     {
         "name": "rust-game-of-life",
         "host": "local",
-        "size": 158000000,
+        "size": 194000000,
         "languages": {
             "Rust": 1067
         },
@@ -716,61 +928,82 @@
     {
         "name": "opencrd",
         "host": "local",
-        "size": 319000000,
+        "size": 354000000,
         "languages": {
-            "JavaScript": 1454,
+            "JavaScript": 1456,
             "Rust": 1195,
             "HTML": 235
         },
         "properties": {
             "languageStatistics": {
                 "JavaScript": {
-                    "percentage": 50.42,
-                    "bytes": 1454
+                    "percentage": 50.45,
+                    "bytes": 1456
                 },
                 "Rust": {
-                    "percentage": 41.44,
+                    "percentage": 41.41,
                     "bytes": 1195
                 },
                 "HTML": {
-                    "percentage": 8.15,
+                    "percentage": 8.14,
                     "bytes": 235
                 }
             }
         }
     },
     {
-        "name": "gpt-conversations",
+        "name": "chathub",
         "host": "local",
-        "size": 705000000,
+        "size": 658000000,
         "languages": {
-            "PHP": 193848,
-            "Vue": 126934,
-            "Blade": 2872,
-            "JavaScript": 2751,
-            "CSS": 58
+            "TypeScript": 170525,
+            "JavaScript": 1939,
+            "SCSS": 1699,
+            "CSS": 405,
+            "HTML": 363
         },
         "properties": {
             "languageStatistics": {
-                "PHP": {
-                    "percentage": 59.38,
-                    "bytes": 193848
-                },
-                "Vue": {
-                    "percentage": 38.88,
-                    "bytes": 126934
-                },
-                "Blade": {
-                    "percentage": 0.88,
-                    "bytes": 2872
+                "TypeScript": {
+                    "percentage": 97.48,
+                    "bytes": 170525
                 },
                 "JavaScript": {
-                    "percentage": 0.84,
-                    "bytes": 2751
+                    "percentage": 1.11,
+                    "bytes": 1939
+                },
+                "SCSS": {
+                    "percentage": 0.97,
+                    "bytes": 1699
                 },
                 "CSS": {
-                    "percentage": 0.02,
-                    "bytes": 58
+                    "percentage": 0.23,
+                    "bytes": 405
+                },
+                "HTML": {
+                    "percentage": 0.21,
+                    "bytes": 363
+                }
+            }
+        }
+    },
+    {
+        "name": "commitgpt",
+        "host": "local",
+        "size": 232000,
+        "languages": {
+            "TypeScript": 4433,
+            "JavaScript": 3054
+        },
+        "properties": {
+            "languageStatistics": {
+                "TypeScript": {
+                    "percentage": 59.21,
+                    "bytes": 4433
+                },
+                "JavaScript": {
+                    "percentage": 40.79,
+                    "bytes": 3054
                 }
             }
         }
@@ -778,7 +1011,7 @@
     {
         "name": "language-models-starter-kit",
         "host": "local",
-        "size": 224000,
+        "size": 240000,
         "languages": {
             "Python": 24316
         },
@@ -792,17 +1025,49 @@
         }
     },
     {
-        "name": "cloud-llm-experiments",
+        "name": "knowledge_gpt",
         "host": "local",
-        "size": 1000000,
+        "size": 334000000,
         "languages": {
-            "Python": 13470
+            "Python": 18436
         },
         "properties": {
             "languageStatistics": {
                 "Python": {
                     "percentage": 100,
-                    "bytes": 13470
+                    "bytes": 18436
+                }
+            }
+        }
+    },
+    {
+        "name": "ruletaker",
+        "host": "local",
+        "size": 108000000,
+        "languages": {
+            "Python": 82542
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 82542
+                }
+            }
+        }
+    },
+    {
+        "name": "gpt-cli",
+        "host": "local",
+        "size": 2000000,
+        "languages": {
+            "Python": 56789
+        },
+        "properties": {
+            "languageStatistics": {
+                "Python": {
+                    "percentage": 100,
+                    "bytes": 56789
                 }
             }
         }
@@ -885,27 +1150,27 @@
         "host": "local",
         "size": 97000000,
         "languages": {
-            "Vue": 32966,
-            "CSS": 9003,
+            "Vue": 33206,
+            "CSS": 8629,
             "JavaScript": 7451,
             "HTML": 1112
         },
         "properties": {
             "languageStatistics": {
                 "Vue": {
-                    "percentage": 65.24,
-                    "bytes": 32966
+                    "percentage": 65.89,
+                    "bytes": 33206
                 },
                 "CSS": {
-                    "percentage": 17.82,
-                    "bytes": 9003
+                    "percentage": 17.12,
+                    "bytes": 8629
                 },
                 "JavaScript": {
-                    "percentage": 14.75,
+                    "percentage": 14.78,
                     "bytes": 7451
                 },
                 "HTML": {
-                    "percentage": 2.2,
+                    "percentage": 2.21,
                     "bytes": 1112
                 }
             }
@@ -1208,6 +1473,32 @@
         }
     },
     {
+        "name": "YouTube-Downloader",
+        "host": "local",
+        "size": 69000000,
+        "languages": {
+            "JavaScript": 2779,
+            "HTML": 1792,
+            "CSS": 1122
+        },
+        "properties": {
+            "languageStatistics": {
+                "JavaScript": {
+                    "percentage": 48.81,
+                    "bytes": 2779
+                },
+                "HTML": {
+                    "percentage": 31.48,
+                    "bytes": 1792
+                },
+                "CSS": {
+                    "percentage": 19.71,
+                    "bytes": 1122
+                }
+            }
+        }
+    },
+    {
         "name": "electron-icon-maker",
         "host": "local",
         "size": 228000,
@@ -1276,6 +1567,42 @@
         }
     },
     {
+        "name": "gpt-conversations",
+        "host": "local",
+        "size": 699000000,
+        "languages": {
+            "PHP": 193848,
+            "Vue": 126934,
+            "Blade": 2872,
+            "JavaScript": 2751,
+            "CSS": 58
+        },
+        "properties": {
+            "languageStatistics": {
+                "PHP": {
+                    "percentage": 59.38,
+                    "bytes": 193848
+                },
+                "Vue": {
+                    "percentage": 38.88,
+                    "bytes": 126934
+                },
+                "Blade": {
+                    "percentage": 0.88,
+                    "bytes": 2872
+                },
+                "JavaScript": {
+                    "percentage": 0.84,
+                    "bytes": 2751
+                },
+                "CSS": {
+                    "percentage": 0.02,
+                    "bytes": 58
+                }
+            }
+        }
+    },
+    {
         "name": "misc-php-scripts",
         "host": "local",
         "size": 780000,
@@ -1325,35 +1652,40 @@
     {
         "name": "alextheyounger-v3",
         "host": "local",
-        "size": 257000000,
+        "size": 305000000,
         "languages": {
-            "PHP": 265466,
-            "Vue": 94155,
-            "Blade": 30258,
-            "JavaScript": 2902,
-            "CSS": 59
+            "PHP": 263948,
+            "Vue": 55517,
+            "Blade": 30923,
+            "JavaScript": 17914,
+            "CSS": 2445,
+            "Shell": 212
         },
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 67.58,
-                    "bytes": 265466
+                    "percentage": 71.15,
+                    "bytes": 263948
                 },
                 "Vue": {
-                    "percentage": 23.97,
-                    "bytes": 94155
+                    "percentage": 14.97,
+                    "bytes": 55517
                 },
                 "Blade": {
-                    "percentage": 7.7,
-                    "bytes": 30258
+                    "percentage": 8.34,
+                    "bytes": 30923
                 },
                 "JavaScript": {
-                    "percentage": 0.74,
-                    "bytes": 2902
+                    "percentage": 4.83,
+                    "bytes": 17914
                 },
                 "CSS": {
-                    "percentage": 0.02,
-                    "bytes": 59
+                    "percentage": 0.66,
+                    "bytes": 2445
+                },
+                "Shell": {
+                    "percentage": 0.06,
+                    "bytes": 212
                 }
             }
         }
@@ -1446,37 +1778,37 @@
         "host": "local",
         "size": 1000000000,
         "languages": {
-            "PHP": 168284,
-            "JavaScript": 144900,
-            "Shell": 52997,
+            "PHP": 180107,
+            "JavaScript": 147147,
+            "Shell": 53587,
             "Blade": 29662,
-            "HTML": 1954,
+            "HTML": 6349,
             "CSS": 1159
         },
         "properties": {
             "languageStatistics": {
                 "PHP": {
-                    "percentage": 42.18,
-                    "bytes": 168284
+                    "percentage": 43.09,
+                    "bytes": 180107
                 },
                 "JavaScript": {
-                    "percentage": 36.32,
-                    "bytes": 144900
+                    "percentage": 35.2,
+                    "bytes": 147147
                 },
                 "Shell": {
-                    "percentage": 13.28,
-                    "bytes": 52997
+                    "percentage": 12.82,
+                    "bytes": 53587
                 },
                 "Blade": {
-                    "percentage": 7.43,
+                    "percentage": 7.1,
                     "bytes": 29662
                 },
                 "HTML": {
-                    "percentage": 0.49,
-                    "bytes": 1954
+                    "percentage": 1.52,
+                    "bytes": 6349
                 },
                 "CSS": {
-                    "percentage": 0.29,
+                    "percentage": 0.28,
                     "bytes": 1159
                 }
             }
