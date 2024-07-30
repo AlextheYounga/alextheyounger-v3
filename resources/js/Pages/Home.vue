@@ -155,7 +155,7 @@ import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3'
 import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
 import LanguageBar from '@/Components/LanguageBar.vue';
-// import { renderStarfield } from '@/three/space';
+import { renderStarfield } from '@/three/space';
 
 // Will grab this during the mounted lifecycle hook
 let pageWrapper = null;
@@ -221,7 +221,7 @@ export default {
     },
     mounted() {
         pageWrapper = document.getElementById('page-wrapper');
-        // renderStarfield();
+        renderStarfield();
         reveal()
     }
 }
