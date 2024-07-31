@@ -20,6 +20,7 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
+        "jszip": "^3.10.1",
         "lodash": "^4.17.21",
         "mathjs": "^13.0.3",
         "three": "^0.167.0"

@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { createStars } from './space/createStars.js';
 import { createStarshipEnterprise } from './space/createStarshipEnterprise.js';
+import { createTrisolaranDroplet } from './space/createTrisolaranDroplet.js';
 import { createSolarSystem } from './space/createSolarSystems.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -27,21 +28,21 @@ function createStarField(scale = 1) {
 
     // Add stars to the scene
     const stars = 12109 * scale // The smallest prime formed from reverse concatenation of three consecutive composite numbers
-    const mediumStars = stars * 0.85;
-    const smallStars = stars * 0.105;
-    const largeStars = stars * 0.05;
-    const giantStars = stars * 0.005;
+    // const smallStars = stars * 0.1;
+    const mediumStars = Math.floor(stars * 0.85);
+    const largeStars = Math.floor(stars * 0.125);
+    const giantStars = Math.floor(stars * 0.025);
 
-    const starFieldMedium = createStars(mediumStars, 3);
+    // const starFieldSmall = createStars(smallStars, 3)
+    const starFieldMedium = createStars(mediumStars, 5);
     const starFieldLarge = createStars(largeStars, 10)
-    const starFieldSmall = createStars(smallStars, 2)
     const starFieldGiant = createStars(giantStars, 25)
 
     const solarSystem = createSolarSystem()
 
     const starField = new THREE.Group();
+    // starField.add(starFieldSmall);
     starField.add(starFieldMedium);
-    starField.add(starFieldSmall);
     starField.add(starFieldLarge);
     starField.add(starFieldGiant);
     starField.add(solarSystem);
@@ -49,6 +50,9 @@ function createStarField(scale = 1) {
     // Add Enterprise to starfield asynchronously
     // We load the Enterprise CAD model here and it's several megs
     createStarshipEnterprise(starField) 
+
+    // Add Trisolaran Droplet to starfield asynchronously
+    createTrisolaranDroplet(starField) 
     
     camera.position.z = 2000; // Camera positioning
 
