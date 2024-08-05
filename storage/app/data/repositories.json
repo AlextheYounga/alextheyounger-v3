@@ -2,7 +2,7 @@
 	"leetcode-wb": {
 		"name": "leetcode-wb",
 		"path": "\/Python\/leetcode-wb",
-		"totalSize": 61796,
+		"totalSize": 844000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -26,7 +26,7 @@
 	"language-models-starter-kit": {
 		"name": "language-models-starter-kit",
 		"path": "\/AI\/language-models-starter-kit",
-		"totalSize": 24316,
+		"totalSize": 172000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -38,7 +38,7 @@
 	"alwaysforward": {
 		"name": "alwaysforward",
 		"path": "\/Laravel\/alwaysforward",
-		"totalSize": 418011,
+		"totalSize": 13000000,
 		"visibility": "public",
 		"languages": {
 			"Shell": {
@@ -70,7 +70,7 @@
 	"YouTube-Downloader": {
 		"name": "YouTube-Downloader",
 		"path": "\/Javascript\/YouTube-Downloader",
-		"totalSize": 5693,
+		"totalSize": 372000,
 		"visibility": "public",
 		"languages": {
 			"HTML": {
@@ -90,7 +90,7 @@
 	"helicopter-weights-balance-calculator": {
 		"name": "helicopter-weights-balance-calculator",
 		"path": "\/Javascript\/helicopter-weights-balance-calculator",
-		"totalSize": 9240,
+		"totalSize": 152000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -102,7 +102,7 @@
 	"roboccountant": {
 		"name": "roboccountant",
 		"path": "\/Python\/__deprecated__\/roboccountant",
-		"totalSize": 5405,
+		"totalSize": 184000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -114,7 +114,7 @@
 	"gitignore-it": {
 		"name": "gitignore-it",
 		"path": "\/Forks\/gitignore-it",
-		"totalSize": 2726,
+		"totalSize": 304000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -126,7 +126,7 @@
 	"marketplacer_store": {
 		"name": "marketplacer_store",
 		"path": "\/Rails\/marketplacer_store",
-		"totalSize": 57731,
+		"totalSize": 1000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -154,7 +154,7 @@
 	"universal-scraper": {
 		"name": "universal-scraper",
 		"path": "\/Python\/universal-scraper",
-		"totalSize": 43117,
+		"totalSize": 1000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -166,7 +166,7 @@
 	"chatgpt-programmatic": {
 		"name": "chatgpt-programmatic",
 		"path": "\/Python\/chatgpt-programmatic",
-		"totalSize": 2608,
+		"totalSize": 512000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -178,7 +178,7 @@
 	"piratedb": {
 		"name": "piratedb",
 		"path": "\/Python\/piratedb",
-		"totalSize": 17057,
+		"totalSize": 73000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -190,7 +190,7 @@
 	"vueblog": {
 		"name": "vueblog",
 		"path": "\/Javascript\/vueblog",
-		"totalSize": 50398,
+		"totalSize": 3000000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -214,7 +214,7 @@
 	"little_computer": {
 		"name": "little_computer",
 		"path": "\/C++\/little_computer",
-		"totalSize": 11139,
+		"totalSize": 144000,
 		"visibility": "public",
 		"languages": {
 			"C": {
@@ -226,7 +226,7 @@
 	"word-frequency-calculator": {
 		"name": "word-frequency-calculator",
 		"path": "\/Python\/word-frequency-calculator",
-		"totalSize": 5202,
+		"totalSize": 768000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -238,7 +238,7 @@
 	"fractal-markets-lab-gitlab": {
 		"name": "fractal-markets-lab-gitlab",
 		"path": "\/Python\/__archive__\/fractal-markets-lab-gitlab",
-		"totalSize": 210238,
+		"totalSize": 80000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -250,7 +250,7 @@
 	"tina-playground": {
 		"name": "tina-playground",
 		"path": "\/Javascript\/__experiments__\/tina-playground",
-		"totalSize": 87876,
+		"totalSize": 2000000,
 		"visibility": "public",
 		"languages": {
 			"TypeScript": {
@@ -274,7 +274,7 @@
 	"frontend-experiments": {
 		"name": "frontend-experiments",
 		"path": "\/Javascript\/__experiments__\/frontend-experiments",
-		"totalSize": 41501,
+		"totalSize": 244000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -294,7 +294,7 @@
 	"markets-research-factory": {
 		"name": "markets-research-factory",
 		"path": "\/Rails\/markets-research-factory",
-		"totalSize": 75574,
+		"totalSize": 3000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -318,7 +318,7 @@
 	"observer_pattern": {
 		"name": "observer_pattern",
 		"path": "\/CompSci\/observer_pattern",
-		"totalSize": 1285,
+		"totalSize": 180000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -334,7 +334,7 @@
 	"fractalgeometrycalculator": {
 		"name": "fractalgeometrycalculator",
 		"path": "\/Python\/fractalgeometrycalculator",
-		"totalSize": 28438,
+		"totalSize": 716000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -346,7 +346,7 @@
 	"tello-controller": {
 		"name": "tello-controller",
 		"path": "\/Python\/tello-controller",
-		"totalSize": 8949,
+		"totalSize": 3000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -358,7 +358,7 @@
 	"budget_database": {
 		"name": "budget_database",
 		"path": "\/Python\/budget_database",
-		"totalSize": 8732,
+		"totalSize": 380000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -370,7 +370,7 @@
 	"vix-vol-calculator": {
 		"name": "vix-vol-calculator",
 		"path": "\/Python\/vix-vol-calculator",
-		"totalSize": 31346,
+		"totalSize": 14000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -382,7 +382,7 @@
 	"plunge_alert_bot": {
 		"name": "plunge_alert_bot",
 		"path": "\/Python\/plunge_alert_bot",
-		"totalSize": 8517,
+		"totalSize": 188000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -394,7 +394,7 @@
 	"misc-scripts": {
 		"name": "misc-scripts",
 		"path": "\/Rails\/misc-scripts",
-		"totalSize": 53575,
+		"totalSize": 2000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -418,7 +418,7 @@
 	"tweet-language-model": {
 		"name": "tweet-language-model",
 		"path": "\/Python\/tweet-language-model",
-		"totalSize": 15042,
+		"totalSize": 168000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -430,7 +430,7 @@
 	"gpt-conversations": {
 		"name": "gpt-conversations",
 		"path": "\/Laravel\/gpt-conversations",
-		"totalSize": 326463,
+		"totalSize": 12000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -458,7 +458,7 @@
 	"marketdata_api": {
 		"name": "marketdata_api",
 		"path": "\/Python\/marketdata_api",
-		"totalSize": 19341,
+		"totalSize": 648000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -470,7 +470,7 @@
 	"randombullishsentiment": {
 		"name": "randombullishsentiment",
 		"path": "\/Rails\/randombullishsentiment",
-		"totalSize": 40813,
+		"totalSize": 4000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -498,7 +498,7 @@
 	"alwaysforwardjs": {
 		"name": "alwaysforwardjs",
 		"path": "\/Javascript\/alwaysforwardjs",
-		"totalSize": 16291,
+		"totalSize": 508000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -522,7 +522,7 @@
 	"rust-game-of-life": {
 		"name": "rust-game-of-life",
 		"path": "\/Rust\/wasm\/rust-game-of-life",
-		"totalSize": 1067,
+		"totalSize": 168000,
 		"visibility": "public",
 		"languages": {
 			"Rust": {
@@ -534,7 +534,7 @@
 	"alextheyounger-v3": {
 		"name": "alextheyounger-v3",
 		"path": "\/Laravel\/alextheyounger-v3",
-		"totalSize": 376550,
+		"totalSize": 36000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -566,7 +566,7 @@
 	"alextheyounger-v2": {
 		"name": "alextheyounger-v2",
 		"path": "\/Rails\/alextheyounger-v2",
-		"totalSize": 255187,
+		"totalSize": 59000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -594,7 +594,7 @@
 	"nbdev-test": {
 		"name": "nbdev-test",
 		"path": "\/Python\/__deprecated__\/nbdev-test",
-		"totalSize": 6454,
+		"totalSize": 400000,
 		"visibility": "public",
 		"languages": {
 			"Jupyter Notebook": {
@@ -614,7 +614,7 @@
 	"oneclip-api": {
 		"name": "oneclip-api",
 		"path": "\/Rails\/oneclip-api",
-		"totalSize": 39207,
+		"totalSize": 396000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -638,7 +638,7 @@
 	"rust-playground": {
 		"name": "rust-playground",
 		"path": "\/Rust\/rust-playground",
-		"totalSize": 7492,
+		"totalSize": 424000,
 		"visibility": "public",
 		"languages": {
 			"Rust": {
@@ -650,7 +650,7 @@
 	"robo-accountant": {
 		"name": "robo-accountant",
 		"path": "\/Laravel\/robo-accountant",
-		"totalSize": 161772,
+		"totalSize": 2000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -670,7 +670,7 @@
 	"alwaysforward_node": {
 		"name": "alwaysforward_node",
 		"path": "\/Javascript\/__experiments__\/alwaysforward_node",
-		"totalSize": 18353,
+		"totalSize": 492000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -694,7 +694,7 @@
 	"misc-php-scripts": {
 		"name": "misc-php-scripts",
 		"path": "\/Laravel\/misc-php-scripts",
-		"totalSize": 84452,
+		"totalSize": 224000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -710,7 +710,7 @@
 	"alex-language-model": {
 		"name": "alex-language-model",
 		"path": "\/AI\/alex-language-model",
-		"totalSize": 16902,
+		"totalSize": 300000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -722,7 +722,7 @@
 	"commands-library": {
 		"name": "commands-library",
 		"path": "\/Rails\/commands-library",
-		"totalSize": 54463,
+		"totalSize": 18000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -750,7 +750,7 @@
 	"amasswealth": {
 		"name": "amasswealth",
 		"path": "\/Python\/amasswealth",
-		"totalSize": 232072,
+		"totalSize": 121000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -763,10 +763,30 @@
 			}
 		}
 	},
+	"knex": {
+		"name": "knex",
+		"path": "\/Forks\/knex",
+		"totalSize": 16000000,
+		"visibility": "public",
+		"languages": {
+			"JavaScript": {
+				"size": 2075965,
+				"percentage": "95.46"
+			},
+			"Shell": {
+				"size": 685,
+				"percentage": "0.03"
+			},
+			"TypeScript": {
+				"size": 97967,
+				"percentage": "4.51"
+			}
+		}
+	},
 	"vuepress": {
 		"name": "vuepress",
 		"path": "\/Javascript\/__experiments__\/vuepress",
-		"totalSize": 5906,
+		"totalSize": 2000000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -782,7 +802,7 @@
 	"laravel-10-bare-breeze-inertia-vue-tailwind": {
 		"name": "laravel-10-bare-breeze-inertia-vue-tailwind",
 		"path": "\/Laravel\/__starter_kits__\/laravel-10-bare-breeze-inertia-vue-tailwind",
-		"totalSize": 207773,
+		"totalSize": 1000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -810,7 +830,7 @@
 	"laravel-bare-tailwind-install": {
 		"name": "laravel-bare-tailwind-install",
 		"path": "\/Laravel\/__starter_kits__\/laravel-bare-tailwind-install",
-		"totalSize": 103268,
+		"totalSize": 660000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -834,7 +854,7 @@
 	"autocms": {
 		"name": "autocms",
 		"path": "\/Laravel\/autocms",
-		"totalSize": 207773,
+		"totalSize": 1000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -862,7 +882,7 @@
 	"fractalmarketslab_og": {
 		"name": "fractalmarketslab_og",
 		"path": "\/Python\/__archive__\/fractalmarketslab_og",
-		"totalSize": 214407,
+		"totalSize": 85000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -874,7 +894,7 @@
 	"alwaysforward_nestjs": {
 		"name": "alwaysforward_nestjs",
 		"path": "\/Javascript\/__experiments__\/alwaysforward_nestjs",
-		"totalSize": 19393,
+		"totalSize": 672000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -890,7 +910,7 @@
 	"smartereverypage": {
 		"name": "smartereverypage",
 		"path": "\/Rails\/smartereverypage",
-		"totalSize": 141907,
+		"totalSize": 9000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -914,7 +934,7 @@
 	"wanderers-workplace-og": {
 		"name": "wanderers-workplace-og",
 		"path": "\/Laravel\/wanderers-workplace\/__deprecated__\/archive\/wanderers-workplace-og",
-		"totalSize": 247958,
+		"totalSize": 5000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -942,7 +962,7 @@
 	"opencrd": {
 		"name": "opencrd",
 		"path": "\/Rust\/opencrd",
-		"totalSize": 2886,
+		"totalSize": 240000,
 		"visibility": "public",
 		"languages": {
 			"Rust": {
@@ -962,7 +982,7 @@
 	"react-playground": {
 		"name": "react-playground",
 		"path": "\/React\/react-playground",
-		"totalSize": 4528,
+		"totalSize": 524000,
 		"visibility": "public",
 		"languages": {
 			"HTML": {
@@ -982,7 +1002,7 @@
 	"stopaganda": {
 		"name": "stopaganda",
 		"path": "\/Python\/stopaganda",
-		"totalSize": 22539,
+		"totalSize": 7000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -994,7 +1014,7 @@
 	"intelligent-office-mobile-app": {
 		"name": "intelligent-office-mobile-app",
 		"path": "\/React\/intelligent-office-mobile-app",
-		"totalSize": 222686,
+		"totalSize": 4000000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -1022,7 +1042,7 @@
 	"github_language_statistics": {
 		"name": "github_language_statistics",
 		"path": "\/Rails\/github_language_statistics",
-		"totalSize": 9911,
+		"totalSize": 120000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -1050,7 +1070,7 @@
 	"lc3-c-vm": {
 		"name": "lc3-c-vm",
 		"path": "\/C++\/lc3-c-vm",
-		"totalSize": 11139,
+		"totalSize": 148000,
 		"visibility": "public",
 		"languages": {
 			"C": {
@@ -1062,7 +1082,7 @@
 	"graph-my-wallet": {
 		"name": "graph-my-wallet",
 		"path": "\/Laravel\/graph-my-wallet",
-		"totalSize": 154199,
+		"totalSize": 1000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -1078,7 +1098,7 @@
 	"hazlitt-data": {
 		"name": "hazlitt-data",
 		"path": "\/Laravel\/hazlitt-data",
-		"totalSize": 155100,
+		"totalSize": 206000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -1098,7 +1118,7 @@
 	"deep-work-planner": {
 		"name": "deep-work-planner",
 		"path": "\/Rails\/deep-work-planner",
-		"totalSize": 67812,
+		"totalSize": 5000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -1126,7 +1146,7 @@
 	"alpha-blog": {
 		"name": "alpha-blog",
 		"path": "\/Rails\/alpha-blog",
-		"totalSize": 169425,
+		"totalSize": 49000000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -1154,7 +1174,7 @@
 	"fractalmarketslab": {
 		"name": "fractalmarketslab",
 		"path": "\/Python\/__archive__\/fractalmarketslab",
-		"totalSize": 214407,
+		"totalSize": 253000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1166,7 +1186,7 @@
 	"fintwit_bot": {
 		"name": "fintwit_bot",
 		"path": "\/Python\/fintwit_bot",
-		"totalSize": 22120,
+		"totalSize": 336000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1178,7 +1198,7 @@
 	"mammoth-intel": {
 		"name": "mammoth-intel",
 		"path": "\/Laravel\/mammoth-intel",
-		"totalSize": 116319,
+		"totalSize": 276000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -1198,7 +1218,7 @@
 	"vix-vol": {
 		"name": "vix-vol",
 		"path": "\/Python\/vix-vol",
-		"totalSize": 25411,
+		"totalSize": 320000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1210,7 +1230,7 @@
 	"lexicon": {
 		"name": "lexicon",
 		"path": "\/Python\/lexicon",
-		"totalSize": 6974,
+		"totalSize": 300000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1222,7 +1242,7 @@
 	"wanderers-workplace": {
 		"name": "wanderers-workplace",
 		"path": "\/Laravel\/wanderers-workplace",
-		"totalSize": 207773,
+		"totalSize": 1000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -1250,7 +1270,7 @@
 	"math-notes": {
 		"name": "math-notes",
 		"path": "\/Python\/math-notes",
-		"totalSize": 87322,
+		"totalSize": 2000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1266,7 +1286,7 @@
 	"insanity-chrome-extension": {
 		"name": "insanity-chrome-extension",
 		"path": "\/Javascript\/insanity-chrome-extension",
-		"totalSize": 9639,
+		"totalSize": 152000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -1282,7 +1302,7 @@
 	"misc_py_scripts": {
 		"name": "misc_py_scripts",
 		"path": "\/Python\/__deprecated__\/misc_py_scripts",
-		"totalSize": 5321,
+		"totalSize": 144000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1294,7 +1314,7 @@
 	"fractal-markets-lab": {
 		"name": "fractal-markets-lab",
 		"path": "\/Python\/__archive__\/fractal-markets-lab",
-		"totalSize": 214407,
+		"totalSize": 170000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1306,7 +1326,7 @@
 	"cloud-llm-experiments": {
 		"name": "cloud-llm-experiments",
 		"path": "\/AI\/cloud-llm-experiments",
-		"totalSize": 13470,
+		"totalSize": 188000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1318,7 +1338,7 @@
 	"tax_lab": {
 		"name": "tax_lab",
 		"path": "\/Python\/tax_lab",
-		"totalSize": 9961,
+		"totalSize": 18000000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1334,7 +1354,7 @@
 	"real-time-alerts": {
 		"name": "real-time-alerts",
 		"path": "\/Rails\/real-time-alerts",
-		"totalSize": 28237,
+		"totalSize": 548000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -1358,7 +1378,7 @@
 	"react-test": {
 		"name": "react-test",
 		"path": "\/Javascript\/react-test",
-		"totalSize": 4528,
+		"totalSize": 444000,
 		"visibility": "public",
 		"languages": {
 			"HTML": {
@@ -1378,7 +1398,7 @@
 	"image-factory": {
 		"name": "image-factory",
 		"path": "\/Rails\/image-factory",
-		"totalSize": 23849,
+		"totalSize": 548000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -1390,7 +1410,7 @@
 	"laravel-10-bare-breeze-inertia-react": {
 		"name": "laravel-10-bare-breeze-inertia-react",
 		"path": "\/Laravel\/__starter_kits__\/laravel-10-bare-breeze-inertia-react",
-		"totalSize": 213242,
+		"totalSize": 1000000,
 		"visibility": "public",
 		"languages": {
 			"PHP": {
@@ -1414,7 +1434,7 @@
 	"vultron-js": {
 		"name": "vultron-js",
 		"path": "\/Javascript\/vultron-js",
-		"totalSize": 74293,
+		"totalSize": 5000000,
 		"visibility": "public",
 		"languages": {
 			"JavaScript": {
@@ -1438,7 +1458,7 @@
 	"quant_bot": {
 		"name": "quant_bot",
 		"path": "\/Python\/quant_bot",
-		"totalSize": 13672,
+		"totalSize": 224000,
 		"visibility": "public",
 		"languages": {
 			"Python": {
@@ -1450,7 +1470,7 @@
 	"graphqi-playground": {
 		"name": "graphqi-playground",
 		"path": "\/Rails\/graphqi-playground",
-		"totalSize": 45433,
+		"totalSize": 184000,
 		"visibility": "public",
 		"languages": {
 			"Ruby": {
@@ -1474,7 +1494,7 @@
 	"climate-data-lab": {
 		"name": "climate-data-lab",
 		"path": "\/Python\/climate-data-lab",
-		"totalSize": 20904,
+		"totalSize": 324000,
 		"visibility": "public",
 		"languages": {
 			"Python": {

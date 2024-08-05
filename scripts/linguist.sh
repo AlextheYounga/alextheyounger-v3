@@ -62,8 +62,11 @@ run_linguist() {
 
 	# Check if I've made commits to the repository
 	if repo_contains_author; then
+		local repo_size=$(du -sh .git)
+
 		echo "$dir_path" >$output_file
 		github-linguist --json >>$output_file
+		echo $repo_size >> $output_file
 	fi
 
 	cd - >/dev/null # This guy wants to output stuff, so we need to suppress it
@@ -74,4 +77,4 @@ run_linguist() {
   run_linguist "$file"; done 3<&0 <&4 4<&-; } 4<&0
 
 # Run the python script to parse the output
-# php artisan app:linguist
+php artisan app:linguist

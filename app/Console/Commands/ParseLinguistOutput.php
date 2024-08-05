@@ -43,7 +43,8 @@ class ParseLinguistOutput extends Command
 				$repoPath = $lines[0];
 				$relativeRepoPath = explode(env('DEVELOPMENT_FOLDER'),$repoPath)[1];
 				$languageData = json_decode($lines[1], true);
-				$totalSize = $this->getRepoSize($languageData);
+				$duSize = $lines[2];
+				$totalSize = $this->getRepoSize($duSize);
 
 				if (array_key_exists($repoName, $repoList)) {
 					$this->warning('Warning: Duplicate repo found: ' . $repoName);
@@ -56,7 +57,7 @@ class ParseLinguistOutput extends Command
 				$repoData = [
 					'name' => $repoName,
 					'path' => $relativeRepoPath,
-					'totalSize' => $totalSize,
+					'totalSize' => (float) $totalSize,
 					'visibility' => in_array($repoName, $privateReposList) ? 'private' : 'public',
 					'languages' => $languageData
 				];
@@ -76,15 +77,22 @@ class ParseLinguistOutput extends Command
 		$this->call(LanguageSeeder::class);
     }
 
-	private function getRepoSize($languageData) {
+	private function getRepoSize($duSize) {
 		{
-			$totalSize = 0;
-	
-			foreach($languageData as $language => $data) {
-				$totalSize += $data['size'];
-			}
+			// Processes the output of the du command that was run in linguist.sh
+			$conversions = [
+				'K' => 1000,
+				'M' => 1000000,
+				'G' => 1000000000,
+			];
+			
+			$outputParts = explode(" ", $duSize);
+			$byteMeasure = $outputParts[0][-1];
+			$sizeMeasure = str_replace($byteMeasure, '', $outputParts[0]);
+			$size = (int) $sizeMeasure * $conversions[$byteMeasure];
 
-			return $totalSize;
+			return $size;
 		}
 	}
+
 }

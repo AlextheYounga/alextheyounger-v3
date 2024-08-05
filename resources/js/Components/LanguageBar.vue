@@ -31,29 +31,33 @@
 		<div class="mt-6">
 			<div id="language-description" class="block" v-html="this.descriptionContent"></div>
 			<div class="w-full stats text-sm pt-3">
-				<p>Repos Scanned: <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.count }}</a></p>
-				<!-- <p>Repos Total Size: <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">{{ repoStats.size }}MB</a></p> -->
+				<p>Repos Scanned: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl">{{ repoStats.count }}</a></p>
+				<p>Repos Total Size: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="repoJsonUrl">{{ repoStats.size }}GB</a></p>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+const repoJsonUrl = 'https://github.com/AlextheYounga/alextheyounger-v3/blob/caae913860048d6ff15c680d4a0fcf26110925dd/storage/app/data/repositories.json'
+const scriptUrl = 'https://github.com/AlextheYounga/alextheyounger-v3/blob/caae913860048d6ff15c680d4a0fcf26110925dd/scripts/linguist.sh'
 
-const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. They were calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and
-                    accurately
-                    represent the number of bytes of code.</p>
-                <p class="text-sm italic">You can see how I did this <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php">here</a>.
-                    You can even see the list of <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json">repositories</a> I scanned from my machine to
-                    generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-sky-400 hover:text-blue-600 font-semibold"
-                        href="https://github.com/AlextheYounga">Github</a>.
-                </p>`
+const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. 
+	They were calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a>
+	 and accurately represent the number of bytes of code.</p>
+	<p class="text-sm italic">You can see how I did this <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${scriptUrl}">here</a>.
+		You can even see the list of <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${repoJsonUrl}">repositories</a> I scanned from my machine to
+		generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-sky-400 hover:text-blue-600 font-semibold"
+			href="https://github.com/AlextheYounga">Github</a>.
+	</p>`
 
 export default {
 	data() {
 		return {
 			descriptionContent: defaultDescriptionContent,
 			languages: [],
+			repoJsonUrl,
+			scriptUrl,
 			repoStats: {
 				count: 0,
 				size: 0,
@@ -65,7 +69,7 @@ export default {
 			const id = event.target.id;
 			const slug = id.split('bar-item-')[1];
 			const langItem = this.$refs[slug][0];
-			langItem.classList.toggle('language-highlight');
+			langItem.classList.toggle('glowy');
 		},
 	},
 	mounted() {
@@ -85,6 +89,7 @@ export default {
 </script>
 
 <style>
+
 #language-bar .bar {
 	display: flex;
 	height: 8px;
@@ -99,18 +104,9 @@ export default {
 	padding: 0 4px 12px 0;
 }
 
-.language-highlight {
+.glowy {
 	/* background-color: #f1f8ff; */
-	text-shadow: 1px 1px 5px #f1f8ff;
-
-}
-
-.language-highlight .lang-name {
-	color: #38bdf8;
-}
-
-.language-highlight .percent {
-	color: darkgray;
+	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ea5e9, 0 0 40px #0ea5e9, 0 0 50px #0ea5e9, 0 0 60px #0ea5e9, 0 0 70px #0ea5e9;
 }
 
 #language-bar ul {
