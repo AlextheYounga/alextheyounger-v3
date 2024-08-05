@@ -20,7 +20,7 @@ class Repository extends Model
     ];
 
     protected $casts = [
-        'languages' => 'array',
+        'languages' => 'json',
         'properties' => 'json'
     ];
 

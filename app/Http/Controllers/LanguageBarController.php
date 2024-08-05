@@ -22,14 +22,14 @@ class LanguageBarController extends Controller
         // Repository size
         $repoCount = Repository::all()->count();
         $bytes = Repository::getTotalSize();
-        $gigabytes = $bytes ? round($bytes / 1000000000, 2) : 0;
+        $megabytes = $bytes ? round($bytes / 1000000, 2) : 0;
 
         $data = [
             'content' => $content,
             'languages' => $languages,
             'repoStats' => [
                 'count' => $repoCount,
-                'size' => $gigabytes,
+                'size' => $megabytes,
             ]
         ];
 

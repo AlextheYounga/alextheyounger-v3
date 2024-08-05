@@ -9,11 +9,10 @@ additions:
 # Arbitrary adjustments to better represent the realities of framework generated code. 
 # (Lower number means subtracting more, i.e. 0.4 = keep 40% of total code)
 subtractions:
-  Ruby: 0.7 # Rails generates a lot of Ruby code.
-  PHP: 0.7 # Laravel generates a lot of PHP code.
+  Ruby: 0.5 # Rails generates a lot of Ruby code.
+  PHP: 0.5 # Laravel generates a lot of PHP code.
   JavaScript: 0.5 # Every framework contains generated JavaScript code.
-  Vue: 0.7 # Inertia and Breeze generate some Vue code.
-  Perl: 0.5
+  Vue: 0.8 # Inertia and Breeze generate some Vue code.
 
 # Arbitrary suppressions to certain repos.
 # Will suppress by whatever value you pass into suppressBy.
@@ -34,5 +33,7 @@ ignore: [
   'CSS',
   'SCSS',
   'Blade',
-  'ASL'
+  'ASL',
+  'CoffeeScript',
+  'Starlark',
 ]

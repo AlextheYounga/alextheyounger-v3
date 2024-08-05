@@ -23,16 +23,17 @@ class LanguageSeeder extends Seeder
         foreach($repos as $repo) {
             $languages = $repo->languages ?? [];
 
-            foreach($languages as $lang => $value) {
+            foreach($languages as $lang => $data) {
                 $language = new Language([
                     'language' => $lang,
-                    'value' => $value,
-                    'display_value' => $value,
+                    'value' => $data['size'],
+                    'display_value' => $data['size'], // Not implemented
                     'color' => Language::getLanguageColor($lang),
                     'active' => !in_array($lang, $ignoreLanguages),
                     'properties' => [
                         'slug' => Language::slugifyLanguage($lang),
                         'parameterized' => parameterize($lang),
+						'rawData' => [$lang => $data]
                     ]
                 ]);
 
