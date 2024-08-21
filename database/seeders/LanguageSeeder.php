@@ -38,7 +38,6 @@ class LanguageSeeder extends Seeder
                 ]);
 
 
-                $language->runRepoSpecificValueAdjustments($repo->name);
                 $language->getProjectCount();
                 $language->incrementOrCreate();
             }

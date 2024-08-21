@@ -1,26 +1,16 @@
 # Settings for Linguist language program detection.
 
-# Accounting for commercially private repos.
+# Arbitrary increases for commercially private repos.
 additions:
-  Ruby: 4204694
   PHP: 3000000
+  Ruby: 4204694
   JavaScript: 611638
 
-# Arbitrary adjustments to better represent the realities of framework generated code. 
+# Arbitrary adjustments to account for frameworks and libraries
 # (Lower number means subtracting more, i.e. 0.4 = keep 40% of total code)
 subtractions:
-  Ruby: 0.5 # Rails generates a lot of Ruby code.
-  PHP: 0.5 # Laravel generates a lot of PHP code.
+  Ruby: 0.5 # Account for code I didn't write
   JavaScript: 0.5 # Every framework contains generated JavaScript code.
-  Vue: 0.8 # Inertia and Breeze generate some Vue code.
-
-# Arbitrary suppressions to certain repos.
-# Will suppress by whatever value you pass into suppressBy.
-# If a Django project has 4259089 bytes of CSS code, but only 364 bytes are yours: 364 / 4259089 = 0.000085
-repoSpecific:
-#   some-repo:
-#     language: "CSS"
-#     suppressBy: 0.000085
 
 # Global ignore
 ignore: [
