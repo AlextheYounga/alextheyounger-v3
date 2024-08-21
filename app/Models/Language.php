@@ -51,23 +51,6 @@ class Language extends Model
         Log::info('Updated ' . $this->language . ' with value ' . $this->value);
     }
 
-    public function runRepoSpecificValueAdjustments($repoName)
-    {
-        $repoSettings = Language::settings('repoSpecific');
-        if (empty($repoSettings)) {
-            return;
-        }
-
-        if (array_key_exists($repoName, $repoSettings)) {
-            $suppressLanguage = $repoSettings[$repoName]["language"];
-
-            if ($suppressLanguage === $this->language) {
-                $suppressBy = $repoSettings[$repoName]["suppressBy"];
-                $this->display_value = (int) ($this->value * $suppressBy);
-            }
-        }
-    }
-
     public function getProjectCount()
     {
         $count = 0;
@@ -110,9 +93,8 @@ class Language extends Model
     public static function runWeightAdjustments()
     {
         $languages = Language::all();
-
-        $additions = Language::settings('additions');
-        $subtractions = Language::settings('subtractions');
+        $additions = Language::settings('additions') ?? [];
+        $subtractions = Language::settings('subtractions') ?? [];
 
         foreach($languages as $lang) {
             if (array_key_exists($lang->language, $additions)) {

@@ -70,5 +70,6 @@
     "NextJS": "#000",
     "Jupyter Notebook": "#DA5B0B",
     "Notebook": "#DA5B0B",
-    "ASP.NET": "#178600"
+    "ASP.NET": "#178600",
+	"Starlark": "#76d275"
 }

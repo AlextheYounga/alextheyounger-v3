@@ -1,4 +1,4 @@
-git fetch master
+git fetch origin master
 git rebase origin/master
 nvm install
 wait
