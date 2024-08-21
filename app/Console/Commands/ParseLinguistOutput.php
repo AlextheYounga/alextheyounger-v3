@@ -29,8 +29,8 @@ class ParseLinguistOutput extends Command
      */
     public function handle()
     {
-		
 		$publicRepos = [];
+		$privateRepos = [];
 		$repoList = []; 
 		$privateReposList = json_decode(Storage::disk('public')->get('private-repos.json'), true);
 		$dir = new DirectoryIterator(storage_path('app/public/linguist'));
@@ -54,24 +54,29 @@ class ParseLinguistOutput extends Command
 					}
 				} 
 
+				$isPrivate = in_array($repoName, $privateReposList);
 				$repoData = [
 					'name' => $repoName,
-					'path' => $relativeRepoPath,
+					'path' => $isPrivate ? null : $relativeRepoPath,
 					'totalSize' => (float) $totalSize,
-					'visibility' => in_array($repoName, $privateReposList) ? 'private' : 'public',
+					'visibility' => $isPrivate ? 'private' : 'public',
 					'languages' => $languageData
 				];
 
 				$repoList[$repoName] = $repoData;
 
+				// Separate public and private repos
 				if ($repoData['visibility'] === 'public') {
 					$publicRepos[$repoName] = $repoData;
+				} else {
+					$privateRepos[$repoName] = $repoData;
 				}
 			}
 		}
 
-		Storage::disk('public')->put('linguist.json', json_encode($repoList));
+
 		Storage::disk('data')->put('repositories.json', json_encode($publicRepos));
+		Storage::disk('public')->put('linguist-private.json', json_encode($privateRepos));
 
 		$this->call(RepositorySeeder::class);
 		$this->call(LanguageSeeder::class);
