@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Repository;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Seeder;
 
 class RepositorySeeder extends Seeder
@@ -14,16 +15,20 @@ class RepositorySeeder extends Seeder
     {
         Repository::truncate();
 
-        $repositoriesJson = file_get_contents('storage/app/data/repositories.json');
-        $repositories  = json_decode($repositoriesJson, true);
+		$linguistData = json_decode(Storage::disk('data')->get('repositories.json'), true);
 
-        foreach($repositories as $repository) {
+		if (file_exists('storage/app/public/linguist-private.json')) {
+			$privateLinguistData = json_decode(Storage::disk('public')->get('linguist-private.json'), true);
+			$linguistData = array_merge($linguistData, ($privateLinguistData ?? []));
+		}
+
+        foreach($linguistData as $repository) {
             Repository::create([
                 'name' => $repository['name'],
-                'size' => $repository['size'],
-                'host' => $repository['host'],
+				'path' => $repository['visibility'] === 'public' ? $repository['path'] : null,
+                'size' => (float) $repository['totalSize'],
+				'visibility' => $repository['visibility'],
                 'languages' => $repository['languages'],
-                'properties' => $repository['properties'],
             ]);
         }
     }
