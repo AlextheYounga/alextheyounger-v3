@@ -9,8 +9,8 @@
 					  v-model="textInput"></textarea>
 		</div>
 		<p class="mt-3 text-sm leading-6 text-center text-gray-100">
-			Include as much information as you want to be encrypted. This data will be stored in <a href="https://www.openpgp.org/OpenPGP" target="_blank">OpenPGP</a> encrypted format.
-			My site is open source, you can verify this code <a href="https://github.com/AlextheYounga/alextheyounger-v3">here</a>.
+			Include as much information as you want to be encrypted. This data will be stored in <a href="https://www.openpgp.org/about/" target="_blank">OpenPGP</a> encrypted format.
+			My site is open source, you can verify this code <a href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/resources/js/Pages/Passwords/PasswordEncrypt.vue">here</a>.
 		</p>
 		<button @click="submit" type="submit"
 				class="mt-4 mx-auto block rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
