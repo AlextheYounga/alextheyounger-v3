@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\LanguageBarController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,26 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
-
 Route::redirect('/resume', '/');
+Route::get('/books', [PagesController::class, 'readingList'])->name('pages.books');
+Route::get('/projects', [PagesController::class, 'projects'])->name('pages.projects');
+Route::get('/starfield', [PagesController::class, 'starfield'])->name('pages.starfield');
 
-Route::get('/books', [
-    PagesController::class, 'readingList'
-])->name('pages.books');
-
-Route::get('/projects', [
-    PagesController::class, 'projects'
-])->name('pages.projects');
-
-Route::get('/starfield', [
-    PagesController::class, 'starfield'
-])->name('pages.starfield');
+Route::prefix('secure-passwords')->group(function () {
+    Route::get('/', [PasswordController::class, 'encrypt'])->name('passwords.encrypt');
+	Route::get('/decrypt/{uuid}', [PasswordController::class, 'decrypt'])->name('passwords.decrypt');
+    Route::post('/store', [PasswordController::class, 'store'])->name('passwords.store'); // Ajax
+});
 
 // Ajax
-Route::get('/languages/setup', [
-    LanguageBarController::class, 'setup'
-])->name('languages.setup');
-
-Route::get('/footer/setup', [
-    PagesController::class, 'setupFooter'
-])->name('footer.setup');
+Route::get('/languages/setup', [LanguageBarController::class, 'setup'])->name('languages.setup');
