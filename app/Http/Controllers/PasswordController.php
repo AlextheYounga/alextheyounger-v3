@@ -17,11 +17,15 @@ class PasswordController extends Controller
 		return response()->json($password->uuid);
     }
 
-	public function decrypt($uuid)
+	public function destroy($uuid)
+	{
+		Password::where('uuid', $uuid)->first()->delete();
+		return response()->json(['success' => true]);
+	}
+
+	public function get($uuid)
 	{
 		$password = Password::where('uuid', $uuid)->first();
-		Password::where('uuid', $uuid)->delete();
-
 		return Inertia::render('Passwords/PasswordDecrypt', [
             'encryptedData' => $password->data,			
         ]);

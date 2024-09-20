@@ -3,17 +3,33 @@
 	<Head title="Secure Passwords Decrypt" />
 
 	<div class="max-w-lg mx-auto mt-24">
-		<label for="data" class="block text-2xl text-center font-medium leading-6 text-gray-50">Decrypted Sensitive Data</label>
-		<div class="mt-4 p-4 bg-gray-800 text-gray-50 rounded-md shadow-md">
-			<p class="mt-2 break-words">{{ decryptedData }}</p>
+		<div v-if="!confirm" class="mt-4 p-4 bg-gray-800 text-gray-50 rounded-md shadow-md">
+			<p class="text-center text-xl">Are you sure you're ready to view the decrypted data? This data can be viewed only once. Clicking yes will destroy the data.</p>
+			<div class="mt-4 flex justify-center space-x-4">
+				<button @click="decryptData"
+						class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+					Yes
+				</button>
+				<a href="/secure-passwords"
+				   class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
+					No
+				</a>
+			</div>
 		</div>
-		<p class="mt-3 text-sm leading-6 text-center text-gray-100">This data has been destroyed from the database. Make sure to save it.</p>
+		<div v-else>
+			<label for="data" class="block text-2xl text-center font-medium leading-6 text-gray-50">Decrypted Sensitive Data</label>
+			<div class="mt-4 p-4 bg-gray-800 text-gray-50 rounded-md shadow-md">
+				<p class="mt-2 break-words">{{ decryptedData }}</p>
+			</div>
+			<p class="mt-3 text-sm leading-6 text-center text-gray-100">This data has been destroyed from the database. Make sure to save it.</p>
 
-		<button @click="copyText"
-				class="mt-4 mx-auto block rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-			Copy Text
-		</button>
-		<p class="mt-4 text-sm leading-6 text-center text-gray-200">{{ message }}</p>
+			<button @click="copyText"
+					class="mt-4 mx-auto block rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+				Copy Text
+			</button>
+			<p class="mt-4 text-sm leading-6 text-center text-gray-200">{{ message }}</p>
+		</div>
+
 	</div>
 </template>
 
@@ -33,7 +49,9 @@ export default {
 	},
 	data() {
 		return {
+			confirm: false,
 			decryptedData: '',
+			uuid: window.location.pathname.split('/').pop(),
 			decryptionKey: window.location.search.split('?')[1],
 			message: ''
 		};
@@ -54,15 +72,22 @@ export default {
 					format: 'utf8'
 				});
 
+				this.confirm = true;
 				this.decryptedData = decrypted;
+				this.destroy();
 			} catch (error) {
 				console.error('Encryption failed:', error);
 			}
 		},
-	},
-	mounted() {
-		console.log(this.encryptedData);
-		this.decryptData();
+		async destroy() {
+			axios.get(`/secure-passwords/destroy/${this.uuid}`)
+				.then(response => {
+					console.log('Destroyed password:', response);
+				})
+				.catch(error => {
+					console.error('Error destroying encrypted data:', error);
+				});
+		},
 	}
 };
 </script>

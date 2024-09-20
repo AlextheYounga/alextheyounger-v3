@@ -24,8 +24,9 @@ Route::get('/starfield', [PagesController::class, 'starfield'])->name('pages.sta
 
 Route::prefix('secure-passwords')->group(function () {
     Route::get('/', [PasswordController::class, 'encrypt'])->name('passwords.encrypt');
-	Route::get('/decrypt/{uuid}', [PasswordController::class, 'decrypt'])->name('passwords.decrypt');
+	Route::get('/decrypt/{uuid}', [PasswordController::class, 'get'])->name('passwords.get');
     Route::post('/store', [PasswordController::class, 'store'])->name('passwords.store'); // Ajax
+	Route::get('/destroy/{uuid}', [PasswordController::class, 'destroy'])->name('passwords.destroy'); // Ajax
 });
 
 // Ajax
