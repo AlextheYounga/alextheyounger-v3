@@ -18,7 +18,7 @@
 		</button>
 		<div v-if="link" class="text-sm leading-6 text-center text-gray-100 mt-12">
 			<p class="text-lg">Encrypted data has been stored securely.</p>
-			<p class="text-gray-100 py-4"><span class="text-indigo-400">Instructions:</span> Send me the following link. Only this link can decrypt the message, and this link will not be saved.</p>
+			<p class="text-gray-100 py-4"><span class="text-indigo-400">Instructions:</span> Send me the following link.</p>
 			<p><span class="text-indigo-400">Decryption link:</span> <span class="underline">{{ link }}</span></p>
 			<button @click="copyUrl" type="submit"
 				class="mt-4 mx-auto block rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
