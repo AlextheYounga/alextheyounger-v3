@@ -13,7 +13,6 @@ class PasswordController extends Controller
         $password = new Password();
         $password->data = $request->encryptedData;
         $password->save();
-
 		return response()->json($password->uuid);
     }
 
@@ -26,6 +25,11 @@ class PasswordController extends Controller
 	public function get($uuid)
 	{
 		$password = Password::where('uuid', $uuid)->first();
+
+		if (!$password) {
+			return response('Data not found.', 404);
+		}
+		
 		return Inertia::render('Passwords/PasswordDecrypt', [
             'encryptedData' => $password->data,			
         ]);

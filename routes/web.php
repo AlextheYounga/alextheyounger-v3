@@ -3,6 +3,7 @@
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\LanguageBarController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\ClipboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +26,14 @@ Route::get('/starfield', [PagesController::class, 'starfield'])->name('pages.sta
 Route::prefix('secure-passwords')->group(function () {
     Route::get('/', [PasswordController::class, 'encrypt'])->name('passwords.encrypt');
 	Route::get('/decrypt/{uuid}', [PasswordController::class, 'get'])->name('passwords.get');
-    Route::post('/store', [PasswordController::class, 'store'])->name('passwords.store'); // Ajax
+    Route::post('/store', [PasswordController::class, 'store'])->name('passwords.store')->middleware('throttle:50,1'); // Ajax
 	Route::get('/destroy/{uuid}', [PasswordController::class, 'destroy'])->name('passwords.destroy'); // Ajax
+});
+
+Route::prefix('clipboard')->group(function () {
+    Route::get('/', [ClipboardController::class, 'index'])->name('note.index');
+	Route::get('/{note_id}', [ClipboardController::class, 'get'])->name('note.get');
+    Route::post('/store', [ClipboardController::class, 'store'])->name('note.store')->middleware('throttle:50,1'); // Ajax
 });
 
 // Ajax
