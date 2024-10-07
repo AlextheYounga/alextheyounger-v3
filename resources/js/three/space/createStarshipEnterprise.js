@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { createStar } from './createStars';
 import { loadAsync } from 'jszip';
 
-const createLighting = async (starField, position) => {
+const _createLighting = async (starField, position) => {
     // Add lights to the scene
     let { x, y, z } = position
     x += 20
@@ -70,7 +70,7 @@ export async function createStarshipEnterprise(starField) {
     const z = 50
 
     const position = { x, y, z }
-    createLighting(starField, position) // Add lighting to the scene
+    _createLighting(starField, position) // Add lighting to the scene
 
     // Add Starship Enterprise
     return _loadEnterpriseCompressedGLTF(starField, position)

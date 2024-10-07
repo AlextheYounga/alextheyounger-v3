@@ -36,7 +36,8 @@ export default {
             items: [
                 'Starship Enterprise',
                 'Solar System',
-                'Trisolaran Droplet'
+                'Trisolaran Droplet',
+				'SpaceX Starship',
             ],
         }
     },

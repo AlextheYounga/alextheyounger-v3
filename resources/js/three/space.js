@@ -1,10 +1,12 @@
 // Import necessary components
 import * as THREE from 'three';
+import { createSolarSystem } from './space/createSolarSystems.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { createStars } from './space/createStars.js';
 import { createStarshipEnterprise } from './space/createStarshipEnterprise.js';
 import { createTrisolaranDroplet } from './space/createTrisolaranDroplet.js';
-import { createSolarSystem } from './space/createSolarSystems.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { createSpaceXStarship } from './space/createSpaceXStarship.js';
+
 
 let space = null;
 
@@ -53,6 +55,9 @@ function createStarField(scale = 1) {
 
     // Add Trisolaran Droplet to starfield asynchronously
     createTrisolaranDroplet(starField) 
+
+	// Add SpaceX Starship to starfield asynchronously
+	createSpaceXStarship(starField)
     
     camera.position.z = 2000; // Camera positioning
 

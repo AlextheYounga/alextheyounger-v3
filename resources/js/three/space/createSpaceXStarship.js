@@ -33,23 +33,23 @@ const _createLighting = async (starField, position) => {
 }
 
 
-export async function createTrisolaranDroplet(starField) {
+export async function createSpaceXStarship(starField) {
     const loader = new GLTFLoader();
-    const x = 0
+    const x = 100
     const y = 0
-    const z = -1000
+    const z = 800
 
     const position = {x,y,z}
     _createLighting(starField, position) // Add lighting to the scene
 
-    // Add Trisolaran Droplet
-    return loader.load('cad/threebody/trisolaran_droplet.gltf', function (droplet) {
-        droplet.scene.name = 'enterprise'
-        droplet.scene.scale.set(0.1, 0.1, 0.1)
-        droplet.scene.position.set(x, y, z);
-        droplet.scene.rotateY(2.9)
+    // Add SpaceX Starship
+    return loader.load('cad/starship_mk1/scene.gltf', function (starship) {
+        starship.scene.name = 'starship'
+        starship.scene.scale.set(0.002, 0.002, 0.002)
+        starship.scene.position.set(x, y, z);
+        starship.scene.rotateX(-1.2)
     
-        starField.add(droplet.scene);
+        starField.add(starship.scene);
         
     }, undefined, function (error) {
         console.error(error);
