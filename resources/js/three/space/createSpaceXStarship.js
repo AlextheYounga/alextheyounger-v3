@@ -35,9 +35,9 @@ const _createLighting = async (starField, position) => {
 
 export async function createSpaceXStarship(starField) {
     const loader = new GLTFLoader();
-    const x = 100
+    const x = -500
     const y = 0
-    const z = 800
+    const z = 100
 
     const position = {x,y,z}
     _createLighting(starField, position) // Add lighting to the scene

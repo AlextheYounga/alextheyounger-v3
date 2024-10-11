@@ -37,7 +37,7 @@ export async function createTrisolaranDroplet(starField) {
     const loader = new GLTFLoader();
     const x = 0
     const y = 0
-    const z = -1000
+    const z = -400
 
     const position = {x,y,z}
     _createLighting(starField, position) // Add lighting to the scene
