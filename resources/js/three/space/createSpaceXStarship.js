@@ -43,7 +43,7 @@ export async function createSpaceXStarship(starField) {
     _createLighting(starField, position) // Add lighting to the scene
 
     // Add SpaceX Starship
-    return loader.load('cad/starship_mk1/scene.gltf', function (starship) {
+    return loader.load('cad/spacex/scene.gltf', function (starship) {
         starship.scene.name = 'starship'
         starship.scene.scale.set(0.002, 0.002, 0.002)
         starship.scene.position.set(x, y, z);

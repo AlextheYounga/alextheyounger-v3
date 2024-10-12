@@ -6,9 +6,9 @@ import { loadAsync } from 'jszip';
 const _createLighting = async (starField, position) => {
     // Add lights to the scene
     let { x, y, z } = position
-    x += 20
-    y += 20
-    z += 20
+    x += 30
+    y += 30
+    z += 30
 
     const ambientLight = new THREE.AmbientLight(0xffffff);
     const directionalLight = new THREE.DirectionalLight(0xffffff);
@@ -33,23 +33,26 @@ const _createLighting = async (starField, position) => {
 
 async function _loadEnterpriseCompressedGLTF(starField, position) {
     const loader = new GLTFLoader();
+	
     const { x, y, z } = position
     // Unzip enterprise model from zip file
-    fetch('cad/Enterprise_Original.gltf.zip').then((response) => {
+    fetch('cad/startrek/scene.gltf.zip').then((response) => {
         loadAsync(response.blob()).then(zip => {
             Object.keys(zip.files).forEach(filename => {
                 if (filename.endsWith('.gltf')) {
                     zip.files[filename].async('blob').then(blob => {
                         // Load unzipped contents into memory and store in blob url
                         const url = URL.createObjectURL(blob);
+						
+						loader.setResourcePath('cad/startrek/')
 
                         // Pass blob url into GLTF Loader
                         return loader.load(url, function (enterprise) {
                             enterprise.scene.name = 'enterprise'
-                            enterprise.scene.scale.set(10, 10, 10)
+                            enterprise.scene.scale.set(0.005, 0.005, 0.005)
                             enterprise.scene.position.set(x, y, z);
-                            enterprise.scene.rotateX(2)
-                            enterprise.scene.rotateY(3)
+                            enterprise.scene.rotateX(-0.3)
+                            enterprise.scene.rotateY(0.4)
 
                             // Add to scene
                             starField.add(enterprise.scene);
