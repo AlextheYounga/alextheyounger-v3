@@ -13,7 +13,7 @@ let space = null;
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
-    space.starField.rotation.y +=  0.00001;
+    space.starField.rotation.y +=  0.000002;
     space.renderer.render(space.scene, space.camera);
     space.controls.update();
 }
@@ -23,6 +23,13 @@ function createStarField(scale = 1) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1300);
     const renderer = new THREE.WebGLRenderer();
+
+	// Handle window resizing
+	window.addEventListener('resize', () => {
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+	});
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     const starfieldDiv = document.getElementById('starfield');
