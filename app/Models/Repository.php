@@ -12,10 +12,9 @@ class Repository extends Model
     protected $fillable = [
         'name',
         'path',
-        'host',
+		'size',
         'languages',
         'properties',
-        'visibility',
         'active',
     ];
 

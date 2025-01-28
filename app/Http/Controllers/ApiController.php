@@ -25,7 +25,7 @@ class ApiController extends Controller
 				],
 				[
 					'path' => $repository['path'],
-					'size' => (float) $repository['totalSize'],
+					'size' => $repository['totalSize'],
 					'languages' => $repository['languages'],
 				]);
 			}
