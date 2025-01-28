@@ -20,9 +20,8 @@ class RepositorySeeder extends Seeder
         foreach($linguistData as $repository) {
             Repository::create([
                 'name' => $repository['name'],
-				'path' => $repository['visibility'] === 'public' ? $repository['path'] : null,
+				'path' => $repository['path'],
                 'size' => (float) $repository['totalSize'],
-				'visibility' => $repository['visibility'],
                 'languages' => $repository['languages'],
             ]);
         }
