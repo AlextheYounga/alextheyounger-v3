@@ -32,15 +32,14 @@
 			<div id="language-description" class="block" v-html="this.descriptionContent"></div>
 			<div class="w-full stats text-sm pt-3">
 				<p>Repos Scanned: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl">{{ repoStats.count }}</a></p>
-				<p class="text-sky-400 hover:text-blue-600 font-semibold">Repos Total Size: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl">{{ repoStats.size }}{{ repoStats.scale }}</a></p>
+				<p>Repos Compressed Size: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl">{{ repoStats.size }}{{ repoStats.scale }}</a></p>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-const repoJsonUrl = 'https://github.com/AlextheYounga/alextheyounger-v3/blob/caae913860048d6ff15c680d4a0fcf26110925dd/storage/app/data/repositories.json'
-const scriptUrl = 'https://github.com/AlextheYounga/alextheyounger-v3/blob/caae913860048d6ff15c680d4a0fcf26110925dd/scripts/linguist.sh'
+const scriptUrl = 'https://github.com/AlextheYounga/repo-linguist-scanner'
 
 const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. 
 	They were calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately represent the number of bytes of code.</p>
@@ -51,7 +50,6 @@ export default {
 		return {
 			descriptionContent: defaultDescriptionContent,
 			languages: [],
-			repoJsonUrl,
 			scriptUrl,
 			repoStats: {
 				count: 0,
@@ -74,7 +72,6 @@ export default {
 			.then(response => {
 				this.languages = response.data.languages;
 				this.repoStats = response.data.repoStats;
-				console.log(this.repoStats)
 			})
 			.catch(error => {
 				console.error('Error fetching data:', error);
