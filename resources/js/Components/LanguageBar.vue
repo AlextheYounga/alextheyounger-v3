@@ -32,7 +32,7 @@
 			<div id="language-description" class="block" v-html="this.descriptionContent"></div>
 			<div class="w-full stats text-sm pt-3">
 				<p>Repos Scanned: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl">{{ repoStats.count }}</a></p>
-				<p>Repos Total Size: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="repoJsonUrl">{{ repoStats.size }}{{ repoStats.scale }}</a></p>
+				<p class="text-sky-400 hover:text-blue-600 font-semibold">Repos Total Size: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl">{{ repoStats.size }}{{ repoStats.scale }}</a></p>
 			</div>
 		</div>
 	</div>
@@ -43,13 +43,8 @@ const repoJsonUrl = 'https://github.com/AlextheYounga/alextheyounger-v3/blob/caa
 const scriptUrl = 'https://github.com/AlextheYounga/alextheyounger-v3/blob/caae913860048d6ff15c680d4a0fcf26110925dd/scripts/linguist.sh'
 
 const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. 
-	They were calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a>
-	 and accurately represent the number of bytes of code.</p>
-	<p class="text-sm italic">You can see how I did this <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${scriptUrl}">here</a>.
-		You can even see the list of <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${repoJsonUrl}">repositories</a> I scanned from my machine to
-		generate these statistics. I either legally own or have made substantial contributions to these projects. Most of them (but not all) can be found on my <a class="text-sky-400 hover:text-blue-600 font-semibold"
-			href="https://github.com/AlextheYounga">Github</a>.
-	</p>`
+	They were calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately represent the number of bytes of code.</p>
+	<p class="text-sm italic">You can see how I did this <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${scriptUrl}">here</a>. Many of them (but certainly not all) can be found on my <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga">Github</a>.</p>`
 
 export default {
 	data() {
@@ -79,7 +74,7 @@ export default {
 			.then(response => {
 				this.languages = response.data.languages;
 				this.repoStats = response.data.repoStats;
-				console.log('Languages:', this.repoStats);
+				console.log(this.repoStats)
 			})
 			.catch(error => {
 				console.error('Error fetching data:', error);

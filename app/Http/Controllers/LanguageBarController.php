@@ -23,13 +23,25 @@ class LanguageBarController extends Controller
         $repoCount = Repository::all()->count();
         $bytes = Repository::getTotalSize();
 		$digits = strlen((string) $bytes);
-		$scale = match ($digits) {
-			4 => 'KB',
-			7 => 'MB',
-			10 => 'GB',
-		};
+		
+		switch (true) {
+			case ($digits >= 4 && $digits < 7):
+				$divisor = pow(10, 3);
+				$scale = 'KB';
+				break;
+			case ($digits >= 7 && $digits < 10):
+				$divisor = pow(10, 6);
+				$scale = 'MB';
+				break;
+			case ($digits > 10):
+				$divisor = pow(10, 9);
+				$scale = 'GB';
+				break;
+			default:
+				$divisor = pow(10, 9);
+				$scale = 'GB';
+		}
 
-		$divisor = pow(10, $digits - 1);
         $displaySize = $bytes ? round($bytes / $divisor, 2) : 0;
 
         $data = [
