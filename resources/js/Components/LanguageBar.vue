@@ -32,7 +32,7 @@
 			<div id="language-description" class="block" v-html="this.descriptionContent"></div>
 			<div class="w-full stats text-sm pt-3">
 				<p>Repos Scanned: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl">{{ repoStats.count }}</a></p>
-				<p>Repos Total Size: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="repoJsonUrl">{{ repoStats.size }}GB</a></p>
+				<p>Repos Total Size: <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="repoJsonUrl">{{ repoStats.size }}{{ repoStats.scale }}</a></p>
 			</div>
 		</div>
 	</div>
@@ -61,6 +61,7 @@ export default {
 			repoStats: {
 				count: 0,
 				size: 0,
+				scale: 'GB'
 			}
 		}
 	},
@@ -78,6 +79,7 @@ export default {
 			.then(response => {
 				this.languages = response.data.languages;
 				this.repoStats = response.data.repoStats;
+				console.log('Languages:', this.repoStats);
 			})
 			.catch(error => {
 				console.error('Error fetching data:', error);
