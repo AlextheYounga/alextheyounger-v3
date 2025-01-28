@@ -26,4 +26,6 @@ ignore: [
   'ASL',
   'CoffeeScript',
   'Starlark',
+  'EJS',
+  'Nix'
 ]

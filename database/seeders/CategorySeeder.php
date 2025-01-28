@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
     {
         Category::truncate();
         
-        $categoriesJson = file_get_contents('storage/app/data/categories.json');
+        $categoriesJson = file_get_contents('storage/app/public/categories.json');
         $categories = json_decode($categoriesJson, true);
 
         foreach($categories as $category) {

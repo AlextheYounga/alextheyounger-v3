@@ -65,8 +65,8 @@ class Language extends Model
     }
 
     public static function settings($name)
-    {
-        $settings = Yaml::parseFile('storage/app/language-settings.yml');
+    {	
+        $settings = Yaml::parseFile(base_path() . '/storage/app/language-settings.yml');
         if (!array_key_exists($name, $settings)) {
             return [];
         }
@@ -75,7 +75,7 @@ class Language extends Model
 
     public static function getLanguageColor($language)
     {
-        $colors = json_decode(file_get_contents('resources/data/language-colors.json'), true);
+        $colors = json_decode(file_get_contents(base_path() . '/resources/data/language-colors.json'), true);
         if (array_key_exists($language, $colors)) {
             return $colors[$language];
         }

@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 use App\Models\Language;
 use App\Models\Repository;
 
-
 class LanguageSeeder extends Seeder
 {
     protected $settings;
@@ -36,7 +35,6 @@ class LanguageSeeder extends Seeder
 						'rawData' => [$lang => $data]
                     ]
                 ]);
-
 
                 $language->getProjectCount();
                 $language->incrementOrCreate();

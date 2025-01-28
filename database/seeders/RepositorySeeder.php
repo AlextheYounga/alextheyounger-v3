@@ -15,12 +15,7 @@ class RepositorySeeder extends Seeder
     {
         Repository::truncate();
 
-		$linguistData = json_decode(Storage::disk('data')->get('repositories.json'), true);
-
-		if (file_exists('storage/app/public/linguist-private.json')) {
-			$privateLinguistData = json_decode(Storage::disk('public')->get('linguist-private.json'), true);
-			$linguistData = array_merge($linguistData, ($privateLinguistData ?? []));
-		}
+		$linguistData = json_decode(file_get_contents('storage/app/public/repositories.json'), true);
 
         foreach($linguistData as $repository) {
             Repository::create([
