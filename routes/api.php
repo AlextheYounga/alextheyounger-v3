@@ -21,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->get('/sanity-check', [ApiController::class, 'sanityCheck']);
 Route::middleware('auth:sanctum')->post('/repositories', [ApiController::class, 'addRepositories']);
+
+// Open
+Route::get('/languages/stats', [ApiController::class, 'stats']);

@@ -42,8 +42,8 @@
 const scriptUrl = 'https://github.com/AlextheYounga/repo-linguist-scanner'
 
 const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. 
-	They were calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately represent the number of bytes of code.</p>
-	<p class="text-sm italic">You can see how I did this <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${scriptUrl}">here</a>. Many of them (but certainly not all) can be found on my <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga">Github</a>.</p>`
+	This was calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately represent bytes of code.</p>
+	<p class="text-sm italic">You can see how I did this <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${scriptUrl}">here</a>. Many of these repos (but certainly not all) can be found on my <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga">Github</a>.</p>`
 
 export default {
 	data() {
@@ -68,14 +68,13 @@ export default {
 	},
 	mounted() {
 		// Ajax fetch data
-		axios.get('/languages/setup')
+		axios.get('/api/languages/stats')
 			.then(response => {
 				this.languages = response.data.languages;
 				this.repoStats = response.data.repoStats;
 			})
 			.catch(error => {
 				console.error('Error fetching data:', error);
-				this.threads = [];
 			});
 	}
 
