@@ -35,6 +35,3 @@ Route::prefix('clipboard')->group(function () {
 	Route::get('/{note_id}', [ClipboardController::class, 'get'])->name('note.get');
     Route::post('/store', [ClipboardController::class, 'store'])->name('note.store')->middleware('throttle:50,1'); // Ajax
 });
-
-// Ajax
-Route::get('/languages/setup', [LanguageBarController::class, 'setup'])->name('languages.setup');
