@@ -22,7 +22,7 @@ class ApiController extends Controller
 			
 			// Update repositories
 			foreach($repositories as $repository) {
-				$record = Repository::updateOrCreate([
+				Repository::updateOrCreate([
 					'name' => $repository['name'],
 				],
 				[
@@ -48,10 +48,6 @@ class ApiController extends Controller
 
 	public function stats()
     {
-        $content = PageContent::where('view', '=', 'LanguageBar')
-            ->get()
-            ->keyBy('key');
-
         $languages = Language::active()
             ->orderBy('width', 'desc')
             ->get();
@@ -82,7 +78,6 @@ class ApiController extends Controller
         $displaySize = $bytes ? round($bytes / $divisor, 2) : 0;
 
         $data = [
-            'content' => $content,
             'languages' => $languages,
             'repoStats' => [
                 'count' => $repoCount,

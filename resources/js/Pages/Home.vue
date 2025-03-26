@@ -171,7 +171,7 @@ const links = [
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alexyounger/', icon: linkedIcon, alt: 'linkedin' },
     { name: 'Github', url: 'https://github.com/AlextheYounga', icon: githubIcon, alt: 'github' },
     { name: 'Email', url: 'mailto:alex@alextheyounger.me', icon: emailIcon, alt: 'e-mail' },
-    { name: 'Resume', url: 'https://docs.google.com/document/d/1xaebeC0PrJee5jfqY1wSgAbTAqwNHdstd-Zer0BVZww/edit?usp=sharing', icon: resumeIcon, alt: 'resume' },
+    { name: 'Resume', url: 'https://resume.alexyounger.me', icon: resumeIcon, alt: 'resume' },
 ];
 
 async function reveal() {
