@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Orchid\Screens\PageContent;
+namespace App\Orchid\Screens\Resume;
 
-use App\Models\PageContent;
-use App\Orchid\Layouts\PageContentListLayout;
+use App\Models\Resume;
+use App\Orchid\Layouts\ResumeListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
-class PageContentListScreen extends Screen
+class ResumeListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -17,7 +17,7 @@ class PageContentListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'pageContent' => PageContent::all()
+            'resumes' => Resume::all()
         ];
     }
 
@@ -28,7 +28,7 @@ class PageContentListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Page Content';
+        return 'Resume';
     }
 
     /**
@@ -36,7 +36,7 @@ class PageContentListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All Page Content";
+        return "All Resumes";
     }
 
     /**
@@ -47,9 +47,9 @@ class PageContentListScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make('Edit')
+            Link::make('Create new')
                 ->icon('pencil')
-                ->route('platform.page-content.edit')
+                ->route('platform.resume.edit')
         ];
     }
 
@@ -61,7 +61,7 @@ class PageContentListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            PageContentListLayout::class,
+            ResumeListLayout::class
         ];
     }
 

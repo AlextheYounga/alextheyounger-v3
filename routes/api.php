@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Api\CoverLetterController;
+use App\Http\Controllers\Api\LanguagesController;
+use App\Http\Controllers\Api\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,22 @@ use App\Http\Controllers\ApiController;
 |
 */
 
+// User::first()->createToken('default');
+
+Route::get('/ping', function() {
+	return response()->json(['message' => 'pong']);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/sanity-check', [ApiController::class, 'sanityCheck']);
-Route::middleware('auth:sanctum')->post('/repositories', [ApiController::class, 'addRepositories']);
+Route::middleware('auth:sanctum')
+	->get('/resume/{hash}', [ResumeController::class, 'get']); // Open
+Route::middleware('auth:sanctum')
+	->get('/cover-letter/{hash}', [CoverLetterController::class, 'get']); // Open
 
-// Open
-Route::get('/languages/stats', [ApiController::class, 'stats']);
+Route::middleware('auth:sanctum')
+	->post('/repositories', [LanguagesController::class, 'addRepositories']);
+Route::get('/languages/stats', [LanguagesController::class, 'stats'])
+	->middleware('throttle:50,1'); // Open

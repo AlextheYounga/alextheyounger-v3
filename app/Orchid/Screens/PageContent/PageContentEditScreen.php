@@ -23,10 +23,10 @@ class PageContentEditScreen extends Screen
      *
      * @return array
      */
-    public function query($id): iterable
+    public function query(PageContent $pageContent): iterable
     {
         return [
-            'pageContent' => PageContent::find($id)
+            'pageContent' => $pageContent
         ];
     }
 
@@ -115,6 +115,6 @@ class PageContentEditScreen extends Screen
 
         Alert::info('You have successfully updated the page content.');
 
-        return redirect()->route('platform.content.list');
+        return redirect()->route('platform.page-content.list');
     }
 }

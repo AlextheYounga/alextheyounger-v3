@@ -29,6 +29,11 @@ class ClipboardController extends Controller
 
     public function store(Request $request)
     {
+		$request->validate([
+			'noteId' => 'required|string|max:255',
+			'note' => 'required|string',
+		]);
+		
         $note = new Note();
 		$note->note_id = $request->noteId;
         $note->data = $request->note;

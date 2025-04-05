@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Orchid\Screens\PageContent;
+namespace App\Orchid\Screens\CoverLetter;
 
-use App\Models\PageContent;
-use App\Orchid\Layouts\PageContentListLayout;
+use App\Models\CoverLetter;
+use App\Orchid\Layouts\CoverLetterListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
-class PageContentListScreen extends Screen
+class CoverLetterListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -17,7 +17,7 @@ class PageContentListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'pageContent' => PageContent::all()
+            'coverLetter' => CoverLetter::all()
         ];
     }
 
@@ -28,7 +28,7 @@ class PageContentListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Page Content';
+        return 'Cover Letter';
     }
 
     /**
@@ -36,7 +36,7 @@ class PageContentListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All Page Content";
+        return "All Cover Letters";
     }
 
     /**
@@ -47,9 +47,9 @@ class PageContentListScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make('Edit')
+            Link::make('Create new')
                 ->icon('pencil')
-                ->route('platform.page-content.edit')
+                ->route('platform.cover-letter.edit')
         ];
     }
 
@@ -61,7 +61,7 @@ class PageContentListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            PageContentListLayout::class,
+            CoverLetterListLayout::class,
         ];
     }
 

@@ -40,18 +40,21 @@ class ProjectListLayout extends Table
                         ]);
                 }),
             TD::make('active', 'Active')
-                ->render(fn (Project $project) => (boolean) $project->active ? 'active' : 'inactive'),
+                ->render(fn (Project $project) => (boolean) $project->active ? '✓' : '✗'),
             TD::make('title', 'Title')
                 ->render(function (Project $project) {
                     return Link::make($project->title)
                         ->route('platform.project.edit', $project);
                 }),
             TD::make('scope', 'Scope'),
-            TD::make('excerpt', 'Excerpt'),
-            TD::make('description', 'Description'),
+            TD::make('excerpt', 'Excerpt')
+				->render(fn (Project $project) => strlen($project->excerpt) . ' chars'),
+            TD::make('description', 'Description')
+				->render(fn (Project $project) => strlen($project->description) . ' chars'),
             TD::make('image_name', 'Image Name'),
             TD::make('external_link', 'External Link'),
-            TD::make('external_image_link', 'External Image Link'),
+            TD::make('external_image_link', 'Image Link')
+				->render(fn (Project $project) => $project->external_image_link ? '✓' : '✗'),
             TD::make('created_at', 'Created')
                 ->render(fn (Project $project) => $this->formatDate($project->created_at)),
             TD::make('updated_at', 'Last edit')

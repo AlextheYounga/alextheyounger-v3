@@ -48,7 +48,7 @@ class ProjectEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All projects";
+        return "Edit project";
     }
 
 
@@ -86,8 +86,6 @@ class ProjectEditScreen extends Screen
     {
         return [
             Layout::rows([
-
-
                 Input::make('project.title')
                     ->title('Title')
                     ->placeholder('Attractive but mysterious title')
@@ -97,6 +95,10 @@ class ProjectEditScreen extends Screen
                     ->title('Position')
                     ->type('number')
                     ->help('Where in the list should this project sit; 1 is the top.'),
+
+				Input::make('project.scope')
+                    ->title('Scope')
+                    ->placeholder('Professional'),
 
                 Input::make('project.external_link')
                     ->title('External Link')
@@ -124,15 +126,13 @@ class ProjectEditScreen extends Screen
                 Code::make('project.techstack')
                     ->title('Tech Stack')
                     ->language('json')
+					->height('100px')
                     ->lineNumbers(),
-
-                Input::make('project.scope')
-                    ->title('Scope')
-                    ->placeholder('Professional'),
 
                 Code::make('project.properties')
                     ->title('Properties')
                     ->language('json')
+					->height('200px')
                     ->lineNumbers(),
 
                 Switcher::make('project.active')
