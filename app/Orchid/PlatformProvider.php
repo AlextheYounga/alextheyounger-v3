@@ -64,7 +64,7 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make('Page Content')
                 ->icon('bs.body-text')
-                ->route('platform.content.list'),
+                ->route('platform.page-content.list'),
 
             Menu::make('Categories')
                 ->icon('bs.tag')
@@ -73,6 +73,14 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Projects')
                 ->icon('bs.collection')
                 ->route('platform.project.list'),
+
+			Menu::make('Resumes')
+                ->icon('bs.list')
+                ->route('platform.resume.list'),
+
+			Menu::make('Cover Letters')
+                ->icon('bs.envelope')
+                ->route('platform.cover-letter.list'),
 
             Menu::make('Books')
                 ->icon('bs.book')

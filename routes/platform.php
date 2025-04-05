@@ -20,6 +20,10 @@ use App\Orchid\Screens\Book\BookEditScreen;
 use App\Orchid\Screens\Book\BookListScreen;
 use App\Orchid\Screens\Project\ProjectEditScreen;
 use App\Orchid\Screens\Project\ProjectListScreen;
+use App\Orchid\Screens\CoverLetter\CoverLetterEditScreen;
+use App\Orchid\Screens\CoverLetter\CoverLetterListScreen;
+use App\Orchid\Screens\Resume\ResumeEditScreen;
+use App\Orchid\Screens\Resume\ResumeListScreen;
 use App\Orchid\Screens\Category\CategoryEditScreen;
 use App\Orchid\Screens\Category\CategoryListScreen;
 use App\Orchid\Screens\PageContent\PageContentEditScreen;
@@ -43,32 +47,42 @@ Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
 
 // Page Content
-Route::screen('content/{id}', PageContentEditScreen::class)
-->name('platform.content.edit');
-
-Route::screen('contents', PageContentListScreen::class)
-->name('platform.content.list');
+Route::screen('page-content/{pageContent?}', PageContentEditScreen::class)
+->name('platform.page-content.edit');
+Route::screen('page-contents', PageContentListScreen::class)
+->name('platform.page-content.list');
 
 // Categories
 Route::screen('category/{category?}', CategoryEditScreen::class)
     ->name('platform.category.edit');
-
 Route::screen('categories', CategoryListScreen::class)
     ->name('platform.category.list');
 
 // Projects
 Route::screen('project/{project?}', ProjectEditScreen::class)
     ->name('platform.project.edit');
-
 Route::screen('projects', ProjectListScreen::class)
     ->name('platform.project.list');
 
 // Books
 Route::screen('book/{book?}', BookEditScreen::class)
     ->name('platform.book.edit');
-
 Route::screen('books', BookListScreen::class)
     ->name('platform.book.list');
+
+// Cover letters
+Route::screen('cover-letter/{coverLetter?}', CoverLetterEditScreen::class)
+->name('platform.cover-letter.edit');
+Route::screen('cover-letters', CoverLetterListScreen::class)
+->name('platform.cover-letter.list');
+
+// Resumes
+Route::screen('resume/{resume?}', ResumeEditScreen::class)
+    ->name('platform.resume.edit');
+Route::screen('resume/duplicate/{resume}', ResumeEditScreen::class)
+	->name('platform.resume.duplicate');
+Route::screen('resumes', ResumeListScreen::class)
+    ->name('platform.resume.list');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)

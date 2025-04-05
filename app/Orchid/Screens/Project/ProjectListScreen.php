@@ -21,8 +21,7 @@ class ProjectListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'projects' => Project::orderBy('position', 'asc')
-                ->get()
+            'projects' => Project::orderBy('position', 'asc')->get()
         ];
     }
 
@@ -41,7 +40,7 @@ class ProjectListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All projects in reading list";
+        return "All projects";
     }
 
     /**

@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\LanguagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/sanity-check', [ApiController::class, 'sanityCheck']);
-Route::middleware('auth:sanctum')->post('/repositories', [ApiController::class, 'addRepositories']);
+Route::middleware('auth:sanctum')->post('/repositories', [LanguagesController::class, 'addRepositories']);
 
 // Open
-Route::get('/languages/stats', [ApiController::class, 'stats']);
+Route::get('/languages/stats', [LanguagesController::class, 'stats']);
