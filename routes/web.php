@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\LanguageBarController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ClipboardController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
-Route::redirect('/resume', '/');
 Route::get('/books', [PagesController::class, 'readingList'])->name('pages.books');
 Route::get('/projects', [PagesController::class, 'projects'])->name('pages.projects');
 Route::get('/starfield', [PagesController::class, 'starfield'])->name('pages.starfield');
@@ -35,3 +33,4 @@ Route::prefix('clipboard')->group(function () {
 	Route::get('/{note_id}', [ClipboardController::class, 'get'])->name('note.get');
     Route::post('/store', [ClipboardController::class, 'store'])->name('note.store')->middleware('throttle:50,1'); // Ajax
 });
+
