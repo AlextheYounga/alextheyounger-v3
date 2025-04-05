@@ -1,21 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Models\Repository;
 use App\Models\Language;
-use App\Models\PageContent;
 use Database\Seeders\LanguageSeeder;
+use App\Http\Controllers\Controller;
 
-class ApiController extends Controller
+class LanguagesController extends Controller
 {
-
-	public function sanityCheck(Request $request) {
-		return response()->json(['user' => $request->user()], 200);
-	}
-
     public function addRepositories(Request $request) {
 		try {
 			$repositories = $request->collect('repositories');
