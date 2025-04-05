@@ -36,6 +36,11 @@ class Project extends Model
         return $this->belongsTo(Category::class);
     }
 
+	public function resumes()
+	{
+		return $this->belongsToMany(Resume::class, 'project_resume');
+	}
+
     public function reorderPositions()
     {
         $oldPosition = $this->getOriginal('position');
