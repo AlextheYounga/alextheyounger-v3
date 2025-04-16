@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function calculateTotal() {
         let total = 0;
-        const inputs = document.querySelectorAll('textarea[name^="proposal[line_items]"][name$="[Price]"]');
-        
+		// #matrix-field-proposal-line_items-1-price
+        const inputs = document.querySelectorAll('[id^="matrix-field-proposal-line_items-"][id$="-price"]');
         inputs.forEach(input => {
             if (input.value) {
                 total += parseFloat(input.value) || 0;
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateTotal();
 
     // Add event listeners to all price inputs
-    const inputs = document.querySelectorAll('textarea[name^="proposal[line_items]"][name$="[Price]"]');
+    const inputs = document.querySelectorAll('[id^="matrix-field-proposal-line_items-"][id$="-price"]');
     inputs.forEach(input => {
         input.addEventListener('textarea', calculateTotal);
     });

@@ -135,7 +135,7 @@ class ProposalEditScreen extends Screen
 
 				Matrix::make('proposal.payment_schedule')
                     ->title('Payment Schedule')
-					->value($this->proposal->content['payment_schedule'])
+					->value($this->proposal->content['payment_schedule'] ?? null)
                     ->columns([
                         'Milestone' => 'milestone',
 						'Description' => 'description',
@@ -156,8 +156,7 @@ class ProposalEditScreen extends Screen
 								'groupSeparator' => ' ',
 								'digitsOptional' => true,
 							]),
-						'date' => DateTimer::make('date')
-							->format('Y-m-d'),
+						'date' => Input::make('date'),
                     ]),
 
 				Matrix::make('proposal.line_items')
