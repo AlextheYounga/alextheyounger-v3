@@ -3,7 +3,6 @@
 namespace App\Orchid\Screens\Resume;
 
 use Illuminate\Http\Request;
-use Orchid\Screen\Fields\Repeater;
 use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
@@ -15,8 +14,6 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use App\Models\Resume;
 use App\Models\Project;
-use Dom\Text;
-use Orchid\Screen\Fields\Group;
 
 class ResumeEditScreen extends Screen
 {
@@ -169,12 +166,6 @@ class ResumeEditScreen extends Screen
 					->fromModel(Project::class, 'title')
 					->multiple()
 					->title('Choose which projects to include'),
-
-				Code::make('resume.properties')
-					->title('Properties')
-					->language('json')
-					->height('150px')
-					->placeholder('Enter additional properties in JSON format'),
             ])
         ];
     }
@@ -197,9 +188,6 @@ class ResumeEditScreen extends Screen
 		}, $fields['experience']);
 
         $fields['properties'] = json_decode($fields['properties'], true);
-
-		// Create hash for url
-		$fields['hash'] = hash('crc32', $fields['name']);	
 
         $resume->fill($fields)
             ->save();

@@ -101,6 +101,7 @@ class CategoryEditScreen extends Screen
                 Code::make('category.properties')
                     ->title('Properties')
                     ->language('json')
+					->height('100px')
                     ->lineNumbers(),
 
                 Switcher::make('category.active')

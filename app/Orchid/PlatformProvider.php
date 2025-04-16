@@ -34,34 +34,6 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
-            // Menu::make('Get Started')
-            //     ->icon('bs.book')
-            //     ->title('Navigation')
-            //     ->route(config('platform.index')),
-
-            // Menu::make('Example Screen')
-            //     ->icon('bs.collection')
-            //     ->route('platform.example')
-            //     ->badge(fn () => 6),
-
-            // Menu::make('Form Elements')
-            //     ->icon('bs.journal')
-            //     ->route('platform.example.fields')
-            //     ->active('*/form/examples/*'),
-
-            // Menu::make('Overview Layouts')
-            //     ->icon('bs.columns-gap')
-            //     ->route('platform.example.layouts')
-            //     ->active('*/layout/examples/*'),
-
-            // Menu::make('Charts')
-            //     ->icon('bs.bar-chart')
-            //     ->route('platform.example.charts'),
-
-            // Menu::make('Cards')
-            //     ->icon('bs.card-text')
-            //     ->route('platform.example.cards'),
-
             Menu::make('Page Content')
                 ->icon('bs.body-text')
                 ->route('platform.page-content.list'),
@@ -81,6 +53,10 @@ class PlatformProvider extends OrchidServiceProvider
 			Menu::make('Cover Letters')
                 ->icon('bs.envelope')
                 ->route('platform.cover-letter.list'),
+
+			Menu::make('Proposals')
+                ->icon('bs.briefcase')
+                ->route('platform.proposal.list'),
 
             Menu::make('Books')
                 ->icon('bs.book')
