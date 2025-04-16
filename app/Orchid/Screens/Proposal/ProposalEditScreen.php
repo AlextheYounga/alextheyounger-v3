@@ -115,6 +115,11 @@ class ProposalEditScreen extends Screen
 						->title('Client Signature')
 						->disabled()
 						->help('Client signature'),
+
+						Input::make('proposal.client_sign_date')
+						->title('Client Signed At')
+						->disabled()
+						->help('Client signed at'),
 				])->autoWidth(),
 
 				Quill::make('proposal.description')
