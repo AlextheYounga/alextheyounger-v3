@@ -68,9 +68,11 @@ Route::screen('projects', ProjectListScreen::class)
 
 // Proposals
 Route::screen('proposal/{proposal?}', ProposalEditScreen::class)
-->name('platform.proposal.edit');
+	->name('platform.proposal.edit');
 Route::screen('proposals', ProposalListScreen::class)
-->name('platform.proposal.list');
+	->name('platform.proposal.list');
+Route::screen('proposal/duplicate/{proposal}', ProposalEditScreen::class)
+	->name('platform.proposal.duplicate');
 
 // Books
 Route::screen('book/{book?}', BookEditScreen::class)

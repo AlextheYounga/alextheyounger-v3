@@ -38,6 +38,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.body-text')
                 ->route('platform.page-content.list'),
 
+			Menu::make('Books')
+                ->icon('bs.book')
+                ->route('platform.book.list'),
+
             Menu::make('Categories')
                 ->icon('bs.tag')
                 ->route('platform.category.list'),
@@ -56,12 +60,8 @@ class PlatformProvider extends OrchidServiceProvider
 
 			Menu::make('Proposals')
                 ->icon('bs.briefcase')
-                ->route('platform.proposal.list'),
-
-            Menu::make('Books')
-                ->icon('bs.book')
-                ->route('platform.book.list')
-                ->divider(),
+                ->route('platform.proposal.list')
+				->divider(),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')

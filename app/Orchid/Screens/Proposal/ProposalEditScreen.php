@@ -106,15 +106,15 @@ class ProposalEditScreen extends Screen
 
 				Group::make([
 					CheckBox::make('proposal.client_agreement')
-					->title('Client Agreement')
-					->disabled()
-					->value($this->proposal->client_agreement ? 1 : 0)
-					->help('Whether the client has agreed to the proposal'),
+						->title('Client Agreement')
+						->disabled()
+						->value($this->proposal->client_agreement ? 1 : 0)
+						->help('Whether the client has agreed to the proposal'),
 
-				Input::make('proposal.client_signature')
-					->title('Client Signature')
-					->disabled()
-					->help('Client signature'),
+					Input::make('proposal.client_signature')
+						->title('Client Signature')
+						->disabled()
+						->help('Client signature'),
 				])->autoWidth(),
 
 				Quill::make('proposal.description')
@@ -137,18 +137,16 @@ class ProposalEditScreen extends Screen
                     ->title('Payment Schedule')
 					->value($this->proposal->content['payment_schedule'])
                     ->columns([
-                        'milestone' => 'MileStone',
-						'description' => 'Description',
-                        'amount_due' => 'Amount Due',
-						'date' => 'Date'
+                        'Milestone' => 'milestone',
+						'Description' => 'description',
+                        'Amount Due' => 'amount_due',
+						'Date' => 'date'
                     ])
                     ->fields([
                         'milestone' => Input::make('milestone')
-                            ->type('text')
-                            ->title('Milestone'),
+                            ->type('text'),
 						'description' => Input::make('description')
-                            ->type('text')
-                            ->title('Description'),
+                            ->type('text'),
 						'amount_due' => Input::make('amount_due')
                             ->type('number')
                             ->step(0.01)
@@ -157,34 +155,30 @@ class ProposalEditScreen extends Screen
 								'prefix' => ' ',
 								'groupSeparator' => ' ',
 								'digitsOptional' => true,
-							])
-                            ->title('Amount Due'),
+							]),
 						'date' => DateTimer::make('date')
-							->title('Due Date')
 							->format('Y-m-d'),
                     ]),
 
 				Matrix::make('proposal.line_items')
-				->title('Line Items')
-				->columns([
-					'description' => 'Description',
-					'price' => 'Price',
-				])
-				->fields([
-					'description' => Input::make('description')
-						->type('text')
-						->title('Description'),
-					'price' => Input::make('price')
-						->type('number')
-						->step(0.01)
-						->mask([
-							'alias' => 'currency',
-							'prefix' => ' ',
-							'groupSeparator' => ' ',
-							'digitsOptional' => true,
-						])
-						->title('Price')
-				]),
+					->title('Line Items')
+					->columns([
+						'Description' => 'description',
+						'Price' => 'price',
+					])
+					->fields([
+						'description' => Input::make('description')
+							->type('text'),
+						'price' => Input::make('price')
+							->type('number')
+							->step(0.01)
+							->mask([
+								'alias' => 'currency',
+								'prefix' => ' ',
+								'groupSeparator' => ' ',
+								'digitsOptional' => true,
+							])
+					]),
             ]),
             Layout::view('platform.proposals.calculator'),
         ];
@@ -242,7 +236,7 @@ class ProposalEditScreen extends Screen
 	private function sumTotal($lineItems) {
 		$total = 0;
 		foreach ($lineItems as $item) {
-			$total += $item['Price'];
+			$total += $item['price'];
 		}
 
 		return $total;

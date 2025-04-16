@@ -42,12 +42,19 @@ class ProposalListLayout extends Table
                 ->render(fn (Proposal $proposal) => $this->formatDate($proposal->created_at)),
             TD::make('updated_at', 'Last edit')
                 ->render(fn (Proposal $proposal) => $this->formatDate($proposal->updated_at)),
-			TD::make('View Page', '')
+			TD::make('Live View', '')
                 ->render(function (Proposal $proposal) {
-                    return Link::make('View Page')
+                    return Link::make('Live View')
+						->icon('eye')
 						->href("/proposals/" . $proposal->hash)
 						->target('_blank');
                 }),
+			TD::make('Duplicate', '')
+				->render(function (Proposal $proposal) {
+					return Link::make('Duplicate')
+						->icon('copy')
+						->route('platform.proposal.duplicate', $proposal);
+				}),
         ];
     }
 

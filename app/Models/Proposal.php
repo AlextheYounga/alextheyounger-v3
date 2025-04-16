@@ -43,7 +43,6 @@ class Proposal extends Model
     ];
 
 	protected $casts = [
-		'client_sign_date' => 'datetime',
 		'completion_date' => 'date',
 		'content' => 'json',
         'line_items' => 'json',

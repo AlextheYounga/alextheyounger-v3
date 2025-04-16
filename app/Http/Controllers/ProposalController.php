@@ -18,7 +18,6 @@ class ProposalController extends Controller
     public function show($hash)
     {
         $proposal = Proposal::where('hash', $hash)->firstOrFail();
-        
         return Inertia::render('Proposal', [
             'proposal' => $proposal
         ]);
