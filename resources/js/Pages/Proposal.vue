@@ -1,4 +1,5 @@
 <template>
+
 	<Head title="Proposal" />
 	<div id="proposal" class="min-h-screen py-12">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,6 +23,14 @@
 					<div v-if="scope">
 						<h2 class="text-2xl font-medium text-gray-900 mb-4">Project Scope</h2>
 						<div class="prose max-w-none" v-html="scope"></div>
+					</div>
+
+					<!-- Completion Date -->
+					<div v-if="proposal.completion_date">
+						<div class="flex items-center my-8">
+							<h2 class="text-2xl font-medium text-gray-900 mr-4">Estimated Completion Date: </h2>
+							<p class="text-lg text-gray-600">{{ formatDate(proposal.completion_date) }}</p>
+						</div>
 					</div>
 
 					<!-- Tech Stack -->
@@ -222,6 +231,7 @@ input:focus {
 }
 
 @media print {
+
 	/* Hide elements not needed on print */
 	.no-print {
 		display: none !important;
@@ -235,6 +245,6 @@ input:focus {
 		padding: 0 !important;
 		border: none !important;
 		box-shadow: none !important;
-	}	
+	}
 }
 </style>
