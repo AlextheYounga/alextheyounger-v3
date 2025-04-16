@@ -2,7 +2,8 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 	const postForm = document.querySelector('#post-form > fieldset > div');
-    const matrixTable = document.querySelector('.matrix.table');
+    const matrices = document.querySelectorAll('.matrix.table');
+	const matrixTable = matrices[matrices.length - 1];
     if (!postForm || !matrixTable) {
         return;
     }

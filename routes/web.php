@@ -35,6 +35,11 @@ Route::prefix('clipboard')->group(function () {
     Route::post('/store', [ClipboardController::class, 'store'])->name('note.store')->middleware('throttle:50,1'); // Ajax
 });
 
-Route::get('/proposals/{hash}', [ProposalController::class, 'show'])
-    ->name('proposals.show');
+Route::group(['prefix' => 'proposals'], function () {
+	Route::get('/{hash}', [ProposalController::class, 'show'])
+    	->name('proposals.show');
+	Route::post('/{hash}/sign', [ProposalController::class, 'sign'])
+		->name('proposals.sign');
+});
+
 

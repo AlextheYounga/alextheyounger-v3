@@ -135,7 +135,7 @@ class ProposalEditScreen extends Screen
 
 				Matrix::make('proposal.payment_schedule')
                     ->title('Payment Schedule')
-					->value($this->proposal->content['payment_schedule'] ?? null)
+					->value($this->proposal->content['payment_schedule'])
                     ->columns([
                         'milestone' => 'MileStone',
 						'description' => 'Description',
@@ -145,7 +145,7 @@ class ProposalEditScreen extends Screen
                     ->fields([
                         'milestone' => Input::make('milestone')
                             ->type('text')
-                            ->title('MileStone'),
+                            ->title('Milestone'),
 						'description' => Input::make('description')
                             ->type('text')
                             ->title('Description'),
@@ -209,7 +209,7 @@ class ProposalEditScreen extends Screen
 				'scope' => $fields['scope'] ?? null,
 				'technology' => $fields['technology'] ?? null,
 				'disclaimer' => $fields['disclaimer'] ?? null,
-				'paymentSchedule' => $fields['payment_schedule'] ?? null,
+				'payment_schedule' => $fields['payment_schedule'] ?? null,
 			],
             'line_items' => $fields['line_items'] ?? null,
 			'total' => empty($fields['line_items']) ? 0 : $this->sumTotal($fields['line_items']),
@@ -241,9 +241,8 @@ class ProposalEditScreen extends Screen
 
 	private function sumTotal($lineItems) {
 		$total = 0;
-
 		foreach ($lineItems as $item) {
-			$total += $item['price'];
+			$total += $item['Price'];
 		}
 
 		return $total;

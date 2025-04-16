@@ -1,4 +1,5 @@
 <template>
+	<Head title="Proposal" />
 	<div class="min-h-screen bg-gray-50 py-8">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="rounded-lg overflow-hidden">
@@ -9,9 +10,9 @@
 				</div>
 
 				<!-- Client Info -->
-				<div class="px-6 py-4">
-					<h2 class="text-lg font-medium text-gray-900">Client Information</h2>
-					<p class="mt-1 text-gray-600">{{ proposal.client }}</p>
+				<div class="px-6 pb-4">
+					<p class="mt-1 text-gray-600"><b>Prepared for</b>: {{ proposal.client }}</p>
+					<p class="mt-1 text-gray-600"><b>Prepared by</b>: Alex Younger</p>
 				</div>
 
 				<!-- Description -->
@@ -89,10 +90,36 @@
 				</div>
 
 				<!-- Client Agreement -->
-				<div class="px-6 py-4" v-if="proposal.client_signature">
+				<div id="sign-input" class="px-6 py-4" v-if="!proposal.client_signature">
+					<h2 class="text-2xl font-medium text-gray-900 mb-4">Client Agreement</h2>
+					<form @submit.prevent="submitAgreement" class="space-y-6">
+						<div>
+							<label class="flex items-center">
+								<input type="checkbox" v-model="agreement" class="form-checkbox h-5 w-5 text-indigo-600">
+								<span class="ml-2 text-gray-700">I agree to the terms and conditions outlined in this proposal</span>
+							</label>
+						</div>
+
+						<div>
+							<label class="block text-sm font-medium text-gray-700">Digital Signature</label>
+							<div class="mt-1">
+								<input type="text" v-model="signature" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md yesteryear" placeholder="Type your full name">
+							</div>
+						</div>
+
+						<div>
+							<button type="submit" :disabled="!canSubmit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50">
+								Sign and Agree
+							</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="px-6 py-4" v-else>
 					<h2 class="text-2xl font-medium text-gray-900 mb-4">Client Agreement</h2>
 					<div class="mt-4">
-						<p class="text-sm text-gray-600">Signed on {{ formatDate(proposal.client_sign_date) }}</p>
+						<p class="text-lg text-gray-600"><b class="pr-4">Signed by:</b> <span class="yesteryear signature text-5xl">{{ proposal.client_signature }}</span></p>
+						<p class="text-lg text-gray-600 mt-2"><b class="pr-4">Signed on:</b> <span class="underline">{{ formatDate(proposal.client_sign_date) }}</span></p>
 					</div>
 				</div>
 			</div>
@@ -101,12 +128,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { usePage } from '@inertiajs/vue3';
+import { ref, onMounted, computed } from 'vue';
+import { usePage, Head, router } from '@inertiajs/vue3';
 
 document.body.classList.remove('bg-black');
 
 const proposal = ref(usePage().props.proposal);
+const agreement = ref(false);
+const signature = ref('');
 
 const {
 	description,
@@ -115,6 +144,17 @@ const {
 	disclaimer,
 	paymentSchedule
 } = proposal.value.content;
+
+const canSubmit = computed(() => {
+	return agreement.value && signature.value.trim().length > 0;
+});
+
+const submitAgreement = () => {
+	router.post(`/proposals/${proposal.value.hash}/sign`, {
+		signature: signature.value,
+		agreement: agreement.value
+	});
+};
 
 const formatDate = (date) => {
 	return new Date(date).toLocaleDateString('en-US', {
@@ -128,3 +168,11 @@ const formatPrice = (price) => {
 	return parseFloat(price).toFixed(2);
 };
 </script>
+
+<style scoped>
+.yesteryear {
+  font-family: "Yesteryear", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+</style>

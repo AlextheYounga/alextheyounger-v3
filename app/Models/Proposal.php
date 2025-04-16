@@ -21,12 +21,6 @@ class Proposal extends Model
 				$model->hash = hash('sha256', $model->title);
 			}
 		});
-
-		static::saving(function ($model) {
-			if ($model->client_signature && empty($model->client_signing_date)) {
-				$model->client_signing_date = Carbon::now();
-			}
-		});
 	}
 	
     /**
