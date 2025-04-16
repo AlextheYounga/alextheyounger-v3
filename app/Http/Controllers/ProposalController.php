@@ -37,12 +37,8 @@ class ProposalController extends Controller
             'signature' => 'required|string|min:3',
             'agreement' => 'required|boolean'
         ]);
-
+		
         $proposal = Proposal::where('hash', $hash)->firstOrFail();
-
-		if ($proposal->client_sign_date) {
-			return;
-		}
 
         $proposal->update([
             'client_signature' => $request->signature,

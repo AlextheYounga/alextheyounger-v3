@@ -103,7 +103,7 @@
 						<div>
 							<label class="block text-sm font-medium text-gray-700">Digital Signature</label>
 							<div class="mt-1">
-								<input type="text" v-model="signature" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md yesteryear" placeholder="Type your full name">
+								<input type="text" v-model="signature" class="block border-0 rounded-md text-4xl w-full yesteryear" placeholder="Type your full name">
 							</div>
 						</div>
 
@@ -128,7 +128,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { usePage, Head, router } from '@inertiajs/vue3';
 
 document.body.classList.remove('bg-black');
@@ -153,6 +153,18 @@ const submitAgreement = () => {
 	router.post(`/proposals/${proposal.value.hash}/sign`, {
 		signature: signature.value,
 		agreement: agreement.value
+	}, {
+		preserveScroll: true,
+		onSuccess: () => {
+			// Update the local proposal data
+			proposal.value.client_signature = signature.value;
+			proposal.value.client_agreement = true;
+			proposal.value.client_sign_date = new Date().toISOString();
+			
+			// Clear the form
+			signature.value = '';
+			agreement.value = false;
+		}
 	});
 };
 
