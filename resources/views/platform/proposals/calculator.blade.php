@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     postForm.appendChild(totalDisplay);
 
     function calculateTotal() {
+		const inputs = document.querySelectorAll('[id^="matrix-field-proposal-line_items-"][id$="-price"]');
         let total = 0;
 		// #matrix-field-proposal-line_items-1-price
-        const inputs = document.querySelectorAll('[id^="matrix-field-proposal-line_items-"][id$="-price"]');
         inputs.forEach(input => {
             if (input.value) {
                 total += parseFloat(input.value) || 0;
@@ -32,10 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateTotal();
 
     // Add event listeners to all price inputs
-    const inputs = document.querySelectorAll('[id^="matrix-field-proposal-line_items-"][id$="-price"]');
-    inputs.forEach(input => {
-        input.addEventListener('textarea', calculateTotal);
-    });
+    matrixTable.addEventListener('input', calculateTotal);
 
     // Watch for new matrix rows
     const observer = new MutationObserver(function() {
