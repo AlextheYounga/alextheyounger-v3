@@ -28,6 +28,8 @@ use App\Orchid\Screens\Category\CategoryEditScreen;
 use App\Orchid\Screens\Category\CategoryListScreen;
 use App\Orchid\Screens\PageContent\PageContentEditScreen;
 use App\Orchid\Screens\PageContent\PageContentListScreen;
+use App\Orchid\Screens\Proposal\ProposalEditScreen;
+use App\Orchid\Screens\Proposal\ProposalListScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -63,6 +65,12 @@ Route::screen('project/{project?}', ProjectEditScreen::class)
     ->name('platform.project.edit');
 Route::screen('projects', ProjectListScreen::class)
     ->name('platform.project.list');
+
+// Proposals
+Route::screen('proposal/{proposal?}', ProposalEditScreen::class)
+->name('platform.proposal.edit');
+Route::screen('proposals', ProposalListScreen::class)
+->name('platform.proposal.list');
 
 // Books
 Route::screen('book/{book?}', BookEditScreen::class)

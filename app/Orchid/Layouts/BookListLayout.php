@@ -56,7 +56,7 @@ class BookListLayout extends Table
         ];
     }
 
-    public function formatDate($dateString)
+    private function formatDate($dateString)
     {
         $carbon = Carbon::parse($dateString);
         return $carbon->format('Y-m-d');

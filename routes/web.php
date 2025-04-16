@@ -4,6 +4,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ClipboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProposalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,12 @@ Route::prefix('clipboard')->group(function () {
 	Route::get('/{note_id}', [ClipboardController::class, 'get'])->name('note.get');
     Route::post('/store', [ClipboardController::class, 'store'])->name('note.store')->middleware('throttle:50,1'); // Ajax
 });
+
+Route::group(['prefix' => 'proposals'], function () {
+	Route::get('/{hash}', [ProposalController::class, 'show'])
+    	->name('proposals.show');
+	Route::post('/{hash}/sign', [ProposalController::class, 'sign'])
+		->name('proposals.sign');
+});
+
 

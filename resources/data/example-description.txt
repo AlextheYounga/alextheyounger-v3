@@ -1,0 +1,1 @@
+This proposal outlines the scope and deliverables for the development of a [web/mobile/desktop/API] application titled [Project Name]. The goal is to build a [brief one-liner goal—e.g., secure, scalable, and responsive web platform for online booking] for [Client Name], enabling [user goal, e.g., customers to schedule and manage appointments online].

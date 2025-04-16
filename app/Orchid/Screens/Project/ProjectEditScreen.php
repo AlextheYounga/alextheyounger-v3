@@ -129,12 +129,6 @@ class ProjectEditScreen extends Screen
 					->height('100px')
                     ->lineNumbers(),
 
-                Code::make('project.properties')
-                    ->title('Properties')
-                    ->language('json')
-					->height('200px')
-                    ->lineNumbers(),
-
                 Switcher::make('project.active')
                     ->sendTrueOrFalse()
                     ->value($this->project->active ?? true)

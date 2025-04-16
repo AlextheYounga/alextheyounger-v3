@@ -106,12 +106,6 @@ class CoverLetterEditScreen extends Screen
 				Quill::make('coverLetter.content')
 					->title('Content')
 					->placeholder('Enter the content of the cover letter'),
-		
-				Code::make('coverLetter.properties')
-					->title('Properties')
-					->language('json')
-					->height('100px')
-					->help('Enter additional properties in JSON format'),
 			])
         ];
     }

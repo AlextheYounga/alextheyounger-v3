@@ -134,6 +134,7 @@ class BookEditScreen extends Screen
                 Code::make('book.properties')
                     ->title('Properties')
                     ->language('json')
+					->height('100px')
                     ->lineNumbers(),
 
                 Switcher::make('book.active')
