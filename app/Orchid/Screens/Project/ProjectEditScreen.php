@@ -7,6 +7,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Code;
+use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Fields\Switcher;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
@@ -110,30 +111,40 @@ class ProjectEditScreen extends Screen
 
                 Input::make('project.image_name')
                     ->title('Local Image Name')
+					->value($this->project->properties['image_name'] ?? null)
                     ->placeholder('marketplacer.jpg')
                     ->disabled(),
 
                 Quill::make('project.description')
                     ->title('Description')
+					->value($this->project->content['description'] ?? null)
                     ->placeholder('Main description'),
 
                 TextArea::make('project.excerpt')
                     ->title('Excerpt')
+					->value($this->project->content['excerpt'] ?? null)
                     ->rows(3)
                     ->maxlength(200)
                     ->placeholder('Brief description for preview'),
 
-                Code::make('project.techstack')
+				Matrix::make('project.bullets')
+                    ->title('Bullets')
+					->value($this->listToMatrix($this->project->content['bullets'] ?? [], 'bullet'))
+                    ->columns(['Bullet' => 'bullet'])
+                    ->fields(['bullet' => Input::make('bullet')->type('text')]),
+
+				Matrix::make('project.technology')
                     ->title('Tech Stack')
-                    ->language('json')
-					->height('100px')
-                    ->lineNumbers(),
+					->value($this->listToMatrix($this->project->content['technology'] ?? [], 'name'))
+                    ->columns(['Name' => 'name'])
+                    ->fields(['name' => Input::make('name')->type('text')]),
 
                 Switcher::make('project.active')
                     ->sendTrueOrFalse()
                     ->value($this->project->active ?? true)
                     ->title('Active')
-            ])
+			]),
+			Layout::view('platform.list-matrix'), // Custom matrix styles
         ];
     }
 
@@ -146,13 +157,27 @@ class ProjectEditScreen extends Screen
     public function createOrUpdate(Request $request)
     {
         $project = Project::where('title', $request->get('project')['title'])->first() ?? new Project();
-
         $fields = $request->get('project');
 
-        $fields['techstack'] = json_decode($fields['techstack']);
-        $fields['properties'] = json_decode($fields['properties']);
+		$record = [
+			'title' => $fields['title'],
+			'external_link' => $fields['external_link'],
+			'external_image_link' => $fields['external_image_link'],
+			'scope' => $fields['scope'],
+			'position' => $fields['position'],
+			'content' => [
+				'description' => $fields['description'] ?? null,
+				'excerpt' => $fields['excerpt'] ?? null,
+				'technology' => isset($fields['technology']) ? $this->matrixToList($fields['technology']) : [],
+				'bullets' => isset($fields['bullets']) ? $this->matrixToList($fields['bullets']) : [],
+			],
+			'properties' => [
+				'image_name' => $fields['image_name'] ?? null,
+			],
+			'active' => $fields['active'] ?? true,
+		];
 
-        $project->fill($fields)
+        $project->fill($record)
             ->reorderPositions()
             ->save();
 
@@ -175,4 +200,26 @@ class ProjectEditScreen extends Screen
 
         return redirect()->route('platform.project.list');
     }
+
+	private function listToMatrix($list, $keyBy) {
+		if (empty($list)) {
+			return [];
+		}
+		$matrix = [];
+		foreach ($list as $item) {
+			$matrix[] = [$keyBy => $item];
+		}
+		return $matrix;
+	}
+
+	private function matrixToList($matrix) {
+		if ($matrix === null) {
+			return [];
+		}
+		$list = [];
+		foreach ($matrix as $item) {
+			$list[] = array_values($item);
+		}
+		return $list;
+	}
 }

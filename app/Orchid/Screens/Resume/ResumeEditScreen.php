@@ -118,6 +118,13 @@ class ResumeEditScreen extends Screen
 					->title('Bio')
 					->rows(5)
 					->placeholder('Provide a brief bio'),
+			
+				Relation::make('resume.projects.')
+					->fromModel(Project::class, 'title')
+					->multiple()
+					->applyScope('active')
+					->chunk(-1)
+					->title('Choose which projects to include'),
 
 				Matrix::make('resume.contacts')
 				->title('Contacts')
@@ -161,11 +168,6 @@ class ResumeEditScreen extends Screen
 						
 					])
 					->placeholder('Enter experience data'),
-
-				Relation::make('resume.projects.')
-					->fromModel(Project::class, 'title')
-					->multiple()
-					->title('Choose which projects to include'),
             ])
         ];
     }
@@ -179,7 +181,6 @@ class ResumeEditScreen extends Screen
     public function createOrUpdate(Request $request)
     {
         $resume = Resume::where('name', $request->get('resume')['name'])->first() ?? new Resume();
-
         $fields = $request->get('resume');
 		
 		$fields['experience'] = array_map(function ($item) {
@@ -187,10 +188,9 @@ class ResumeEditScreen extends Screen
 			return $item;
 		}, $fields['experience']);
 
-        $fields['properties'] = json_decode($fields['properties'], true);
-
-        $resume->fill($fields)
-            ->save();
+        $resume->fill($fields)->save();
+		$resume->projects()->sync($fields['projects']);
+		
 
         Alert::info('You have successfully created a resume.');
 

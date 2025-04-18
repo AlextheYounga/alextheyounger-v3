@@ -12,29 +12,20 @@ class Project extends Model
     use AsSource;
 
     protected $fillable = [
-        'category_id',
-        'title',
-        'description',
-        'image_name',
-        'external_link',
-        'external_image_link',
-        'techstack',
-        'excerpt',
-        'position',
-        'properties',
-        'scope',
-        'active',
+		'title',
+		'external_link',
+		'external_image_link',
+		'scope',
+		'position',
+		'content',
+		'properties',
+		'active',
     ];
 
     protected $casts = [
         'properties' => 'json',
-        'techstack' => 'array',
+        'content' => 'json',
     ];
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 
 	public function resumes()
 	{
@@ -68,4 +59,13 @@ class Project extends Model
     {
         return $this->where('active', true);
     }
+
+	public function resumeFormat() {
+		return [
+			'id' => $this->id,
+			'title' => $this->title,
+			'link' => $this->external_link,
+			'bullets' => $this->content['bullets'],
+		];
+	}
 }

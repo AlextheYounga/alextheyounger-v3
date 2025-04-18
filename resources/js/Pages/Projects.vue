@@ -15,11 +15,11 @@
                     <div v-for="project in this.projects" :key="project.id" class="flex flex-col overflow-hidden rounded-lg shadow-lg relative border">
                         <div class="flex-shrink-0">
                             <img v-if="project.external_image_link" :src="project.external_image_link" class="h-48 w-full object-cover" />
-                            <img v-else :src="`/images/projects/${project.image_name}.webp`" class="h-48 w-full object-cover" :alt="imageAlt(project)" />
+                            <img v-else :src="`/images/projects/${project.properties?.image_name}.webp`" class="h-48 w-full object-cover" :alt="imageAlt(project)" />
                         </div>
                         <div class="flex flex-1 flex-col justify-between bg-sky-600 bg-opacity-25 p-6">
                             <div class="flex-1">
-                                <p v-for="tech of project.techstack" :key="tech" class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2" :data-techstack="tech">
+                                <p v-for="tech of project.content?.technology" :key="tech" class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2" :data-techstack="tech">
                                     {{ tech }}
                                 </p>
 
@@ -54,11 +54,11 @@
         <div>
             <div class="flex-shrink-0">
                 <img v-if="projectSelected.external_image_link" :src="projectSelected.external_image_link" class="w-full object-cover" />
-                <img v-else :src="`/images/projects/${projectSelected.image_name}.webp`" class="w-full object-cover" :alt="imageAlt(projectSelected)" />
+                <img v-else :src="`/images/projects/${projectSelected.properties?.image_name}.webp`" class="w-full object-cover" :alt="imageAlt(projectSelected)" />
             </div>
             <div class="flex flex-1 flex-col justify-between bg-white p-6">
                 <div class="flex-1">
-                    <p v-for="tech of projectSelected.techstack" :key="tech" class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2" :data-techstack="tech">
+                    <p v-for="tech of projectSelected.content?.technology" :key="tech" class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2" :data-techstack="tech">
                         {{ tech }}
                     </p>
 

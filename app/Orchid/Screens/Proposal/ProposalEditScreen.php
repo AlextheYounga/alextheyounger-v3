@@ -184,7 +184,7 @@ class ProposalEditScreen extends Screen
 							])
 					]),
             ]),
-            Layout::view('platform.proposals.calculator'),
+            Layout::view('platform.proposals.calculator'), // Custom calculator functionality for totals
         ];
     }
 

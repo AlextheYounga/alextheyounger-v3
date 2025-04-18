@@ -122,8 +122,6 @@ class CoverLetterEditScreen extends Screen
 
         $fields = $request->get('coverLetter');
 
-        $fields['properties'] = json_decode($fields['techstack']);
-
         $coverLetter->fill($fields)->save();
 
         Alert::info('You have successfully created a cover letter.');

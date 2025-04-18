@@ -117,10 +117,15 @@ class BookEditScreen extends Screen
                     ->title('External Image Link')
                     ->placeholder('https://m.media-amazon.com/images/'),
 
-                Input::make('book.image_name')
+				Input::make('book.image_name')
                     ->title('Local Image Name')
-                    ->placeholder('win_friends.jpg')
-                    ->disabled(),
+					->value($this->book->properties['image_name'] ?? null)
+                    ->placeholder('win_friends.jpg'),
+
+				Input::make('book.image_alt')
+                    ->title('Image Alt')
+					->value($this->book->properties['image_alt'] ?? null)
+                    ->placeholder('win_friends.jpg'),
 
                 TextArea::make('book.description')
                     ->title('Description')
@@ -130,12 +135,6 @@ class BookEditScreen extends Screen
 
                 Input::make('book.author')
                     ->title('Author'),
-
-                Code::make('book.properties')
-                    ->title('Properties')
-                    ->language('json')
-					->height('100px')
-                    ->lineNumbers(),
 
                 Switcher::make('book.active')
                     ->sendTrueOrFalse()
@@ -157,7 +156,11 @@ class BookEditScreen extends Screen
         
         $fields = $request->get('book');
 
-        $fields['properties'] = json_decode($fields['properties']);
+		$fields['properties'] = [
+			'image_name' => $fields['image_name'] ?? null,
+			'image_alt' => $fields['image_alt'] ?? null,
+			'description' => $fields['description'] ?? null,
+		];
 
         $book->fill($fields)
             ->reorderPositions()
