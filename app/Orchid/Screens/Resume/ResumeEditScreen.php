@@ -103,7 +103,6 @@ class ResumeEditScreen extends Screen
      */
     public function layout(): iterable
     {
-
         return [
             Layout::rows([
 				Input::make('resume.hash')
@@ -183,14 +182,20 @@ class ResumeEditScreen extends Screen
         $resume = Resume::where('name', $request->get('resume')['name'])->first() ?? new Resume();
         $fields = $request->get('resume');
 		
-		$fields['experience'] = array_map(function ($item) {
-			$item['bullets'] = json_decode($item['bullets'], true);
-			return $item;
-		}, $fields['experience']);
-
+		if (isset($fields['experience'])) {
+			$fields['experience'] = array_map(function ($item) {
+				$item['bullets'] = json_decode($item['bullets'], true);
+				return $item;
+			}, $fields['experience']);
+		}
+		// $fields['properties'] = $fields['projects'] ?? [];
         $resume->fill($fields)->save();
-		$resume->projects()->sync($fields['projects']);
 		
+		// Handle projects separately
+		if (isset($fields['projects'])) {
+			$projectIds = is_array($fields['projects']) ? $fields['projects'] : [];
+			$resume->projects()->sync($projectIds);
+		}
 
         Alert::info('You have successfully created a resume.');
 

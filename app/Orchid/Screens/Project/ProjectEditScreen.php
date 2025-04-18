@@ -218,7 +218,7 @@ class ProjectEditScreen extends Screen
 		}
 		$list = [];
 		foreach ($matrix as $item) {
-			$list[] = array_values($item);
+			$list[] = array_values($item)[0];
 		}
 		return $list;
 	}

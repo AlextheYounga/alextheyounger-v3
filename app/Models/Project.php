@@ -61,11 +61,6 @@ class Project extends Model
     }
 
 	public function resumeFormat() {
-		return [
-			'id' => $this->id,
-			'title' => $this->title,
-			'link' => $this->external_link,
-			'bullets' => $this->content['bullets'],
-		];
+		return $this->only(['id', 'title', 'link', 'content']);
 	}
 }

@@ -41,17 +41,8 @@ class Resume extends Model
 		'properties' => 'array',
 	];
 
-	protected $appends = ['projects'];
-
 	public function projects()
 	{
 		return $this->belongsToMany(Project::class, 'project_resume');
-	}
-
-	public function getProjectsAttribute()
-	{
-		return $this->projects()->get()->each(function ($project) {
-			return $project->resumeFormat();
-		});
 	}
 }
