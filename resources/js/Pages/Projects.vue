@@ -74,7 +74,7 @@
                             </a>
                         </div>
 
-                        <p v-html="projectSelected.description" class="mt-6 text-base text-gray-500"></p>
+						<p class="mt-6 text-base text-gray-600" v-for="bullet in projectSelected.content?.bullets">- {{ bullet }}</p>
                     </div>
                 </div>
 

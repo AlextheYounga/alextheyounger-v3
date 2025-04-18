@@ -112,8 +112,7 @@ class ProjectEditScreen extends Screen
                 Input::make('project.image_name')
                     ->title('Local Image Name')
 					->value($this->project->properties['image_name'] ?? null)
-                    ->placeholder('marketplacer.jpg')
-                    ->disabled(),
+                    ->placeholder('marketplacer.jpg'),
 
                 Quill::make('project.description')
                     ->title('Description')
