@@ -34,7 +34,7 @@
                             <div :class="book.selector + ' cover lg:w-1/4 md:w-1/3 sm:w-1/2 text-center my-12 relative duration-500 transition-transform'">
                                 <a :href="book.external_link" target="_blank" rel="nofollow" class="no-underline">
                                     <img v-if="book.external_image_link" :src="book.external_image_link" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
-                                    <img v-else :src="`/images/books/${book.image_name}.webp`" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
+                                    <img v-else :src="`/images/books/${book.properies?.image_name}.webp`" class="mb-3 mx-auto shadow" :alt="imageAlt(book)">
                                 </a>
                                 <div class="book-description bg-sky-800 bg-opacity-25 w-4/5 p-4 rounded-lg mx-auto border border-sky-100 shadow shadow-sky-50">
                                     <p class="font-semibold fancy-font text-md text-sky-50">{{ book.title }}</p>
