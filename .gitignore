@@ -18,4 +18,5 @@ yarn-error.log
 /.idea
 /.vscode
 __deprecated__
+__trash__
 .DS_Store
