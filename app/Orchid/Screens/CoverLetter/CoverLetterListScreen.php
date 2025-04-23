@@ -17,7 +17,7 @@ class CoverLetterListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'coverLetter' => CoverLetter::all()
+            'coverLetters' => CoverLetter::all()
         ];
     }
 

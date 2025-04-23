@@ -11,10 +11,9 @@ class CoverLetterController extends Controller
 	{
 		try {
 			$coverLetter = CoverLetter::where('hash', $hash)->firstOrFail();
+			return response()->json($coverLetter);
 		} catch (\Exception $e) {
 			return response()->json(['error' => 'Cover letter not found'], 404);
 		}
-
-		return response()->json($coverLetter);
 	}
 }

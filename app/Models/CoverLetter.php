@@ -22,9 +22,16 @@ class CoverLetter extends Model
 		});
 	}
 
-	protected $fillable = ['hash', 'name', 'company', 'hiring_manager', 'content', 'properties'];
+	protected $fillable = [
+		'hash', 
+		'name', 
+		'company', 
+		'hiring_manager', 
+		'content', 
+		'properties'
+	];
 
 	protected $casts = [
-		'properties' => 'array',
+		'properties' => 'json',
 	];
 }

@@ -18,7 +18,7 @@ class CoverLetterListLayout extends Table
      *
      * @var string
      */
-    protected $target = 'cover_letters';
+    protected $target = 'coverLetters';
 
     /**
      * Get the table cells to be displayed.
@@ -33,6 +33,7 @@ class CoverLetterListLayout extends Table
 				return Link::make($coverLetter->name)
 					->route('platform.cover-letter.edit', $coverLetter);
 			}),
+			TD::make('hash', 'Hash'),
 			TD::make('company', 'Company'),
 			TD::make('hiring_manager', 'Hiring Manager'),
 			TD::make('content', 'Content')
