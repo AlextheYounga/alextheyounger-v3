@@ -103,6 +103,7 @@ class CoverLetterEditScreen extends Screen
 		
 				Quill::make('coverLetter.content')
 					->title('Content')
+					->height('90vh')
 					->placeholder('Enter the content of the cover letter'),
 
 				// Use this for properties but can't have the same name as properties because it tries to automap
