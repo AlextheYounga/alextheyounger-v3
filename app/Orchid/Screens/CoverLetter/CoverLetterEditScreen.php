@@ -133,7 +133,7 @@ class CoverLetterEditScreen extends Screen
         $coverLetter = CoverLetter::where('id', $request->get('coverLetter')['id'])->first() ?? new CoverLetter();
 
         $fields = $request->get('coverLetter');
-		$fields['properties'] = $this->mapPropertiesToList($fields['meta']);
+		$fields['properties'] = $this->mapPropertiesToList($fields['meta'] ?? []);
         $coverLetter->fill($fields)->save();
 
         Alert::info('You have successfully created a cover letter.');
@@ -157,6 +157,9 @@ class CoverLetterEditScreen extends Screen
     }
 
 	private function mapPropertiesToList($properties) {
+		if (empty($properties)) {
+			return [];
+		}
 		return collect($properties ?? [])
 		->mapWithKeys(function ($item) {
 			return [$item['key'] => $item['value']];
