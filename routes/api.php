@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CoverLetterController;
-use App\Http\Controllers\Api\LanguagesController;
+use App\Http\Controllers\Api\CodingLanguageController;
 use App\Http\Controllers\Api\ResumeController;
 
 /*
@@ -38,7 +38,7 @@ Route::get('/cover-letter/{hash}', [CoverLetterController::class, 'get'])
 	->middleware('throttle:50,1'); // Open
 
 Route::middleware('auth:sanctum')
-	->post('/repositories', [LanguagesController::class, 'addRepositories']);
+	->post('/repositories', [CodingLanguageController::class, 'addRepositories']);
 
-Route::get('/languages/stats', [LanguagesController::class, 'stats'])
+Route::get('/languages/stats', [CodingLanguageController::class, 'stats'])
 	->middleware('throttle:50,1'); // Open

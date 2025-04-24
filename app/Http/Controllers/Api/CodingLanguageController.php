@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Models\Repository;
-use App\Models\Language;
-use Database\Seeders\LanguageSeeder;
+use App\Models\CodingLanguage;
+use Database\Seeders\CodingLanguageSeeder;
 use App\Http\Controllers\Controller;
 
-class LanguagesController extends Controller
+class CodingLanguageController extends Controller
 {
     public function addRepositories(Request $request) {
 		try {
@@ -28,8 +28,8 @@ class LanguagesController extends Controller
 			}
 
 			// Update languages
-			$languageSeeder = new LanguageSeeder();
-			$languageSeeder->run();
+			$CodingLanguageSeeder = new CodingLanguageSeeder();
+			$CodingLanguageSeeder->run();
 	
 			// Process the data as needed
 			return response()->json(['success' => true], 201);
@@ -43,7 +43,7 @@ class LanguagesController extends Controller
 
 	public function stats()
     {
-        $languages = Language::active()
+        $languages = CodingLanguage::active()
             ->orderBy('width', 'desc')
             ->get();
 

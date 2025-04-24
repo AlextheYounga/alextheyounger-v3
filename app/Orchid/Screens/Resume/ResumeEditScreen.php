@@ -154,12 +154,16 @@ class ResumeEditScreen extends Screen
 						"Location" => "location",
 						"Date" => "date",
 						"Link" => "link",
+						"Stack" => "stack",
 						"Bullets" => "bullets",
 					])
 					->fields([
-						"title" => Input::make()->width(1),
-						"company" => Input::make()->width(1),
-						"location" => Input::make()->width(1),
+						"title" => Input::make(),
+						"company" => Input::make(),
+						"location" => Input::make(),
+						"date" => Input::make(),
+						"link" => Input::make(),
+						"stack" => Input::make(),
 						"bullets" => Code::make()
 							->language('json')
 							->height('100px')
