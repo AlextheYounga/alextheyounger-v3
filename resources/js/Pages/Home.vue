@@ -234,12 +234,14 @@ export default {
 
 #desktop #hud section > div:first-child {
     max-height: 65vh;
-    overflow: scroll;
+	overflow-y: scroll;
+	scrollbar-width: none;
 }
 
 #mobile #hud section > div:first-child{
     max-height: 45vh;
-    overflow: scroll;
+    overflow-y: scroll;
+	scrollbar-width: none;
 }
 
 #hud p {
