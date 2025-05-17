@@ -8,6 +8,7 @@ php artisan migrate --force
 source ~/.nvm/nvm.sh
 
 # Refresh node modules
+rm -rf node_modules
 nvm install
 wait
 yarn
