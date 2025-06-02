@@ -47,6 +47,16 @@ class ResumeListLayout extends Table
         ];
     }
 
+	public function duplicate(Resume $resume) {
+		$resumeName = $resume->name;
+		$duplicateParams = collect($resume)
+			->except(['id', 'hash', 'created_at', 'updated_at'])
+			->toArray();
+		$duplicateParams['name'] = $resumeName . " (Copy)";
+		$newResume = Resume::create($duplicateParams);
+		return redirect()->route('platform.resume.edit', $newResume);
+	}
+
     private function formatDate($dateString)
     {
         $carbon = Carbon::parse($dateString);

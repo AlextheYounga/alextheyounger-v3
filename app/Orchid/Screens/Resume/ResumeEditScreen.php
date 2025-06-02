@@ -31,16 +31,6 @@ class ResumeEditScreen extends Screen
 	 */
 	public function query(Resume $resume, Request $request): iterable
 	{
-		if ($request->routeIs('platform.resume.duplicate')) {
-			// Create a duplicate instance with the same attributes.
-			$duplicate = $resume->replicate();
-			// Optionally, modify the name to indicate it's a copy.
-			$duplicate->name = $duplicate->name . ' (Copy)';
-			return [
-				'resume' => $duplicate,
-			];
-		}
-
 		return [
 			'resume' => $resume,
 		];
@@ -105,6 +95,9 @@ class ResumeEditScreen extends Screen
     {
         return [
             Layout::rows([
+				Input::make('resume.id')
+					->hidden(),
+
 				Input::make('resume.hash')
 					->hidden(),
 
@@ -183,7 +176,7 @@ class ResumeEditScreen extends Screen
      */
     public function createOrUpdate(Request $request)
     {
-        $resume = Resume::where('name', $request->get('resume')['name'])->first() ?? new Resume();
+		$resume = Resume::where('id', $request->get('resume')['id'])->first() ?? new Resume();
         $fields = $request->get('resume');
 		
 		if (isset($fields['experience'])) {

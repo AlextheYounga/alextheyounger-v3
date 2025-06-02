@@ -58,6 +58,19 @@ class ProposalListLayout extends Table
         ];
     }
 
+	/**
+     * This gets called from the Duplicate button, which links back to this function in platform.php
+    */
+	public function duplicate(Proposal $proposal) {
+		$proposalTitle = $proposal->title;
+		$duplicateParams = collect($proposal)
+			->except(['id', 'hash', 'created_at', 'updated_at'])
+			->toArray();
+		$duplicateParams['title'] = $proposalTitle . " (Copy)";
+		$newResume = Proposal::create($duplicateParams);
+		return redirect()->route('platform.proposal.edit', $newResume);
+	}
+
     private function formatDate($dateString)
     {
         $carbon = Carbon::parse($dateString);

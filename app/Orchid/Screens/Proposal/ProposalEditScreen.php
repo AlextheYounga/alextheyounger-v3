@@ -47,14 +47,20 @@ class ProposalEditScreen extends Screen
         ];
     }
 
-    /**
+	/**
      * The name of the screen displayed in the header.
      *
      * @return string|null
      */
     public function name(): ?string
     {
-        return $this->proposal->exists ? 'Edit Proposal' : 'Create Proposal';
+		if (str_contains($this->proposal->name, '(Copy)')) { 
+			return 'Creating a duplicate proposal';
+		} else if ($this->proposal->exists) {
+			return 'Edit Proposal';
+		} else {
+			return 'Create Proposal';
+		}
     }
 
     /**
@@ -91,6 +97,9 @@ class ProposalEditScreen extends Screen
     {
         return [
             Layout::rows([
+				Input::make('proposal.id')
+					->hidden(),
+
                 Input::make('proposal.title')
                     ->title('Title')
                     ->required(),
@@ -196,7 +205,7 @@ class ProposalEditScreen extends Screen
      */
     public function createOrUpdate(Request $request)
     {
-        $proposal = Proposal::where('title', $request->get('proposal')['title'])->first() ?? new Proposal();
+		$proposal = Proposal::where('id', $request->get('proposal')['id'])->first() ?? new Proposal();
         $fields = $request->get('proposal');
 
 		$record = [

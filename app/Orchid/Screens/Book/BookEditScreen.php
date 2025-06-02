@@ -87,6 +87,9 @@ class BookEditScreen extends Screen
     {
         return [
             Layout::rows([
+				Input::make('book.id')
+					->hidden(),
+
                 Input::make('book.title')
                     ->title('Title')
                     ->placeholder('Attractive but mysterious title')
@@ -152,7 +155,7 @@ class BookEditScreen extends Screen
      */
     public function createOrUpdate(Request $request)
     {
-        $book = Book::where('title', $request->get('book')['title'])->first() ?? new Book();
+        $book = Book::where('id', $request->get('book')['id'])->first() ?? new Book();
         
         $fields = $request->get('book');
 

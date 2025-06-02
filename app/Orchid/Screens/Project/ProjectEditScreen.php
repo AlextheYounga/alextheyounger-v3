@@ -87,6 +87,9 @@ class ProjectEditScreen extends Screen
     {
         return [
             Layout::rows([
+				Input::make('project.id')
+                    ->hidden(),
+
                 Input::make('project.title')
                     ->title('Title')
                     ->placeholder('Attractive but mysterious title')
@@ -155,7 +158,7 @@ class ProjectEditScreen extends Screen
      */
     public function createOrUpdate(Request $request)
     {
-        $project = Project::where('title', $request->get('project')['title'])->first() ?? new Project();
+        $project = Project::where('id', $request->get('project')['id'])->first() ?? new Project();
         $fields = $request->get('project');
 
 		$record = [

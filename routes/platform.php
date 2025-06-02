@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Layouts\ProposalListLayout;
+use App\Orchid\Layouts\ResumeListLayout;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -71,7 +73,7 @@ Route::screen('proposal/{proposal?}', ProposalEditScreen::class)
 	->name('platform.proposal.edit');
 Route::screen('proposals', ProposalListScreen::class)
 	->name('platform.proposal.list');
-Route::screen('proposal/duplicate/{proposal}', ProposalEditScreen::class)
+Route::get('proposal/duplicate/{proposal}', [ProposalListLayout::class, 'duplicate'])
 	->name('platform.proposal.duplicate');
 
 // Books
@@ -89,7 +91,7 @@ Route::screen('cover-letters', CoverLetterListScreen::class)
 // Resumes
 Route::screen('resume/{resume?}', ResumeEditScreen::class)
     ->name('platform.resume.edit');
-Route::screen('resume/duplicate/{resume}', ResumeEditScreen::class)
+Route::get('resume/duplicate/{resume}', [ResumeListLayout::class, 'duplicate'])
 	->name('platform.resume.duplicate');
 Route::screen('resumes', ResumeListScreen::class)
     ->name('platform.resume.list');
@@ -159,4 +161,4 @@ Route::screen('/layout/examples/layouts', ExampleLayoutsScreen::class)->name('pl
 Route::screen('/charts/examples/charts', ExampleChartsScreen::class)->name('platform.example.charts');
 Route::screen('/cards/examples/cards', ExampleCardsScreen::class)->name('platform.example.cards');
 
-//Route::screen('idea', Idea::class, 'platform.screens.idea');
+
