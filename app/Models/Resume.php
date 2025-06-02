@@ -16,7 +16,7 @@ class Resume extends Model
 		parent::boot();
 
 		static::saving(function ($model) {
-			if (!empty($model->name) && empty($model->hash)) {
+			if (!empty($model->name)) {
 				$model->hash = hash('crc32', $model->name);
 			}
 		});
