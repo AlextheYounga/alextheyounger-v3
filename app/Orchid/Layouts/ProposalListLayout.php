@@ -67,8 +67,8 @@ class ProposalListLayout extends Table
 			->except(['id', 'hash', 'created_at', 'updated_at'])
 			->toArray();
 		$duplicateParams['title'] = $proposalTitle . " (Copy)";
-		$newResume = Proposal::create($duplicateParams);
-		return redirect()->route('platform.proposal.edit', $newResume);
+		$newProposal = Proposal::create($duplicateParams);
+		return redirect()->route('platform.proposal.edit', $newProposal);
 	}
 
     private function formatDate($dateString)

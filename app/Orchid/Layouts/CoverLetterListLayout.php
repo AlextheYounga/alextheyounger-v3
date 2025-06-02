@@ -40,10 +40,27 @@ class CoverLetterListLayout extends Table
 				->render(fn (CoverLetter $coverLetter) => strlen($coverLetter->content) . ' chars'),
 			TD::make('created_at', 'Created')
                 ->render(fn (CoverLetter $coverLetter) => $this->formatDate($coverLetter->created_at)),
-            TD::make('updated_at', 'Last edit')
-                ->render(fn (CoverLetter $coverLetter) => $this->formatDate($coverLetter->updated_at)),
+			TD::make('Duplicate', '')
+				->render(function (CoverLetter $coverLetter) {
+					return Link::make('Duplicate')
+						->icon('copy')
+						->route('platform.cover-letter.duplicate', $coverLetter);
+				}),
 		];
     }
+
+		/**
+     * This gets called from the Duplicate button, which links back to this function in platform.php
+    */
+	public function duplicate(CoverLetter $coverLetter) {
+		$coverLetterName = $coverLetter->name;
+		$duplicateParams = collect($coverLetter)
+			->except(['id', 'hash', 'created_at', 'updated_at'])
+			->toArray();
+		$duplicateParams['name'] = $coverLetterName . " (Copy)";
+		$newCoverLetter = coverLetter::create($duplicateParams);
+		return redirect()->route('platform.cover-letter.edit', $newCoverLetter);
+	}
 
     private function formatDate($dateString)
     {

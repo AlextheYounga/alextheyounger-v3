@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Layouts\CoverLetterListLayout;
 use App\Orchid\Layouts\ProposalListLayout;
 use App\Orchid\Layouts\ResumeListLayout;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
@@ -87,14 +88,16 @@ Route::screen('cover-letter/{coverLetter?}', CoverLetterEditScreen::class)
 ->name('platform.cover-letter.edit');
 Route::screen('cover-letters', CoverLetterListScreen::class)
 ->name('platform.cover-letter.list');
+Route::get('resume/duplicate/{coverLetter}', [CoverLetterListLayout::class, 'duplicate'])
+	->name('platform.cover-letter.duplicate');
 
 // Resumes
 Route::screen('resume/{resume?}', ResumeEditScreen::class)
     ->name('platform.resume.edit');
-Route::get('resume/duplicate/{resume}', [ResumeListLayout::class, 'duplicate'])
-	->name('platform.resume.duplicate');
 Route::screen('resumes', ResumeListScreen::class)
     ->name('platform.resume.list');
+Route::get('resume/duplicate/{resume}', [ResumeListLayout::class, 'duplicate'])
+	->name('platform.resume.duplicate');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
