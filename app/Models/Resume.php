@@ -16,8 +16,10 @@ class Resume extends Model
 		parent::boot();
 
 		static::saving(function ($model) {
-			if (!empty($model->name)) {
-				$model->hash = hash('crc32', $model->name);
+			if (empty($model->hash)) {
+				$len = 8;
+				$randomHash = substr(hash('sha256', openssl_random_pseudo_bytes(22)),-$len);
+				$model->hash = $randomHash;
 			}
 		});
 	}

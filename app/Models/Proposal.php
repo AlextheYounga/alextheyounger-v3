@@ -17,10 +17,13 @@ class Proposal extends Model
 		parent::boot();
 
 		static::saving(function ($model) {
-			if (!empty($model->title) && empty($model->hash)) {
-				$model->hash = hash('sha256', $model->title);
+			if (empty($model->hash)) {
+				$len = 64;
+				$randomHash = substr(hash('sha256', openssl_random_pseudo_bytes(22)),-$len);
+				$model->hash = $randomHash;
 			}
 		});
+		
 	}
 	
     /**
