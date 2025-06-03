@@ -7,6 +7,8 @@ use Orchid\Screen\TD;
 use App\Models\Proposal;
 use Orchid\Screen\Actions\Link;
 use Carbon\Carbon;
+use Orchid\Screen\Fields\Group;
+use Orchid\Screen\Actions\Button;
 
 class ProposalListLayout extends Table
 {
@@ -42,34 +44,18 @@ class ProposalListLayout extends Table
                 ->render(fn (Proposal $proposal) => $this->formatDate($proposal->created_at)),
             TD::make('updated_at', 'Last edit')
                 ->render(fn (Proposal $proposal) => $this->formatDate($proposal->updated_at)),
-			TD::make('Live View', '')
-                ->render(function (Proposal $proposal) {
-                    return Link::make('View')
+			TD::make()
+				->render(fn(Proposal $proposal) => Group::make([
+					Link::make('View')
 						->icon('eye')
 						->target('_blank')
-						->href("/proposals/" . $proposal->hash);
-                }),
-			TD::make('Duplicate', '')
-				->render(function (Proposal $proposal) {
-					return Link::make('Duplicate')
+						->href("/proposals/" . $proposal->hash),
+					Button::make('Duplicate')
 						->icon('copy')
-						->route('platform.proposal.duplicate', $proposal);
-				}),
+						->action(route('platform.proposal.duplicate', $proposal)),
+				])),
         ];
     }
-
-	/**
-     * This gets called from the Duplicate button, which links back to this function in platform.php
-    */
-	public function duplicate(Proposal $proposal) {
-		$proposalTitle = $proposal->title;
-		$duplicateParams = collect($proposal)
-			->except(['id', 'hash', 'created_at', 'updated_at'])
-			->toArray();
-		$duplicateParams['title'] = $proposalTitle . " (Copy)";
-		$newProposal = Proposal::create($duplicateParams);
-		return redirect()->route('platform.proposal.edit', $newProposal);
-	}
 
     private function formatDate($dateString)
     {

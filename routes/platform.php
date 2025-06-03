@@ -74,7 +74,7 @@ Route::screen('proposal/{proposal?}', ProposalEditScreen::class)
 	->name('platform.proposal.edit');
 Route::screen('proposals', ProposalListScreen::class)
 	->name('platform.proposal.list');
-Route::get('proposal/duplicate/{proposal}', [ProposalListLayout::class, 'duplicate'])
+Route::post('proposal/duplicate/{proposal}', [ProposalEditScreen::class, 'duplicate'])
 	->name('platform.proposal.duplicate');
 
 // Books
@@ -88,7 +88,7 @@ Route::screen('cover-letter/{coverLetter?}', CoverLetterEditScreen::class)
 ->name('platform.cover-letter.edit');
 Route::screen('cover-letters', CoverLetterListScreen::class)
 ->name('platform.cover-letter.list');
-Route::get('resume/duplicate/{coverLetter}', [CoverLetterListLayout::class, 'duplicate'])
+Route::post('cover-letter/duplicate/{coverLetter}', [CoverLetterEditScreen::class, 'duplicate'])
 	->name('platform.cover-letter.duplicate');
 
 // Resumes
@@ -96,7 +96,7 @@ Route::screen('resume/{resume?}', ResumeEditScreen::class)
     ->name('platform.resume.edit');
 Route::screen('resumes', ResumeListScreen::class)
     ->name('platform.resume.list');
-Route::get('resume/duplicate/{resume}', [ResumeListLayout::class, 'duplicate'])
+Route::post('resume/duplicate/{resume}', [ResumeEditScreen::class, 'duplicate'])
 	->name('platform.resume.duplicate');
 
 // Platform > Profile

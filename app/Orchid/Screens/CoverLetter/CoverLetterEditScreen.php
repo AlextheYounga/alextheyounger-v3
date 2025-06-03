@@ -141,6 +141,19 @@ class CoverLetterEditScreen extends Screen
         return redirect()->route('platform.cover-letter.list');
     }
 
+	/**
+     * This gets called from the Duplicate button, which links back to this function in platform.php
+    */
+	public function duplicate(CoverLetter $coverLetter) {
+		$coverLetterName = $coverLetter->name;
+		$duplicateParams = collect($coverLetter)
+			->except(['id', 'hash', 'created_at', 'updated_at'])
+			->toArray();
+		$duplicateParams['name'] = $coverLetterName . " (Copy)";
+		$newCoverLetter = CoverLetter::create($duplicateParams);
+		return redirect()->route('platform.cover-letter.edit', $newCoverLetter);
+	}
+
     /**
      * @param CoverLetter $coverLetter
      *

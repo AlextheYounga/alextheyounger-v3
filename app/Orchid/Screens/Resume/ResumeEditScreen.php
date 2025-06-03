@@ -213,4 +213,17 @@ class ResumeEditScreen extends Screen
 
         return redirect()->route('platform.resume.list');
     }
+
+	/**
+     * This gets called from the Duplicate button, which links back to this function in platform.php
+    */
+	public function duplicate(Resume $resume) {
+		$resumeName = $resume->name;
+		$duplicateParams = collect($resume)
+			->except(['id', 'hash', 'created_at', 'updated_at'])
+			->toArray();
+		$duplicateParams['name'] = $resumeName . " (Copy)";
+		$newResume = Resume::create($duplicateParams);
+		return redirect()->route('platform.resume.edit', $newResume);
+	}
 }

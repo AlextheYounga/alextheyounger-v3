@@ -7,6 +7,8 @@ use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Link;
 use App\Models\Resume;
 use Carbon\Carbon;
+use Orchid\Screen\Fields\Group;
+use Orchid\Screen\Actions\Button;
 
 class ResumeListLayout extends Table
 {
@@ -19,6 +21,8 @@ class ResumeListLayout extends Table
      * @var string
      */
     protected $target = 'resumes';
+	protected $resumeSite = 'https://resume.alexyounger.me/';
+
 
     /**
      * Get the table cells to be displayed.
@@ -38,32 +42,18 @@ class ResumeListLayout extends Table
                 ->render(fn (Resume $resume) => $this->formatDate($resume->created_at)),
             TD::make('updated_at', 'Last edit')
                 ->render(fn (Resume $resume) => $this->formatDate($resume->updated_at)),
-			TD::make('View', '')
-				->render(function (Resume $resume) {
-					$resumeSite = 'https://resume.alexyounger.me/';
-					return Link::make('View')
+			TD::make()
+				->render(fn(Resume $resume) => Group::make([
+					Link::make('View')
 						->icon('eye')
 						->target('_blank')
-						->href($resumeSite . $resume->hash);
-				}),
-			TD::make('Duplicate', '')
-				->render(function (Resume $resume) {
-					return Link::make('Duplicate')
+						->href($this->resumeSite . $resume->hash),
+					Button::make('Duplicate')
 						->icon('copy')
-						->route('platform.resume.duplicate', $resume);
-				}),
+						->action(route('platform.resume.duplicate', $resume)),
+				])),
         ];
     }
-
-	public function duplicate(Resume $resume) {
-		$resumeName = $resume->name;
-		$duplicateParams = collect($resume)
-			->except(['id', 'hash', 'created_at', 'updated_at'])
-			->toArray();
-		$duplicateParams['name'] = $resumeName . " (Copy)";
-		$newResume = Resume::create($duplicateParams);
-		return redirect()->route('platform.resume.edit', $newResume);
-	}
 
     private function formatDate($dateString)
     {

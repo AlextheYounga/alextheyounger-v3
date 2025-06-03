@@ -246,6 +246,19 @@ class ProposalEditScreen extends Screen
         return redirect()->route('platform.proposal.list');
     }
 
+	/**
+     * This gets called from the Duplicate button, which links back to this function in platform.php
+    */
+	public function duplicate(Proposal $proposal) {
+		$proposalTitle = $proposal->title;
+		$duplicateParams = collect($proposal)
+			->except(['id', 'hash', 'created_at', 'updated_at'])
+			->toArray();
+		$duplicateParams['title'] = $proposalTitle . " (Copy)";
+		$newProposal = Proposal::create($duplicateParams);
+		return redirect()->route('platform.proposal.edit', $newProposal);
+	}
+
 	private function sumTotal($lineItems) {
 		$total = 0;
 		foreach ($lineItems as $item) {
