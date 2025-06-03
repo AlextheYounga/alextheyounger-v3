@@ -44,10 +44,10 @@ class ProposalListLayout extends Table
                 ->render(fn (Proposal $proposal) => $this->formatDate($proposal->updated_at)),
 			TD::make('Live View', '')
                 ->render(function (Proposal $proposal) {
-                    return Link::make('Live View')
+                    return Link::make('View')
 						->icon('eye')
-						->href("/proposals/" . $proposal->hash)
-						->target('_blank');
+						->target('_blank')
+						->href("/proposals/" . $proposal->hash);
                 }),
 			TD::make('Duplicate', '')
 				->render(function (Proposal $proposal) {

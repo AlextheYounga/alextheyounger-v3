@@ -40,6 +40,14 @@ class CoverLetterListLayout extends Table
 				->render(fn (CoverLetter $coverLetter) => strlen($coverLetter->content) . ' chars'),
 			TD::make('created_at', 'Created')
                 ->render(fn (CoverLetter $coverLetter) => $this->formatDate($coverLetter->created_at)),
+			TD::make('View', '')
+				->render(function (CoverLetter $coverLetter) {
+					$resumeSite = 'https://resume.alexyounger.me/cover-letters/';
+					return Link::make('View')
+						->icon('eye')
+						->target('_blank')
+						->href($resumeSite . $coverLetter->hash);
+				}),
 			TD::make('Duplicate', '')
 				->render(function (CoverLetter $coverLetter) {
 					return Link::make('Duplicate')

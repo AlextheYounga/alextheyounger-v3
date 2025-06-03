@@ -38,7 +38,15 @@ class ResumeListLayout extends Table
                 ->render(fn (Resume $resume) => $this->formatDate($resume->created_at)),
             TD::make('updated_at', 'Last edit')
                 ->render(fn (Resume $resume) => $this->formatDate($resume->updated_at)),
-			TD::make('duplicate', 'Duplicate')
+			TD::make('View', '')
+				->render(function (Resume $resume) {
+					$resumeSite = 'https://resume.alexyounger.me/';
+					return Link::make('View')
+						->icon('eye')
+						->target('_blank')
+						->href($resumeSite . $resume->hash);
+				}),
+			TD::make('Duplicate', '')
 				->render(function (Resume $resume) {
 					return Link::make('Duplicate')
 						->icon('copy')
