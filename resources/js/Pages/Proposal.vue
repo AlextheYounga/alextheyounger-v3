@@ -14,13 +14,13 @@
 					</div>
 
 					<!-- Description -->
-					<div v-if="description">
+					<div v-if="hasContent(description)">
 						<h2 class="text-2xl font-medium text-gray-900 mb-4">Project Description</h2>
 						<div class="prose max-w-none" v-html="description"></div>
 					</div>
 
 					<!-- Scope -->
-					<div v-if="scope">
+					<div v-if="hasContent(scope)">
 						<h2 class="text-2xl font-medium text-gray-900 mb-4">Project Scope</h2>
 						<div class="prose max-w-none" v-html="scope"></div>
 					</div>
@@ -34,7 +34,7 @@
 					</div>
 
 					<!-- Tech Stack -->
-					<div v-if="technology">
+					<div v-if="hasContent(technology)">
 						<h2 class="text-2xl font-medium text-gray-900 mb-4">Technology Stack</h2>
 						<div class="prose max-w-none" v-html="technology"></div>
 					</div>
@@ -94,7 +94,7 @@
 					</div>
 
 					<!-- Disclaimer -->
-					<div v-if="disclaimer">
+					<div v-if="hasContent(disclaimer)">
 						<div class="mb-12">
 							<h2 class="text-2xl font-medium text-gray-900 mb-4">Disclaimer</h2>
 							<div class="prose max-w-none" v-html="disclaimer"></div>
@@ -102,7 +102,7 @@
 					</div>
 
 					<!-- Client Agreement -->
-					<div id="client-agreement" class="rounded border p-8 shadow">
+					<div v-if="proposal.properties?.use_client_agreement" id="client-agreement" class="rounded border p-8 shadow">
 						<div class="no-print" v-if="!proposal.client_sign_date">
 							<h2 class="text-2xl font-medium text-gray-900 mb-4">Client Agreement</h2>
 							<form @submit.prevent="submitAgreement" class="space-y-6">
@@ -177,6 +177,10 @@ const {
 const canSubmit = computed(() => {
 	return agreement.value && signature.value.trim().length > 0;
 });
+
+const hasContent = (content) => {
+	return content && content.replace(/<[^>]*>/g, "").trim().length > 0;
+};
 
 const submitAgreement = () => {
 	router.post(`/proposals/${proposal.hash}/sign`, {

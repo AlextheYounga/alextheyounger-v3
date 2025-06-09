@@ -95,6 +95,7 @@ class ProposalEditScreen extends Screen
      */
     public function layout(): iterable
     {
+		$useClientAgreement = $this->proposal->properties['use_client_agreement'] ?? false;
         return [
             Layout::rows([
 				Input::make('proposal.id')
@@ -113,20 +114,28 @@ class ProposalEditScreen extends Screen
 					->format('Y-m-d'),
 				]),
 
+				CheckBox::make('proposal.use_client_agreement')
+				->title('Use Client Agreement?')
+				->value($useClientAgreement)
+				->help('Do we want to include a client agreement?'),
+				
 				Group::make([
 					CheckBox::make('proposal.client_agreement')
 						->title('Client Agreement')
+						->canSee($useClientAgreement)
 						->disabled()
 						->value($this->proposal->client_agreement ? 1 : 0)
 						->help('Whether the client has agreed to the proposal'),
 
 					Input::make('proposal.client_signature')
 						->title('Client Signature')
+						->canSee($useClientAgreement)
 						->disabled()
 						->help('Client signature'),
 
-						Input::make('proposal.client_sign_date')
+					Input::make('proposal.client_sign_date')
 						->title('Client Signed At')
+						->canSee($useClientAgreement)
 						->disabled()
 						->help('Client signed at'),
 				])->autoWidth(),
@@ -207,6 +216,7 @@ class ProposalEditScreen extends Screen
     {
 		$proposal = Proposal::where('id', $request->get('proposal')['id'])->first() ?? new Proposal();
         $fields = $request->get('proposal');
+		$useClientAgreement = $fields['use_client_agreement'] ?? false;
 
 		$record = [
             'client' => $fields['client'],
@@ -221,6 +231,9 @@ class ProposalEditScreen extends Screen
             'line_items' => $fields['line_items'] ?? null,
 			'total' => empty($fields['line_items']) ? 0 : $this->sumTotal($fields['line_items']),
 			'completion_date' => $fields['completion_date'],
+			'properties' => [
+				'use_client_agreement' => $useClientAgreement,
+			],
 		];
 
         $proposal->fill($record)
