@@ -14,4 +14,6 @@ wait
 yarn
 yarn build
 
+php artisan languages:generate
+
 php artisan up
