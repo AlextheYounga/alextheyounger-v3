@@ -4,9 +4,9 @@
 	<div id="proposal" class="min-h-screen py-12">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="rounded-lg overflow-hidden">
-				<div class="px-6 space-y-6">
+				<div class="px-6">
 					<!-- Header -->
-					<div>
+					<div class="mb-16">
 						<h1 class="text-5xl font-bold text-gray-900">{{ proposal.title }}</h1>
 						<p class="mt-1 text-sm text-gray-500">Created on {{ formatDate(proposal.created_at) }}</p>
 						<p class="mt-3 text-sm text-gray-600"><b>Prepared for</b>: {{ proposal.client }}</p>
@@ -14,35 +14,28 @@
 					</div>
 
 					<!-- Description -->
-					<div v-if="hasContent(description)">
-						<h2 class="text-2xl font-medium text-gray-900 mb-4">Project Description</h2>
+					<div v-if="hasContent(description)" class="my-16">
+						<h2 class="text-2xl font-medium text-gray-700 mb-4">PROJECT DESCRIPTION</h2>
 						<div class="prose max-w-none" v-html="description"></div>
 					</div>
 
 					<!-- Scope -->
-					<div v-if="hasContent(scope)">
-						<h2 class="text-2xl font-medium text-gray-900 mb-4">Project Scope</h2>
+					<div v-if="hasContent(scope)" class="my-16">
+						<h2 class="text-2xl font-medium text-gray-700 mb-4">PROJECT SCOPE</h2>
 						<div class="prose max-w-none" v-html="scope"></div>
 					</div>
 
-					<!-- Completion Date -->
-					<div v-if="proposal.completion_date">
-						<div class="flex items-center my-8">
-							<h2 class="text-2xl font-medium text-gray-900 mr-4">Estimated Completion Date: </h2>
-							<p class="text-lg text-gray-600">{{ formatDate(proposal.completion_date) }}</p>
-						</div>
-					</div>
 
 					<!-- Tech Stack -->
-					<div v-if="hasContent(technology)">
-						<h2 class="text-2xl font-medium text-gray-900 mb-4">Technology Stack</h2>
+					<div v-if="hasContent(technology)" class="my-16">
+						<h2 class="text-2xl font-medium text-gray-700 mb-4">TECHNOLOGY STACK</h2>
 						<div class="prose max-w-none" v-html="technology"></div>
 					</div>
 
 					<!-- Line Items -->
-					<div v-if="proposal.line_items && Object.entries(proposal.line_items).length">
+					<div v-if="proposal.line_items && Object.entries(proposal.line_items).length" class="my-16">
 						<div class="my-12">
-							<h2 class="text-2xl font-medium text-gray-900 mb-4">Line Items</h2>
+							<h2 class="text-2xl font-medium text-gray-700mb-4">LINE ITEMS</h2>
 							<div class="mt-4 overflow-x-auto">
 								<table class="min-w-full divide-y divide-gray-200">
 									<thead class="bg-gray-50">
@@ -53,12 +46,12 @@
 									</thead>
 									<tbody class="bg-white divide-y divide-gray-200">
 										<tr v-for="(item, index) in proposal.line_items" :key="index">
-											<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ item.description }}</td>
-											<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">${{ formatPrice(item.price) }}</td>
+											<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ item.description }}</td>
+											<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 text-right">${{ formatPrice(item.price) }}</td>
 										</tr>
 										<tr class="font-bold">
-											<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Total</td>
-											<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">${{ formatPrice(proposal.total) }}</td>
+											<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Total</td>
+											<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 text-right">${{ formatPrice(proposal.total) }}</td>
 										</tr>
 									</tbody>
 								</table>
@@ -66,10 +59,12 @@
 						</div>
 					</div>
 
+
+
 					<!-- Payment Schedule -->
-					<div v-if="paymentSchedule && Object.entries(paymentSchedule).length">
+					<div v-if="paymentSchedule && Object.entries(paymentSchedule).length" class="mt-16">
 						<div class="my-12">
-							<h2 class="text-2xl font-medium text-gray-900 mb-4">Payment Schedule</h2>
+							<h2 class="text-2xl font-medium text-gray-700 mb-4">PAYMENT SCHEDULE</h2>
 							<div class="mt-4 overflow-x-auto">
 								<table class="min-w-full divide-y divide-gray-200">
 									<thead class="bg-gray-50">
@@ -93,18 +88,26 @@
 						</div>
 					</div>
 
+					<!-- Completion Date -->
+					<div v-if="proposal.completion_date" class="-mt-6 mb-16">
+						<div>
+							<h3 class="text-lg font-medium text-gray-700 mr-4">ESTIMATED COMPLETION DATE: </h3>
+							<p class="text-lg text-gray-600">{{ formatDate(proposal.completion_date) }}</p>
+						</div>
+					</div>
+
 					<!-- Disclaimer -->
-					<div v-if="hasContent(disclaimer)">
-						<div class="mb-12">
-							<h2 class="text-2xl font-medium text-gray-900 mb-4">Disclaimer</h2>
+					<div v-if="hasContent(disclaimer)" class="my-16">
+						<div class="mb-16">
+							<h2 class="text-2xl font-medium text-gray-700 mb-4">DISCLAIMER</h2>
 							<div class="prose max-w-none" v-html="disclaimer"></div>
 						</div>
 					</div>
 
 					<!-- Client Agreement -->
-					<div v-if="proposal.properties?.use_client_agreement" id="client-agreement" class="rounded border p-8 shadow">
+					<div v-if="proposal.properties?.use_client_agreement" id="client-agreement" class="rounded border p-8 shadow mb-16">
 						<div class="no-print" v-if="!proposal.client_sign_date">
-							<h2 class="text-2xl font-medium text-gray-900 mb-4">Client Agreement</h2>
+							<h2 class="text-2xl font-medium text-gray-700 mb-4">Client Agreement</h2>
 							<form @submit.prevent="submitAgreement" class="space-y-6">
 								<div>
 									<label class="flex items-center">
@@ -131,7 +134,7 @@
 
 
 						<div v-if="proposal.client_sign_date">
-							<h2 class="text-2xl font-medium text-gray-900 mb-4">Client Agreement</h2>
+							<h2 class="text-2xl font-medium text-gray-700 mb-4">Client Agreement</h2>
 							<div class="mt-4 flex justify-between items-center">
 								<p class="text-lg text-gray-600"><b class="pr-4">Signed by:</b> <span class="yesteryear signature text-5xl">{{ proposal.client_signature }}</span></p>
 								<p class="text-lg text-gray-600 mt-2"><b class="pr-4">Signed on:</b> <span class="underline">{{ formatDate(proposal.client_sign_date) }}</span></p>
