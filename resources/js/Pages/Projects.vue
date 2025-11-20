@@ -1,6 +1,5 @@
 ```vue
 <template>
-
     <Head title="Project Gallery" />
     <AnimatedButtonMenu />
 
@@ -9,17 +8,41 @@
             <div class="rounded-md md:border-2 md:border-sky-600 px-3 md:px-0 py-12">
                 <div class="mx-auto max-w-3xl">
                     <h1 class="text-white text-4xl font-semibold text-center">Projects</h1>
-                    <p class="text-center text-sky-300 mx-auto leading-relaxed text-base pb-4">Here are some of my proudest projects, personal and professional.</p>
+                    <p class="text-center text-sky-300 mx-auto leading-relaxed text-base pb-4">
+                        Here are some of my proudest projects, personal and professional.
+                    </p>
                 </div>
-                <div v-if="projects.length > 0" id="projects-container" class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-6xl lg:grid-cols-3">
-                    <div v-for="project in this.projects" :key="project.id" class="flex flex-col overflow-hidden rounded-lg shadow-lg relative border">
+                <div
+                    v-if="projects.length > 0"
+                    id="projects-container"
+                    class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-6xl lg:grid-cols-3"
+                >
+                    <div
+                        v-for="project in this.projects"
+                        :key="project.id"
+                        class="flex flex-col overflow-hidden rounded-lg shadow-lg relative border"
+                    >
                         <div class="flex-shrink-0">
-                            <img v-if="project.external_image_link" :src="project.external_image_link" class="h-48 w-full object-cover" />
-                            <img v-else :src="`/images/projects/${project.properties?.image_name}.webp`" class="h-48 w-full object-cover" :alt="imageAlt(project)" />
+                            <img
+                                v-if="project.external_image_link"
+                                :src="project.external_image_link"
+                                class="h-48 w-full object-cover"
+                            />
+                            <img
+                                v-else
+                                :src="`/images/projects/${project.properties?.image_name}.webp`"
+                                class="h-48 w-full object-cover"
+                                :alt="imageAlt(project)"
+                            />
                         </div>
                         <div class="flex flex-1 flex-col justify-between bg-sky-600 bg-opacity-25 p-6">
                             <div class="flex-1">
-                                <p v-for="tech of project.content?.technology" :key="tech" class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2" :data-techstack="tech">
+                                <p
+                                    v-for="tech of project.content?.technology"
+                                    :key="tech"
+                                    class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2"
+                                    :data-techstack="tech"
+                                >
                                     {{ tech }}
                                 </p>
 
@@ -30,9 +53,24 @@
                                 </div>
                             </div>
                             <div class="mt-6 flex items-center">
-                                <button @click="showModal = true; projectSelected = project;" class="text-blue-500 inline-flex items-center" target="_blank">
+                                <button
+                                    @click="
+                                        showModal = true;
+                                        projectSelected = project;
+                                    "
+                                    class="text-blue-500 inline-flex items-center"
+                                    target="_blank"
+                                >
                                     View More
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <svg
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        class="w-4 h-4 ml-2"
+                                        viewBox="0 0 24 24"
+                                    >
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
                                 </button>
@@ -48,17 +86,30 @@
         </div>
     </div>
 
-
     <!-- Modal -->
     <Modal :show="showModal" @close="showModal = false">
         <div>
             <div class="flex-shrink-0">
-                <img v-if="projectSelected.external_image_link" :src="projectSelected.external_image_link" class="w-full object-cover" />
-                <img v-else :src="`/images/projects/${projectSelected.properties?.image_name}.webp`" class="w-full object-cover" :alt="imageAlt(projectSelected)" />
+                <img
+                    v-if="projectSelected.external_image_link"
+                    :src="projectSelected.external_image_link"
+                    class="w-full object-cover"
+                />
+                <img
+                    v-else
+                    :src="`/images/projects/${projectSelected.properties?.image_name}.webp`"
+                    class="w-full object-cover"
+                    :alt="imageAlt(projectSelected)"
+                />
             </div>
             <div class="flex flex-1 flex-col justify-between bg-white p-6">
                 <div class="flex-1">
-                    <p v-for="tech of projectSelected.content?.technology" :key="tech" class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2" :data-techstack="tech">
+                    <p
+                        v-for="tech of projectSelected.content?.technology"
+                        :key="tech"
+                        class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2"
+                        :data-techstack="tech"
+                    >
                         {{ tech }}
                     </p>
 
@@ -67,21 +118,33 @@
                         <p class="text-sm font-semibold text-gray-400">{{ projectSelected.scope }}</p>
 
                         <div class="mt-2 flex items-center">
-                            <a :href="projectSelected.external_link" class="text-red-500 inline-flex items-center" target="_blank">Visit Project
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                            <a
+                                :href="projectSelected.external_link"
+                                class="text-red-500 inline-flex items-center"
+                                target="_blank"
+                                >Visit Project
+                                <svg
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    class="w-4 h-4 ml-2"
+                                    viewBox="0 0 24 24"
+                                >
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
                             </a>
                         </div>
 
-						<p class="mt-6 text-base text-gray-600" v-for="bullet in projectSelected.content?.bullets">- {{ bullet }}</p>
+                        <p class="mt-6 text-base text-gray-600" v-for="bullet in projectSelected.content?.bullets">
+                            - {{ bullet }}
+                        </p>
                     </div>
                 </div>
-
             </div>
         </div>
     </Modal>
-
 </template>
 
 <script>
@@ -95,7 +158,7 @@ export default {
     components: {
         Head,
         AnimatedButtonMenu,
-        Modal
+        Modal,
     },
     props: {
         projects: {
@@ -107,20 +170,20 @@ export default {
         return {
             showModal: false,
             projectSelected: null,
-        }
+        };
     },
     methods: {
         imageAlt(project) {
-            return `Alex Younger Project Gallery ${project.title} Cover Image`
+            return `Alex Younger Project Gallery ${project.title} Cover Image`;
         },
     },
     mounted() {
         renderStarfield();
-        generateColors()
+        generateColors();
     },
     updated() {
-        generateColors()
-    }
+        generateColors();
+    },
 };
 </script>
 
@@ -131,6 +194,13 @@ export default {
 }
 
 h1 {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ea5e9, 0 0 40px #0ea5e9, 0 0 50px #0ea5e9, 0 0 60px #0ea5e9, 0 0 70px #0ea5e9;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #0ea5e9,
+        0 0 40px #0ea5e9,
+        0 0 50px #0ea5e9,
+        0 0 60px #0ea5e9,
+        0 0 70px #0ea5e9;
 }
 </style>

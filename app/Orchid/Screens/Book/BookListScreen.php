@@ -21,8 +21,7 @@ class BookListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'books' => Book::orderBy('position', 'asc')
-                ->get()
+            'books' => Book::orderBy('position', 'asc')->get(),
         ];
     }
 
@@ -41,7 +40,7 @@ class BookListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All books in reading list";
+        return 'All books in reading list';
     }
 
     /**
@@ -51,11 +50,7 @@ class BookListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make('Create new')
-                ->icon('pencil')
-                ->route('platform.book.edit')
-        ];
+        return [Link::make('Create new')->icon('pencil')->route('platform.book.edit')];
     }
 
     /**
@@ -70,13 +65,14 @@ class BookListScreen extends Screen
             Layout::modal('positionModal', [
                 Layout::rows([
                     Input::make('book.position')
-                    ->type('number')
-                    ->title('Position')
-                    ->help('Where in the list should this book sit; 1 is the top.'),
+                        ->type('number')
+                        ->title('Position')
+                        ->help('Where in the list should this book sit; 1 is the top.'),
                 ]),
-            ])->type(Modal::TYPE_RIGHT)
+            ])
+                ->type(Modal::TYPE_RIGHT)
                 ->size(Modal::SIZE_SM)
-                ->async('asyncGetBook')
+                ->async('asyncGetBook'),
         ];
     }
 
@@ -100,9 +96,7 @@ class BookListScreen extends Screen
      */
     public function updatePosition(Book $book, Request $request)
     {
-        $book->fill($request->input('book'))
-            ->reorderPositions()
-            ->save();
+        $book->fill($request->input('book'))->reorderPositions()->save();
 
         return redirect()->route('platform.book.list');
     }

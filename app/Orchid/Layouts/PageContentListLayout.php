@@ -23,18 +23,18 @@ class PageContentListLayout extends Table
     public function columns(): array
     {
         return [
-            TD::make('name', 'Name')
-                ->render(function (PageContent $pageContent) {
-                    return Link::make($pageContent->name)
-                        ->route('platform.page-content.edit', $pageContent);
-                }),
+            TD::make('name', 'Name')->render(function (PageContent $pageContent) {
+                return Link::make($pageContent->name)->route('platform.page-content.edit', $pageContent);
+            }),
             TD::make('view', 'View'),
             TD::make('key', 'Key'),
             TD::make('html_id', 'HTML ID'),
-            TD::make('created_at', 'Created')
-                ->render(fn (PageContent $pageContent) => $this->formatDate($pageContent->created_at)),
-            TD::make('updated_at', 'Last edit')
-                ->render(fn (PageContent $pageContent) => $this->formatDate($pageContent->updated_at)),
+            TD::make('created_at', 'Created')->render(
+                fn(PageContent $pageContent) => $this->formatDate($pageContent->created_at),
+            ),
+            TD::make('updated_at', 'Last edit')->render(
+                fn(PageContent $pageContent) => $this->formatDate($pageContent->updated_at),
+            ),
         ];
     }
 

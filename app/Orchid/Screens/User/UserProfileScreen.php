@@ -62,9 +62,7 @@ class UserProfileScreen extends Screen
                 ->icon('bs.people')
                 ->route('platform.switch.logout'),
 
-            Button::make('Sign out')
-                ->icon('bs.box-arrow-left')
-                ->route('platform.logout'),
+            Button::make('Sign out')->icon('bs.box-arrow-left')->route('platform.logout'),
         ];
     }
 
@@ -77,12 +75,7 @@ class UserProfileScreen extends Screen
             Layout::block(UserEditLayout::class)
                 ->title(__('Profile Information'))
                 ->description(__("Update your account's profile information and email address."))
-                ->commands(
-                    Button::make(__('Save'))
-                        ->type(Color::BASIC())
-                        ->icon('bs.check-circle')
-                        ->method('save')
-                ),
+                ->commands(Button::make(__('Save'))->type(Color::BASIC())->icon('bs.check-circle')->method('save')),
 
             Layout::block(ProfilePasswordLayout::class)
                 ->title(__('Update Password'))
@@ -91,7 +84,7 @@ class UserProfileScreen extends Screen
                     Button::make(__('Update password'))
                         ->type(Color::BASIC())
                         ->icon('bs.check-circle')
-                        ->method('changePassword')
+                        ->method('changePassword'),
                 ),
         ];
     }
@@ -99,16 +92,11 @@ class UserProfileScreen extends Screen
     public function save(Request $request): void
     {
         $request->validate([
-            'user.name'  => 'required|string',
-            'user.email' => [
-                'required',
-                Rule::unique(User::class, 'email')->ignore($request->user()),
-            ],
+            'user.name' => 'required|string',
+            'user.email' => ['required', Rule::unique(User::class, 'email')->ignore($request->user())],
         ]);
 
-        $request->user()
-            ->fill($request->get('user'))
-            ->save();
+        $request->user()->fill($request->get('user'))->save();
 
         Toast::info(__('Profile updated.'));
     }
@@ -117,8 +105,8 @@ class UserProfileScreen extends Screen
     {
         $guard = config('platform.guard', 'web');
         $request->validate([
-            'old_password' => 'required|current_password:'.$guard,
-            'password'     => 'required|confirmed|different:old_password',
+            'old_password' => 'required|current_password:' . $guard,
+            'password' => 'required|confirmed|different:old_password',
         ]);
 
         tap($request->user(), function ($user) use ($request) {

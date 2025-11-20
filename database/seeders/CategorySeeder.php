@@ -13,11 +13,11 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::truncate();
-        
+
         $categoriesJson = file_get_contents('storage/app/public/categories.json');
         $categories = json_decode($categoriesJson, true);
 
-        foreach($categories as $category) {
+        foreach ($categories as $category) {
             $properties = json_decode($category['properties'], true);
 
             Category::create([

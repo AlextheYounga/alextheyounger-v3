@@ -65,7 +65,6 @@ class ExampleFieldsScreen extends TestBaseScreen
     public function layout(): iterable
     {
         return [
-
             ExampleElements::class,
             Layout::rows([
                 Input::make('test')
@@ -95,27 +94,15 @@ class ExampleFieldsScreen extends TestBaseScreen
                     ->horizontal()
                     ->help('You might use this when asking to input their website address for a business directory'),
 
-                Input::make('tel')
-                    ->type('tel')
-                    ->title('Telephone')
-                    ->value('1-(555)-555-5555')
-                    ->horizontal()
+                Input::make('tel')->type('tel')->title('Telephone')->value('1-(555)-555-5555')->horizontal()
                     ->popover('The device’s autocomplete mechanisms kick in and suggest
                         phone numbers that can be autofilled with a single tap.')
                     ->help('Focusing input on a telephone field brings up
                         a numeric keypad ready for keying in a number.'),
 
-                Input::make('password')
-                    ->type('password')
-                    ->title('Password')
-                    ->value('Password')
-                    ->horizontal(),
+                Input::make('password')->type('password')->title('Password')->value('Password')->horizontal(),
 
-                Input::make('number')
-                    ->type('number')
-                    ->title('Number')
-                    ->value(42)
-                    ->horizontal(),
+                Input::make('number')->type('number')->title('Number')->value(42)->horizontal(),
 
                 Input::make('date_and_time')
                     ->type('datetime-local')
@@ -123,58 +110,30 @@ class ExampleFieldsScreen extends TestBaseScreen
                     ->value('2011-08-19T13:45:00')
                     ->horizontal(),
 
-                Input::make('date')
-                    ->type('date')
-                    ->title('Date')
-                    ->value('2011-08-19')
-                    ->horizontal(),
+                Input::make('date')->type('date')->title('Date')->value('2011-08-19')->horizontal(),
 
-                Input::make('month')
-                    ->type('month')
-                    ->title('Month')
-                    ->value('2011-08')
-                    ->horizontal(),
+                Input::make('month')->type('month')->title('Month')->value('2011-08')->horizontal(),
 
-                Input::make('week')
-                    ->type('week')
-                    ->title('Week')
-                    ->value('2011-W33')
-                    ->horizontal(),
+                Input::make('week')->type('week')->title('Week')->value('2011-W33')->horizontal(),
 
-                Input::make('Time')
-                    ->type('time')
-                    ->title('Time')
-                    ->value('13:45:00')
-                    ->horizontal(),
+                Input::make('Time')->type('time')->title('Time')->value('13:45:00')->horizontal(),
 
                 Input::make('datalist')
                     ->title('Datalist example')
-                    ->help('Most browsers include some support for "datalist"
-                                 elements, their styling is inconsistent at best.')
-                    ->datalist([
-                        'San Francisco',
-                        'New York',
-                        'Seattle',
-                        'Los Angeles',
-                        'Chicago',
-                    ])
+                    ->help(
+                        'Most browsers include some support for "datalist"
+                                 elements, their styling is inconsistent at best.',
+                    )
+                    ->datalist(['San Francisco', 'New York', 'Seattle', 'Los Angeles', 'Chicago'])
                     ->horizontal(),
 
-                Input::make('color')
-                    ->type('color')
-                    ->title('Color')
-                    ->value('#563d7c')
-                    ->horizontal(),
+                Input::make('color')->type('color')->title('Color')->value('#563d7c')->horizontal(),
 
-                Button::make('Submit')
-                    ->method('buttonClickProcessing')
-                    ->type(Color::BASIC),
-
+                Button::make('Submit')->method('buttonClickProcessing')->type(Color::BASIC),
             ]), //->title('Textual HTML5 Inputs'),
 
             Layout::columns([
                 Layout::rows([
-
                     Input::make('name')
                         ->title('Full Name:')
                         ->placeholder('Enter full name')
@@ -187,35 +146,21 @@ class ExampleFieldsScreen extends TestBaseScreen
                         ->help("We'll never share your email with anyone else.")
                         ->popover('Tooltip - hint that user opens himself.'),
 
-                    Password::make('password')
-                        ->title('Password')
-                        ->placeholder('Password'),
+                    Password::make('password')->title('Password')->placeholder('Password'),
 
-                    Label::make('static')
-                        ->title('Static:')
-                        ->value('email@example.com'),
+                    Label::make('static')->title('Static:')->value('email@example.com'),
 
                     Select::make('select')
                         ->title('Select')
                         ->options([1, 2]),
 
-                    CheckBox::make('checkbox')
-                        ->title('Checkbox')
-                        ->placeholder('Remember me'),
+                    CheckBox::make('checkbox')->title('Checkbox')->placeholder('Remember me'),
 
-                    Radio::make('radio')
-                        ->placeholder('Yes')
-                        ->value(1)
-                        ->title('Radio'),
+                    Radio::make('radio')->placeholder('Yes')->value(1)->title('Radio'),
 
-                    Radio::make('radio')
-                        ->placeholder('No')
-                        ->value(0),
+                    Radio::make('radio')->placeholder('No')->value(0),
 
-                    TextArea::make('textarea')
-                        ->title('Example textarea')
-                        ->rows(6),
-
+                    TextArea::make('textarea')->title('Example textarea')->rows(6),
                 ])->title('Base Controls'),
                 Layout::rows([
                     Input::make('disabled_input')
@@ -236,33 +181,22 @@ class ExampleFieldsScreen extends TestBaseScreen
                         ->rows(6)
                         ->disabled(),
 
-                    Input::make('readonly_input')
-                        ->title('Readonly Input')
-                        ->placeholder('Readonly Input')
-                        ->readonly(),
+                    Input::make('readonly_input')->title('Readonly Input')->placeholder('Readonly Input')->readonly(),
 
                     CheckBox::make('readonly_checkbox')
                         ->title('Readonly Checkbox')
                         ->placeholder('Remember me')
                         ->disabled(),
 
-                    Radio::make('radio')
-                        ->placeholder('Yes')
-                        ->value(1)
-                        ->title('Radio')
-                        ->disabled(),
+                    Radio::make('radio')->placeholder('Yes')->value(1)->title('Radio')->disabled(),
 
-                    Radio::make('radio')
-                        ->placeholder('No')
-                        ->value(0)
-                        ->disabled(),
+                    Radio::make('radio')->placeholder('No')->value(0)->disabled(),
 
                     TextArea::make('readonly_textarea')
                         ->title('Readonlyd textarea')
                         ->placeholder('Readonlyd textarea')
                         ->rows(7)
                         ->disabled(),
-
                 ])->title('Input States'),
             ]),
         ];
@@ -270,6 +204,8 @@ class ExampleFieldsScreen extends TestBaseScreen
 
     public function buttonClickProcessing()
     {
-        Alert::warning('Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.');
+        Alert::warning(
+            'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.',
+        );
     }
 }

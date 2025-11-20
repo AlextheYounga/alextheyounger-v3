@@ -17,7 +17,7 @@ class CoverLetterListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'coverLetters' => CoverLetter::all()
+            'coverLetters' => CoverLetter::all(),
         ];
     }
 
@@ -36,7 +36,7 @@ class CoverLetterListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All Cover Letters";
+        return 'All Cover Letters';
     }
 
     /**
@@ -46,11 +46,7 @@ class CoverLetterListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make('Create new')
-                ->icon('pencil')
-                ->route('platform.cover-letter.edit')
-        ];
+        return [Link::make('Create new')->icon('pencil')->route('platform.cover-letter.edit')];
     }
 
     /**
@@ -60,9 +56,6 @@ class CoverLetterListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [
-            CoverLetterListLayout::class,
-        ];
+        return [CoverLetterListLayout::class];
     }
-
 }

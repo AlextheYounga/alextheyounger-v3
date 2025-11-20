@@ -7,13 +7,12 @@ import { createStarshipEnterprise } from './space/createStarshipEnterprise.js';
 import { createTrisolaranDroplet } from './space/createTrisolaranDroplet.js';
 import { createSpaceXStarship } from './space/createSpaceXStarship.js';
 
-
 let space = null;
 
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
-    space.starField.rotation.y +=  0.000002;
+    space.starField.rotation.y += 0.000002;
     space.renderer.render(space.scene, space.camera);
     space.controls.update();
 }
@@ -24,19 +23,19 @@ function createStarField(scale = 1) {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1300);
     const renderer = new THREE.WebGLRenderer();
 
-	// Handle window resizing
-	window.addEventListener('resize', () => {
-		renderer.setSize(window.innerWidth, window.innerHeight);
-		camera.aspect = window.innerWidth / window.innerHeight;
-		camera.updateProjectionMatrix();
-	});
+    // Handle window resizing
+    window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+    });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     const starfieldDiv = document.getElementById('starfield');
     starfieldDiv.appendChild(renderer.domElement);
 
     // Add stars to the scene
-    const stars = 12109 * scale // The smallest prime formed from reverse concatenation of three consecutive composite numbers
+    const stars = 12109 * scale; // The smallest prime formed from reverse concatenation of three consecutive composite numbers
     // const smallStars = stars * 0.1;
     const mediumStars = Math.floor(stars * 0.85);
     const largeStars = Math.floor(stars * 0.125);
@@ -44,10 +43,10 @@ function createStarField(scale = 1) {
 
     // const starFieldSmall = createStars(smallStars, 3)
     const starFieldMedium = createStars(mediumStars, 5);
-    const starFieldLarge = createStars(largeStars, 10)
-    const starFieldGiant = createStars(giantStars, 25)
+    const starFieldLarge = createStars(largeStars, 10);
+    const starFieldGiant = createStars(giantStars, 25);
 
-    const solarSystem = createSolarSystem()
+    const solarSystem = createSolarSystem();
 
     const starField = new THREE.Group();
     // starField.add(starFieldSmall);
@@ -55,27 +54,27 @@ function createStarField(scale = 1) {
     starField.add(starFieldLarge);
     starField.add(starFieldGiant);
     starField.add(solarSystem);
-    
+
     // Add Enterprise to starfield asynchronously
     // We load the Enterprise CAD model here and it's several megs
-    createStarshipEnterprise(starField) 
+    createStarshipEnterprise(starField);
 
     // Add Trisolaran Droplet to starfield asynchronously
-    createTrisolaranDroplet(starField) 
+    createTrisolaranDroplet(starField);
 
-	// Add SpaceX Starship to starfield asynchronously
-	createSpaceXStarship(starField)
-    
+    // Add SpaceX Starship to starfield asynchronously
+    createSpaceXStarship(starField);
+
     camera.position.z = 2000; // Camera positioning
 
-    scene.add(starField)
+    scene.add(starField);
 
     return {
         starField,
         scene,
         renderer,
         camera,
-    }
+    };
 }
 
 function enableCameraControls(camera, renderer) {
@@ -87,22 +86,17 @@ function enableCameraControls(camera, renderer) {
     controls.maxDistance = 2000;
     controls.maxPolarAngle = Math.PI / 2;
 
-    return controls
+    return controls;
 }
 
 export const renderStarfield = async () => {
-    if (document.getElementById("starfield")) {
+    if (document.getElementById('starfield')) {
         if (!space) {
-            space = createStarField()
+            space = createStarField();
         }
 
-        space.controls = enableCameraControls(
-            space.camera,
-            space.renderer
-        )
+        space.controls = enableCameraControls(space.camera, space.renderer);
 
         animate(); // Start the animation
     }
-}
-
-
+};

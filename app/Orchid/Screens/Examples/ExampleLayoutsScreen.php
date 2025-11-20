@@ -55,7 +55,6 @@ class ExampleLayoutsScreen extends TestBaseScreen
     public function layout(): iterable
     {
         return [
-
             Layout::block(Layout::view('platform::dummy.block'))
                 ->title('Block header')
                 ->description('Excellent description that editing or views in block'),
@@ -80,7 +79,6 @@ class ExampleLayoutsScreen extends TestBaseScreen
                 'Collapsible Group Item #2' => Layout::view('platform::dummy.block'),
                 'Collapsible Group Item #3' => Layout::view('platform::dummy.block'),
             ]),
-
         ];
     }
 }

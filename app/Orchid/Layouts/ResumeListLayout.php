@@ -21,8 +21,7 @@ class ResumeListLayout extends Table
      * @var string
      */
     protected $target = 'resumes';
-	protected $resumeSite = 'https://resume.alexyounger.me/';
-
+    protected $resumeSite = 'https://resume.alexyounger.me/';
 
     /**
      * Get the table cells to be displayed.
@@ -32,26 +31,21 @@ class ResumeListLayout extends Table
     protected function columns(): iterable
     {
         return [
-            TD::make('name', 'Name')
-                ->render(function (Resume $resume) {
-                    return Link::make($resume->name)
-                        ->route('platform.resume.edit', $resume);
-                }),
+            TD::make('name', 'Name')->render(function (Resume $resume) {
+                return Link::make($resume->name)->route('platform.resume.edit', $resume);
+            }),
             TD::make('hash', 'Hash'),
-            TD::make('created_at', 'Created')
-                ->render(fn (Resume $resume) => $this->formatDate($resume->created_at)),
-            TD::make('updated_at', 'Last edit')
-                ->render(fn (Resume $resume) => $this->formatDate($resume->updated_at)),
-			TD::make()
-				->render(fn(Resume $resume) => Group::make([
-					Link::make('View')
-						->icon('eye')
-						->target('_blank')
-						->href($this->resumeSite . $resume->hash),
-					Button::make('Duplicate')
-						->icon('copy')
-						->action(route('platform.resume.duplicate', $resume)),
-				])),
+            TD::make('created_at', 'Created')->render(fn(Resume $resume) => $this->formatDate($resume->created_at)),
+            TD::make('updated_at', 'Last edit')->render(fn(Resume $resume) => $this->formatDate($resume->updated_at)),
+            TD::make()->render(
+                fn(Resume $resume) => Group::make([
+                    Link::make('View')
+                        ->icon('eye')
+                        ->target('_blank')
+                        ->href($this->resumeSite . $resume->hash),
+                    Button::make('Duplicate')->icon('copy')->action(route('platform.resume.duplicate', $resume)),
+                ]),
+            ),
         ];
     }
 

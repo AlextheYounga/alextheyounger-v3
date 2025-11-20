@@ -26,7 +26,7 @@ class PageContentEditScreen extends Screen
     public function query(PageContent $pageContent): iterable
     {
         return [
-            'pageContent' => $pageContent
+            'pageContent' => $pageContent,
         ];
     }
 
@@ -45,9 +45,8 @@ class PageContentEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return "Page Content";
+        return 'Page Content';
     }
-
 
     /**
      * The screen's action buttons.
@@ -56,12 +55,7 @@ class PageContentEditScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Button::make('Update')
-                ->icon('note')
-                ->method('update')
-                ->canSee($this->pageContent->exists),
-        ];
+        return [Button::make('Update')->icon('note')->method('update')->canSee($this->pageContent->exists)];
     }
 
     /**
@@ -73,29 +67,18 @@ class PageContentEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('pageContent.id')
-                    ->hidden(),
+                Input::make('pageContent.id')->hidden(),
 
-                Input::make('pageContent.name')
-                    ->title('Name'),
+                Input::make('pageContent.name')->title('Name'),
 
-                Input::make('pageContent.html_id')
-                    ->title('HTML ID')
-                    ->disabled(),
+                Input::make('pageContent.html_id')->title('HTML ID')->disabled(),
 
-                Input::make('pageContent.view')
-                    ->title('View')
-                    ->disabled(),
+                Input::make('pageContent.view')->title('View')->disabled(),
 
-                Input::make('pageContent.key')
-                    ->title('Key')
-                    ->disabled(),
+                Input::make('pageContent.key')->title('Key')->disabled(),
 
-                Code::make('pageContent.content')
-                    ->title('Content')
-                    ->language('html')
-                    ->lineNumbers(),
-            ])
+                Code::make('pageContent.content')->title('Content')->language('html')->lineNumbers(),
+            ]),
         ];
     }
 

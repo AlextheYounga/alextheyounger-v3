@@ -21,35 +21,35 @@ class GenerateCodingLanguages extends Command
      * @var string
      */
     protected $description = 'Generate coding languages from repos.';
-	protected $settings = [
-			'additions' => [
-				'PHP' => 3000000,
-				'Ruby' => 4204694,
-				'JavaScript' => 611638,
-			],
-			// Subtract percent from total
-			'subtractions' => [
-				'Ruby' => 0.4, // Account for generated code I didn't write
-				'PHP' => 0.4, // Account for generated code I didn't write
-				'JavaScript' => 0.5, // Every framework contains generated JavaScript code
-			],
-			'ignore' => [
-				'Markdown',
-				'ASP.NET',
-				'MDX',
-				'Dockerfile',
-				'Elixir',
-				'HTML',
-				'CSS',
-				'SCSS',
-				'Blade',
-				'ASL',
-				'CoffeeScript',
-				'Starlark',
-				'EJS',
-				'Nix'
-			]
-		];
+    protected $settings = [
+        'additions' => [
+            'PHP' => 3000000,
+            'Ruby' => 4204694,
+            'JavaScript' => 611638,
+        ],
+        // Subtract percent from total
+        'subtractions' => [
+            'Ruby' => 0.4, // Account for generated code I didn't write
+            'PHP' => 0.4, // Account for generated code I didn't write
+            'JavaScript' => 0.5, // Every framework contains generated JavaScript code
+        ],
+        'ignore' => [
+            'Markdown',
+            'ASP.NET',
+            'MDX',
+            'Dockerfile',
+            'Elixir',
+            'HTML',
+            'CSS',
+            'SCSS',
+            'Blade',
+            'ASL',
+            'CoffeeScript',
+            'Starlark',
+            'EJS',
+            'Nix',
+        ],
+    ];
 
     /**
      * Execute the console command.
@@ -58,53 +58,54 @@ class GenerateCodingLanguages extends Command
     {
         CodingLanguage::truncate();
         $repos = Repository::all();
-		$ignoreLanguages = $this->settings['ignore'] ?? [];
+        $ignoreLanguages = $this->settings['ignore'] ?? [];
 
-        foreach($repos as $repo) {
-			$this->info('Parsing languages from repo: ' . $repo->name);
+        foreach ($repos as $repo) {
+            $this->info('Parsing languages from repo: ' . $repo->name);
             $languages = $repo->languages ?? [];
 
-            foreach($languages as $lang => $data) {
-				$language = new CodingLanguage();
-				$language->language = $lang;
-				$language->value = $data['size'];
-				$language->display_value = $data['size']; // Not implemented
-				$language->active = !in_array($lang, $ignoreLanguages);
-				$language->color = $language->getLanguageColor();
-				$language->properties = [
-					'slug' => $language->slugifyLanguage(),
-				    'parameterized' => parameterize($lang),
-					'rawData' => [$lang => $data]	
-				];
+            foreach ($languages as $lang => $data) {
+                $language = new CodingLanguage();
+                $language->language = $lang;
+                $language->value = $data['size'];
+                $language->display_value = $data['size']; // Not implemented
+                $language->active = !in_array($lang, $ignoreLanguages);
+                $language->color = $language->getLanguageColor();
+                $language->properties = [
+                    'slug' => $language->slugifyLanguage(),
+                    'parameterized' => parameterize($lang),
+                    'rawData' => [$lang => $data],
+                ];
                 $language->getProjectCount();
                 $language->incrementOrCreate();
             }
         }
 
-		$this->runWeightAdjustments();
-		$this->calculateTableWidths();
+        $this->runWeightAdjustments();
+        $this->calculateTableWidths();
 
-		$this->info('Successfully compiled coding languages.');
+        $this->info('Successfully compiled coding languages.');
     }
 
-	private function runWeightAdjustments() {
-		$languages = CodingLanguage::all();
+    private function runWeightAdjustments()
+    {
+        $languages = CodingLanguage::all();
 
-        foreach($languages as $lang) {
+        foreach ($languages as $lang) {
             if (array_key_exists($lang->language, $this->settings['additions'])) {
                 $lang->display_value += $this->settings['additions'][$lang->language];
             }
 
             if (array_key_exists($lang->language, $this->settings['subtractions'])) {
-				$percentValue = $lang->display_value * $this->settings['subtractions'][$lang->language];
+                $percentValue = $lang->display_value * $this->settings['subtractions'][$lang->language];
                 $lang->display_value -= $percentValue;
             }
 
             $lang->save();
         }
-	}
+    }
 
-	private function calculateTableWidths()
+    private function calculateTableWidths()
     {
         $languages = CodingLanguage::active()->get();
         $total = CodingLanguage::active()->sum('display_value');
@@ -116,5 +117,4 @@ class GenerateCodingLanguages extends Command
             $language->save();
         }
     }
-
 }

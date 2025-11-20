@@ -9,18 +9,11 @@ class Repository extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'path',
-		'size',
-        'languages',
-        'properties',
-        'active',
-    ];
+    protected $fillable = ['name', 'path', 'size', 'languages', 'properties', 'active'];
 
     protected $casts = [
         'languages' => 'json',
-        'properties' => 'json'
+        'properties' => 'json',
     ];
 
     public static function getTotalSize()

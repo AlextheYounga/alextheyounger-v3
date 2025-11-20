@@ -45,11 +45,13 @@ class ConvertWebp extends Command
                 $webpPath = $file->getPath() . '/' . $file->getFilename() . '.webp';
 
                 if (!File::exists($webpPath)) {
-                    $this->info("Generating webp image for: " . $file->getFilename());
+                    $this->info('Generating webp image for: ' . $file->getFilename());
 
-                    WebPConvert::convert($file->getPathname(), $webpPath, ['convert' => [
-                      'quality' => 75,  // all convert option can be entered here (ie "quality")
-                    ]]);
+                    WebPConvert::convert($file->getPathname(), $webpPath, [
+                        'convert' => [
+                            'quality' => 75, // all convert option can be entered here (ie "quality")
+                        ],
+                    ]);
                 }
             }
         }

@@ -31,7 +31,7 @@ class RoleEditScreen extends Screen
     public function query(Role $role): iterable
     {
         return [
-            'role'       => $role,
+            'role' => $role,
             'permission' => $role->getStatusPermission(),
         ];
     }
@@ -54,9 +54,7 @@ class RoleEditScreen extends Screen
 
     public function permission(): ?iterable
     {
-        return [
-            'platform.systems.roles',
-        ];
+        return ['platform.systems.roles'];
     }
 
     /**
@@ -67,14 +65,9 @@ class RoleEditScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Button::make(__('Save'))
-                ->icon('bs.check-circle')
-                ->method('save'),
+            Button::make(__('Save'))->icon('bs.check-circle')->method('save'),
 
-            Button::make(__('Remove'))
-                ->icon('bs.trash3')
-                ->method('remove')
-                ->canSee($this->role->exists),
+            Button::make(__('Remove'))->icon('bs.trash3')->method('remove')->canSee($this->role->exists),
         ];
     }
 
@@ -86,15 +79,13 @@ class RoleEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::block([
-                RoleEditLayout::class,
-            ])
+            Layout::block([RoleEditLayout::class])
                 ->title('Role')
-                ->description('A role is a collection of privileges (of possibly different services like the Users service, Moderator, and so on) that grants users with that role the ability to perform certain tasks or operations.'),
+                ->description(
+                    'A role is a collection of privileges (of possibly different services like the Users service, Moderator, and so on) that grants users with that role the ability to perform certain tasks or operations.',
+                ),
 
-            Layout::block([
-                RolePermissionLayout::class,
-            ])
+            Layout::block([RolePermissionLayout::class])
                 ->title('Permission/Privilege')
                 ->description('A privilege is necessary to perform certain tasks and operations in an area.'),
         ];
@@ -106,16 +97,13 @@ class RoleEditScreen extends Screen
     public function save(Request $request, Role $role)
     {
         $request->validate([
-            'role.slug' => [
-                'required',
-                Rule::unique(Role::class, 'slug')->ignore($role),
-            ],
+            'role.slug' => ['required', Rule::unique(Role::class, 'slug')->ignore($role)],
         ]);
 
         $role->fill($request->get('role'));
 
         $role->permissions = collect($request->get('permissions'))
-            ->map(fn ($value, $key) => [base64_decode($key) => $value])
+            ->map(fn($value, $key) => [base64_decode($key) => $value])
             ->collapse()
             ->toArray();
 

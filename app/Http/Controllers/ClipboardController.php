@@ -8,36 +8,36 @@ use Inertia\Inertia;
 
 class ClipboardController extends Controller
 {
-	public function index()
-	{
+    public function index()
+    {
         return Inertia::render('Clipboard/NoteCreate');
-	}	
+    }
 
-	public function get($noteId)
-	{
-		$note = Note::where('note_id', $noteId)->first();
+    public function get($noteId)
+    {
+        $note = Note::where('note_id', $noteId)->first();
 
-		if (!$note) {
-			return response('Note not found.', 404);
-		}
+        if (!$note) {
+            return response('Note not found.', 404);
+        }
 
-		return Inertia::render('Clipboard/NoteRead', [
-			'noteId' => $noteId,
-			'note' => $note->data,			
-		]);
-	}
+        return Inertia::render('Clipboard/NoteRead', [
+            'noteId' => $noteId,
+            'note' => $note->data,
+        ]);
+    }
 
     public function store(Request $request)
     {
-		$request->validate([
-			'noteId' => 'required|string|max:255',
-			'note' => 'required|string',
-		]);
-		
+        $request->validate([
+            'noteId' => 'required|string|max:255',
+            'note' => 'required|string',
+        ]);
+
         $note = new Note();
-		$note->note_id = $request->noteId;
+        $note->note_id = $request->noteId;
         $note->data = $request->note;
         $note->save();
-		return response()->json($note->note_id);
+        return response()->json($note->note_id);
     }
 }

@@ -18,16 +18,9 @@ class PageContent extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'html_id',
-        'name',
-        'key',
-        'view',
-        'content',
-        'properties',
-    ];
+    protected $fillable = ['html_id', 'name', 'key', 'view', 'content', 'properties'];
 
     protected $casts = [
-        'properties' => 'json'
+        'properties' => 'json',
     ];
 }

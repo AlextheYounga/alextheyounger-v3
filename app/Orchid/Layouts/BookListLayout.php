@@ -24,35 +24,30 @@ class BookListLayout extends Table
     public function columns(): array
     {
         return [
-            TD::make('position', __('Position'))
-                ->render(function (Book $book) {
-                    return ModalToggle::make($book->position)
-                        ->modal('positionModal')
-                        ->modalTitle('Book Position')
-                        ->method('updatePosition')
-                        ->asyncParameters([
-                            'book' => $book->id,
-                        ]);
-                }),
-			TD::make('active', 'Active')
-                ->render(fn (Book $book) => (boolean) $book->active ? '✓' : '✗'),
-            TD::make('title', 'Title')
-                ->render(function (Book $book) {
-                    return Link::make($book->title)
-                        ->route('platform.book.edit', $book);
-                }),
+            TD::make('position', __('Position'))->render(function (Book $book) {
+                return ModalToggle::make($book->position)
+                    ->modal('positionModal')
+                    ->modalTitle('Book Position')
+                    ->method('updatePosition')
+                    ->asyncParameters([
+                        'book' => $book->id,
+                    ]);
+            }),
+            TD::make('active', 'Active')->render(fn(Book $book) => (bool) $book->active ? '✓' : '✗'),
+            TD::make('title', 'Title')->render(function (Book $book) {
+                return Link::make($book->title)->route('platform.book.edit', $book);
+            }),
             TD::make('author', 'Author'),
-            TD::make('description', 'Description')
-				->render(fn (Book $book) => strlen($book->description) . ' chars'),
+            TD::make('description', 'Description')->render(fn(Book $book) => strlen($book->description) . ' chars'),
             TD::make('image_name', 'Image Name'),
-            TD::make('external_link', 'External Link')
-				->render(fn (Book $book) => (boolean) $book->external_link ? '✓' : '✗'),
-            TD::make('external_image_link', 'Image Link')
-				->render(fn (Book $book) => (boolean) $book->external_image_link ? '✓' : '✗'),
-            TD::make('created_at', 'Created')
-                ->render(fn (Book $book) => $this->formatDate($book->created_at)),
-            TD::make('updated_at', 'Last edit')
-                ->render(fn (Book $book) => $this->formatDate($book->updated_at)),
+            TD::make('external_link', 'External Link')->render(
+                fn(Book $book) => (bool) $book->external_link ? '✓' : '✗',
+            ),
+            TD::make('external_image_link', 'Image Link')->render(
+                fn(Book $book) => (bool) $book->external_image_link ? '✓' : '✗',
+            ),
+            TD::make('created_at', 'Created')->render(fn(Book $book) => $this->formatDate($book->created_at)),
+            TD::make('updated_at', 'Last edit')->render(fn(Book $book) => $this->formatDate($book->updated_at)),
         ];
     }
 

@@ -27,7 +27,7 @@ class CoverLetterEditScreen extends Screen
     public function query(CoverLetter $coverLetter): iterable
     {
         return [
-            'coverLetter' => $coverLetter
+            'coverLetter' => $coverLetter,
         ];
     }
 
@@ -41,14 +41,13 @@ class CoverLetterEditScreen extends Screen
         return $this->coverLetter->exists ? 'Edit cover letter' : 'Creating a new cover letter';
     }
 
-        /**
+    /**
      * The description is displayed on the user's screen under the heading
      */
     public function description(): ?string
     {
-        return "All cover letters";
+        return 'All cover letters';
     }
-
 
     /**
      * The screen's action buttons.
@@ -63,15 +62,9 @@ class CoverLetterEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee(!$this->coverLetter->exists),
 
-            Button::make('Update')
-                ->icon('note')
-                ->method('createOrUpdate')
-                ->canSee($this->coverLetter->exists),
+            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->coverLetter->exists),
 
-            Button::make('Remove')
-                ->icon('trash')
-                ->method('remove')
-                ->canSee($this->coverLetter->exists),
+            Button::make('Remove')->icon('trash')->method('remove')->canSee($this->coverLetter->exists),
         ];
     }
 
@@ -83,42 +76,39 @@ class CoverLetterEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-			Layout::rows([
-				Input::make('coverLetter.id')
-					->hidden(),
+            Layout::rows([
+                Input::make('coverLetter.id')->hidden(),
 
-				Input::make('coverLetter.name')
-					->title('Name')
-					->placeholder('Enter the cover letter name'),
-		
-				Input::make('coverLetter.company')
-					->title('Company')
-					->placeholder('Enter the company name')
-					->help('Optional field'),
-		
-				Input::make('coverLetter.hiring_manager')
-					->title('Hiring Manager')
-					->placeholder('Enter the hiring manager name')
-					->help('Optional field'),
-		
-				Quill::make('coverLetter.content')
-					->title('Content')
-					->height('90vh')
-					->placeholder('Enter the content of the cover letter'),
+                Input::make('coverLetter.name')->title('Name')->placeholder('Enter the cover letter name'),
 
-				// Use this for properties but can't have the same name as properties because it tries to automap
-				Matrix::make('coverLetter.meta')
-					->title('Properties')
-					->value($this->mapPropertiesToMatrix($this->coverLetter->properties))
-					->columns([
-						'Key' => 'key',
-						'Value' => 'value',
-					])
-					->fields([
-						'key' => Input::make('key')->type('text'),
-						'value' => Input::make('value')->type('text'),
-					]),
-			])
+                Input::make('coverLetter.company')
+                    ->title('Company')
+                    ->placeholder('Enter the company name')
+                    ->help('Optional field'),
+
+                Input::make('coverLetter.hiring_manager')
+                    ->title('Hiring Manager')
+                    ->placeholder('Enter the hiring manager name')
+                    ->help('Optional field'),
+
+                Quill::make('coverLetter.content')
+                    ->title('Content')
+                    ->height('90vh')
+                    ->placeholder('Enter the content of the cover letter'),
+
+                // Use this for properties but can't have the same name as properties because it tries to automap
+                Matrix::make('coverLetter.meta')
+                    ->title('Properties')
+                    ->value($this->mapPropertiesToMatrix($this->coverLetter->properties))
+                    ->columns([
+                        'Key' => 'key',
+                        'Value' => 'value',
+                    ])
+                    ->fields([
+                        'key' => Input::make('key')->type('text'),
+                        'value' => Input::make('value')->type('text'),
+                    ]),
+            ]),
         ];
     }
 
@@ -133,7 +123,7 @@ class CoverLetterEditScreen extends Screen
         $coverLetter = CoverLetter::where('id', $request->get('coverLetter')['id'])->first() ?? new CoverLetter();
 
         $fields = $request->get('coverLetter');
-		$fields['properties'] = $this->mapPropertiesToList($fields['meta'] ?? []);
+        $fields['properties'] = $this->mapPropertiesToList($fields['meta'] ?? []);
         $coverLetter->fill($fields)->save();
 
         Alert::info('You have successfully created a cover letter.');
@@ -141,18 +131,19 @@ class CoverLetterEditScreen extends Screen
         return redirect()->route('platform.cover-letter.list');
     }
 
-	/**
+    /**
      * This gets called from the Duplicate button, which links back to this function in platform.php
-    */
-	public function duplicate(CoverLetter $coverLetter) {
-		$coverLetterName = $coverLetter->name;
-		$duplicateParams = collect($coverLetter)
-			->except(['id', 'hash', 'created_at', 'updated_at'])
-			->toArray();
-		$duplicateParams['name'] = $coverLetterName . " (Copy)";
-		$newCoverLetter = CoverLetter::create($duplicateParams);
-		return redirect()->route('platform.cover-letter.edit', $newCoverLetter);
-	}
+     */
+    public function duplicate(CoverLetter $coverLetter)
+    {
+        $coverLetterName = $coverLetter->name;
+        $duplicateParams = collect($coverLetter)
+            ->except(['id', 'hash', 'created_at', 'updated_at'])
+            ->toArray();
+        $duplicateParams['name'] = $coverLetterName . ' (Copy)';
+        $newCoverLetter = CoverLetter::create($duplicateParams);
+        return redirect()->route('platform.cover-letter.edit', $newCoverLetter);
+    }
 
     /**
      * @param CoverLetter $coverLetter
@@ -169,28 +160,31 @@ class CoverLetterEditScreen extends Screen
         return redirect()->route('platform.cover-letter.list');
     }
 
-	private function mapPropertiesToList($properties) {
-		if (empty($properties)) {
-			return [];
-		}
-		return collect($properties ?? [])
-		->mapWithKeys(function ($item) {
-			return [$item['key'] => $item['value']];
-		})->toArray();
-	}
+    private function mapPropertiesToList($properties)
+    {
+        if (empty($properties)) {
+            return [];
+        }
+        return collect($properties ?? [])
+            ->mapWithKeys(function ($item) {
+                return [$item['key'] => $item['value']];
+            })
+            ->toArray();
+    }
 
-	private function mapPropertiesToMatrix($properties) {
-		$matrix = [];
-		if (empty($properties)) {
-			return $matrix;
-		}
-		$index = 1;
-		foreach($properties as $key => $value) {
-			$matrix[(string) $index] = [
-				'key' => $key,
-				'value' => $value,
-			];
-		}
-		return $matrix;
-	}
+    private function mapPropertiesToMatrix($properties)
+    {
+        $matrix = [];
+        if (empty($properties)) {
+            return $matrix;
+        }
+        $index = 1;
+        foreach ($properties as $key => $value) {
+            $matrix[(string) $index] = [
+                'key' => $key,
+                'value' => $value,
+            ];
+        }
+        return $matrix;
+    }
 }

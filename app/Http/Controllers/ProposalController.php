@@ -19,7 +19,7 @@ class ProposalController extends Controller
     {
         $proposal = Proposal::where('hash', $hash)->firstOrFail();
         return Inertia::render('Proposal', [
-            'proposal' => $proposal
+            'proposal' => $proposal,
         ]);
     }
 
@@ -34,15 +34,15 @@ class ProposalController extends Controller
     {
         $request->validate([
             'signature' => 'required|string|min:3',
-            'agreement' => 'required|boolean'
+            'agreement' => 'required|boolean',
         ]);
-		
+
         $proposal = Proposal::where('hash', $hash)->firstOrFail();
 
         $proposal->update([
             'client_signature' => $request->signature,
             'client_agreement' => true,
-            'client_sign_date' => Carbon::now()
+            'client_sign_date' => Carbon::now(),
         ]);
 
         return redirect()->back();

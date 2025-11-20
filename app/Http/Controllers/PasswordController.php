@@ -13,30 +13,30 @@ class PasswordController extends Controller
         $password = new Password();
         $password->data = $request->encryptedData;
         $password->save();
-		return response()->json($password->uuid);
+        return response()->json($password->uuid);
     }
 
-	public function destroy($uuid)
-	{
-		Password::where('uuid', $uuid)->first()->delete();
-		return response()->json(['success' => true]);
-	}
+    public function destroy($uuid)
+    {
+        Password::where('uuid', $uuid)->first()->delete();
+        return response()->json(['success' => true]);
+    }
 
-	public function get($uuid)
-	{
-		$password = Password::where('uuid', $uuid)->first();
+    public function get($uuid)
+    {
+        $password = Password::where('uuid', $uuid)->first();
 
-		if (!$password) {
-			return response('Data not found.', 404);
-		}
-		
-		return Inertia::render('Passwords/PasswordDecrypt', [
-            'encryptedData' => $password->data,			
+        if (!$password) {
+            return response('Data not found.', 404);
+        }
+
+        return Inertia::render('Passwords/PasswordDecrypt', [
+            'encryptedData' => $password->data,
         ]);
-	}
+    }
 
-	public function encrypt()
-	{
+    public function encrypt()
+    {
         return Inertia::render('Passwords/PasswordEncrypt');
-	}	
+    }
 }

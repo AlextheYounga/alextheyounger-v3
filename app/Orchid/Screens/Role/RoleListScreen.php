@@ -42,9 +42,7 @@ class RoleListScreen extends Screen
 
     public function permission(): ?iterable
     {
-        return [
-            'platform.systems.roles',
-        ];
+        return ['platform.systems.roles'];
     }
 
     /**
@@ -54,11 +52,7 @@ class RoleListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make(__('Add'))
-                ->icon('bs.plus-circle')
-                ->href(route('platform.systems.roles.create')),
-        ];
+        return [Link::make(__('Add'))->icon('bs.plus-circle')->href(route('platform.systems.roles.create'))];
     }
 
     /**
@@ -68,8 +62,6 @@ class RoleListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [
-            RoleListLayout::class,
-        ];
+        return [RoleListLayout::class];
     }
 }

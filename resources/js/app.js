@@ -12,10 +12,9 @@ createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, App, props, plugin }) {
-
         const VueApp = createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(ZiggyVue, Ziggy)
+            .use(ZiggyVue, Ziggy);
 
         // config global property after createApp and before mount
         //   VueApp.config.globalProperties.revealed = false;
@@ -28,5 +27,3 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
-
-

@@ -16,10 +16,10 @@ class BookSeeder extends Seeder
 
         $books = json_decode(file_get_contents('storage/app/public/books.json'), true);
 
-        foreach($books as $book) {
-			$properties = \json_decode($book['properties'], true);
-			$properties['image_name'] = $book['image_name'] ?? null;
-			$properties['description'] = $book['description'] ?? null;
+        foreach ($books as $book) {
+            $properties = \json_decode($book['properties'], true);
+            $properties['image_name'] = $book['image_name'] ?? null;
+            $properties['description'] = $book['description'] ?? null;
 
             Book::create([
                 'title' => $book['title'],

@@ -21,9 +21,9 @@ class ExampleTextEditorsScreen extends TestBaseScreen
     public function query(): iterable
     {
         return [
-            'quill'     => 'Hello! We collected all the fields in one place',
+            'quill' => 'Hello! We collected all the fields in one place',
             'simplemde' => '# Big header',
-            'code'      => Str::limit(file_get_contents(__FILE__), 500),
+            'code' => Str::limit(file_get_contents(__FILE__), 500),
         ];
     }
 
@@ -63,7 +63,6 @@ class ExampleTextEditorsScreen extends TestBaseScreen
     public function layout(): iterable
     {
         return [
-
             ExampleElements::class,
 
             Layout::rows([
@@ -75,9 +74,7 @@ class ExampleTextEditorsScreen extends TestBaseScreen
                     ->title('Quill')
                     ->popover('Quill is a free, open source WYSIWYG editor built for the modern web.'),
 
-                Code::make('code')
-                    ->title('Code'),
-
+                Code::make('code')->title('Code'),
             ]),
         ];
     }

@@ -34,34 +34,19 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
-            Menu::make('Page Content')
-                ->icon('bs.body-text')
-                ->route('platform.page-content.list'),
+            Menu::make('Page Content')->icon('bs.body-text')->route('platform.page-content.list'),
 
-			Menu::make('Books')
-                ->icon('bs.book')
-                ->route('platform.book.list'),
+            Menu::make('Books')->icon('bs.book')->route('platform.book.list'),
 
-            Menu::make('Categories')
-                ->icon('bs.tag')
-                ->route('platform.category.list'),
+            Menu::make('Categories')->icon('bs.tag')->route('platform.category.list'),
 
-            Menu::make('Projects')
-                ->icon('bs.collection')
-                ->route('platform.project.list'),
+            Menu::make('Projects')->icon('bs.collection')->route('platform.project.list'),
 
-			Menu::make('Resumes')
-                ->icon('bs.list')
-                ->route('platform.resume.list'),
+            Menu::make('Resumes')->icon('bs.list')->route('platform.resume.list'),
 
-			Menu::make('Cover Letters')
-                ->icon('bs.envelope')
-                ->route('platform.cover-letter.list'),
+            Menu::make('Cover Letters')->icon('bs.envelope')->route('platform.cover-letter.list'),
 
-			Menu::make('Proposals')
-                ->icon('bs.briefcase')
-                ->route('platform.proposal.list')
-				->divider(),
+            Menu::make('Proposals')->icon('bs.briefcase')->route('platform.proposal.list')->divider(),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')
@@ -85,13 +70,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.box-arrow-up-right')
                 ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
                 ->target('_blank')
-                ->badge(fn () => Dashboard::version(), Color::DARK)
+                ->badge(fn() => Dashboard::version(), Color::DARK)
                 ->divider(),
 
-            Menu::make('Back to Site')
-                ->title('Actions')
-                ->icon('bs.box-arrow-up-right')
-                ->url('/'),
+            Menu::make('Back to Site')->title('Actions')->icon('bs.box-arrow-up-right')->url('/'),
         ];
     }
 

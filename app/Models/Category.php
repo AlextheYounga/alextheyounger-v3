@@ -11,31 +11,23 @@ class Category extends Model
     use HasFactory;
     use AsSource;
 
-    protected $fillable = [
-        'name',
-        'type',
-        'position',
-        'properties',
-        'active',
-    ];
+    protected $fillable = ['name', 'type', 'position', 'properties', 'active'];
 
-    protected $appends = [
-        'selector'
-    ];
+    protected $appends = ['selector'];
 
     protected $casts = [
-        'properties' => 'json'
+        'properties' => 'json',
     ];
 
     public function categories()
     {
         return $this->hasMany(Book::class);
     }
-    
+
     public function getSelectorAttribute()
     {
-        if (isset($this->properties["html_selector"])) {
-            return $this->properties["html_selector"];
+        if (isset($this->properties['html_selector'])) {
+            return $this->properties['html_selector'];
         }
         return null;
     }
@@ -47,7 +39,7 @@ class Category extends Model
         if ($oldPosition === $newPosition) {
             return $this;
         }
-        
+
         $categories = Category::where('position', '>=', $newPosition)->orderBy('position')->get();
 
         foreach ($categories as $category) {

@@ -12,14 +12,14 @@ class Project extends Model
     use AsSource;
 
     protected $fillable = [
-		'title',
-		'external_link',
-		'external_image_link',
-		'scope',
-		'position',
-		'content',
-		'properties',
-		'active',
+        'title',
+        'external_link',
+        'external_image_link',
+        'scope',
+        'position',
+        'content',
+        'properties',
+        'active',
     ];
 
     protected $casts = [
@@ -27,10 +27,10 @@ class Project extends Model
         'content' => 'json',
     ];
 
-	public function resumes()
-	{
-		return $this->belongsToMany(Resume::class, 'project_resume');
-	}
+    public function resumes()
+    {
+        return $this->belongsToMany(Resume::class, 'project_resume');
+    }
 
     public function reorderPositions()
     {
@@ -39,7 +39,7 @@ class Project extends Model
         if ($oldPosition === $newPosition) {
             return $this;
         }
-        
+
         $projects = Project::where('position', '>=', $newPosition)->orderBy('position')->get();
 
         foreach ($projects as $project) {
@@ -60,7 +60,8 @@ class Project extends Model
         return $this->where('active', true);
     }
 
-	public function resumeFormat() {
-		return $this->only(['id', 'title', 'external_link', 'content']);
-	}
+    public function resumeFormat()
+    {
+        return $this->only(['id', 'title', 'external_link', 'content']);
+    }
 }

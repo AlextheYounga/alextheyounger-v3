@@ -21,7 +21,7 @@ class CategoryListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'categories' => Category::orderBy('position', 'asc')->get()
+            'categories' => Category::orderBy('position', 'asc')->get(),
         ];
     }
 
@@ -40,7 +40,7 @@ class CategoryListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All categories in reading list";
+        return 'All categories in reading list';
     }
 
     /**
@@ -50,11 +50,7 @@ class CategoryListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make('Create new')
-                ->icon('pencil')
-                ->route('platform.category.edit')
-        ];
+        return [Link::make('Create new')->icon('pencil')->route('platform.category.edit')];
     }
 
     /**
@@ -69,13 +65,14 @@ class CategoryListScreen extends Screen
             Layout::modal('positionModal', [
                 Layout::rows([
                     Input::make('category.position')
-                    ->type('number')
-                    ->title('Position')
-                    ->help('Where in the list should this category sit; 1 is the top.'),
+                        ->type('number')
+                        ->title('Position')
+                        ->help('Where in the list should this category sit; 1 is the top.'),
                 ]),
-            ])->type(Modal::TYPE_RIGHT)
+            ])
+                ->type(Modal::TYPE_RIGHT)
                 ->size(Modal::SIZE_SM)
-                ->async('asyncGetCategory')
+                ->async('asyncGetCategory'),
         ];
     }
 
@@ -99,9 +96,7 @@ class CategoryListScreen extends Screen
      */
     public function updatePosition(Category $category, Request $request)
     {
-        $category->fill($request->input('category'))
-            ->reorderPositions()
-            ->save();
+        $category->fill($request->input('category'))->reorderPositions()->save();
 
         return redirect()->route('platform.category.list');
     }

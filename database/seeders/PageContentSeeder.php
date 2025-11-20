@@ -6,38 +6,35 @@ use Illuminate\Database\Seeder;
 
 class PageContentSeeder extends Seeder
 {
-
-	
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-
         \App\Models\PageContent::truncate();
 
-		$homeHtml = file_get_contents('storage/app/public/home.html');
-		$aboutHtml = file_get_contents('storage/app/public/about.html');
-		$contactHtml = file_get_contents('storage/app/public/contact.html');
-		$languageBarHtml = file_get_contents('storage/app/public/language-bar.html');
+        $homeHtml = file_get_contents('storage/app/public/home.html');
+        $aboutHtml = file_get_contents('storage/app/public/about.html');
+        $contactHtml = file_get_contents('storage/app/public/contact.html');
+        $languageBarHtml = file_get_contents('storage/app/public/language-bar.html');
 
         /**
-        * Home
-        */
+         * Home
+         */
         $homeTitle = [
             'view' => 'Home',
             'name' => 'Home Tagline',
             'key' => 'homeTagline',
             'html_id' => 'tagline',
-            'content' => 'Software Engineer, Data Scientist, Entrepreneur'
+            'content' => 'Software Engineer, Data Scientist, Entrepreneur',
         ];
 
         \App\Models\PageContent::create($homeTitle);
         //------------- End Home Title
 
         /**
-        * Home Bio
-        */
+         * Home Bio
+         */
         $bio = [
             'view' => 'Home',
             'name' => 'Home Bio',
@@ -50,10 +47,9 @@ class PageContentSeeder extends Seeder
         \App\Models\PageContent::create($bio);
         //------------- End Home Bio
 
-
         /**
-        * About Description
-        */
+         * About Description
+         */
         $about = [
             'view' => 'Home',
             'name' => 'About',
@@ -65,10 +61,9 @@ class PageContentSeeder extends Seeder
         \App\Models\PageContent::create($about);
         //--------- End About Description
 
-
         /**
-        * Language Bar
-        */
+         * Language Bar
+         */
         $languageBar = [
             'view' => 'LanguageBar',
             'name' => 'Language Description',
@@ -81,11 +76,9 @@ class PageContentSeeder extends Seeder
         \App\Models\PageContent::create($languageBar);
         // --------- End Language Description
 
-
-
         /**
-        * Contact
-        */
+         * Contact
+         */
         $contact = [
             'view' => 'Home',
             'name' => 'Contact Description',
@@ -97,6 +90,5 @@ class PageContentSeeder extends Seeder
         \App\Models\PageContent::create($contact);
 
         // --------- End Contact Description
-
     }
 }

@@ -8,19 +8,20 @@ use App\Models\Resume;
 class ResumeController extends Controller
 {
     public function get($hash)
-	{
-		try {
-			$record = Resume::where('hash', $hash)->firstOrFail();
-			$resume = $record->toArray();
-			$resume['projects'] = $record->projects()
-				->get()
-				->map(function ($project) { 
-					return $project->resumeFormat(); 
-				});
+    {
+        try {
+            $record = Resume::where('hash', $hash)->firstOrFail();
+            $resume = $record->toArray();
+            $resume['projects'] = $record
+                ->projects()
+                ->get()
+                ->map(function ($project) {
+                    return $project->resumeFormat();
+                });
 
-			return response()->json($resume);
-		} catch (\Exception $e) {
-			return response()->json(['error' => 'Resume not found'], 404);
-		}
-	}
+            return response()->json($resume);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Resume not found'], 404);
+        }
+    }
 }

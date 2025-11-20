@@ -14,12 +14,7 @@ class Article extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'title',
-        'subtitle',
-        'body',
-        'properties',
-    ];
+    protected $fillable = ['title', 'subtitle', 'body', 'properties'];
 
     /**
      * The attributes that should be cast.
@@ -27,6 +22,6 @@ class Article extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'properties' => 'json'
+        'properties' => 'json',
     ];
 }

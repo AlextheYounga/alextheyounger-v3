@@ -10,30 +10,21 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-	use HasApiTokens;
-	
+    use HasApiTokens;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'permissions',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'permissions'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'permissions',
-    ];
+    protected $hidden = ['password', 'remember_token', 'permissions'];
 
     /**
      * The attributes that should be cast to native types.
@@ -41,8 +32,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'permissions'          => 'array',
-        'email_verified_at'    => 'datetime',
+        'permissions' => 'array',
+        'email_verified_at' => 'datetime',
     ];
 
     /**
@@ -51,11 +42,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $allowedFilters = [
-           'id'         => Where::class,
-           'name'       => Like::class,
-           'email'      => Like::class,
-           'updated_at' => WhereDateStartEnd::class,
-           'created_at' => WhereDateStartEnd::class,
+        'id' => Where::class,
+        'name' => Like::class,
+        'email' => Like::class,
+        'updated_at' => WhereDateStartEnd::class,
+        'created_at' => WhereDateStartEnd::class,
     ];
 
     /**
@@ -63,11 +54,5 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $allowedSorts = [
-        'id',
-        'name',
-        'email',
-        'updated_at',
-        'created_at',
-    ];
+    protected $allowedSorts = ['id', 'name', 'email', 'updated_at', 'created_at'];
 }

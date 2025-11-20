@@ -9,12 +9,9 @@ class Note extends Model
 {
     use HasFactory;
 
-	protected $fillable = [
-		'note_id', 
-		'data'
-	];
+    protected $fillable = ['note_id', 'data'];
 
-	protected $casts = [
-		'data' => 'string',
-	];
+    protected $casts = [
+        'data' => 'string',
+    ];
 }

@@ -38,7 +38,7 @@ class UserEditScreen extends Screen
         $user->load(['roles']);
 
         return [
-            'user'       => $user,
+            'user' => $user,
             'permission' => $user->getStatusPermission(),
         ];
     }
@@ -61,9 +61,7 @@ class UserEditScreen extends Screen
 
     public function permission(): ?iterable
     {
-        return [
-            'platform.systems.users',
-        ];
+        return ['platform.systems.users'];
     }
 
     /**
@@ -82,13 +80,15 @@ class UserEditScreen extends Screen
 
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
-                ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
+                ->confirm(
+                    __(
+                        'Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
+                    ),
+                )
                 ->method('remove')
                 ->canSee($this->user->exists),
 
-            Button::make(__('Save'))
-                ->icon('bs.check-circle')
-                ->method('save'),
+            Button::make(__('Save'))->icon('bs.check-circle')->method('save'),
         ];
     }
 
@@ -98,7 +98,6 @@ class UserEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-
             Layout::block(UserEditLayout::class)
                 ->title(__('Profile Information'))
                 ->description(__('Update your account\'s profile information and email address.'))
@@ -107,7 +106,7 @@ class UserEditScreen extends Screen
                         ->type(Color::BASIC)
                         ->icon('bs.check-circle')
                         ->canSee($this->user->exists)
-                        ->method('save')
+                        ->method('save'),
                 ),
 
             Layout::block(UserPasswordLayout::class)
@@ -118,7 +117,7 @@ class UserEditScreen extends Screen
                         ->type(Color::BASIC)
                         ->icon('bs.check-circle')
                         ->canSee($this->user->exists)
-                        ->method('save')
+                        ->method('save'),
                 ),
 
             Layout::block(UserRoleLayout::class)
@@ -129,7 +128,7 @@ class UserEditScreen extends Screen
                         ->type(Color::BASIC)
                         ->icon('bs.check-circle')
                         ->canSee($this->user->exists)
-                        ->method('save')
+                        ->method('save'),
                 ),
 
             Layout::block(RolePermissionLayout::class)
@@ -140,9 +139,8 @@ class UserEditScreen extends Screen
                         ->type(Color::BASIC)
                         ->icon('bs.check-circle')
                         ->canSee($this->user->exists)
-                        ->method('save')
+                        ->method('save'),
                 ),
-
         ];
     }
 
@@ -152,14 +150,11 @@ class UserEditScreen extends Screen
     public function save(User $user, Request $request)
     {
         $request->validate([
-            'user.email' => [
-                'required',
-                Rule::unique(User::class, 'email')->ignore($user),
-            ],
+            'user.email' => ['required', Rule::unique(User::class, 'email')->ignore($user)],
         ]);
 
         $permissions = collect($request->get('permissions'))
-            ->map(fn ($value, $key) => [base64_decode($key) => $value])
+            ->map(fn($value, $key) => [base64_decode($key) => $value])
             ->collapse()
             ->toArray();
 
@@ -168,7 +163,12 @@ class UserEditScreen extends Screen
         });
 
         $user
-            ->fill($request->collect('user')->except(['password', 'permissions', 'roles'])->toArray())
+            ->fill(
+                $request
+                    ->collect('user')
+                    ->except(['password', 'permissions', 'roles'])
+                    ->toArray(),
+            )
             ->fill(['permissions' => $permissions])
             ->save();
 

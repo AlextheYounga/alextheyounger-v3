@@ -34,7 +34,7 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
     public function query(): iterable
     {
         return [
-            'name'  => 'Hello! We collected all the fields in one place',
+            'name' => 'Hello! We collected all the fields in one place',
             'place' => [
                 'lat' => 37.181244855427394,
                 'lng' => -3.6021993309259415,
@@ -78,29 +78,16 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
     public function layout(): iterable
     {
         return [
-
             ExampleElements::class,
             Layout::rows([
+                UTM::make('link')->title('UTM link')->help('Generated UTM link'),
 
-                UTM::make('link')
-                    ->title('UTM link')
-                    ->help('Generated UTM link'),
+                Matrix::make('matrix')->columns(['Attribute', 'Value', 'Units']),
 
-                Matrix::make('matrix')
-                    ->columns([
-                        'Attribute',
-                        'Value',
-                        'Units',
-                    ]),
-
-                Map::make('place')
-                    ->title('Object on the map')
-                    ->help('Enter the coordinates, or use the search'),
-
+                Map::make('place')->title('Object on the map')->help('Enter the coordinates, or use the search'),
             ]),
 
             Layout::rows([
-
                 Group::make([
                     Input::make('phone')
                         ->mask('(999) 999-9999')
@@ -124,7 +111,6 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
                 ]),
 
                 Group::make([
-
                     Input::make('credit_card')
                         ->mask('9999-9999-9999-9999')
                         ->title('Credit card:')
@@ -135,89 +121,64 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
                         ->title('Currency dollar:')
                         ->mask([
                             'alias' => 'currency',
-                        ])->help('Some aliases found in the extensions are: email, currency, decimal, integer, date, datetime, dd/mm/yyyy, etc.'),
+                        ])
+                        ->help(
+                            'Some aliases found in the extensions are: email, currency, decimal, integer, date, datetime, dd/mm/yyyy, etc.',
+                        ),
 
                     Input::make('currency')
                         ->title('Currency euro:')
                         ->mask([
-                            'mask'         => '€ 999.999.999,99',
+                            'mask' => '€ 999.999.999,99',
                             'numericInput' => true,
                         ]),
                 ]),
-
             ])->title('Input mask'),
 
             Layout::rows([
-
                 Group::make([
-                    DateTimer::make('open')
-                        ->title('Opening date')
-                        ->help('The opening event will take place'),
+                    DateTimer::make('open')->title('Opening date')->help('The opening event will take place'),
 
-                    DateTimer::make('allowInput')
-                        ->title('Allow input')
-                        ->required()
-                        ->allowInput(),
+                    DateTimer::make('allowInput')->title('Allow input')->required()->allowInput(),
 
-                    DateTimer::make('enabledTime')
-                        ->title('Enabled time')
-                        ->enableTime(),
+                    DateTimer::make('enabledTime')->title('Enabled time')->enableTime(),
                 ]),
 
                 Group::make([
-                    DateTimer::make('AllowEmpty')
-                        ->title('Allow Empty')
-                        ->allowEmpty(),
+                    DateTimer::make('AllowEmpty')->title('Allow Empty')->allowEmpty(),
 
                     DateTimer::make('AvailableDates')
                         ->title('Available Dates')
-                        ->available([
-                            now(),
-                            now()->addDays(2),
-                            now()->addDays(3),
-                        ]),
+                        ->available([now(), now()->addDays(2), now()->addDays(3)]),
 
                     DateTimer::make('AvailableDatesPeriod')
                         ->title('Available Dates Period')
-                        ->available([
-                            ['from' => now(), 'to' => now()->addWeek()],
-                        ]),
+                        ->available([['from' => now(), 'to' => now()->addWeek()]]),
                 ]),
 
                 Group::make([
-                    DateTimer::make('format24hr')
-                        ->title('Format 24hr')
-                        ->enableTime()
-                        ->format24hr(),
+                    DateTimer::make('format24hr')->title('Format 24hr')->enableTime()->format24hr(),
 
-                    DateTimer::make('custom')
-                        ->title('Custom format')
-                        ->noCalendar()
-                        ->format('h:i K'),
+                    DateTimer::make('custom')->title('Custom format')->noCalendar()->format('h:i K'),
 
-                    DateRange::make('rangeDate')
-                        ->title('Range date'),
+                    DateRange::make('rangeDate')->title('Range date'),
                 ]),
-
             ])->title('DateTime'),
 
             Layout::columns([
                 Layout::rows([
                     Select::make('robot.')
                         ->options([
-                            'index'   => 'Index',
+                            'index' => 'Index',
                             'noindex' => 'No index',
                         ])
                         ->multiple()
                         ->title('Multiple select')
                         ->help('Allow search bots to index'),
 
-                    Relation::make('user')
-                        ->fromModel(User::class, 'name')
-                        ->title('Select for Eloquent model'),
+                    Relation::make('user')->fromModel(User::class, 'name')->title('Select for Eloquent model'),
                 ])->title('Select'),
                 Layout::rows([
-
                     Group::make([
                         CheckBox::make('free-checkbox')
                             ->sendTrueOrFalse()
@@ -240,7 +201,6 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
                             4 => 'Work',
                         ])
                         ->help('Radio buttons are normally presented in radio groups'),
-
                 ])->title('Status'),
             ]),
 
@@ -253,47 +213,23 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
                         ->step(1)
                         ->help('The track and thumb are both styled to appear the same across browsers.'),
 
-                    Range::make('range_disabled')
-                        ->title('Disabled range')
-                        ->disabled(),
+                    Range::make('range_disabled')->title('Disabled range')->disabled(),
                 ]),
             ])->title('Range'),
 
             Layout::rows([
+                Input::make('raw_file')->type('file')->title('File input example')->horizontal(),
 
-                Input::make('raw_file')
-                    ->type('file')
-                    ->title('File input example')
-                    ->horizontal(),
+                Input::make('raw_files')->type('file')->title('Multiple files input example')->multiple()->horizontal(),
 
-                Input::make('raw_files')
-                    ->type('file')
-                    ->title('Multiple files input example')
-                    ->multiple()
-                    ->horizontal(),
+                Picture::make('picture')->title('Picture')->horizontal(),
 
-                Picture::make('picture')
-                    ->title('Picture')
-                    ->horizontal(),
+                Cropper::make('cropper')->title('Cropper')->width(500)->height(300)->horizontal(),
 
-                Cropper::make('cropper')
-                    ->title('Cropper')
-                    ->width(500)
-                    ->height(300)
-                    ->horizontal(),
+                Upload::make('files')->title('Upload files')->horizontal(),
 
-                Upload::make('files')
-                    ->title('Upload files')
-                    ->horizontal(),
-
-                Upload::make('files_with_catalog')
-                    ->title('Upload with catalog')
-                    ->media()
-                    ->closeOnAdd()
-                    ->horizontal(),
-
+                Upload::make('files_with_catalog')->title('Upload with catalog')->media()->closeOnAdd()->horizontal(),
             ])->title('File upload'),
-
         ];
     }
 }

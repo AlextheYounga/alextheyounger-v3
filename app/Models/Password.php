@@ -9,15 +9,11 @@ class Password extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-		'uuid', 
-		'data'
-	];
+    protected $fillable = ['uuid', 'data'];
 
-	protected $casts = [
-		'data' => 'string',
-	];
-
+    protected $casts = [
+        'data' => 'string',
+    ];
 
     protected static function boot()
     {
@@ -27,5 +23,4 @@ class Password extends Model
             $model->uuid = (string) \Illuminate\Support\Str::uuid();
         });
     }
-
 }

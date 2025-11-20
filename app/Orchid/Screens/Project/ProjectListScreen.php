@@ -21,7 +21,7 @@ class ProjectListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'projects' => Project::orderBy('position', 'asc')->get()
+            'projects' => Project::orderBy('position', 'asc')->get(),
         ];
     }
 
@@ -40,7 +40,7 @@ class ProjectListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All projects";
+        return 'All projects';
     }
 
     /**
@@ -50,11 +50,7 @@ class ProjectListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make('Create new')
-                ->icon('pencil')
-                ->route('platform.project.edit')
-        ];
+        return [Link::make('Create new')->icon('pencil')->route('platform.project.edit')];
     }
 
     /**
@@ -69,17 +65,18 @@ class ProjectListScreen extends Screen
             Layout::modal('positionModal', [
                 Layout::rows([
                     Input::make('project.position')
-                    ->type('number')
-                    ->title('Position')
-                    ->help('Where in the list should this project sit; 1 is the top.'),
+                        ->type('number')
+                        ->title('Position')
+                        ->help('Where in the list should this project sit; 1 is the top.'),
                 ]),
-            ])->type(Modal::TYPE_RIGHT)
+            ])
+                ->type(Modal::TYPE_RIGHT)
                 ->size(Modal::SIZE_SM)
-                ->async('asyncGetProject')
+                ->async('asyncGetProject'),
         ];
     }
 
-        /**
+    /**
      * @param Project $project
      *
      * @return array
@@ -99,9 +96,7 @@ class ProjectListScreen extends Screen
      */
     public function updatePosition(Project $project, Request $request)
     {
-        $project->fill($request->input('project'))
-            ->reorderPositions()
-            ->save();
+        $project->fill($request->input('project'))->reorderPositions()->save();
 
         return redirect()->route('platform.project.list');
     }

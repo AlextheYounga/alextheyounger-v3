@@ -27,7 +27,7 @@ class CategoryEditScreen extends Screen
     public function query(Category $category): iterable
     {
         return [
-            'category' => $category
+            'category' => $category,
         ];
     }
 
@@ -41,14 +41,13 @@ class CategoryEditScreen extends Screen
         return $this->category->exists ? 'Edit category' : 'Creating a new category';
     }
 
-        /**
+    /**
      * The description is displayed on the user's screen under the heading
      */
     public function description(): ?string
     {
-        return "Reading list categories";
+        return 'Reading list categories';
     }
-
 
     /**
      * The screen's action buttons.
@@ -63,15 +62,9 @@ class CategoryEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee(!$this->category->exists),
 
-            Button::make('Update')
-                ->icon('note')
-                ->method('createOrUpdate')
-                ->canSee($this->category->exists),
+            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->category->exists),
 
-            Button::make('Remove')
-                ->icon('trash')
-                ->method('remove')
-                ->canSee($this->category->exists),
+            Button::make('Remove')->icon('trash')->method('remove')->canSee($this->category->exists),
         ];
     }
 
@@ -84,9 +77,7 @@ class CategoryEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('category.name')
-                    ->title('Name')
-                    ->placeholder('Philosophy'),
+                Input::make('category.name')->title('Name')->placeholder('Philosophy'),
 
                 Input::make('category.type')
                     ->title('Type')
@@ -97,17 +88,15 @@ class CategoryEditScreen extends Screen
                     ->title('Position')
                     ->type('number')
                     ->help('Where in the list should this category sit; 1 is the top.'),
-                    
+
                 Code::make('category.properties')
                     ->title('Properties')
                     ->language('json')
-					->height('100px')
+                    ->height('100px')
                     ->lineNumbers(),
 
-                Switcher::make('category.active')
-                    ->sendTrueOrFalse()
-                    ->title('Active')
-            ])
+                Switcher::make('category.active')->sendTrueOrFalse()->title('Active'),
+            ]),
         ];
     }
 

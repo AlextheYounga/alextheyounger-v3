@@ -60,30 +60,17 @@ class ExampleGridScreen extends TestBaseScreen
         $template = Layout::view('platform::dummy.block');
 
         return [
-            Layout::split([
-                $template,
-                $template,
-            ])->ratio('30/70')->reverseOnPhone(),
+            Layout::split([$template, $template])
+                ->ratio('30/70')
+                ->reverseOnPhone(),
 
-            Layout::split([
-                $template,
-                $template,
-            ])->ratio('40/60'),
+            Layout::split([$template, $template])->ratio('40/60'),
 
-            Layout::split([
-                $template,
-                $template,
-            ])->ratio('50/50'),
+            Layout::split([$template, $template])->ratio('50/50'),
 
-            Layout::split([
-                $template,
-                $template,
-            ])->ratio('60/40'),
+            Layout::split([$template, $template])->ratio('60/40'),
 
-            Layout::split([
-                $template,
-                $template,
-            ])->ratio('70/30'),
+            Layout::split([$template, $template])->ratio('70/30'),
         ];
     }
 }

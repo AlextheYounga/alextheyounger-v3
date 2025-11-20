@@ -1,4 +1,4 @@
-import languageColors from "../data/language-colors.json";
+import languageColors from '../data/language-colors.json';
 
 function padZero(str, len) {
     len = len || 2;
@@ -23,30 +23,28 @@ export function invertColor(hex, bw) {
         b = parseInt(hex.slice(4, 6), 16);
     if (bw) {
         // http://stackoverflow.com/a/3943023/112731
-        return (r * 0.299 + g * 0.587 + b * 0.114) > 186
-            ? '#000000'
-            : '#FFFFFF';
+        return r * 0.299 + g * 0.587 + b * 0.114 > 186 ? '#000000' : '#FFFFFF';
     }
     // invert color components
     r = (255 - r).toString(16);
     g = (255 - g).toString(16);
     b = (255 - b).toString(16);
     // pad each with zeros and return
-    return "#" + padZero(r) + padZero(g) + padZero(b);
+    return '#' + padZero(r) + padZero(g) + padZero(b);
 }
 
 export function generateColors() {
-    const languageBubbles = document.getElementsByClassName("framework-bubble");
+    const languageBubbles = document.getElementsByClassName('framework-bubble');
 
     for (let element of languageBubbles) {
-        const techstack = element.dataset.techstack
+        const techstack = element.dataset.techstack;
 
-        const frameworkBgColor = languageColors[techstack]
+        const frameworkBgColor = languageColors[techstack];
         if (frameworkBgColor) {
-            const textColor = invertColor(frameworkBgColor, true)
+            const textColor = invertColor(frameworkBgColor, true);
 
-            element.style.backgroundColor = frameworkBgColor
-            element.style.color = textColor
+            element.style.backgroundColor = frameworkBgColor;
+            element.style.color = textColor;
         }
     }
 }

@@ -17,7 +17,7 @@ class ResumeListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'resumes' => Resume::all()
+            'resumes' => Resume::all(),
         ];
     }
 
@@ -36,7 +36,7 @@ class ResumeListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All Resumes";
+        return 'All Resumes';
     }
 
     /**
@@ -46,11 +46,7 @@ class ResumeListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make('Create new')
-                ->icon('pencil')
-                ->route('platform.resume.edit')
-        ];
+        return [Link::make('Create new')->icon('pencil')->route('platform.resume.edit')];
     }
 
     /**
@@ -60,9 +56,6 @@ class ResumeListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [
-            ResumeListLayout::class
-        ];
+        return [ResumeListLayout::class];
     }
-
 }

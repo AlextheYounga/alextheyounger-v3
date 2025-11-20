@@ -30,7 +30,7 @@ class BookEditScreen extends Screen
     public function query(Book $book): iterable
     {
         return [
-            'book' => $book
+            'book' => $book,
         ];
     }
 
@@ -44,14 +44,13 @@ class BookEditScreen extends Screen
         return $this->book->exists ? 'Edit book' : 'Creating a new book';
     }
 
-        /**
+    /**
      * The description is displayed on the user's screen under the heading
      */
     public function description(): ?string
     {
-        return "Reading list books";
+        return 'Reading list books';
     }
-
 
     /**
      * The screen's action buttons.
@@ -66,15 +65,9 @@ class BookEditScreen extends Screen
                 ->icon('pencil')
                 ->canSee(!$this->book->exists),
 
-            Button::make('Update')
-                ->icon('note')
-                ->method('createOrUpdate')
-                ->canSee($this->book->exists),
+            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->book->exists),
 
-            Button::make('Remove')
-                ->icon('trash')
-                ->method('remove')
-                ->canSee($this->book->exists),
+            Button::make('Remove')->icon('trash')->method('remove')->canSee($this->book->exists),
         ];
     }
 
@@ -87,8 +80,7 @@ class BookEditScreen extends Screen
     {
         return [
             Layout::rows([
-				Input::make('book.id')
-					->hidden(),
+                Input::make('book.id')->hidden(),
 
                 Input::make('book.title')
                     ->title('Title')
@@ -120,14 +112,14 @@ class BookEditScreen extends Screen
                     ->title('External Image Link')
                     ->placeholder('https://m.media-amazon.com/images/'),
 
-				Input::make('book.image_name')
+                Input::make('book.image_name')
                     ->title('Local Image Name')
-					->value($this->book->properties['image_name'] ?? null)
+                    ->value($this->book->properties['image_name'] ?? null)
                     ->placeholder('win_friends.jpg'),
 
-				Input::make('book.image_alt')
+                Input::make('book.image_alt')
                     ->title('Image Alt')
-					->value($this->book->properties['image_alt'] ?? null)
+                    ->value($this->book->properties['image_alt'] ?? null)
                     ->placeholder('win_friends.jpg'),
 
                 TextArea::make('book.description')
@@ -136,14 +128,13 @@ class BookEditScreen extends Screen
                     ->maxlength(200)
                     ->placeholder('Brief description for preview'),
 
-                Input::make('book.author')
-                    ->title('Author'),
+                Input::make('book.author')->title('Author'),
 
                 Switcher::make('book.active')
                     ->sendTrueOrFalse()
                     ->value($this->book->active ?? true)
-                    ->title('Active')
-            ])
+                    ->title('Active'),
+            ]),
         ];
     }
 
@@ -156,21 +147,19 @@ class BookEditScreen extends Screen
     public function createOrUpdate(Request $request)
     {
         $book = Book::where('id', $request->get('book')['id'])->first() ?? new Book();
-        
+
         $fields = $request->get('book');
 
-		$fields['properties'] = [
-			'image_name' => $fields['image_name'] ?? null,
-			'image_alt' => $fields['image_alt'] ?? null,
-			'description' => $fields['description'] ?? null,
-		];
+        $fields['properties'] = [
+            'image_name' => $fields['image_name'] ?? null,
+            'image_alt' => $fields['image_alt'] ?? null,
+            'description' => $fields['description'] ?? null,
+        ];
 
-        $book->fill($fields)
-            ->reorderPositions()
-            ->save();
+        $book->fill($fields)->reorderPositions()->save();
 
         Alert::info('You have successfully created a book.');
-        
+
         return redirect()->route('platform.book.list');
     }
 

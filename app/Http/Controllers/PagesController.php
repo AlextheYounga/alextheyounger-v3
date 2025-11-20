@@ -4,20 +4,16 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 
-
 use App\Models\Project;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\PageContent;
 
-
 class PagesController extends Controller
 {
     public function home()
     {
-        $pageContent = PageContent::where('view', '=', 'Home')
-            ->get()
-            ->keyBy('key');
+        $pageContent = PageContent::where('view', '=', 'Home')->get()->keyBy('key');
 
         return Inertia::render('Home', [
             'content' => $pageContent,
@@ -26,15 +22,9 @@ class PagesController extends Controller
 
     public function readingList()
     {
-        $books = Book::with('categories')
-            ->active()
-            ->orderBy('position', 'asc')
-            ->get();
+        $books = Book::with('categories')->active()->orderBy('position', 'asc')->get();
 
-        $categories = Category::active()
-            ->where('type', '=', 'Book::class')
-            ->orderBy('position', 'asc')
-            ->get();
+        $categories = Category::active()->where('type', '=', 'Book::class')->orderBy('position', 'asc')->get();
 
         return Inertia::render('ReadingList', [
             'books' => $books,
@@ -45,9 +35,7 @@ class PagesController extends Controller
     public function projects()
     {
         return Inertia::render('Projects', [
-            'projects' => Project::active()
-                ->orderBy('position', 'asc')
-                ->get()
+            'projects' => Project::active()->orderBy('position', 'asc')->get(),
         ]);
     }
 
@@ -58,9 +46,7 @@ class PagesController extends Controller
 
     public function setupFooter()
     {
-        $pageContent = PageContent::where('view', '=', 'Footer')
-            ->get()
-            ->keyBy('key');
+        $pageContent = PageContent::where('view', '=', 'Footer')->get()->keyBy('key');
 
         return response()->json($pageContent);
     }

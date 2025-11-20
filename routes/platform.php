@@ -48,112 +48,102 @@ use Tabuna\Breadcrumbs\Trail;
 */
 
 // Main
-Route::screen('/main', PlatformScreen::class)
-    ->name('platform.main');
+Route::screen('/main', PlatformScreen::class)->name('platform.main');
 
 // Page Content
-Route::screen('page-content/{pageContent?}', PageContentEditScreen::class)
-->name('platform.page-content.edit');
-Route::screen('page-contents', PageContentListScreen::class)
-->name('platform.page-content.list');
+Route::screen('page-content/{pageContent?}', PageContentEditScreen::class)->name('platform.page-content.edit');
+Route::screen('page-contents', PageContentListScreen::class)->name('platform.page-content.list');
 
 // Categories
-Route::screen('category/{category?}', CategoryEditScreen::class)
-    ->name('platform.category.edit');
-Route::screen('categories', CategoryListScreen::class)
-    ->name('platform.category.list');
+Route::screen('category/{category?}', CategoryEditScreen::class)->name('platform.category.edit');
+Route::screen('categories', CategoryListScreen::class)->name('platform.category.list');
 
 // Projects
-Route::screen('project/{project?}', ProjectEditScreen::class)
-    ->name('platform.project.edit');
-Route::screen('projects', ProjectListScreen::class)
-    ->name('platform.project.list');
+Route::screen('project/{project?}', ProjectEditScreen::class)->name('platform.project.edit');
+Route::screen('projects', ProjectListScreen::class)->name('platform.project.list');
 
 // Proposals
-Route::screen('proposal/{proposal?}', ProposalEditScreen::class)
-	->name('platform.proposal.edit');
-Route::screen('proposals', ProposalListScreen::class)
-	->name('platform.proposal.list');
-Route::post('proposal/duplicate/{proposal}', [ProposalEditScreen::class, 'duplicate'])
-	->name('platform.proposal.duplicate');
+Route::screen('proposal/{proposal?}', ProposalEditScreen::class)->name('platform.proposal.edit');
+Route::screen('proposals', ProposalListScreen::class)->name('platform.proposal.list');
+Route::post('proposal/duplicate/{proposal}', [ProposalEditScreen::class, 'duplicate'])->name(
+    'platform.proposal.duplicate',
+);
 
 // Books
-Route::screen('book/{book?}', BookEditScreen::class)
-    ->name('platform.book.edit');
-Route::screen('books', BookListScreen::class)
-    ->name('platform.book.list');
+Route::screen('book/{book?}', BookEditScreen::class)->name('platform.book.edit');
+Route::screen('books', BookListScreen::class)->name('platform.book.list');
 
 // Cover letters
-Route::screen('cover-letter/{coverLetter?}', CoverLetterEditScreen::class)
-->name('platform.cover-letter.edit');
-Route::screen('cover-letters', CoverLetterListScreen::class)
-->name('platform.cover-letter.list');
-Route::post('cover-letter/duplicate/{coverLetter}', [CoverLetterEditScreen::class, 'duplicate'])
-	->name('platform.cover-letter.duplicate');
+Route::screen('cover-letter/{coverLetter?}', CoverLetterEditScreen::class)->name('platform.cover-letter.edit');
+Route::screen('cover-letters', CoverLetterListScreen::class)->name('platform.cover-letter.list');
+Route::post('cover-letter/duplicate/{coverLetter}', [CoverLetterEditScreen::class, 'duplicate'])->name(
+    'platform.cover-letter.duplicate',
+);
 
 // Resumes
-Route::screen('resume/{resume?}', ResumeEditScreen::class)
-    ->name('platform.resume.edit');
-Route::screen('resumes', ResumeListScreen::class)
-    ->name('platform.resume.list');
-Route::post('resume/duplicate/{resume}', [ResumeEditScreen::class, 'duplicate'])
-	->name('platform.resume.duplicate');
+Route::screen('resume/{resume?}', ResumeEditScreen::class)->name('platform.resume.edit');
+Route::screen('resumes', ResumeListScreen::class)->name('platform.resume.list');
+Route::post('resume/duplicate/{resume}', [ResumeEditScreen::class, 'duplicate'])->name('platform.resume.duplicate');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
     ->name('platform.profile')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.index')
-        ->push(__('Profile'), route('platform.profile')));
+    ->breadcrumbs(fn(Trail $trail) => $trail->parent('platform.index')->push(__('Profile'), route('platform.profile')));
 
 // Platform > System > Users > User
 Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')
-    ->breadcrumbs(fn (Trail $trail, $user) => $trail
-        ->parent('platform.systems.users')
-        ->push($user->name, route('platform.systems.users.edit', $user)));
+    ->breadcrumbs(
+        fn(Trail $trail, $user) => $trail
+            ->parent('platform.systems.users')
+            ->push($user->name, route('platform.systems.users.edit', $user)),
+    );
 
 // Platform > System > Users > Create
 Route::screen('users/create', UserEditScreen::class)
     ->name('platform.systems.users.create')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.systems.users')
-        ->push(__('Create'), route('platform.systems.users.create')));
+    ->breadcrumbs(
+        fn(Trail $trail) => $trail
+            ->parent('platform.systems.users')
+            ->push(__('Create'), route('platform.systems.users.create')),
+    );
 
 // Platform > System > Users
 Route::screen('users', UserListScreen::class)
     ->name('platform.systems.users')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.index')
-        ->push(__('Users'), route('platform.systems.users')));
+    ->breadcrumbs(
+        fn(Trail $trail) => $trail->parent('platform.index')->push(__('Users'), route('platform.systems.users')),
+    );
 
 // Platform > System > Roles > Role
 Route::screen('roles/{role}/edit', RoleEditScreen::class)
     ->name('platform.systems.roles.edit')
-    ->breadcrumbs(fn (Trail $trail, $role) => $trail
-        ->parent('platform.systems.roles')
-        ->push($role->name, route('platform.systems.roles.edit', $role)));
+    ->breadcrumbs(
+        fn(Trail $trail, $role) => $trail
+            ->parent('platform.systems.roles')
+            ->push($role->name, route('platform.systems.roles.edit', $role)),
+    );
 
 // Platform > System > Roles > Create
 Route::screen('roles/create', RoleEditScreen::class)
     ->name('platform.systems.roles.create')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.systems.roles')
-        ->push(__('Create'), route('platform.systems.roles.create')));
+    ->breadcrumbs(
+        fn(Trail $trail) => $trail
+            ->parent('platform.systems.roles')
+            ->push(__('Create'), route('platform.systems.roles.create')),
+    );
 
 // Platform > System > Roles
 Route::screen('roles', RoleListScreen::class)
     ->name('platform.systems.roles')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.index')
-        ->push(__('Roles'), route('platform.systems.roles')));
+    ->breadcrumbs(
+        fn(Trail $trail) => $trail->parent('platform.index')->push(__('Roles'), route('platform.systems.roles')),
+    );
 
 // Example...
 Route::screen('example', ExampleScreen::class)
     ->name('platform.example')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.index')
-        ->push('Example Screen'));
+    ->breadcrumbs(fn(Trail $trail) => $trail->parent('platform.index')->push('Example Screen'));
 
 Route::screen('/form/examples/fields', ExampleFieldsScreen::class)->name('platform.example.fields');
 Route::screen('/form/examples/advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
@@ -163,5 +153,3 @@ Route::screen('/form/examples/actions', ExampleActionsScreen::class)->name('plat
 Route::screen('/layout/examples/layouts', ExampleLayoutsScreen::class)->name('platform.example.layouts');
 Route::screen('/charts/examples/charts', ExampleChartsScreen::class)->name('platform.example.charts');
 Route::screen('/cards/examples/cards', ExampleCardsScreen::class)->name('platform.example.cards');
-
-

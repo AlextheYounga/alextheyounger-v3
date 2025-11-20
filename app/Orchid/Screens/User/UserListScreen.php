@@ -25,10 +25,7 @@ class UserListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'users' => User::with('roles')
-                ->filters(UserFiltersLayout::class)
-                ->defaultSort('id', 'desc')
-                ->paginate(),
+            'users' => User::with('roles')->filters(UserFiltersLayout::class)->defaultSort('id', 'desc')->paginate(),
         ];
     }
 
@@ -50,9 +47,7 @@ class UserListScreen extends Screen
 
     public function permission(): ?iterable
     {
-        return [
-            'platform.systems.users',
-        ];
+        return ['platform.systems.users'];
     }
 
     /**
@@ -62,11 +57,7 @@ class UserListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make(__('Add'))
-                ->icon('bs.plus-circle')
-                ->route('platform.systems.users.create'),
-        ];
+        return [Link::make(__('Add'))->icon('bs.plus-circle')->route('platform.systems.users.create')];
     }
 
     /**
@@ -80,8 +71,7 @@ class UserListScreen extends Screen
             UserFiltersLayout::class,
             UserListLayout::class,
 
-            Layout::modal('asyncEditUserModal', UserEditLayout::class)
-                ->async('asyncGetUser'),
+            Layout::modal('asyncEditUserModal', UserEditLayout::class)->async('asyncGetUser'),
         ];
     }
 
@@ -98,10 +88,7 @@ class UserListScreen extends Screen
     public function saveUser(Request $request, User $user): void
     {
         $request->validate([
-            'user.email' => [
-                'required',
-                Rule::unique(User::class, 'email')->ignore($user),
-            ],
+            'user.email' => ['required', Rule::unique(User::class, 'email')->ignore($user)],
         ]);
 
         $user->fill($request->input('user'))->save();

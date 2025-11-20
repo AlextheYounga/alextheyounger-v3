@@ -20,7 +20,7 @@ class CoverLetterListLayout extends Table
      *
      */
     protected $target = 'coverLetters';
-	protected $coverLetterSite = 'https://resume.alexyounger.me/cover-letters/';
+    protected $coverLetterSite = 'https://resume.alexyounger.me/cover-letters/';
 
     /**
      * Get the table cells to be displayed.
@@ -29,32 +29,32 @@ class CoverLetterListLayout extends Table
      */
     protected function columns(): iterable
     {
-		return [
-			TD::make('name', 'Name')
-				->render(function (CoverLetter $coverLetter) {
-				return Link::make($coverLetter->name)
-					->route('platform.cover-letter.edit', $coverLetter);
-			}),
-			TD::make('hash', 'Hash'),
-			TD::make('company', 'Company'),
-			TD::make('hiring_manager', 'Hiring Manager'),
-			TD::make('content', 'Content')
-				->render(fn (CoverLetter $coverLetter) => strlen($coverLetter->content) . ' chars'),
-			TD::make('created_at', 'Created')
-                ->render(fn (CoverLetter $coverLetter) => $this->formatDate($coverLetter->created_at)),
-			TD::make()
-				->render(fn(CoverLetter $coverLetter) => Group::make([
-					Link::make('View')
-						->icon('eye')
-						->target('_blank')
-						->href($this->coverLetterSite . $coverLetter->hash),
-					Button::make('Duplicate')
-						->icon('copy')
-						->action(route('platform.cover-letter.duplicate', $coverLetter)),
-				])),
-		];
+        return [
+            TD::make('name', 'Name')->render(function (CoverLetter $coverLetter) {
+                return Link::make($coverLetter->name)->route('platform.cover-letter.edit', $coverLetter);
+            }),
+            TD::make('hash', 'Hash'),
+            TD::make('company', 'Company'),
+            TD::make('hiring_manager', 'Hiring Manager'),
+            TD::make('content', 'Content')->render(
+                fn(CoverLetter $coverLetter) => strlen($coverLetter->content) . ' chars',
+            ),
+            TD::make('created_at', 'Created')->render(
+                fn(CoverLetter $coverLetter) => $this->formatDate($coverLetter->created_at),
+            ),
+            TD::make()->render(
+                fn(CoverLetter $coverLetter) => Group::make([
+                    Link::make('View')
+                        ->icon('eye')
+                        ->target('_blank')
+                        ->href($this->coverLetterSite . $coverLetter->hash),
+                    Button::make('Duplicate')
+                        ->icon('copy')
+                        ->action(route('platform.cover-letter.duplicate', $coverLetter)),
+                ]),
+            ),
+        ];
     }
-
 
     private function formatDate($dateString)
     {

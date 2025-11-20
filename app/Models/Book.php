@@ -25,14 +25,11 @@ class Book extends Model
         'active',
     ];
 
-    protected $appends = [
-        'selector'
-    ];
+    protected $appends = ['selector'];
 
     protected $casts = [
-        'properties' => 'json'
+        'properties' => 'json',
     ];
-
 
     public function reorderPositions()
     {
@@ -41,7 +38,7 @@ class Book extends Model
         if ($oldPosition === $newPosition) {
             return $this;
         }
-        
+
         $books = Book::where('position', '>=', $newPosition)->orderBy('position')->get();
 
         foreach ($books as $book) {

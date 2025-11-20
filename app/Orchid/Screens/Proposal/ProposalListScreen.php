@@ -17,7 +17,7 @@ class ProposalListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'proposals' => Proposal::orderBy('created_at', 'desc')->get()
+            'proposals' => Proposal::orderBy('created_at', 'desc')->get(),
         ];
     }
 
@@ -31,12 +31,12 @@ class ProposalListScreen extends Screen
         return 'Proposals';
     }
 
-	/**
+    /**
      * The description is displayed on the user's screen under the heading
      */
     public function description(): ?string
     {
-        return "All proposals";
+        return 'All proposals';
     }
 
     /**
@@ -46,11 +46,7 @@ class ProposalListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make('Create new')
-                ->icon('pencil')
-                ->route('platform.proposal.edit')
-        ];
+        return [Link::make('Create new')->icon('pencil')->route('platform.proposal.edit')];
     }
 
     /**
@@ -60,8 +56,6 @@ class ProposalListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [
-            ProposalListLayout::class
-        ];
+        return [ProposalListLayout::class];
     }
 }

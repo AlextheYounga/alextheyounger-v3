@@ -19,8 +19,8 @@ use App\Http\Controllers\Api\ResumeController;
 
 // User::first()->createToken('default');
 
-Route::get('/ping', function() {
-	return response()->json(['message' => 'pong']);
+Route::get('/ping', function () {
+    return response()->json(['message' => 'pong']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -32,13 +32,9 @@ TODO: Investigate proper authentication for these routes. Issue currently is res
 Random hash is being used as a psuedo-authentication method. Adding throttle to these routes for now to prevent abuse.
 */
 
-Route::get('/resume/{hash}', [ResumeController::class, 'get'])
-	->middleware('throttle:50,1'); // Open
-Route::get('/cover-letter/{hash}', [CoverLetterController::class, 'get'])
-	->middleware('throttle:50,1'); // Open
+Route::get('/resume/{hash}', [ResumeController::class, 'get'])->middleware('throttle:50,1'); // Open
+Route::get('/cover-letter/{hash}', [CoverLetterController::class, 'get'])->middleware('throttle:50,1'); // Open
 
-Route::middleware('auth:sanctum')
-	->post('/repositories', [CodingLanguageController::class, 'addRepositories']);
+Route::middleware('auth:sanctum')->post('/repositories', [CodingLanguageController::class, 'addRepositories']);
 
-Route::get('/languages/stats', [CodingLanguageController::class, 'stats'])
-	->middleware('throttle:50,1'); // Open
+Route::get('/languages/stats', [CodingLanguageController::class, 'stats'])->middleware('throttle:50,1'); // Open

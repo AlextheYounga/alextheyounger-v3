@@ -1,5 +1,4 @@
 <template>
-
     <Head title="Home" />
 
     <AnimatedButtonMenu />
@@ -10,7 +9,11 @@
         <div id="desktop" class="hidden md:flex px-8 justify-between w-full pt-32">
             <div id="home-menu" class="w-1/3">
                 <section id="hero" class="mx-auto mb-4 relative rounded">
-                    <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center border-sky border-2" alt="alex younger developer marketing about me" />
+                    <img
+                        src="/images/bridge-standing.jpg.webp"
+                        class="headshot flex mx-auto relative text-center border-sky border-2"
+                        alt="alex younger developer marketing about me"
+                    />
                 </section>
 
                 <section id="title" class="rounded relative mb-8">
@@ -24,10 +27,17 @@
                     <ul class="text-center">
                         <li v-for="item in homeItems" class="py-1 text-xl">
                             <template v-if="item.link">
-                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{ item.name }}</Link>
+                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{
+                                    item.name
+                                }}</Link>
                             </template>
                             <template v-else>
-                                <p @click="item.action(item.id)" class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer">{{ item.name }}</p>
+                                <p
+                                    @click="item.action(item.id)"
+                                    class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer"
+                                >
+                                    {{ item.name }}
+                                </p>
                             </template>
                         </li>
                     </ul>
@@ -43,7 +53,9 @@
                 </section>
 
                 <section id="about" v-if="this.selected == 'about'" class="max-w-3xl mx-auto">
-                    <div class="large-description rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
+                    <div
+                        class="large-description rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100"
+                    >
                         <h2 class="text-sky-300 text-2xl pb-4 font-semibold">About</h2>
                         <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100"></div>
                     </div>
@@ -64,7 +76,9 @@
                         <div id="contact-description" v-html="$props.content?.contact?.content ?? ''"></div>
 
                         <div class="w-full pt-12">
-                            <div class="w-1/2 flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto">
+                            <div
+                                class="w-1/2 flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto"
+                            >
                                 <a v-for="link in links" :href="link.url" class="w-16 no-underline" target="_blank">
                                     <img class="mx-auto" :src="link.icon" width="25" height="25" :alt="link.alt" />
                                 </a>
@@ -80,7 +94,11 @@
         <div id="mobile" class="block md:hidden w-full pt-12">
             <div class="mx-auto">
                 <section id="hero" class="mx-auto mb-4 relative rounded">
-                    <img src="/images/bridge-standing.jpg.webp" class="headshot flex mx-auto relative text-center border-sky border-2" alt="alex younger developer marketing about me" />
+                    <img
+                        src="/images/bridge-standing.jpg.webp"
+                        class="headshot flex mx-auto relative text-center border-sky border-2"
+                        alt="alex younger developer marketing about me"
+                    />
                 </section>
 
                 <section id="title" class="rounded relative mb-8">
@@ -96,10 +114,17 @@
                     <ul class="flex flex-wrap justify-center">
                         <li v-for="item in homeItems" class="py-1 text-sm px-2">
                             <template v-if="item.link">
-                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{ item.name }}</Link>
+                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{
+                                    item.name
+                                }}</Link>
                             </template>
                             <template v-else>
-                                <p @click="item.action(item.id)" class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer">{{ item.name }}</p>
+                                <p
+                                    @click="item.action(item.id)"
+                                    class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer"
+                                >
+                                    {{ item.name }}
+                                </p>
                             </template>
                         </li>
                     </ul>
@@ -133,10 +158,16 @@
                 <section id="contact" v-if="this.selected == 'contact'" class="max-w-3xl mx-auto">
                     <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
                         <h3 class="text-sky-300 text-xl pb-4 font-semibold">Contact</h3>
-                        <div id="contact-description" class="text-sm" v-html="$props.content?.contact?.content ?? ''"></div>
+                        <div
+                            id="contact-description"
+                            class="text-sm"
+                            v-html="$props.content?.contact?.content ?? ''"
+                        ></div>
 
                         <div class="w-full pt-6">
-                            <div class="w-full flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto">
+                            <div
+                                class="w-full flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto"
+                            >
                                 <a v-for="link in links" :href="link.url" class="w-16 no-underline" target="_blank">
                                     <img class="mx-auto" :src="link.icon" width="25" height="25" :alt="link.alt" />
                                 </a>
@@ -152,7 +183,7 @@
 
 <script>
 import { Head } from '@inertiajs/vue3';
-import { Link } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3';
 import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
 import LanguageBar from '@/Components/LanguageBar.vue';
 import { renderStarfield } from '@/three/space';
@@ -160,14 +191,14 @@ import { renderStarfield } from '@/three/space';
 // Will grab this during the mounted lifecycle hook
 let pageWrapper = null;
 
-const twitterIcon = 'https://img.icons8.com/color/48/twitter--v1.png'
-const linkedIcon = 'https://img.icons8.com/color/48/linkedin.png'
-const githubIcon = 'https://img.icons8.com/color/48/github--v1.png'
-const emailIcon = 'https://img.icons8.com/emoji/48/e-mail.png'
-const resumeIcon = 'https://img.icons8.com/nolan/64/resume.png'
+const twitterIcon = 'https://img.icons8.com/color/48/twitter--v1.png';
+const linkedIcon = 'https://img.icons8.com/color/48/linkedin.png';
+const githubIcon = 'https://img.icons8.com/color/48/github--v1.png';
+const emailIcon = 'https://img.icons8.com/emoji/48/e-mail.png';
+const resumeIcon = 'https://img.icons8.com/nolan/64/resume.png';
 
 const links = [
-    { name: 'Twitter', url: 'https://github.com/AlextheYounga', icon: twitterIcon, alt: "twitter--v1" },
+    { name: 'Twitter', url: 'https://github.com/AlextheYounga', icon: twitterIcon, alt: 'twitter--v1' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alexyounger/', icon: linkedIcon, alt: 'linkedin' },
     { name: 'Github', url: 'https://github.com/AlextheYounga', icon: githubIcon, alt: 'github' },
     { name: 'Email', url: 'mailto:alex@alextheyounger.me', icon: emailIcon, alt: 'e-mail' },
@@ -175,11 +206,11 @@ const links = [
 ];
 
 async function reveal() {
-    let delay = 1000
+    let delay = 1000;
     const visited = localStorage.getItem('visited');
-    if (visited) delay = 10 // Shorter delay for transition effect
+    if (visited) delay = 10; // Shorter delay for transition effect
 
-    var object = { value: true, timestamp: new Date().getTime() }
+    var object = { value: true, timestamp: new Date().getTime() };
     setTimeout(() => {
         localStorage.setItem('visited', JSON.stringify(object));
         pageWrapper.classList.add('opacity-100');
@@ -191,7 +222,7 @@ export default {
         Head,
         Link,
         AnimatedButtonMenu,
-        LanguageBar
+        LanguageBar,
     },
     props: {
         content: {
@@ -209,10 +240,10 @@ export default {
                 { name: 'Contact', link: false, id: 'contact', action: this.openSection },
                 { name: 'Reading List', link: 'pages.books' },
                 { name: 'Projects', link: 'pages.projects' },
-                { name: 'Explore Starfield', link: 'pages.starfield' }
+                { name: 'Explore Starfield', link: 'pages.starfield' },
             ],
-            selected: 'default' // default is nothing
-        }
+            selected: 'default', // default is nothing
+        };
     },
     methods: {
         openSection(sectionId) {
@@ -222,26 +253,28 @@ export default {
     mounted() {
         pageWrapper = document.getElementById('page-wrapper');
         renderStarfield();
-        reveal()
-    }
-}
+        reveal();
+    },
+};
 </script>
 
 <style>
 #page-wrapper {
-    --glowy-text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ea5e9, 0 0 40px #0ea5e9, 0 0 50px #0ea5e9, 0 0 60px #0ea5e9, 0 0 70px #0ea5e9;
+    --glowy-text-shadow:
+        0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ea5e9, 0 0 40px #0ea5e9, 0 0 50px #0ea5e9, 0 0 60px #0ea5e9,
+        0 0 70px #0ea5e9;
 }
 
 #desktop #hud section > div:first-child {
     max-height: 65vh;
-	overflow-y: scroll;
-	scrollbar-width: none;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
-#mobile #hud section > div:first-child{
+#mobile #hud section > div:first-child {
     max-height: 45vh;
     overflow-y: scroll;
-	scrollbar-width: none;
+    scrollbar-width: none;
 }
 
 #hud p {

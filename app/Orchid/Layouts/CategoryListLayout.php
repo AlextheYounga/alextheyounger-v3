@@ -24,8 +24,7 @@ class CategoryListLayout extends Table
     public function columns(): array
     {
         return [
-            TD::make('position', __('Position'))
-            ->render(function (Category $category) {
+            TD::make('position', __('Position'))->render(function (Category $category) {
                 return ModalToggle::make($category->position)
                     ->modal('positionModal')
                     ->modalTitle('Category Position')
@@ -34,18 +33,19 @@ class CategoryListLayout extends Table
                         'category' => $category->id,
                     ]);
             }),
-            TD::make('name', 'Name')
-                ->render(function (Category $category) {
-                    return Link::make($category->name)
-                        ->route('platform.category.edit', $category);
-                }),
+            TD::make('name', 'Name')->render(function (Category $category) {
+                return Link::make($category->name)->route('platform.category.edit', $category);
+            }),
             TD::make('type', 'Type'),
-            TD::make('created_at', 'Created')
-                ->render(fn (Category $category) => $this->formatDate($category->created_at)),
-            TD::make('updated_at', 'Last edit')
-                ->render(fn (Category $category) => $this->formatDate($category->updated_at)),
-            TD::make('active', 'Active')
-                ->render(fn (Category $category) => (boolean) $category->active ? 'active' : 'inactive'),
+            TD::make('created_at', 'Created')->render(
+                fn(Category $category) => $this->formatDate($category->created_at),
+            ),
+            TD::make('updated_at', 'Last edit')->render(
+                fn(Category $category) => $this->formatDate($category->updated_at),
+            ),
+            TD::make('active', 'Active')->render(
+                fn(Category $category) => (bool) $category->active ? 'active' : 'inactive',
+            ),
         ];
     }
 

@@ -17,7 +17,7 @@ class PageContentListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'pageContent' => PageContent::all()
+            'pageContent' => PageContent::all(),
         ];
     }
 
@@ -36,7 +36,7 @@ class PageContentListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All Page Content";
+        return 'All Page Content';
     }
 
     /**
@@ -46,11 +46,7 @@ class PageContentListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make('Edit')
-                ->icon('pencil')
-                ->route('platform.page-content.edit')
-        ];
+        return [Link::make('Edit')->icon('pencil')->route('platform.page-content.edit')];
     }
 
     /**
@@ -60,9 +56,6 @@ class PageContentListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [
-            PageContentListLayout::class,
-        ];
+        return [PageContentListLayout::class];
     }
-
 }

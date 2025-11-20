@@ -24,22 +24,22 @@ Route::get('/starfield', [PagesController::class, 'starfield'])->name('pages.sta
 
 Route::prefix('secure-passwords')->group(function () {
     Route::get('/', [PasswordController::class, 'encrypt'])->name('passwords.encrypt');
-	Route::get('/decrypt/{uuid}', [PasswordController::class, 'get'])->name('passwords.get');
-    Route::post('/store', [PasswordController::class, 'store'])->name('passwords.store')->middleware('throttle:50,1'); // Ajax
-	Route::get('/destroy/{uuid}', [PasswordController::class, 'destroy'])->name('passwords.destroy'); // Ajax
+    Route::get('/decrypt/{uuid}', [PasswordController::class, 'get'])->name('passwords.get');
+    Route::post('/store', [PasswordController::class, 'store'])
+        ->name('passwords.store')
+        ->middleware('throttle:50,1'); // Ajax
+    Route::get('/destroy/{uuid}', [PasswordController::class, 'destroy'])->name('passwords.destroy'); // Ajax
 });
 
 Route::prefix('clipboard')->group(function () {
     Route::get('/', [ClipboardController::class, 'index'])->name('note.index');
-	Route::get('/{note_id}', [ClipboardController::class, 'get'])->name('note.get');
-    Route::post('/store', [ClipboardController::class, 'store'])->name('note.store')->middleware('throttle:50,1'); // Ajax
+    Route::get('/{note_id}', [ClipboardController::class, 'get'])->name('note.get');
+    Route::post('/store', [ClipboardController::class, 'store'])
+        ->name('note.store')
+        ->middleware('throttle:50,1'); // Ajax
 });
 
 Route::group(['prefix' => 'proposals'], function () {
-	Route::get('/{hash}', [ProposalController::class, 'show'])
-    	->name('proposals.show');
-	Route::post('/{hash}/sign', [ProposalController::class, 'sign'])
-		->name('proposals.sign');
+    Route::get('/{hash}', [ProposalController::class, 'show'])->name('proposals.show');
+    Route::post('/{hash}/sign', [ProposalController::class, 'sign'])->name('proposals.sign');
 });
-
-
