@@ -8,9 +8,6 @@ cmds = [
     "cp /assets/supervisord.conf /etc/supervisord.conf",
     "chmod +x /assets/start.sh",
     "...",
-	"composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader",
-	"yarn",
-	"yarn build",
 	"php artisan migrate --force",
 	"php artisan languages:generate"
 ]
