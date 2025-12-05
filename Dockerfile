@@ -1,85 +1,35 @@
-FROM php:8.2-fpm-alpine
+FROM unit:1.34.1-php8.3
 
-# Install system dependencies
-RUN apk add --no-cache \
-    nginx \
-    supervisor \
-    curl \
-    libpng-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    git \
-    oniguruma-dev \
-    freetype-dev \
-    libjpeg-turbo-dev \
-    libzip-dev \
-    icu-dev \
-    nodejs \
-    npm
+RUN apt update && apt install -y \
+    curl unzip git libicu-dev libzip-dev libpng-dev libjpeg-dev libfreetype6-dev libssl-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) pcntl opcache pdo pdo_mysql intl zip gd exif ftp bcmath \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
-# Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) \
-    pdo_mysql \
-    mbstring \
-    exif \
-    pcntl \
-    bcmath \
-    gd \
-    xml \
-    zip \
-    intl \
-    opcache
+RUN echo "opcache.enable=1" > /usr/local/etc/php/conf.d/custom.ini \
+    && echo "opcache.jit=tracing" >> /usr/local/etc/php/conf.d/custom.ini \
+    && echo "opcache.jit_buffer_size=256M" >> /usr/local/etc/php/conf.d/custom.ini \
+    && echo "memory_limit=512M" > /usr/local/etc/php/conf.d/custom.ini \        
+    && echo "upload_max_filesize=64M" >> /usr/local/etc/php/conf.d/custom.ini \
+    && echo "post_max_size=64M" >> /usr/local/etc/php/conf.d/custom.ini
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-# Set working directory
 WORKDIR /var/www/html
 
-# Copy composer files first for better caching
-COPY composer.json composer.lock ./
+RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Install PHP dependencies
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
+RUN chown -R unit:unit /var/www/html/storage bootstrap/cache && chmod -R 775 /var/www/html/storage
 
-# Copy package files for npm
-COPY package.json package-lock.json* ./
-
-# Install Node dependencies
-RUN npm ci
-
-# Copy application code
 COPY . .
 
-# Generate optimized autoloader
-RUN composer dump-autoload --optimize
+RUN chown -R unit:unit storage bootstrap/cache && chmod -R 775 storage bootstrap/cache
 
-# Build frontend assets
-RUN npm run build
+RUN composer install --prefer-dist --optimize-autoloader --no-interaction
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage \
-    && chmod -R 755 /var/www/html/bootstrap/cache
+COPY unit.json /docker-entrypoint.d/unit.json
 
-# Create necessary directories
-RUN mkdir -p /var/log/supervisor \
-    && mkdir -p /run/nginx
+EXPOSE 8000
 
-# Copy configuration files
-COPY docker/nginx.conf /etc/nginx/nginx.conf
-COPY docker/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY docker/php.ini /usr/local/etc/php/conf.d/custom.ini
-
-# Copy and set permissions for entrypoint
-COPY docker/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-# Expose port 80
-EXPOSE 80
-
-# Start services via entrypoint
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["unitd", "--no-daemon"]
