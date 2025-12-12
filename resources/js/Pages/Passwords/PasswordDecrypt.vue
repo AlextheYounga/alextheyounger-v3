@@ -27,7 +27,7 @@
                 >Decrypted Sensitive Data</label
             >
             <div class="mt-4 rounded-md bg-gray-800 p-4 text-gray-50 shadow-md">
-                <p class="mt-2 break-words">{{ decryptedData }}</p>
+                <p class="mt-2 whitespace-pre-wrap break-words">{{ decryptedData }}</p>
             </div>
             <p class="mt-3 text-center text-sm leading-6 text-gray-100">
                 This data has been destroyed from the database. Make sure to save it.
