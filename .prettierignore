@@ -1,27 +1,14 @@
-# Dependencies
-vendor/
-node_modules/
-
-# Build artifacts
-build/
-.phpunit.cache/
-
-# Environment files
-.env
-.env.*
-
-# Lock files
-composer.lock
-package-lock.json
-yarn.lock
-
-# Box configuration
-box.json
-
-# Git
-.git/
-
-# Docker => will produce stray characters
 Dockerfile
-storage/framework/*
-public/cad/
+*cache*
+.env
+.env*
+vendor
+node_modules
+*.sqlite
+*.db
+.git/
+yarn.lock
+package-lock.json
+storage/
+public/
+artisan
