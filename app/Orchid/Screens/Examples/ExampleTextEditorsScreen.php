@@ -68,11 +68,15 @@ class ExampleTextEditorsScreen extends TestBaseScreen
             Layout::rows([
                 SimpleMDE::make('simplemde')
                     ->title('SimpleMDE')
-                    ->popover('SimpleMDE is a simple, embeddable, and beautiful JS markdown editor'),
+                    ->popover(
+                        'SimpleMDE is a simple, embeddable, and beautiful JS markdown editor',
+                    ),
 
                 Quill::make('quill')
                     ->title('Quill')
-                    ->popover('Quill is a free, open source WYSIWYG editor built for the modern web.'),
+                    ->popover(
+                        'Quill is a free, open source WYSIWYG editor built for the modern web.',
+                    ),
 
                 Code::make('code')->title('Code'),
             ]),

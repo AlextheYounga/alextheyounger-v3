@@ -31,7 +31,10 @@ class CoverLetterListLayout extends Table
     {
         return [
             TD::make('name', 'Name')->render(function (CoverLetter $coverLetter) {
-                return Link::make($coverLetter->name)->route('platform.cover-letter.edit', $coverLetter);
+                return Link::make($coverLetter->name)->route(
+                    'platform.cover-letter.edit',
+                    $coverLetter,
+                );
             }),
             TD::make('hash', 'Hash'),
             TD::make('company', 'Company'),

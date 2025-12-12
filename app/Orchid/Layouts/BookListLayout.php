@@ -33,12 +33,16 @@ class BookListLayout extends Table
                         'book' => $book->id,
                     ]);
             }),
-            TD::make('active', 'Active')->render(fn(Book $book) => (bool) $book->active ? '✓' : '✗'),
+            TD::make('active', 'Active')->render(
+                fn(Book $book) => (bool) $book->active ? '✓' : '✗',
+            ),
             TD::make('title', 'Title')->render(function (Book $book) {
                 return Link::make($book->title)->route('platform.book.edit', $book);
             }),
             TD::make('author', 'Author'),
-            TD::make('description', 'Description')->render(fn(Book $book) => strlen($book->description) . ' chars'),
+            TD::make('description', 'Description')->render(
+                fn(Book $book) => strlen($book->description) . ' chars',
+            ),
             TD::make('image_name', 'Image Name'),
             TD::make('external_link', 'External Link')->render(
                 fn(Book $book) => (bool) $book->external_link ? '✓' : '✗',
@@ -46,8 +50,12 @@ class BookListLayout extends Table
             TD::make('external_image_link', 'Image Link')->render(
                 fn(Book $book) => (bool) $book->external_image_link ? '✓' : '✗',
             ),
-            TD::make('created_at', 'Created')->render(fn(Book $book) => $this->formatDate($book->created_at)),
-            TD::make('updated_at', 'Last edit')->render(fn(Book $book) => $this->formatDate($book->updated_at)),
+            TD::make('created_at', 'Created')->render(
+                fn(Book $book) => $this->formatDate($book->created_at),
+            ),
+            TD::make('updated_at', 'Last edit')->render(
+                fn(Book $book) => $this->formatDate($book->updated_at),
+            ),
         ];
     }
 

@@ -34,7 +34,9 @@ class ProposalListLayout extends Table
                 return Link::make($proposal->title)->route('platform.proposal.edit', $proposal);
             }),
             TD::make('client', 'Client'),
-            TD::make('total', 'Total')->render(fn(Proposal $proposal) => '$' . number_format($proposal->total, 2)),
+            TD::make('total', 'Total')->render(
+                fn(Proposal $proposal) => '$' . number_format($proposal->total, 2),
+            ),
             TD::make('client_agreement', 'Agreement')->render(
                 fn(Proposal $proposal) => $proposal->client_agreement ? '✓' : '✗',
             ),
@@ -50,7 +52,9 @@ class ProposalListLayout extends Table
                         ->icon('eye')
                         ->target('_blank')
                         ->href('/proposals/' . $proposal->hash),
-                    Button::make('Duplicate')->icon('copy')->action(route('platform.proposal.duplicate', $proposal)),
+                    Button::make('Duplicate')
+                        ->icon('copy')
+                        ->action(route('platform.proposal.duplicate', $proposal)),
                 ]),
             ),
         ];

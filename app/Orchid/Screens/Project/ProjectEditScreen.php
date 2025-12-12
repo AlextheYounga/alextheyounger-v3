@@ -65,7 +65,10 @@ class ProjectEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee(!$this->project->exists),
 
-            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->project->exists),
+            Button::make('Update')
+                ->icon('note')
+                ->method('createOrUpdate')
+                ->canSee($this->project->exists),
 
             Button::make('Remove')->icon('trash')->method('remove')->canSee($this->project->exists),
         ];
@@ -129,7 +132,9 @@ class ProjectEditScreen extends Screen
 
                 Matrix::make('project.technology')
                     ->title('Tech Stack')
-                    ->value($this->listToMatrix($this->project->content['technology'] ?? [], 'name'))
+                    ->value(
+                        $this->listToMatrix($this->project->content['technology'] ?? [], 'name'),
+                    )
                     ->columns(['Name' => 'name'])
                     ->fields(['name' => Input::make('name')->type('text')]),
 
@@ -162,8 +167,12 @@ class ProjectEditScreen extends Screen
             'content' => [
                 'description' => $fields['description'] ?? null,
                 'excerpt' => $fields['excerpt'] ?? null,
-                'technology' => isset($fields['technology']) ? $this->matrixToList($fields['technology']) : [],
-                'bullets' => isset($fields['bullets']) ? $this->matrixToList($fields['bullets']) : [],
+                'technology' => isset($fields['technology'])
+                    ? $this->matrixToList($fields['technology'])
+                    : [],
+                'bullets' => isset($fields['bullets'])
+                    ? $this->matrixToList($fields['bullets'])
+                    : [],
             ],
             'properties' => [
                 'image_name' => $fields['image_name'] ?? null,

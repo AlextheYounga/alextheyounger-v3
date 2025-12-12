@@ -92,15 +92,25 @@ class ExampleFieldsScreen extends TestBaseScreen
                     ->title('Url')
                     ->value('https://getbootstrap.com')
                     ->horizontal()
-                    ->help('You might use this when asking to input their website address for a business directory'),
+                    ->help(
+                        'You might use this when asking to input their website address for a business directory',
+                    ),
 
-                Input::make('tel')->type('tel')->title('Telephone')->value('1-(555)-555-5555')->horizontal()
+                Input::make('tel')
+                    ->type('tel')
+                    ->title('Telephone')
+                    ->value('1-(555)-555-5555')
+                    ->horizontal()
                     ->popover('The device’s autocomplete mechanisms kick in and suggest
                         phone numbers that can be autofilled with a single tap.')
                     ->help('Focusing input on a telephone field brings up
                         a numeric keypad ready for keying in a number.'),
 
-                Input::make('password')->type('password')->title('Password')->value('Password')->horizontal(),
+                Input::make('password')
+                    ->type('password')
+                    ->title('Password')
+                    ->value('Password')
+                    ->horizontal(),
 
                 Input::make('number')->type('number')->title('Number')->value(42)->horizontal(),
 
@@ -181,7 +191,10 @@ class ExampleFieldsScreen extends TestBaseScreen
                         ->rows(6)
                         ->disabled(),
 
-                    Input::make('readonly_input')->title('Readonly Input')->placeholder('Readonly Input')->readonly(),
+                    Input::make('readonly_input')
+                        ->title('Readonly Input')
+                        ->placeholder('Readonly Input')
+                        ->readonly(),
 
                     CheckBox::make('readonly_checkbox')
                         ->title('Readonly Checkbox')

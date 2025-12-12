@@ -67,7 +67,10 @@ class RoleEditScreen extends Screen
         return [
             Button::make(__('Save'))->icon('bs.check-circle')->method('save'),
 
-            Button::make(__('Remove'))->icon('bs.trash3')->method('remove')->canSee($this->role->exists),
+            Button::make(__('Remove'))
+                ->icon('bs.trash3')
+                ->method('remove')
+                ->canSee($this->role->exists),
         ];
     }
 
@@ -87,7 +90,9 @@ class RoleEditScreen extends Screen
 
             Layout::block([RolePermissionLayout::class])
                 ->title('Permission/Privilege')
-                ->description('A privilege is necessary to perform certain tasks and operations in an area.'),
+                ->description(
+                    'A privilege is necessary to perform certain tasks and operations in an area.',
+                ),
         ];
     }
 

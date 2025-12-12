@@ -75,11 +75,18 @@ class UserProfileScreen extends Screen
             Layout::block(UserEditLayout::class)
                 ->title(__('Profile Information'))
                 ->description(__("Update your account's profile information and email address."))
-                ->commands(Button::make(__('Save'))->type(Color::BASIC())->icon('bs.check-circle')->method('save')),
+                ->commands(
+                    Button::make(__('Save'))
+                        ->type(Color::BASIC())
+                        ->icon('bs.check-circle')
+                        ->method('save'),
+                ),
 
             Layout::block(ProfilePasswordLayout::class)
                 ->title(__('Update Password'))
-                ->description(__('Ensure your account is using a long, random password to stay secure.'))
+                ->description(
+                    __('Ensure your account is using a long, random password to stay secure.'),
+                )
                 ->commands(
                     Button::make(__('Update password'))
                         ->type(Color::BASIC())
@@ -93,7 +100,10 @@ class UserProfileScreen extends Screen
     {
         $request->validate([
             'user.name' => 'required|string',
-            'user.email' => ['required', Rule::unique(User::class, 'email')->ignore($request->user())],
+            'user.email' => [
+                'required',
+                Rule::unique(User::class, 'email')->ignore($request->user()),
+            ],
         ]);
 
         $request->user()->fill($request->get('user'))->save();

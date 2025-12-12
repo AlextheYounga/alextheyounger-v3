@@ -12,7 +12,7 @@ const planetColors = [
     0xf5ac27, // Orange
     0x800080, // Purple
     0x8d9aa1, // Grey
-    0x595b5c, // Dark Grey
+    0x595b5c // Dark Grey
 ];
 
 function createCentralStar() {
@@ -39,7 +39,7 @@ function createCentralStar() {
         position: { x, y, z },
         directionalLight,
         pointLight,
-        star,
+        star
     };
 }
 

@@ -36,7 +36,12 @@ class RolePermissionLayout extends Rows
     private function generatedPermissionFields(Collection $permissionsRaw): array
     {
         return $permissionsRaw
-            ->map(fn(Collection $permissions, $title) => $this->makeCheckBoxGroup($permissions, $title))
+            ->map(
+                fn(Collection $permissions, $title) => $this->makeCheckBoxGroup(
+                    $permissions,
+                    $title,
+                ),
+            )
             ->flatten()
             ->toArray();
     }
@@ -48,7 +53,11 @@ class RolePermissionLayout extends Rows
             ->flatten()
             ->map(fn(CheckBox $checkbox, $key) => $key === 0 ? $checkbox->title($title) : $checkbox)
             ->chunk(4)
-            ->map(fn(Collection $checkboxes) => Group::make($checkboxes->toArray())->alignEnd()->autoWidth());
+            ->map(
+                fn(Collection $checkboxes) => Group::make($checkboxes->toArray())
+                    ->alignEnd()
+                    ->autoWidth(),
+            );
     }
 
     private function makeCheckBox(Collection $chunks): CheckBox
@@ -57,7 +66,9 @@ class RolePermissionLayout extends Rows
             ->placeholder($chunks->get('description'))
             ->value($chunks->get('active'))
             ->sendTrueOrFalse()
-            ->indeterminate($this->getIndeterminateStatus($chunks->get('slug'), $chunks->get('active')));
+            ->indeterminate(
+                $this->getIndeterminateStatus($chunks->get('slug'), $chunks->get('active')),
+            );
     }
 
     private function getIndeterminateStatus($slug, $value): bool

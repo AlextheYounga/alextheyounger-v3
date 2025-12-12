@@ -76,9 +76,15 @@ class ProposalEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee(!$this->proposal->exists),
 
-            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->proposal->exists),
+            Button::make('Update')
+                ->icon('note')
+                ->method('createOrUpdate')
+                ->canSee($this->proposal->exists),
 
-            Button::make('Remove')->icon('trash')->method('remove')->canSee($this->proposal->exists),
+            Button::make('Remove')
+                ->icon('trash')
+                ->method('remove')
+                ->canSee($this->proposal->exists),
         ];
     }
 
@@ -99,7 +105,9 @@ class ProposalEditScreen extends Screen
                 Group::make([
                     Input::make('proposal.client')->title('Client'),
 
-                    DateTimer::make('proposal.completion_date')->title('Completion Date')->format('Y-m-d'),
+                    DateTimer::make('proposal.completion_date')
+                        ->title('Completion Date')
+                        ->format('Y-m-d'),
                 ]),
 
                 CheckBox::make('proposal.use_client_agreement')
@@ -199,7 +207,8 @@ class ProposalEditScreen extends Screen
      */
     public function createOrUpdate(Request $request)
     {
-        $proposal = Proposal::where('id', $request->get('proposal')['id'])->first() ?? new Proposal();
+        $proposal =
+            Proposal::where('id', $request->get('proposal')['id'])->first() ?? new Proposal();
         $fields = $request->get('proposal');
         $useClientAgreement = $fields['use_client_agreement'] ?? false;
 

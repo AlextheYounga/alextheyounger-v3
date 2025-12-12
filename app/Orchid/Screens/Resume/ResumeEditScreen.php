@@ -73,7 +73,10 @@ class ResumeEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee(!$this->resume->exists),
 
-            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->resume->exists),
+            Button::make('Update')
+                ->icon('note')
+                ->method('createOrUpdate')
+                ->canSee($this->resume->exists),
 
             Button::make('Remove')->icon('trash')->method('remove')->canSee($this->resume->exists),
         ];
@@ -92,9 +95,15 @@ class ResumeEditScreen extends Screen
 
                 Input::make('resume.hash')->hidden(),
 
-                Input::make('resume.name')->title('Name')->placeholder('Enter unique name')->required(),
+                Input::make('resume.name')
+                    ->title('Name')
+                    ->placeholder('Enter unique name')
+                    ->required(),
 
-                TextArea::make('resume.bio')->title('Bio')->rows(5)->placeholder('Provide a brief bio'),
+                TextArea::make('resume.bio')
+                    ->title('Bio')
+                    ->rows(5)
+                    ->placeholder('Provide a brief bio'),
 
                 Relation::make('resume.projects.')
                     ->fromModel(Project::class, 'title')
@@ -142,7 +151,10 @@ class ResumeEditScreen extends Screen
                         'date' => Input::make(),
                         'link' => Input::make(),
                         'stack' => Input::make(),
-                        'bullets' => Code::make()->language('json')->height('100px')->lineNumbers(false),
+                        'bullets' => Code::make()
+                            ->language('json')
+                            ->height('100px')
+                            ->lineNumbers(false),
                     ])
                     ->placeholder('Enter experience data'),
             ]),

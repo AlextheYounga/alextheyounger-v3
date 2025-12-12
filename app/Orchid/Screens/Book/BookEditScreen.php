@@ -65,7 +65,10 @@ class BookEditScreen extends Screen
                 ->icon('pencil')
                 ->canSee(!$this->book->exists),
 
-            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->book->exists),
+            Button::make('Update')
+                ->icon('note')
+                ->method('createOrUpdate')
+                ->canSee($this->book->exists),
 
             Button::make('Remove')->icon('trash')->method('remove')->canSee($this->book->exists),
         ];

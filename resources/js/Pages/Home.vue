@@ -6,20 +6,20 @@
     <main id="page-wrapper" ref="page-wrapper" class="opacity-0 transition-opacity duration-500">
         <!-- TODO: Is there a better way to do mobile/desktop -->
         <!-- Desktop View -->
-        <div id="desktop" class="hidden md:flex px-8 justify-between w-full pt-32">
+        <div id="desktop" class="hidden w-full justify-between px-8 pt-32 md:flex">
             <div id="home-menu" class="w-1/3">
-                <section id="hero" class="mx-auto mb-4 relative rounded">
+                <section id="hero" class="relative mx-auto mb-4 rounded">
                     <img
                         src="/images/bridge-standing.jpg.webp"
-                        class="headshot flex mx-auto relative text-center border-sky border-2"
+                        class="headshot border-sky relative mx-auto flex border-2 text-center"
                         alt="alex younger developer marketing about me"
                     />
                 </section>
 
-                <section id="title" class="rounded relative mb-8">
-                    <h1 class="text-5xl text-sky-100 text-center glow">Alex Younger</h1>
-                    <p id="tagline" class="py-2 text-sky-200 text-center text-sm">
-                        {{ $props.content?.homeTagline?.content ?? '' }}
+                <section id="title" class="relative mb-8 rounded">
+                    <h1 class="glow text-center text-5xl text-sky-100">Alex Younger</h1>
+                    <p id="tagline" class="py-2 text-center text-sm text-sky-200">
+                        {{ $props.content?.homeTagline?.content ?? "" }}
                     </p>
                 </section>
 
@@ -27,14 +27,14 @@
                     <ul class="text-center">
                         <li v-for="item in homeItems" class="py-1 text-xl">
                             <template v-if="item.link">
-                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{
+                                <Link :href="route(item.link)" class="uppercase text-sky-100 hover:text-sky-200">{{
                                     item.name
                                 }}</Link>
                             </template>
                             <template v-else>
                                 <p
                                     @click="item.action(item.id)"
-                                    class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer"
+                                    class="cursor-pointer uppercase text-sky-100 hover:text-sky-200"
                                 >
                                     {{ item.name }}
                                 </p>
@@ -45,39 +45,39 @@
             </div>
 
             <div id="hud" class="w-2/3">
-                <section id="bio" v-if="this.selected == 'bio'" class="max-w-3xl mx-auto">
-                    <div class="rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
-                        <h2 class="text-sky-300 text-2xl pb-4 font-semibold">Bio</h2>
+                <section id="bio" v-if="this.selected == 'bio'" class="mx-auto max-w-3xl">
+                    <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
+                        <h2 class="pb-4 text-2xl font-semibold text-sky-300">Bio</h2>
                         <div v-html="$props.content?.bio?.content ?? ''" class="text-sky-100"></div>
                     </div>
                 </section>
 
-                <section id="about" v-if="this.selected == 'about'" class="max-w-3xl mx-auto">
+                <section id="about" v-if="this.selected == 'about'" class="mx-auto max-w-3xl">
                     <div
-                        class="large-description rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100"
+                        class="large-description rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100"
                     >
-                        <h2 class="text-sky-300 text-2xl pb-4 font-semibold">About</h2>
+                        <h2 class="pb-4 text-2xl font-semibold text-sky-300">About</h2>
                         <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100"></div>
                     </div>
                 </section>
 
-                <section id="skills" v-if="this.selected == 'skills'" class="max-w-3xl mx-auto">
-                    <div class="rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
-                        <h3 class="text-sky-300 text-2xl pb-4 font-semibold">Skills</h3>
+                <section id="skills" v-if="this.selected == 'skills'" class="mx-auto max-w-3xl">
+                    <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
+                        <h3 class="pb-4 text-2xl font-semibold text-sky-300">Skills</h3>
                         <div class="text-sky-100">
                             <LanguageBar />
                         </div>
                     </div>
                 </section>
 
-                <section id="contact" v-if="this.selected == 'contact'" class="max-w-3xl mx-auto">
-                    <div class="rounded-md p-12 border-2 border-sky-600 bg-transparent shadow shadow-sky-100">
-                        <h3 class="text-sky-300 text-2xl pb-4 font-semibold">Contact</h3>
+                <section id="contact" v-if="this.selected == 'contact'" class="mx-auto max-w-3xl">
+                    <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
+                        <h3 class="pb-4 text-2xl font-semibold text-sky-300">Contact</h3>
                         <div id="contact-description" v-html="$props.content?.contact?.content ?? ''"></div>
 
                         <div class="w-full pt-12">
                             <div
-                                class="w-1/2 flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto"
+                                class="mx-auto flex w-1/2 rounded-md border border-sky-100 bg-sky-300 bg-opacity-20 px-2 py-4"
                             >
                                 <a v-for="link in links" :href="link.url" class="w-16 no-underline" target="_blank">
                                     <img class="mx-auto" :src="link.icon" width="25" height="25" :alt="link.alt" />
@@ -91,20 +91,20 @@
         <!-- End Desktop View -->
 
         <!-- Mobile View -->
-        <div id="mobile" class="block md:hidden w-full pt-12">
+        <div id="mobile" class="block w-full pt-12 md:hidden">
             <div class="mx-auto">
-                <section id="hero" class="mx-auto mb-4 relative rounded">
+                <section id="hero" class="relative mx-auto mb-4 rounded">
                     <img
                         src="/images/bridge-standing.jpg.webp"
-                        class="headshot flex mx-auto relative text-center border-sky border-2"
+                        class="headshot border-sky relative mx-auto flex border-2 text-center"
                         alt="alex younger developer marketing about me"
                     />
                 </section>
 
-                <section id="title" class="rounded relative mb-8">
-                    <h1 class="text-5xl text-sky-100 text-center glow">Alex Younger</h1>
-                    <p id="tagline" class="py-2 text-sky-200 text-center text-sm">
-                        {{ $props.content?.homeTagline?.content ?? '' }}
+                <section id="title" class="relative mb-8 rounded">
+                    <h1 class="glow text-center text-5xl text-sky-100">Alex Younger</h1>
+                    <p id="tagline" class="py-2 text-center text-sm text-sky-200">
+                        {{ $props.content?.homeTagline?.content ?? "" }}
                     </p>
                 </section>
             </div>
@@ -112,16 +112,16 @@
             <div id="home-menu" class="w-full">
                 <section class="menu-list container mx-auto max-w-md px-8">
                     <ul class="flex flex-wrap justify-center">
-                        <li v-for="item in homeItems" class="py-1 text-sm px-2">
+                        <li v-for="item in homeItems" class="px-2 py-1 text-sm">
                             <template v-if="item.link">
-                                <Link :href="route(item.link)" class="text-sky-100 hover:text-sky-200 uppercase">{{
+                                <Link :href="route(item.link)" class="uppercase text-sky-100 hover:text-sky-200">{{
                                     item.name
                                 }}</Link>
                             </template>
                             <template v-else>
                                 <p
                                     @click="item.action(item.id)"
-                                    class="text-sky-100 hover:text-sky-200 uppercase cursor-pointer"
+                                    class="cursor-pointer uppercase text-sky-100 hover:text-sky-200"
                                 >
                                     {{ item.name }}
                                 </p>
@@ -131,33 +131,33 @@
                 </section>
             </div>
 
-            <div id="hud" class="w-full container mx-auto max-w-md px-8 mt-6">
-                <section id="bio" v-if="this.selected == 'bio'" class="max-w-3xl mx-auto">
-                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
-                        <h2 class="text-sky-300 text-xl pb-4 font-semibold">Bio</h2>
-                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sky-100 text-sm"></div>
+            <div id="hud" class="container mx-auto mt-6 w-full max-w-md px-8">
+                <section id="bio" v-if="this.selected == 'bio'" class="mx-auto max-w-3xl">
+                    <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
+                        <h2 class="pb-4 text-xl font-semibold text-sky-300">Bio</h2>
+                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sm text-sky-100"></div>
                     </div>
                 </section>
 
-                <section id="about" v-if="this.selected == 'about'" class="max-w-3xl mx-auto">
-                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
-                        <h2 class="text-sky-300 text-xl pb-4 font-semibold">About</h2>
-                        <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100 text-sm"></div>
+                <section id="about" v-if="this.selected == 'about'" class="mx-auto max-w-3xl">
+                    <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
+                        <h2 class="pb-4 text-xl font-semibold text-sky-300">About</h2>
+                        <div v-html="$props.content?.about?.content ?? ''" class="text-sm text-sky-100"></div>
                     </div>
                 </section>
 
-                <section id="skills" v-if="this.selected == 'skills'" class="max-w-3xl mx-auto">
-                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
-                        <h3 class="text-sky-300 text-xl pb-4 font-semibold">Skills</h3>
-                        <div class="text-sky-100 text-sm">
+                <section id="skills" v-if="this.selected == 'skills'" class="mx-auto max-w-3xl">
+                    <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
+                        <h3 class="pb-4 text-xl font-semibold text-sky-300">Skills</h3>
+                        <div class="text-sm text-sky-100">
                             <LanguageBar />
                         </div>
                     </div>
                 </section>
 
-                <section id="contact" v-if="this.selected == 'contact'" class="max-w-3xl mx-auto">
-                    <div class="rounded-md p-3 border border-sky-600 bg-transparent shadow shadow-sky-100">
-                        <h3 class="text-sky-300 text-xl pb-4 font-semibold">Contact</h3>
+                <section id="contact" v-if="this.selected == 'contact'" class="mx-auto max-w-3xl">
+                    <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
+                        <h3 class="pb-4 text-xl font-semibold text-sky-300">Contact</h3>
                         <div
                             id="contact-description"
                             class="text-sm"
@@ -166,7 +166,7 @@
 
                         <div class="w-full pt-6">
                             <div
-                                class="w-full flex py-4 bg-sky-300 bg-opacity-20 border border-sky-100 px-2 rounded-md mx-auto"
+                                class="mx-auto flex w-full rounded-md border border-sky-100 bg-sky-300 bg-opacity-20 px-2 py-4"
                             >
                                 <a v-for="link in links" :href="link.url" class="w-16 no-underline" target="_blank">
                                     <img class="mx-auto" :src="link.icon" width="25" height="25" :alt="link.alt" />
@@ -182,38 +182,38 @@
 </template>
 
 <script>
-import { Head } from '@inertiajs/vue3';
-import { Link } from '@inertiajs/vue3';
-import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
-import LanguageBar from '@/Components/LanguageBar.vue';
-import { renderStarfield } from '@/three/space';
+import { Head } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
+import AnimatedButtonMenu from "@/Components/AnimatedButtonMenu.vue";
+import LanguageBar from "@/Components/LanguageBar.vue";
+import { renderStarfield } from "@/three/space";
 
 // Will grab this during the mounted lifecycle hook
 let pageWrapper = null;
 
-const twitterIcon = 'https://img.icons8.com/color/48/twitter--v1.png';
-const linkedIcon = 'https://img.icons8.com/color/48/linkedin.png';
-const githubIcon = 'https://img.icons8.com/color/48/github--v1.png';
-const emailIcon = 'https://img.icons8.com/emoji/48/e-mail.png';
-const resumeIcon = 'https://img.icons8.com/nolan/64/resume.png';
+const twitterIcon = "https://img.icons8.com/color/48/twitter--v1.png";
+const linkedIcon = "https://img.icons8.com/color/48/linkedin.png";
+const githubIcon = "https://img.icons8.com/color/48/github--v1.png";
+const emailIcon = "https://img.icons8.com/emoji/48/e-mail.png";
+const resumeIcon = "https://img.icons8.com/nolan/64/resume.png";
 
 const links = [
-    { name: 'Twitter', url: 'https://github.com/AlextheYounga', icon: twitterIcon, alt: 'twitter--v1' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alexyounger/', icon: linkedIcon, alt: 'linkedin' },
-    { name: 'Github', url: 'https://github.com/AlextheYounga', icon: githubIcon, alt: 'github' },
-    { name: 'Email', url: 'mailto:alex@alextheyounger.me', icon: emailIcon, alt: 'e-mail' },
-    { name: 'Resume', url: 'https://resume.alexyounger.me', icon: resumeIcon, alt: 'resume' },
+    { name: "Twitter", url: "https://github.com/AlextheYounga", icon: twitterIcon, alt: "twitter--v1" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/alexyounger/", icon: linkedIcon, alt: "linkedin" },
+    { name: "Github", url: "https://github.com/AlextheYounga", icon: githubIcon, alt: "github" },
+    { name: "Email", url: "mailto:alex@alextheyounger.me", icon: emailIcon, alt: "e-mail" },
+    { name: "Resume", url: "https://resume.alexyounger.me", icon: resumeIcon, alt: "resume" },
 ];
 
 async function reveal() {
     let delay = 1000;
-    const visited = localStorage.getItem('visited');
+    const visited = localStorage.getItem("visited");
     if (visited) delay = 10; // Shorter delay for transition effect
 
     var object = { value: true, timestamp: new Date().getTime() };
     setTimeout(() => {
-        localStorage.setItem('visited', JSON.stringify(object));
-        pageWrapper.classList.add('opacity-100');
+        localStorage.setItem("visited", JSON.stringify(object));
+        pageWrapper.classList.add("opacity-100");
     }, delay);
 }
 
@@ -234,15 +234,15 @@ export default {
         return {
             links,
             homeItems: [
-                { name: 'Bio', link: false, id: 'bio', action: this.openSection },
-                { name: 'About', link: false, id: 'about', action: this.openSection },
-                { name: 'Skills', link: false, id: 'skills', action: this.openSection },
-                { name: 'Contact', link: false, id: 'contact', action: this.openSection },
-                { name: 'Reading List', link: 'pages.books' },
-                { name: 'Projects', link: 'pages.projects' },
-                { name: 'Explore Starfield', link: 'pages.starfield' },
+                { name: "Bio", link: false, id: "bio", action: this.openSection },
+                { name: "About", link: false, id: "about", action: this.openSection },
+                { name: "Skills", link: false, id: "skills", action: this.openSection },
+                { name: "Contact", link: false, id: "contact", action: this.openSection },
+                { name: "Reading List", link: "pages.books" },
+                { name: "Projects", link: "pages.projects" },
+                { name: "Explore Starfield", link: "pages.starfield" },
             ],
-            selected: 'default', // default is nothing
+            selected: "default", // default is nothing
         };
     },
     methods: {
@@ -251,7 +251,7 @@ export default {
         },
     },
     mounted() {
-        pageWrapper = document.getElementById('page-wrapper');
+        pageWrapper = document.getElementById("page-wrapper");
         renderStarfield();
         reveal();
     },

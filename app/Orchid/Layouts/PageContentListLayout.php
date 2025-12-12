@@ -24,7 +24,10 @@ class PageContentListLayout extends Table
     {
         return [
             TD::make('name', 'Name')->render(function (PageContent $pageContent) {
-                return Link::make($pageContent->name)->route('platform.page-content.edit', $pageContent);
+                return Link::make($pageContent->name)->route(
+                    'platform.page-content.edit',
+                    $pageContent,
+                );
             }),
             TD::make('view', 'View'),
             TD::make('key', 'Key'),

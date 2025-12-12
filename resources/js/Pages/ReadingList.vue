@@ -4,17 +4,17 @@
     <AnimatedButtonMenu />
 
     <div id="page-wrapper">
-        <div class="md:py-24 md:px-12 py-6 px-3 bg-transparent shadow shadow-sky-100">
-            <div class="rounded-md md:border-2 md:border-sky-600 py-12 px-3 md:px-0">
+        <div class="bg-transparent px-3 py-6 shadow shadow-sky-100 md:px-12 md:py-24">
+            <div class="rounded-md px-3 py-12 md:border-2 md:border-sky-600 md:px-0">
                 <div class="mx-auto max-w-3xl">
-                    <h1 class="text-white text-4xl font-semibold text-center">My Favorite Books & Audio</h1>
-                    <p class="text-center text-sky-300 mx-auto leading-relaxed text-base pb-4">
+                    <h1 class="text-center text-4xl font-semibold text-white">My Favorite Books & Audio</h1>
+                    <p class="mx-auto pb-4 text-center text-base leading-relaxed text-sky-300">
                         Books that have made an impact on my life
                     </p>
                 </div>
-                <div class="mx-auto category-menu">
-                    <ul class="flex flex-wrap w-full justify-center md:justify-center p-0">
-                        <li class="text-center p-2 md:border-r md:border-gray-300">
+                <div class="category-menu mx-auto">
+                    <ul class="flex w-full flex-wrap justify-center p-0 md:justify-center">
+                        <li class="p-2 text-center md:border-r md:border-gray-300">
                             <button id="showall" @click="showAll" class="border-0 text-sm">
                                 <span
                                     class="inline-flex items-center rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-sky-50 ring-1 ring-inset ring-blue-400/30 hover:text-sky-300"
@@ -26,7 +26,7 @@
                         <li
                             v-for="(category, index) in categories"
                             :key="index"
-                            class="text-center p-2"
+                            class="p-2 text-center"
                             :class="{ 'md:border-r md:border-blue-300': index !== categories.length - 1 }"
                         >
                             <button @click="selectCategory(category.selector)" :class="category.selector">
@@ -40,34 +40,34 @@
                 </div>
 
                 <div class="container mx-auto">
-                    <div class="covers flex flex-wrap w-full">
+                    <div class="covers flex w-full flex-wrap">
                         <template v-for="book in this.books" :key="book.id">
                             <div
                                 :class="
                                     book.selector +
-                                    ' cover lg:w-1/4 md:w-1/3 sm:w-1/2 text-center my-12 relative duration-500 transition-transform'
+                                    ' cover relative my-12 text-center transition-transform duration-500 sm:w-1/2 md:w-1/3 lg:w-1/4'
                                 "
                             >
                                 <a :href="book.external_link" target="_blank" rel="nofollow" class="no-underline">
                                     <img
                                         v-if="book.external_image_link"
                                         :src="book.external_image_link"
-                                        class="mb-3 mx-auto shadow"
+                                        class="mx-auto mb-3 shadow"
                                         :alt="imageAlt(book)"
                                     />
                                     <img
                                         v-else
                                         :src="`/images/books/${book.properties?.image_name}.webp`"
-                                        class="mb-3 mx-auto shadow"
+                                        class="mx-auto mb-3 shadow"
                                         :alt="imageAlt(book)"
                                     />
                                 </a>
                                 <div
-                                    class="book-description bg-sky-800 bg-opacity-25 w-4/5 p-4 rounded-lg mx-auto border border-sky-100 shadow shadow-sky-50"
+                                    class="book-description mx-auto w-4/5 rounded-lg border border-sky-100 bg-sky-800 bg-opacity-25 p-4 shadow shadow-sky-50"
                                 >
-                                    <p class="font-semibold fancy-font text-md text-sky-50">{{ book.title }}</p>
-                                    <p class="text-sm text-sky-200 py-2">{{ book.subtitle }}</p>
-                                    <p class="text-sm text-sky-100 font-semibold">by {{ book.author }}</p>
+                                    <p class="fancy-font text-md font-semibold text-sky-50">{{ book.title }}</p>
+                                    <p class="py-2 text-sm text-sky-200">{{ book.subtitle }}</p>
+                                    <p class="text-sm font-semibold text-sky-100">by {{ book.author }}</p>
                                 </div>
                             </div>
                         </template>
@@ -79,11 +79,11 @@
 </template>
 
 <script>
-import { Head } from '@inertiajs/vue3';
-import { Link } from '@inertiajs/vue3';
-import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
-import { renderStarfield } from '@/three/space';
-import '@/jquery.min.js'; // I have been using jQuery to load this since like 2016. I'm not going to stop now.
+import { Head } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
+import AnimatedButtonMenu from "@/Components/AnimatedButtonMenu.vue";
+import { renderStarfield } from "@/three/space";
+import "@/jquery.min.js"; // I have been using jQuery to load this since like 2016. I'm not going to stop now.
 
 export default {
     components: {
@@ -111,13 +111,13 @@ export default {
         selectCategory(selector) {
             // Only using Jquery because I don't know how to replicate their cool
             // showHide() animations in Javascript without writing a shit ton of code.
-            var get_current = $('.covers .' + selector);
+            var get_current = $(".covers ." + selector);
 
-            $('.cover').not(get_current).hide(500);
+            $(".cover").not(get_current).hide(500);
             get_current.show(500);
         },
         showAll() {
-            $('.cover').show(500);
+            $(".cover").show(500);
         },
     },
     mounted() {

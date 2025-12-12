@@ -62,9 +62,15 @@ class CoverLetterEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee(!$this->coverLetter->exists),
 
-            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->coverLetter->exists),
+            Button::make('Update')
+                ->icon('note')
+                ->method('createOrUpdate')
+                ->canSee($this->coverLetter->exists),
 
-            Button::make('Remove')->icon('trash')->method('remove')->canSee($this->coverLetter->exists),
+            Button::make('Remove')
+                ->icon('trash')
+                ->method('remove')
+                ->canSee($this->coverLetter->exists),
         ];
     }
 
@@ -79,7 +85,9 @@ class CoverLetterEditScreen extends Screen
             Layout::rows([
                 Input::make('coverLetter.id')->hidden(),
 
-                Input::make('coverLetter.name')->title('Name')->placeholder('Enter the cover letter name'),
+                Input::make('coverLetter.name')
+                    ->title('Name')
+                    ->placeholder('Enter the cover letter name'),
 
                 Input::make('coverLetter.company')
                     ->title('Company')
@@ -120,7 +128,9 @@ class CoverLetterEditScreen extends Screen
      */
     public function createOrUpdate(Request $request)
     {
-        $coverLetter = CoverLetter::where('id', $request->get('coverLetter')['id'])->first() ?? new CoverLetter();
+        $coverLetter =
+            CoverLetter::where('id', $request->get('coverLetter')['id'])->first() ??
+            new CoverLetter();
 
         $fields = $request->get('coverLetter');
         $fields['properties'] = $this->mapPropertiesToList($fields['meta'] ?? []);

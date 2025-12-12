@@ -55,7 +55,12 @@ class PageContentEditScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [Button::make('Update')->icon('note')->method('update')->canSee($this->pageContent->exists)];
+        return [
+            Button::make('Update')
+                ->icon('note')
+                ->method('update')
+                ->canSee($this->pageContent->exists),
+        ];
     }
 
     /**
@@ -77,7 +82,10 @@ class PageContentEditScreen extends Screen
 
                 Input::make('pageContent.key')->title('Key')->disabled(),
 
-                Code::make('pageContent.content')->title('Content')->language('html')->lineNumbers(),
+                Code::make('pageContent.content')
+                    ->title('Content')
+                    ->language('html')
+                    ->lineNumbers(),
             ]),
         ];
     }

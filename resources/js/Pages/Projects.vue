@@ -4,11 +4,11 @@
     <AnimatedButtonMenu />
 
     <div id="page-wrapper">
-        <div id="projects" class="md:py-24 md:px-12 py-6 px-3 bg-transparent shadow shadow-sky-100">
-            <div class="rounded-md md:border-2 md:border-sky-600 px-3 md:px-0 py-12">
+        <div id="projects" class="bg-transparent px-3 py-6 shadow shadow-sky-100 md:px-12 md:py-24">
+            <div class="rounded-md px-3 py-12 md:border-2 md:border-sky-600 md:px-0">
                 <div class="mx-auto max-w-3xl">
-                    <h1 class="text-white text-4xl font-semibold text-center">Projects</h1>
-                    <p class="text-center text-sky-300 mx-auto leading-relaxed text-base pb-4">
+                    <h1 class="text-center text-4xl font-semibold text-white">Projects</h1>
+                    <p class="mx-auto pb-4 text-center text-base leading-relaxed text-sky-300">
                         Here are some of my proudest projects, personal and professional.
                     </p>
                 </div>
@@ -20,7 +20,7 @@
                     <div
                         v-for="project in this.projects"
                         :key="project.id"
-                        class="flex flex-col overflow-hidden rounded-lg shadow-lg relative border"
+                        class="relative flex flex-col overflow-hidden rounded-lg border shadow-lg"
                     >
                         <div class="flex-shrink-0">
                             <img
@@ -40,7 +40,7 @@
                                 <p
                                     v-for="tech of project.content?.technology"
                                     :key="tech"
-                                    class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2"
+                                    class="framework-bubble mr-2 inline-flex rounded-full px-2 text-xs font-semibold leading-5"
                                     :data-techstack="tech"
                                 >
                                     {{ tech }}
@@ -58,7 +58,7 @@
                                         showModal = true;
                                         projectSelected = project;
                                     "
-                                    class="text-blue-500 inline-flex items-center"
+                                    class="inline-flex items-center text-blue-500"
                                     target="_blank"
                                 >
                                     View More
@@ -68,7 +68,7 @@
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         stroke-width="2"
-                                        class="w-4 h-4 ml-2"
+                                        class="ml-2 h-4 w-4"
                                         viewBox="0 0 24 24"
                                     >
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -107,7 +107,7 @@
                     <p
                         v-for="tech of projectSelected.content?.technology"
                         :key="tech"
-                        class="framework-bubble inline-flex rounded-full px-2 text-xs font-semibold leading-5 mr-2"
+                        class="framework-bubble mr-2 inline-flex rounded-full px-2 text-xs font-semibold leading-5"
                         :data-techstack="tech"
                     >
                         {{ tech }}
@@ -120,7 +120,7 @@
                         <div class="mt-2 flex items-center">
                             <a
                                 :href="projectSelected.external_link"
-                                class="text-red-500 inline-flex items-center"
+                                class="inline-flex items-center text-red-500"
                                 target="_blank"
                                 >Visit Project
                                 <svg
@@ -129,7 +129,7 @@
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                     stroke-width="2"
-                                    class="w-4 h-4 ml-2"
+                                    class="ml-2 h-4 w-4"
                                     viewBox="0 0 24 24"
                                 >
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -148,11 +148,11 @@
 </template>
 
 <script>
-import Modal from '@/Components/Modal.vue';
-import { Head } from '@inertiajs/vue3';
-import AnimatedButtonMenu from '@/Components/AnimatedButtonMenu.vue';
-import { generateColors } from '@/projectColors';
-import { renderStarfield } from '@/three/space';
+import Modal from "@/Components/Modal.vue";
+import { Head } from "@inertiajs/vue3";
+import AnimatedButtonMenu from "@/Components/AnimatedButtonMenu.vue";
+import { generateColors } from "@/projectColors";
+import { renderStarfield } from "@/three/space";
 
 export default {
     components: {

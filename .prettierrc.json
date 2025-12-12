@@ -27,7 +27,7 @@
             "options": {
                 "trailingComma": "none",
                 "bracketSpacing": true,
-				"singleQuote": true
+                "singleQuote": true
             }
         },
         {
@@ -36,7 +36,7 @@
                 "parser": "php",
                 "trailingCommaPHP": true,
                 "braceStyle": "psr-2",
-				"singleQuote": true
+                "singleQuote": true
             }
         },
         {

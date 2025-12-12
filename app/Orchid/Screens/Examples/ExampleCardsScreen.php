@@ -63,7 +63,9 @@ class ExampleCardsScreen extends TestBaseScreen
     {
         return [
             Layout::legend('user', [
-                Sight::make('id')->popover('Identifier, a symbol which uniquely identifies an object or record'),
+                Sight::make('id')->popover(
+                    'Identifier, a symbol which uniquely identifies an object or record',
+                ),
                 Sight::make('name'),
                 Sight::make('email'),
                 Sight::make('email_verified_at', 'Email Verified')->render(

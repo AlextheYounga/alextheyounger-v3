@@ -1,6 +1,6 @@
 <template>
-    <div id="language-bar" class="text-lg mx-auto">
-        <div class="bar w-full mb-4 relative">
+    <div id="language-bar" class="mx-auto text-lg">
+        <div class="bar relative mb-4 w-full">
             <template v-if="typeof languages === 'object'">
                 <template v-for="language in languages">
                     <span
@@ -17,8 +17,8 @@
         <ul class="flex flex-wrap">
             <template v-if="typeof languages === 'object'">
                 <template v-for="language in languages">
-                    <li :ref="language.properties.slug" class="lang-item w-32 sm:w-48 leading-6 rounded-lg">
-                        <div class="item-wrapper inline-flex flex-nowrap no-underline text-sm mr-3 items-center">
+                    <li :ref="language.properties.slug" class="lang-item w-32 rounded-lg leading-6 sm:w-48">
+                        <div class="item-wrapper mr-3 inline-flex flex-nowrap items-center text-sm no-underline">
                             <svg
                                 :style="{ color: language.color }"
                                 :class="['octicon', language.properties?.slug, 'octicon-dot-fill', 'mr-2']"
@@ -30,8 +30,8 @@
                             >
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path>
                             </svg>
-                            <span class="lang-name mr-1 font-bold text-xs text-white">{{ language.language }}</span>
-                            <span class="text-gray-400 percent">{{ language.width }}%</span>
+                            <span class="lang-name mr-1 text-xs font-bold text-white">{{ language.language }}</span>
+                            <span class="percent text-gray-400">{{ language.width }}%</span>
                         </div>
                     </li>
                 </template>
@@ -39,16 +39,16 @@
         </ul>
         <div class="mt-6">
             <div id="language-description" class="block" v-html="this.descriptionContent"></div>
-            <div class="w-full stats text-sm pt-3">
+            <div class="stats w-full pt-3 text-sm">
                 <p>
                     Repos Scanned:
-                    <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl">{{
+                    <a class="font-semibold text-sky-400 hover:text-blue-600" :href="scriptUrl">{{
                         repoStats.count
                     }}</a>
                 </p>
                 <p>
                     Repos Compressed Size:
-                    <a class="text-sky-400 hover:text-blue-600 font-semibold" :href="scriptUrl"
+                    <a class="font-semibold text-sky-400 hover:text-blue-600" :href="scriptUrl"
                         >{{ repoStats.size }}{{ repoStats.scale }}</a
                     >
                 </p>
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-const scriptUrl = 'https://github.com/AlextheYounga/repo-linguist-scanner';
+const scriptUrl = "https://github.com/AlextheYounga/repo-linguist-scanner";
 
 const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. 
 	This was calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately represent bytes of code.</p>
@@ -73,28 +73,28 @@ export default {
             repoStats: {
                 count: 0,
                 size: 0,
-                scale: 'GB',
+                scale: "GB",
             },
         };
     },
     methods: {
         highlightLanguage(event) {
             const id = event.target.id;
-            const slug = id.split('bar-item-')[1];
+            const slug = id.split("bar-item-")[1];
             const langItem = this.$refs[slug][0];
-            langItem.classList.toggle('glowy');
+            langItem.classList.toggle("glowy");
         },
     },
     mounted() {
         // Ajax fetch data
         axios
-            .get('/api/languages/stats')
+            .get("/api/languages/stats")
             .then((response) => {
                 this.languages = response.data.languages;
                 this.repoStats = response.data.repoStats;
             })
             .catch((error) => {
-                console.error('Error fetching data:', error);
+                console.error("Error fetching data:", error);
             });
     },
 };

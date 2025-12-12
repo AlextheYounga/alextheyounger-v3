@@ -97,7 +97,8 @@ class GenerateCodingLanguages extends Command
             }
 
             if (array_key_exists($lang->language, $this->settings['subtractions'])) {
-                $percentValue = $lang->display_value * $this->settings['subtractions'][$lang->language];
+                $percentValue =
+                    $lang->display_value * $this->settings['subtractions'][$lang->language];
                 $lang->display_value -= $percentValue;
             }
 

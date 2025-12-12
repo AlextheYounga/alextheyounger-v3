@@ -35,15 +35,21 @@ class ResumeListLayout extends Table
                 return Link::make($resume->name)->route('platform.resume.edit', $resume);
             }),
             TD::make('hash', 'Hash'),
-            TD::make('created_at', 'Created')->render(fn(Resume $resume) => $this->formatDate($resume->created_at)),
-            TD::make('updated_at', 'Last edit')->render(fn(Resume $resume) => $this->formatDate($resume->updated_at)),
+            TD::make('created_at', 'Created')->render(
+                fn(Resume $resume) => $this->formatDate($resume->created_at),
+            ),
+            TD::make('updated_at', 'Last edit')->render(
+                fn(Resume $resume) => $this->formatDate($resume->updated_at),
+            ),
             TD::make()->render(
                 fn(Resume $resume) => Group::make([
                     Link::make('View')
                         ->icon('eye')
                         ->target('_blank')
                         ->href($this->resumeSite . $resume->hash),
-                    Button::make('Duplicate')->icon('copy')->action(route('platform.resume.duplicate', $resume)),
+                    Button::make('Duplicate')
+                        ->icon('copy')
+                        ->action(route('platform.resume.duplicate', $resume)),
                 ]),
             ),
         ];

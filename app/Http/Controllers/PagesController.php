@@ -24,7 +24,10 @@ class PagesController extends Controller
     {
         $books = Book::with('categories')->active()->orderBy('position', 'asc')->get();
 
-        $categories = Category::active()->where('type', '=', 'Book::class')->orderBy('position', 'asc')->get();
+        $categories = Category::active()
+            ->where('type', '=', 'Book::class')
+            ->orderBy('position', 'asc')
+            ->get();
 
         return Inertia::render('ReadingList', [
             'books' => $books,

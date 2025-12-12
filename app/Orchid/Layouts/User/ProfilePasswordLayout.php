@@ -23,7 +23,9 @@ class ProfilePasswordLayout extends Rows
                 ->title(__('Current password'))
                 ->help('This is your password set at the moment.'),
 
-            Password::make('password')->placeholder(__('Enter the password to be set'))->title(__('New password')),
+            Password::make('password')
+                ->placeholder(__('Enter the password to be set'))
+                ->title(__('New password')),
 
             Password::make('password_confirmation')
                 ->placeholder(__('Enter the password to be set'))

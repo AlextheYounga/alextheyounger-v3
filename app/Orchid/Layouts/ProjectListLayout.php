@@ -38,12 +38,16 @@ class ProjectListLayout extends Table
                         'project' => $project->id,
                     ]);
             }),
-            TD::make('active', 'Active')->render(fn(Project $project) => (bool) $project->active ? '✓' : '✗'),
+            TD::make('active', 'Active')->render(
+                fn(Project $project) => (bool) $project->active ? '✓' : '✗',
+            ),
             TD::make('title', 'Title')->render(function (Project $project) {
                 return Link::make($project->title)->route('platform.project.edit', $project);
             }),
             TD::make('scope', 'Scope'),
-            TD::make('excerpt', 'Excerpt')->render(fn(Project $project) => strlen($project->excerpt) . ' chars'),
+            TD::make('excerpt', 'Excerpt')->render(
+                fn(Project $project) => strlen($project->excerpt) . ' chars',
+            ),
             TD::make('description', 'Description')->render(
                 fn(Project $project) => strlen($project->description) . ' chars',
             ),
@@ -52,7 +56,9 @@ class ProjectListLayout extends Table
             TD::make('external_image_link', 'Image Link')->render(
                 fn(Project $project) => $project->external_image_link ? '✓' : '✗',
             ),
-            TD::make('created_at', 'Created')->render(fn(Project $project) => $this->formatDate($project->created_at)),
+            TD::make('created_at', 'Created')->render(
+                fn(Project $project) => $this->formatDate($project->created_at),
+            ),
             TD::make('updated_at', 'Last edit')->render(
                 fn(Project $project) => $this->formatDate($project->updated_at),
             ),

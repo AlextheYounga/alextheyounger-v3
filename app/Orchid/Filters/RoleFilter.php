@@ -64,6 +64,8 @@ class RoleFilter extends Filter
      */
     public function value(): string
     {
-        return $this->name() . ': ' . Role::where('slug', $this->request->get('role'))->first()->name;
+        return $this->name() .
+            ': ' .
+            Role::where('slug', $this->request->get('role'))->first()->name;
     }
 }

@@ -62,9 +62,15 @@ class CategoryEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee(!$this->category->exists),
 
-            Button::make('Update')->icon('note')->method('createOrUpdate')->canSee($this->category->exists),
+            Button::make('Update')
+                ->icon('note')
+                ->method('createOrUpdate')
+                ->canSee($this->category->exists),
 
-            Button::make('Remove')->icon('trash')->method('remove')->canSee($this->category->exists),
+            Button::make('Remove')
+                ->icon('trash')
+                ->method('remove')
+                ->canSee($this->category->exists),
         ];
     }
 
@@ -108,7 +114,8 @@ class CategoryEditScreen extends Screen
      */
     public function createOrUpdate(Request $request)
     {
-        $category = Category::where('name', $request->get('category')['name'])->first() ?? new Category();
+        $category =
+            Category::where('name', $request->get('category')['name'])->first() ?? new Category();
 
         $fields = $request->get('category');
 

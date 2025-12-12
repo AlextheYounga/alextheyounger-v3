@@ -1,20 +1,20 @@
 <template>
-    <div class="fixed top-1 left-1 md:left-12 z-50">
-        <button class="relative group border-sky-100 border-2">
+    <div class="fixed left-1 top-1 z-50 md:left-12">
+        <button class="group relative border-2 border-sky-100">
             <!-- button container -->
             <div
                 @click="clickHandler"
-                class="relative z-20 flex items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-8 ring-opacity-30 duration-200 shadow-md"
+                class="relative z-20 flex h-[50px] w-[50px] transform items-center justify-center rounded-full bg-slate-700 shadow-md ring-0 ring-gray-300 ring-opacity-30 transition-all duration-200 hover:ring-8 group-focus:ring-8"
             >
                 <div
-                    class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 group-focus:-rotate-[45deg] origin-center"
+                    class="flex h-[20px] w-[20px] origin-center transform flex-col justify-between transition-all duration-300 group-focus:-rotate-[45deg]"
                 >
                     <div
-                        class="bg-white h-[2px] w-1/2 rounded transform transition-all duration-300 group-focus:-rotate-90 group-focus:h-[1px] origin-right delay-75 group-focus:-translate-y-[1px]"
+                        class="h-[2px] w-1/2 origin-right transform rounded bg-white transition-all delay-75 duration-300 group-focus:h-[1px] group-focus:-translate-y-[1px] group-focus:-rotate-90"
                     ></div>
-                    <div class="bg-white h-[1px] rounded"></div>
+                    <div class="h-[1px] rounded bg-white"></div>
                     <div
-                        class="m-0 bg-white h-[2px] w-1/2 rounded self-end transform transition-all duration-300 group-focus:-rotate-90 group-focus:h-[1px] origin-left delay-75 group-focus:translate-y-[1px]"
+                        class="m-0 h-[2px] w-1/2 origin-left transform self-end rounded bg-white transition-all delay-75 duration-300 group-focus:h-[1px] group-focus:translate-y-[1px] group-focus:-rotate-90"
                     ></div>
                 </div>
             </div>
@@ -22,11 +22,11 @@
 
             <!-- Menu List -->
             <div
-                class="absolute bg-white w-0 h-0 overflow-hidden rounded-md left-6 top-5 transition-all group-focus:h-[162px] group-focus:w-40 delay-150 duration-300 shadow-xl"
+                class="absolute left-6 top-5 h-0 w-0 overflow-hidden rounded-md bg-white shadow-xl transition-all delay-150 duration-300 group-focus:h-[162px] group-focus:w-40"
             >
                 <ul class="divide-y py-2 text-right text-sm text-sky-700">
                     <li v-for="item in menuList" :key="item.name" class="flex justify-end hover:bg-gray-100">
-                        <Link :href="route(item.link)" class="px-4 py-2 w-full">
+                        <Link :href="route(item.link)" class="w-full px-4 py-2">
                             {{ item.name }}
                         </Link>
                     </li>
@@ -37,13 +37,13 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link } from "@inertiajs/vue3";
 
 const menuList = [
-    { name: 'Home', link: 'home' },
-    { name: 'Reading List', link: 'pages.books' },
-    { name: 'Projects', link: 'pages.projects' },
-    { name: 'Explore Starfield', link: 'pages.starfield' },
+    { name: "Home", link: "home" },
+    { name: "Reading List", link: "pages.books" },
+    { name: "Projects", link: "pages.projects" },
+    { name: "Explore Starfield", link: "pages.starfield" },
 ];
 </script>
 

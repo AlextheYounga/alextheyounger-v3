@@ -25,7 +25,10 @@ class UserListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'users' => User::with('roles')->filters(UserFiltersLayout::class)->defaultSort('id', 'desc')->paginate(),
+            'users' => User::with('roles')
+                ->filters(UserFiltersLayout::class)
+                ->defaultSort('id', 'desc')
+                ->paginate(),
         ];
     }
 
@@ -57,7 +60,9 @@ class UserListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [Link::make(__('Add'))->icon('bs.plus-circle')->route('platform.systems.users.create')];
+        return [
+            Link::make(__('Add'))->icon('bs.plus-circle')->route('platform.systems.users.create'),
+        ];
     }
 
     /**

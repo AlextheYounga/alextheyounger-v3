@@ -15,7 +15,10 @@ class RepositorySeeder extends Seeder
     {
         Repository::truncate();
 
-        $linguistData = json_decode(file_get_contents('storage/app/public/repositories.json'), true);
+        $linguistData = json_decode(
+            file_get_contents('storage/app/public/repositories.json'),
+            true,
+        );
 
         foreach ($linguistData as $repository) {
             Repository::create([

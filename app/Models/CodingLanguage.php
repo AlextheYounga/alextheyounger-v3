@@ -16,7 +16,15 @@ class CodingLanguage extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['language', 'value', 'display_value', 'width', 'color', 'active', 'properties'];
+    protected $fillable = [
+        'language',
+        'value',
+        'display_value',
+        'width',
+        'color',
+        'active',
+        'properties',
+    ];
 
     protected $casts = [
         'properties' => 'json',

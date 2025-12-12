@@ -51,7 +51,9 @@ class UserListLayout extends Table
                 fn(User $user) => DropDown::make()
                     ->icon('bs.three-dots-vertical')
                     ->list([
-                        Link::make(__('Edit'))->route('platform.systems.users.edit', $user->id)->icon('bs.pencil'),
+                        Link::make(__('Edit'))
+                            ->route('platform.systems.users.edit', $user->id)
+                            ->icon('bs.pencil'),
 
                         Button::make(__('Delete'))
                             ->icon('bs.trash3')

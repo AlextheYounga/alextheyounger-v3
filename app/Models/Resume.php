@@ -24,7 +24,16 @@ class Resume extends Model
         });
     }
 
-    protected $fillable = ['hash', 'name', 'bio', 'contacts', 'references', 'experience', 'education', 'properties'];
+    protected $fillable = [
+        'hash',
+        'name',
+        'bio',
+        'contacts',
+        'references',
+        'experience',
+        'education',
+        'properties',
+    ];
 
     protected $casts = [
         'contacts' => 'array',

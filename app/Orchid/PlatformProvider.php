@@ -46,7 +46,10 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make('Cover Letters')->icon('bs.envelope')->route('platform.cover-letter.list'),
 
-            Menu::make('Proposals')->icon('bs.briefcase')->route('platform.proposal.list')->divider(),
+            Menu::make('Proposals')
+                ->icon('bs.briefcase')
+                ->route('platform.proposal.list')
+                ->divider(),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')

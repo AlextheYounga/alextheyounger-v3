@@ -64,7 +64,9 @@ class ExampleActionsScreen extends TestBaseScreen
             Layout::rows([
                 Group::make([
                     Button::make('Primary')->method('buttonClickProcessing')->type(Color::PRIMARY),
-                    Button::make('Secondary')->method('buttonClickProcessing')->type(Color::SECONDARY),
+                    Button::make('Secondary')
+                        ->method('buttonClickProcessing')
+                        ->type(Color::SECONDARY),
                     Button::make('Success')->method('buttonClickProcessing')->type(Color::SUCCESS),
                     Button::make('Danger')->method('buttonClickProcessing')->type(Color::DANGER),
                     Button::make('Warning')->method('buttonClickProcessing')->type(Color::WARNING),
@@ -90,7 +92,9 @@ class ExampleActionsScreen extends TestBaseScreen
                             ->list([
                                 Button::make('Action')->method('buttonClickProcessing'),
                                 Button::make('Another action')->method('buttonClickProcessing'),
-                                Button::make('Something else here')->method('buttonClickProcessing'),
+                                Button::make('Something else here')->method(
+                                    'buttonClickProcessing',
+                                ),
                             ]),
 
                         DropDown::make('Dropdown for Links')
@@ -128,14 +132,22 @@ class ExampleActionsScreen extends TestBaseScreen
                 ->description('Confirm Dialog is a modal Dialog used to confirm user actions.'),
 
             Layout::block(
-                Layout::rows([Button::make('Button')->icon('bs.box-arrow-up-right')->method('buttonClickProcessing')]),
+                Layout::rows([
+                    Button::make('Button')
+                        ->icon('bs.box-arrow-up-right')
+                        ->method('buttonClickProcessing'),
+                ]),
             )
                 ->title('Icons Button')
                 ->description(
                     'This type of button is often used to save space on a user interface and make the action more visually appealing.',
                 ),
 
-            Layout::block(Layout::rows([Button::make('Download')->icon('bs.download')->method('export')->rawClick()]))
+            Layout::block(
+                Layout::rows([
+                    Button::make('Download')->icon('bs.download')->method('export')->rawClick(),
+                ]),
+            )
                 ->title('Download Button')
                 ->description(
                     'This button is typically used when a user wants to download a file, such as a document or an image, to their local device.',
@@ -143,7 +155,9 @@ class ExampleActionsScreen extends TestBaseScreen
 
             Layout::block(Layout::rows([Button::make('Google')->action('https://google.com')]))
                 ->title('Custom Route')
-                ->description('The form is always sent by POST request, but the endpoint can be defined'),
+                ->description(
+                    'The form is always sent by POST request, but the endpoint can be defined',
+                ),
         ];
     }
 

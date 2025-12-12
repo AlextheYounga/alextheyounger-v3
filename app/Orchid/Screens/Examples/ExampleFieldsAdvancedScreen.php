@@ -84,7 +84,9 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
 
                 Matrix::make('matrix')->columns(['Attribute', 'Value', 'Units']),
 
-                Map::make('place')->title('Object on the map')->help('Enter the coordinates, or use the search'),
+                Map::make('place')
+                    ->title('Object on the map')
+                    ->help('Enter the coordinates, or use the search'),
             ]),
 
             Layout::rows([
@@ -115,7 +117,9 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
                         ->mask('9999-9999-9999-9999')
                         ->title('Credit card:')
                         ->placeholder('Credit card number')
-                        ->help('Number is the long set of digits displayed across the front your plastic card'),
+                        ->help(
+                            'Number is the long set of digits displayed across the front your plastic card',
+                        ),
 
                     Input::make('currency')
                         ->title('Currency dollar:')
@@ -137,7 +141,9 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
 
             Layout::rows([
                 Group::make([
-                    DateTimer::make('open')->title('Opening date')->help('The opening event will take place'),
+                    DateTimer::make('open')
+                        ->title('Opening date')
+                        ->help('The opening event will take place'),
 
                     DateTimer::make('allowInput')->title('Allow input')->required()->allowInput(),
 
@@ -159,7 +165,10 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
                 Group::make([
                     DateTimer::make('format24hr')->title('Format 24hr')->enableTime()->format24hr(),
 
-                    DateTimer::make('custom')->title('Custom format')->noCalendar()->format('h:i K'),
+                    DateTimer::make('custom')
+                        ->title('Custom format')
+                        ->noCalendar()
+                        ->format('h:i K'),
 
                     DateRange::make('rangeDate')->title('Range date'),
                 ]),
@@ -176,7 +185,9 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
                         ->title('Multiple select')
                         ->help('Allow search bots to index'),
 
-                    Relation::make('user')->fromModel(User::class, 'name')->title('Select for Eloquent model'),
+                    Relation::make('user')
+                        ->fromModel(User::class, 'name')
+                        ->title('Select for Eloquent model'),
                 ])->title('Select'),
                 Layout::rows([
                     Group::make([
@@ -211,7 +222,9 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
                         ->max(5)
                         ->min(0)
                         ->step(1)
-                        ->help('The track and thumb are both styled to appear the same across browsers.'),
+                        ->help(
+                            'The track and thumb are both styled to appear the same across browsers.',
+                        ),
 
                     Range::make('range_disabled')->title('Disabled range')->disabled(),
                 ]),
@@ -220,7 +233,11 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
             Layout::rows([
                 Input::make('raw_file')->type('file')->title('File input example')->horizontal(),
 
-                Input::make('raw_files')->type('file')->title('Multiple files input example')->multiple()->horizontal(),
+                Input::make('raw_files')
+                    ->type('file')
+                    ->title('Multiple files input example')
+                    ->multiple()
+                    ->horizontal(),
 
                 Picture::make('picture')->title('Picture')->horizontal(),
 
@@ -228,7 +245,11 @@ class ExampleFieldsAdvancedScreen extends TestBaseScreen
 
                 Upload::make('files')->title('Upload files')->horizontal(),
 
-                Upload::make('files_with_catalog')->title('Upload with catalog')->media()->closeOnAdd()->horizontal(),
+                Upload::make('files_with_catalog')
+                    ->title('Upload with catalog')
+                    ->media()
+                    ->closeOnAdd()
+                    ->horizontal(),
             ])->title('File upload'),
         ];
     }
