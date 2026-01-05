@@ -5,11 +5,24 @@
             <div class="rounded-lg overflow-hidden">
                 <div class="px-6">
                     <!-- Header -->
-                    <div class="mb-16">
-                        <h1 class="text-5xl font-bold text-gray-900">{{ proposal.title }}</h1>
-                        <p class="mt-1 text-sm text-gray-500">Created on {{ formatDate(proposal.created_at) }}</p>
-                        <p class="mt-3 text-sm text-gray-600"><b>Prepared for</b>: {{ proposal.client }}</p>
-                        <p class="mt-1 text-sm text-gray-600"><b>Prepared by</b>: Alex Younger</p>
+                    <div class="mb-16 flex items-start justify-between">
+                        <div>
+                            <h1 class="text-5xl font-bold text-gray-900">{{ proposal.title }}</h1>
+                            <p class="mt-1 text-sm text-gray-500">Created on {{ formatDate(proposal.created_at) }}</p>
+                            <p class="mt-3 text-sm text-gray-600"><b>Prepared for</b>: {{ proposal.client }}</p>
+                            <p class="mt-1 text-sm text-gray-600"><b>Prepared by</b>: Alex Younger</p>
+                        </div>
+
+                        <div class="no-print ml-6">
+                            <button
+                                @click="printPage"
+                                aria-label="Print proposal"
+                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                <PrinterIcon class="h-5 w-5 mr-2" />
+                                Save as PDF
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Description -->
