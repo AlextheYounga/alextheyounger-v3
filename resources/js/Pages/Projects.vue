@@ -154,7 +154,7 @@ import AnimatedButtonMenu from "@/Components/AnimatedButtonMenu.vue";
 import { generateColors } from "@/projectColors";
 import { renderStarfield } from "@/three/space";
 
-const projectImages = import.meta.glob("../images/projects/*.{jpg,jpeg,png,webp}", {
+const projectImages = import.meta.glob("../../images/projects/*.{jpg,jpeg,png,webp}", {
     eager: true,
     import: "default",
 });
@@ -165,10 +165,10 @@ const resolveImage = (imageMap, name, folder) => {
     }
 
     const candidates = [
-        `../images/${folder}/${name}.webp`,
-        `../images/${folder}/${name}.jpg`,
-        `../images/${folder}/${name}.jpeg`,
-        `../images/${folder}/${name}.png`,
+        `../../images/${folder}/${name}.webp`,
+        `../../images/${folder}/${name}.jpg`,
+        `../../images/${folder}/${name}.jpeg`,
+        `../../images/${folder}/${name}.png`,
     ];
 
     for (const candidate of candidates) {

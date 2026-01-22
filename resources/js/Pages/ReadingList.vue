@@ -85,7 +85,7 @@ import AnimatedButtonMenu from "@/Components/AnimatedButtonMenu.vue";
 import { renderStarfield } from "@/three/space";
 import "@/jquery.min.js"; // I have been using jQuery to load this since like 2016. I'm not going to stop now.
 
-const bookImages = import.meta.glob("../images/books/*.{jpg,jpeg,png,webp}", {
+const bookImages = import.meta.glob("../../images/books/*.{jpg,jpeg,png,webp}", {
     eager: true,
     import: "default",
 });
@@ -96,10 +96,10 @@ const resolveImage = (imageMap, name, folder) => {
     }
 
     const candidates = [
-        `../images/${folder}/${name}.webp`,
-        `../images/${folder}/${name}.jpg`,
-        `../images/${folder}/${name}.jpeg`,
-        `../images/${folder}/${name}.png`,
+        `../../images/${folder}/${name}.webp`,
+        `../../images/${folder}/${name}.jpg`,
+        `../../images/${folder}/${name}.jpeg`,
+        `../../images/${folder}/${name}.png`,
     ];
 
     for (const candidate of candidates) {

@@ -190,7 +190,7 @@ import { renderStarfield } from "@/three/space";
 
 // Will grab this during the mounted lifecycle hook
 let pageWrapper = null;
-const heroImage = new URL("../images/bridge-standing-smaller.jpg.webp", import.meta.url).href;
+const heroImage = new URL("../../images/bridge-standing-smaller.jpg.webp", import.meta.url).href;
 const twitterIcon = "https://img.icons8.com/color/48/twitter--v1.png";
 const linkedIcon = "https://img.icons8.com/color/48/linkedin.png";
 const githubIcon = "https://img.icons8.com/color/48/github--v1.png";
