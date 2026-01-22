@@ -35,13 +35,14 @@ export async function createTrisolaranDroplet(starField) {
     const x = 0;
     const y = 0;
     const z = -400;
+    const dropletUrl = new URL('../../../cad/trisolaran_droplet.glb', import.meta.url).href;
 
     const position = { x, y, z };
     _createLighting(starField, position); // Add lighting to the scene
 
     // Add Trisolaran Droplet
     return loader.load(
-        'cad/threebody/trisolaran_droplet.gltf',
+        dropletUrl,
         function (droplet) {
             droplet.scene.name = 'enterprise';
             droplet.scene.scale.set(0.1, 0.1, 0.1);
