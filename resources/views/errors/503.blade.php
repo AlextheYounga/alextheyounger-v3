@@ -11,7 +11,7 @@
             <div class="absolute-container">
                 <div style="width: 100%">
                     <p>Neuron Activation</p>
-                    <img src="/images/monkey-brain.png.webp" />
+                    <img src="{{ Vite::asset('resources/images/monkey-brain.png.webp') }}" />
                 </div>
                 <h1>We'll be right back.</h1>
             </div>

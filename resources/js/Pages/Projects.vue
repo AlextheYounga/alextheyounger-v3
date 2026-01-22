@@ -30,7 +30,7 @@
                             />
                             <img
                                 v-else
-                                :src="`/images/projects/${project.properties?.image_name}.webp`"
+                                :src="projectImage(project)"
                                 class="h-48 w-full object-cover"
                                 :alt="imageAlt(project)"
                             />
@@ -97,7 +97,7 @@
                 />
                 <img
                     v-else
-                    :src="`/images/projects/${projectSelected.properties?.image_name}.webp`"
+                    :src="projectImage(projectSelected)"
                     class="w-full object-cover"
                     :alt="imageAlt(projectSelected)"
                 />
@@ -154,6 +154,32 @@ import AnimatedButtonMenu from "@/Components/AnimatedButtonMenu.vue";
 import { generateColors } from "@/projectColors";
 import { renderStarfield } from "@/three/space";
 
+const projectImages = import.meta.glob("../images/projects/*.{jpg,jpeg,png,webp}", {
+    eager: true,
+    import: "default",
+});
+
+const resolveImage = (imageMap, name, folder) => {
+    if (!name) {
+        return "";
+    }
+
+    const candidates = [
+        `../images/${folder}/${name}.webp`,
+        `../images/${folder}/${name}.jpg`,
+        `../images/${folder}/${name}.jpeg`,
+        `../images/${folder}/${name}.png`,
+    ];
+
+    for (const candidate of candidates) {
+        if (imageMap[candidate]) {
+            return imageMap[candidate];
+        }
+    }
+
+    return "";
+};
+
 export default {
     components: {
         Head,
@@ -175,6 +201,9 @@ export default {
     methods: {
         imageAlt(project) {
             return `Alex Younger Project Gallery ${project.title} Cover Image`;
+        },
+        projectImage(project) {
+            return resolveImage(projectImages, project?.properties?.image_name, "projects");
         },
     },
     mounted() {

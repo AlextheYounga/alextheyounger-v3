@@ -10,7 +10,7 @@
             <div id="home-menu" class="w-1/3">
                 <section id="hero" class="relative mx-auto mb-4 rounded">
                     <img
-                        src="/images/bridge-standing.jpg.webp"
+                        :src="heroImage"
                         class="headshot border-sky relative mx-auto flex border-2 text-center"
                         alt="alex younger developer marketing about me"
                     />
@@ -95,7 +95,7 @@
             <div class="mx-auto">
                 <section id="hero" class="relative mx-auto mb-4 rounded">
                     <img
-                        src="/images/bridge-standing.jpg.webp"
+                        :src="heroImage"
                         class="headshot border-sky relative mx-auto flex border-2 text-center"
                         alt="alex younger developer marketing about me"
                     />
@@ -190,7 +190,7 @@ import { renderStarfield } from "@/three/space";
 
 // Will grab this during the mounted lifecycle hook
 let pageWrapper = null;
-
+const heroImage = new URL("../images/bridge-standing-smaller.jpg.webp", import.meta.url).href;
 const twitterIcon = "https://img.icons8.com/color/48/twitter--v1.png";
 const linkedIcon = "https://img.icons8.com/color/48/linkedin.png";
 const githubIcon = "https://img.icons8.com/color/48/github--v1.png";
@@ -243,6 +243,11 @@ export default {
                 { name: "Explore Starfield", link: "pages.starfield" },
             ],
             selected: "default", // default is nothing
+        };
+    },
+    data() {
+        return {
+            heroImage,
         };
     },
     methods: {
