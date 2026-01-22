@@ -233,6 +233,7 @@ export default {
     data() {
         return {
             links,
+            heroImage,
             homeItems: [
                 { name: "Bio", link: false, id: "bio", action: this.openSection },
                 { name: "About", link: false, id: "about", action: this.openSection },
@@ -243,11 +244,6 @@ export default {
                 { name: "Explore Starfield", link: "pages.starfield" },
             ],
             selected: "default", // default is nothing
-        };
-    },
-    data() {
-        return {
-            heroImage,
         };
     },
     methods: {
