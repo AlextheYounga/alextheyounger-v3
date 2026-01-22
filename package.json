@@ -7,6 +7,7 @@
         "format:check": "prettier --check ."
     },
     "devDependencies": {
+        "@gltf-transform/cli": "^4.3.0",
         "@inertiajs/vue3": "^1.0.11",
         "@prettier/plugin-php": "^0.24.0",
         "@tailwindcss/aspect-ratio": "^0.4.2",
