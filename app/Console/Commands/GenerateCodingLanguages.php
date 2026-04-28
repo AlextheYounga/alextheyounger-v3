@@ -29,9 +29,8 @@ class GenerateCodingLanguages extends Command
         ],
         // Subtract percent from total
         'subtractions' => [
-            'Ruby' => 0.4, // Account for generated code I didn't write
-            'PHP' => 0.6, // Account for generated code I didn't write & Wordpress
-            'JavaScript' => 0.5, // Every framework contains generated JavaScript code
+            'PHP' => 0.96, // Account for generated code I didn't write & Wordpress
+            'JavaScript' => 0.88, // Every framework contains generated JavaScript code
         ],
         'ignore' => [
             'Markdown',
@@ -65,7 +64,11 @@ class GenerateCodingLanguages extends Command
 			"NASL",
 			"Sieve",
 			"Procfile",
-			"Standard ML",
+            "Standard ML",
+            "Jupyter Notebook",
+            "Svelte",
+            "Java",
+            "C++"
         ],
     ];
 
