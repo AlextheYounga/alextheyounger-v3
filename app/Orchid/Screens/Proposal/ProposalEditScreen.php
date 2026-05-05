@@ -2,18 +2,21 @@
 
 namespace App\Orchid\Screens\Proposal;
 
+use App\Models\Proposal;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Quill;
-use Orchid\Screen\Fields\DateTimer;
-use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Fields\CheckBox;
+use Orchid\Screen\Fields\Code;
+use Orchid\Screen\Fields\DateTimer;
+use Orchid\Screen\Fields\Group;
+use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Matrix;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
-use App\Models\Proposal;
-use Orchid\Screen\Fields\CheckBox;
-use Orchid\Screen\Fields\Group;
+use Orchid\Support\Facades\Layout;
 
 class ProposalEditScreen extends Screen
 {
@@ -23,8 +26,11 @@ class ProposalEditScreen extends Screen
     public $proposal;
 
     private $description;
+
     private $disclaimer;
+
     private $scope;
+
     private $techStack;
 
     public function __construct()
@@ -49,8 +55,6 @@ class ProposalEditScreen extends Screen
 
     /**
      * The name of the screen displayed in the header.
-     *
-     * @return string|null
      */
     public function name(): ?string
     {
@@ -66,7 +70,7 @@ class ProposalEditScreen extends Screen
     /**
      * The screen's action buttons.
      *
-     * @return \Orchid\Screen\Action[]
+     * @return Action[]
      */
     public function commandBar(): iterable
     {
@@ -74,7 +78,7 @@ class ProposalEditScreen extends Screen
             Button::make('Create project')
                 ->icon('pencil')
                 ->method('createOrUpdate')
-                ->canSee(!$this->proposal->exists),
+                ->canSee(! $this->proposal->exists),
 
             Button::make('Update')
                 ->icon('note')
@@ -96,6 +100,7 @@ class ProposalEditScreen extends Screen
     public function layout(): iterable
     {
         $useClientAgreement = $this->proposal->properties['use_client_agreement'] ?? false;
+
         return [
             Layout::rows([
                 Input::make('proposal.id')->hidden(),
@@ -194,21 +199,25 @@ class ProposalEditScreen extends Screen
                                 'digitsOptional' => true,
                             ]),
                     ]),
+
+                Code::make('proposal.custom_css')
+                    ->title('Custom CSS')
+                    ->language('css')
+                    ->help('Optional custom CSS for this proposal page. Tip: prefix selectors with #proposal to keep styles local.')
+                    ->value($this->proposal->properties['custom_css'] ?? null),
             ]),
             Layout::view('platform.proposals.calculator'), // Custom calculator functionality for totals
         ];
     }
 
     /**
-     * @param Proposal    $proposal
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  Proposal  $proposal
+     * @return RedirectResponse
      */
     public function createOrUpdate(Request $request)
     {
         $proposal =
-            Proposal::where('id', $request->get('proposal')['id'])->first() ?? new Proposal();
+            Proposal::where('id', $request->get('proposal')['id'])->first() ?? new Proposal;
         $fields = $request->get('proposal');
         $useClientAgreement = $fields['use_client_agreement'] ?? false;
 
@@ -227,6 +236,7 @@ class ProposalEditScreen extends Screen
             'completion_date' => $fields['completion_date'],
             'properties' => [
                 'use_client_agreement' => $useClientAgreement,
+                'custom_css' => $fields['custom_css'] ?? null,
             ],
         ];
 
@@ -238,9 +248,8 @@ class ProposalEditScreen extends Screen
     }
 
     /**
-     * @param Proposal $proposal
+     * @return RedirectResponse
      *
-     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
     public function remove(Proposal $proposal)
@@ -261,8 +270,9 @@ class ProposalEditScreen extends Screen
         $duplicateParams = collect($proposal)
             ->except(['id', 'hash', 'created_at', 'updated_at'])
             ->toArray();
-        $duplicateParams['title'] = $proposalTitle . ' (Copy)';
+        $duplicateParams['title'] = $proposalTitle.' (Copy)';
         $newProposal = Proposal::create($duplicateParams);
+
         return redirect()->route('platform.proposal.edit', $newProposal);
     }
 
