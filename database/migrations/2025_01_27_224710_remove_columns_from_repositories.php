@@ -11,9 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('repositories', function (Blueprint $table) {
-            $table->dropColumn('visibility');
-            $table->dropColumn('host');
-            $table->dropColumn('url');
+            $table->dropColumn(['visibility', 'host', 'url']);
         });
     }
 

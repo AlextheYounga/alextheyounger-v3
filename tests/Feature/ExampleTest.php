@@ -4,12 +4,10 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
     use DatabaseMigrations;
-    use RefreshDatabase;
 
     /**
      * A basic test example.

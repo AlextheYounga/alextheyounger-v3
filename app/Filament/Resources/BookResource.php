@@ -1,0 +1,83 @@
+<?php
+
+namespace App\Filament\Resources;
+
+use App\Filament\Resources\BookResource\Pages\CreateBook;
+use App\Filament\Resources\BookResource\Pages\EditBook;
+use App\Filament\Resources\BookResource\Pages\ListBooks;
+use App\Models\Book;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+
+class BookResource extends Resource
+{
+    protected static ?string $model = Book::class;
+
+    protected static ?string $navigationGroup = 'Content';
+
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
+
+    public static function form(Form $form): Form
+    {
+        return $form->schema([
+            Forms\Components\Select::make('category_id')
+                ->relationship('category', 'name')
+                ->searchable()
+                ->preload()
+                ->required(),
+            Forms\Components\TextInput::make('title')
+                ->required()
+                ->maxLength(255),
+            Forms\Components\TextInput::make('author')
+                ->maxLength(255),
+            Forms\Components\TextInput::make('subtitle')
+                ->maxLength(255),
+            Forms\Components\TextInput::make('image_name')
+                ->maxLength(255),
+            Forms\Components\TextInput::make('external_link')
+                ->url()
+                ->maxLength(2048),
+            Forms\Components\TextInput::make('external_image_link')
+                ->url()
+                ->maxLength(2048),
+            Forms\Components\TextInput::make('position')
+                ->numeric()
+                ->required(),
+            Forms\Components\Toggle::make('active')
+                ->default(true),
+            Forms\Components\Textarea::make('description')
+                ->rows(8)
+                ->columnSpanFull(),
+            Forms\Components\Textarea::make('properties')
+                ->rows(10)
+                ->helperText('JSON object for additional book metadata.')
+                ->columnSpanFull(),
+        ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table->columns([
+            Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+            Tables\Columns\TextColumn::make('author')->searchable()->sortable(),
+            Tables\Columns\TextColumn::make('category.name')->label('Category')->sortable(),
+            Tables\Columns\TextColumn::make('position')->sortable(),
+            Tables\Columns\IconColumn::make('active')->boolean(),
+            Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
+        ])->actions([
+            Tables\Actions\EditAction::make(),
+        ]);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListBooks::route('/'),
+            'create' => CreateBook::route('/create'),
+            'edit' => EditBook::route('/{record}/edit'),
+        ];
+    }
+}
