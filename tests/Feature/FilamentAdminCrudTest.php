@@ -256,7 +256,10 @@ class FilamentAdminCrudTest extends TestCase
                 'client' => 'Acme Co',
                 'title' => 'Proposal Title',
                 'completion_date' => '2026-01-01',
-                'properties' => ['use_client_agreement' => true],
+                'properties' => [
+                    'use_client_agreement' => true,
+                    'custom_css' => '#proposal .total { color: #0f172a; }',
+                ],
                 'content' => [
                     'description' => '<p>Description</p>',
                     'scope' => '<p>Scope</p>',
@@ -281,13 +284,20 @@ class FilamentAdminCrudTest extends TestCase
 
         $proposal = Proposal::firstOrFail();
         $this->assertSame(1200.0, (float) $proposal->total);
+        $this->assertSame(
+            '#proposal .total { color: #0f172a; }',
+            $proposal->properties['custom_css'] ?? null,
+        );
 
         Livewire::test(EditProposal::class, ['record' => $proposal->getRouteKey()])
             ->fillForm([
                 'client' => 'Updated Client',
                 'title' => 'Updated Proposal',
                 'completion_date' => '2026-02-01',
-                'properties' => ['use_client_agreement' => false],
+                'properties' => [
+                    'use_client_agreement' => false,
+                    'custom_css' => '#proposal h1 { letter-spacing: 0.02em; }',
+                ],
                 'content' => [
                     'description' => '<p>Updated Description</p>',
                     'scope' => '<p>Updated Scope</p>',
@@ -310,6 +320,10 @@ class FilamentAdminCrudTest extends TestCase
         $proposal->refresh();
         $this->assertSame(900.0, (float) $proposal->total);
         $this->assertSame('Updated Client', $proposal->client);
+        $this->assertSame(
+            '#proposal h1 { letter-spacing: 0.02em; }',
+            $proposal->properties['custom_css'] ?? null,
+        );
 
         Livewire::test(EditProposal::class, ['record' => $proposal->getRouteKey()])->callAction(
             'delete',

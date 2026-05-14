@@ -15,7 +15,7 @@ class CreateProposal extends CreateRecord
         $data['content'] = $data['content'] ?? [];
         $data['line_items'] = $data['line_items'] ?? [];
         $data['total'] = $this->sumTotal($data['line_items']);
-        $data['properties'] = $data['properties'] ?? [];
+        $data['properties'] = $this->normalizeProperties($data['properties'] ?? []);
 
         return $data;
     }
@@ -30,5 +30,19 @@ class CreateProposal extends CreateRecord
     private function sumTotal(array $lineItems): float|int
     {
         return collect($lineItems)->sum(fn(array $item) => (float) ($item['price'] ?? 0));
+    }
+
+    private function normalizeProperties(mixed $properties): array
+    {
+        if (is_array($properties)) {
+            return $properties;
+        }
+
+        if (is_string($properties)) {
+            $decoded = json_decode($properties, true);
+            return is_array($decoded) ? $decoded : [];
+        }
+
+        return [];
     }
 }

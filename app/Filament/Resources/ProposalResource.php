@@ -54,6 +54,13 @@ class ProposalResource extends Resource
                     Forms\Components\TextInput::make('price')->numeric()->required(),
                 ])
                 ->columnSpanFull(),
+            Forms\Components\Textarea::make('properties.custom_css')
+                ->label('Custom CSS')
+                ->rows(10)
+                ->helperText(
+                    'Optional custom CSS for this proposal page. Tip: prefix selectors with #proposal to keep styles local.',
+                )
+                ->columnSpanFull(),
             Forms\Components\TextInput::make('total')->numeric()->disabled(),
         ]);
     }
