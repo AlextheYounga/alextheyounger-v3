@@ -53,6 +53,7 @@ class BookResource extends Resource
         return $table
             ->defaultSort('position')
             ->reorderable('position')
+            ->paginated(false)
             ->reorderRecordsTriggerAction(
                 fn(Tables\Actions\Action $action, bool $isReordering): Tables\Actions\Action => $action
                     ->button()
