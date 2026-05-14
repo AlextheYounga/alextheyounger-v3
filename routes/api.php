@@ -33,8 +33,15 @@ Random hash is being used as a psuedo-authentication method. Adding throttle to 
 */
 
 Route::get('/resume/{hash}', [ResumeController::class, 'get'])->middleware('throttle:50,1'); // Open
-Route::get('/cover-letter/{hash}', [CoverLetterController::class, 'get'])->middleware('throttle:50,1'); // Open
+Route::get('/cover-letter/{hash}', [CoverLetterController::class, 'get'])->middleware(
+    'throttle:50,1',
+); // Open
 
-Route::middleware('auth:sanctum')->post('/repositories', [CodingLanguageController::class, 'addRepositories']);
+Route::middleware('auth:sanctum')->post('/repositories', [
+    CodingLanguageController::class,
+    'addRepositories',
+]);
 
-Route::get('/languages/stats', [CodingLanguageController::class, 'stats'])->middleware('throttle:50,1'); // Open
+Route::get('/languages/stats', [CodingLanguageController::class, 'stats'])->middleware(
+    'throttle:50,1',
+); // Open

@@ -20,7 +20,12 @@ function animate() {
 function createStarField(scale = 1) {
     // Set up the scene, camera, and renderer
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1300);
+    const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1300
+    );
     const renderer = new THREE.WebGLRenderer();
 
     // Handle window resizing
@@ -73,7 +78,7 @@ function createStarField(scale = 1) {
         starField,
         scene,
         renderer,
-        camera,
+        camera
     };
 }
 

@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { createStar } from './createStars';
-import { loadAsync } from 'jszip';
 
 const _createLighting = async (starField, position) => {
     // Add lights to the scene
@@ -31,41 +30,28 @@ const _createLighting = async (starField, position) => {
     starField.add(star);
 };
 
-async function _loadEnterpriseCompressedGLTF(starField, position) {
+async function _loadEnterpriseGLB(starField, position) {
     const loader = new GLTFLoader();
     const { x, y, z } = position;
-    // Unzip enterprise model from zip file
-    fetch('cad/Enterprise_Original.gltf.zip').then((response) => {
-        loadAsync(response.blob()).then((zip) => {
-            Object.keys(zip.files).forEach((filename) => {
-                if (filename.endsWith('.gltf')) {
-                    zip.files[filename].async('blob').then((blob) => {
-                        // Load unzipped contents into memory and store in blob url
-                        const url = URL.createObjectURL(blob);
+    const enterpriseUrl = new URL('../../../cad/enterprise.glb', import.meta.url).href;
 
-                        // Pass blob url into GLTF Loader
-                        return loader.load(
-                            url,
-                            function (enterprise) {
-                                enterprise.scene.name = 'enterprise';
-                                enterprise.scene.scale.set(10, 10, 10);
-                                enterprise.scene.position.set(x, y, z);
-                                enterprise.scene.rotateX(2);
-                                enterprise.scene.rotateY(3);
+    return loader.load(
+        enterpriseUrl,
+        function (enterprise) {
+            enterprise.scene.name = 'enterprise';
+            enterprise.scene.scale.set(10, 10, 10);
+            enterprise.scene.position.set(x, y, z);
+            enterprise.scene.rotateX(2);
+            enterprise.scene.rotateY(3);
 
-                                // Add to scene
-                                starField.add(enterprise.scene);
-                            },
-                            undefined,
-                            function (error) {
-                                console.error(error);
-                            }
-                        );
-                    });
-                }
-            });
-        });
-    });
+            // Add to scene
+            starField.add(enterprise.scene);
+        },
+        undefined,
+        function (error) {
+            console.error(error);
+        }
+    );
 }
 
 export async function createStarshipEnterprise(starField) {
@@ -77,5 +63,5 @@ export async function createStarshipEnterprise(starField) {
     _createLighting(starField, position); // Add lighting to the scene
 
     // Add Starship Enterprise
-    return _loadEnterpriseCompressedGLTF(starField, position);
+    return _loadEnterpriseGLB(starField, position);
 }

@@ -5,12 +5,10 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Orchid\Screen\AsSource;
 
 class Proposal extends Model
 {
     use HasFactory;
-    use AsSource;
 
     protected static function boot()
     {

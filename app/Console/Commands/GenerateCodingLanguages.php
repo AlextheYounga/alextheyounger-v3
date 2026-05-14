@@ -29,15 +29,13 @@ class GenerateCodingLanguages extends Command
         ],
         // Subtract percent from total
         'subtractions' => [
-            'Ruby' => 0.4, // Account for generated code I didn't write
-            'PHP' => 0.4, // Account for generated code I didn't write
-            'JavaScript' => 0.5, // Every framework contains generated JavaScript code
+            'PHP' => 0.96, // Account for generated code I didn't write & Wordpress
+            'JavaScript' => 0.88, // Every framework contains generated JavaScript code
         ],
         'ignore' => [
             'Markdown',
             'ASP.NET',
             'MDX',
-            'Dockerfile',
             'Elixir',
             'HTML',
             'CSS',
@@ -48,6 +46,29 @@ class GenerateCodingLanguages extends Command
             'Starlark',
             'EJS',
             'Nix',
+            'Hack',
+            'Twig',
+            'Handlebars',
+            'Liquid',
+            'Smarty',
+            'DIGITAL Command Language',
+            'Less',
+            'XSLT',
+            'Makefile',
+            'Roff',
+            'Objective-C',
+            'Jinja',
+            'LOLCODE',
+            'Motoko',
+            'Batchfile',
+            'NASL',
+            'Sieve',
+            'Procfile',
+            'Standard ML',
+            'Jupyter Notebook',
+            'Svelte',
+            'Java',
+            'C++',
         ],
     ];
 
@@ -97,7 +118,8 @@ class GenerateCodingLanguages extends Command
             }
 
             if (array_key_exists($lang->language, $this->settings['subtractions'])) {
-                $percentValue = $lang->display_value * $this->settings['subtractions'][$lang->language];
+                $percentValue =
+                    $lang->display_value * $this->settings['subtractions'][$lang->language];
                 $lang->display_value -= $percentValue;
             }
 

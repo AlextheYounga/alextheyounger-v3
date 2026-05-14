@@ -205,10 +205,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
-import { HeartIcon, XMarkIcon } from '@heroicons/vue/24/outline';
-import { PencilIcon, PlusIcon } from '@heroicons/vue/20/solid';
+import { ref } from "vue";
+import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from "@headlessui/vue";
+import { HeartIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { PencilIcon, PlusIcon } from "@heroicons/vue/20/solid";
 
 const open = ref(false);
 </script>
@@ -238,7 +238,7 @@ const open = ref(false);
 }
 
 .mobile-menu ul li a:after {
-    content: '';
+    content: "";
     background: black;
     width: 100%;
     height: 100%;
@@ -265,7 +265,7 @@ const open = ref(false);
 
 .hamburger button.main-nav-toggle:after,
 .hamburger button.main-nav-toggle:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     height: 0;

@@ -6,13 +6,13 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/js/**/*.vue',
+        './resources/js/**/*.vue'
     ],
     darkMode: true, // or 'media' or 'class'
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans]
             },
             colors: {
                 gold: '#F2D024',
@@ -27,10 +27,14 @@ module.exports = {
                 'off-gray': '#737373',
                 'dark-opacity': 'rgba(19,19,19,0.30);',
                 'gray-darkest-alpha': 'rgba(56,56,56,.25);',
-                burgandy: '#800020',
-            },
-        },
+                burgandy: '#800020'
+            }
+        }
     },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio'), require('@tailwindcss/typography')],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/typography')
+    ]
 };

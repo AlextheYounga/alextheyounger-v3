@@ -11,8 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('image_name');
-            $table->dropColumn('description');
+            $table->dropColumn(['image_name', 'description']);
         });
     }
 

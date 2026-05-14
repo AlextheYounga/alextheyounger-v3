@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Orchid\Screen\AsSource;
 
 class Resume extends Model
 {
     use HasFactory;
-    use AsSource;
 
     protected static function boot()
     {
@@ -24,7 +22,16 @@ class Resume extends Model
         });
     }
 
-    protected $fillable = ['hash', 'name', 'bio', 'contacts', 'references', 'experience', 'education', 'properties'];
+    protected $fillable = [
+        'hash',
+        'name',
+        'bio',
+        'contacts',
+        'references',
+        'experience',
+        'education',
+        'properties',
+    ];
 
     protected $casts = [
         'contacts' => 'array',

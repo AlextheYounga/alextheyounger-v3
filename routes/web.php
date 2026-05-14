@@ -28,7 +28,9 @@ Route::prefix('secure-passwords')->group(function () {
     Route::post('/store', [PasswordController::class, 'store'])
         ->name('passwords.store')
         ->middleware('throttle:50,1'); // Ajax
-    Route::get('/destroy/{uuid}', [PasswordController::class, 'destroy'])->name('passwords.destroy'); // Ajax
+    Route::get('/destroy/{uuid}', [PasswordController::class, 'destroy'])->name(
+        'passwords.destroy',
+    ); // Ajax
 });
 
 Route::prefix('clipboard')->group(function () {

@@ -35,13 +35,14 @@ export async function createSpaceXStarship(starField) {
     const x = -500;
     const y = 0;
     const z = 100;
+    const starshipUrl = new URL('../../../cad/starship_mk1.glb', import.meta.url).href;
 
     const position = { x, y, z };
     _createLighting(starField, position); // Add lighting to the scene
 
     // Add SpaceX Starship
     return loader.load(
-        'cad/starship_mk1/scene.gltf',
+        starshipUrl,
         function (starship) {
             starship.scene.name = 'starship';
             starship.scene.scale.set(0.002, 0.002, 0.002);

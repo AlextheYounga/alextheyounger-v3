@@ -7,7 +7,14 @@ export function createStarTexture() {
     canvas.height = size;
 
     const context = canvas.getContext('2d');
-    const gradient = context.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+    const gradient = context.createRadialGradient(
+        size / 2,
+        size / 2,
+        0,
+        size / 2,
+        size / 2,
+        size / 2
+    );
     gradient.addColorStop(0.1, 'rgba(255,255,255,1)');
     gradient.addColorStop(0.2, 'rgba(255,255,255,0.8)');
     gradient.addColorStop(0.4, 'rgba(255,255,255,0.5)');
@@ -29,7 +36,10 @@ export function createStar(position, color, size = 3) {
     // Generate a random color biased towards red or blue
 
     geometry.setAttribute('position', new THREE.Float32BufferAttribute([x, y, z], 3));
-    geometry.setAttribute('color', new THREE.Float32BufferAttribute([color.r, color.g, color.b], 3));
+    geometry.setAttribute(
+        'color',
+        new THREE.Float32BufferAttribute([color.r, color.g, color.b], 3)
+    );
 
     const material = new THREE.PointsMaterial({
         size: size,
@@ -37,7 +47,7 @@ export function createStar(position, color, size = 3) {
         transparent: true,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
-        vertexColors: true,
+        vertexColors: true
     });
 
     const star = new THREE.Points(geometry, material);
@@ -76,7 +86,7 @@ export function createStars(count, size = 3) {
         transparent: true,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
-        vertexColors: true,
+        vertexColors: true
     });
 
     const stars = new THREE.Points(geometry, material);
