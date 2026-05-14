@@ -44,7 +44,7 @@
                     <!-- Line Items -->
                     <div v-if="proposal.line_items && Object.entries(proposal.line_items).length" class="my-16">
                         <div class="my-12">
-                            <h2 class="text-gray-700mb-4 text-2xl font-medium">LINE ITEMS</h2>
+                            <h2 class="text-gray-700 mb-4 text-2xl font-medium">LINE ITEMS</h2>
                             <div class="mt-4 overflow-x-auto">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
@@ -224,7 +224,7 @@
 </template>
 
 <script setup>
-import { ref, computed, defineProps } from "vue";
+import { ref, computed, defineProps, onBeforeUnmount } from "vue";
 import { Head, router } from "@inertiajs/vue3";
 import { PrinterIcon } from "@heroicons/vue/24/outline";
 
@@ -233,6 +233,46 @@ document.body.classList.remove("bg-black");
 const { proposal } = defineProps({
     proposal: Object,
 });
+
+const customCss = computed(() => {
+    const css = proposal?.properties?.custom_css;
+
+    if (!css || typeof css !== "string") {
+        return "";
+    }
+
+    return css
+        .replace(/<style[^>]*>/gi, "")
+        .replace(/<\/style>/gi, "")
+        .trim();
+});
+
+if (typeof document !== "undefined") {
+    const existingStyleTag = document.getElementById("proposal-custom-css");
+
+    if (existingStyleTag) {
+        existingStyleTag.remove();
+    }
+
+    if (customCss.value) {
+        const styleTag = document.createElement("style");
+        styleTag.id = "proposal-custom-css";
+        styleTag.textContent = customCss.value;
+        document.head.appendChild(styleTag);
+    }
+}
+
+onBeforeUnmount(() => {
+    if (typeof document === "undefined") {
+        return;
+    }
+
+    const styleTag = document.getElementById("proposal-custom-css");
+    if (styleTag) {
+        styleTag.remove();
+    }
+});
+
 const agreement = ref(false);
 const signature = ref("");
 
