@@ -36,6 +36,14 @@ class CategoryResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('position')
+            ->reorderable('position')
+            ->reorderRecordsTriggerAction(
+                fn(Tables\Actions\Action $action, bool $isReordering): Tables\Actions\Action => $action
+                    ->button()
+                    ->label($isReordering ? 'Done Reordering' : 'Reorder Positions')
+                    ->icon($isReordering ? 'heroicon-o-check' : 'heroicon-o-arrows-up-down'),
+            )
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('type')->searchable()->sortable(),

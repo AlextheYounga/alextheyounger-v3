@@ -6,6 +6,7 @@ use App\Filament\Resources\ProposalResource\Pages\CreateProposal;
 use App\Filament\Resources\ProposalResource\Pages\EditProposal;
 use App\Filament\Resources\ProposalResource\Pages\ListProposals;
 use App\Models\Proposal;
+use Dotswan\FilamentCodeEditor\Fields\CodeEditor;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -54,12 +55,16 @@ class ProposalResource extends Resource
                     Forms\Components\TextInput::make('price')->numeric()->required(),
                 ])
                 ->columnSpanFull(),
-            Forms\Components\Textarea::make('properties.custom_css')
+            CodeEditor::make('properties.custom_css')
                 ->label('Custom CSS')
-                ->rows(10)
                 ->helperText(
                     'Optional custom CSS for this proposal page. Tip: prefix selectors with #proposal to keep styles local.',
                 )
+                ->id('proposal_custom_css')
+                ->minHeight(320)
+                ->lightModeTheme('basic-light')
+                ->darkModeTheme('gruvbox-dark')
+                ->showCopyButton(true)
                 ->columnSpanFull(),
             Forms\Components\TextInput::make('total')->numeric()->disabled(),
         ]);

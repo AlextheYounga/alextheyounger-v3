@@ -8,6 +8,7 @@ use App\Filament\Resources\BookResource\Pages\EditBook;
 use App\Filament\Resources\CategoryResource;
 use App\Filament\Resources\CategoryResource\Pages\CreateCategory;
 use App\Filament\Resources\CategoryResource\Pages\EditCategory;
+use App\Filament\Resources\CategoryResource\Pages\ListCategories;
 use App\Filament\Resources\CoverLetterResource;
 use App\Filament\Resources\CoverLetterResource\Pages\CreateCoverLetter;
 use App\Filament\Resources\CoverLetterResource\Pages\EditCoverLetter;
@@ -132,6 +133,33 @@ class FilamentAdminCrudTest extends TestCase
         );
 
         $this->assertDatabaseMissing(Category::class, ['id' => $category->id]);
+    }
+
+    public function test_category_can_be_reordered_from_filament(): void
+    {
+        $first = Category::create([
+            'name' => 'First',
+            'type' => 'Book::class',
+            'position' => 1,
+            'properties' => ['html_selector' => 'first'],
+            'active' => true,
+        ]);
+
+        $second = Category::create([
+            'name' => 'Second',
+            'type' => 'Book::class',
+            'position' => 2,
+            'properties' => ['html_selector' => 'second'],
+            'active' => true,
+        ]);
+
+        Livewire::test(ListCategories::class)
+            ->call('toggleTableReordering')
+            ->call('reorderTable', [$second->getKey(), $first->getKey()])
+            ->assertHasNoErrors();
+
+        $this->assertSame(1, $second->refresh()->position);
+        $this->assertSame(2, $first->refresh()->position);
     }
 
     public function test_book_crud_works_from_filament(): void
