@@ -25,11 +25,11 @@ trait CreatesApplication
     {
         $database = dirname(__DIR__) . '/database/testing.sqlite';
 
-        if (! file_exists($database)) {
+        if (!file_exists($database)) {
             touch($database);
         }
 
-        putenv("DB_CONNECTION=sqlite");
+        putenv('DB_CONNECTION=sqlite');
         putenv("DB_DATABASE={$database}");
         $_ENV['DB_CONNECTION'] = 'sqlite';
         $_ENV['DB_DATABASE'] = $database;

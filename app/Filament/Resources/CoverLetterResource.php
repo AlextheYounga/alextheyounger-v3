@@ -32,19 +32,24 @@ class CoverLetterResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('company')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('hash')->searchable(),
-            Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
-        ])->actions([
-            Tables\Actions\Action::make('view')
-                ->label('View')
-                ->icon('heroicon-o-eye')
-                ->url(fn(CoverLetter $record): string => static::$coverLetterSiteBase . $record->hash)
-                ->openUrlInNewTab(),
-            Tables\Actions\EditAction::make(),
-        ]);
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('company')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('hash')->searchable(),
+                Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
+            ])
+            ->actions([
+                Tables\Actions\Action::make('view')
+                    ->label('View')
+                    ->icon('heroicon-o-eye')
+                    ->url(
+                        fn(CoverLetter $record): string => static::$coverLetterSiteBase .
+                            $record->hash,
+                    )
+                    ->openUrlInNewTab(),
+                Tables\Actions\EditAction::make(),
+            ]);
     }
 
     public static function getPages(): array

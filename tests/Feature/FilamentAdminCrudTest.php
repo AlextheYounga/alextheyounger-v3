@@ -54,15 +54,18 @@ class FilamentAdminCrudTest extends TestCase
 
     public function test_admin_resource_index_pages_load(): void
     {
-        foreach ([
-            PageContentResource::class,
-            CategoryResource::class,
-            BookResource::class,
-            ProjectResource::class,
-            ProposalResource::class,
-            CoverLetterResource::class,
-            ResumeResource::class,
-        ] as $resource) {
+        foreach (
+            [
+                PageContentResource::class,
+                CategoryResource::class,
+                BookResource::class,
+                ProjectResource::class,
+                ProposalResource::class,
+                CoverLetterResource::class,
+                ResumeResource::class,
+            ]
+            as $resource
+        ) {
             $this->get($resource::getUrl('index'))->assertOk();
         }
     }
@@ -124,8 +127,9 @@ class FilamentAdminCrudTest extends TestCase
         $this->assertSame('Economics', $category->name);
         $this->assertSame('economics', $category->selector);
 
-        Livewire::test(EditCategory::class, ['record' => $category->getRouteKey()])
-            ->callAction('delete');
+        Livewire::test(EditCategory::class, ['record' => $category->getRouteKey()])->callAction(
+            'delete',
+        );
 
         $this->assertDatabaseMissing(Category::class, ['id' => $category->id]);
     }
@@ -185,8 +189,7 @@ class FilamentAdminCrudTest extends TestCase
         $this->assertSame('Updated Book', $book->title);
         $this->assertSame('updated_book', $book->properties['image_name']);
 
-        Livewire::test(EditBook::class, ['record' => $book->getRouteKey()])
-            ->callAction('delete');
+        Livewire::test(EditBook::class, ['record' => $book->getRouteKey()])->callAction('delete');
 
         $this->assertDatabaseMissing(Book::class, ['id' => $book->id]);
     }
@@ -204,14 +207,8 @@ class FilamentAdminCrudTest extends TestCase
                 'content' => [
                     'description' => '<p>Description</p>',
                     'excerpt' => 'Excerpt',
-                    'bullets' => [
-                        ['bullet' => 'Bullet one'],
-                        ['bullet' => 'Bullet two'],
-                    ],
-                    'technology' => [
-                        ['name' => 'Laravel'],
-                        ['name' => 'Vue'],
-                    ],
+                    'bullets' => [['bullet' => 'Bullet one'], ['bullet' => 'Bullet two']],
+                    'technology' => [['name' => 'Laravel'], ['name' => 'Vue']],
                 ],
                 'active' => true,
             ])
@@ -233,12 +230,8 @@ class FilamentAdminCrudTest extends TestCase
                 'content' => [
                     'description' => '<p>Updated Description</p>',
                     'excerpt' => 'Updated excerpt',
-                    'bullets' => [
-                        ['bullet' => 'Updated bullet'],
-                    ],
-                    'technology' => [
-                        ['name' => 'PHP'],
-                    ],
+                    'bullets' => [['bullet' => 'Updated bullet']],
+                    'technology' => [['name' => 'PHP']],
                 ],
                 'active' => false,
             ])
@@ -249,8 +242,9 @@ class FilamentAdminCrudTest extends TestCase
         $this->assertSame(['Updated bullet'], $project->content['bullets']);
         $this->assertSame(['PHP'], $project->content['technology']);
 
-        Livewire::test(EditProject::class, ['record' => $project->getRouteKey()])
-            ->callAction('delete');
+        Livewire::test(EditProject::class, ['record' => $project->getRouteKey()])->callAction(
+            'delete',
+        );
 
         $this->assertDatabaseMissing(Project::class, ['id' => $project->id]);
     }
@@ -308,9 +302,7 @@ class FilamentAdminCrudTest extends TestCase
                         ],
                     ],
                 ],
-                'line_items' => [
-                    ['description' => 'Updated Line Item', 'price' => 900],
-                ],
+                'line_items' => [['description' => 'Updated Line Item', 'price' => 900]],
             ])
             ->call('save')
             ->assertHasNoFormErrors();
@@ -319,8 +311,9 @@ class FilamentAdminCrudTest extends TestCase
         $this->assertSame(900.0, (float) $proposal->total);
         $this->assertSame('Updated Client', $proposal->client);
 
-        Livewire::test(EditProposal::class, ['record' => $proposal->getRouteKey()])
-            ->callAction('delete');
+        Livewire::test(EditProposal::class, ['record' => $proposal->getRouteKey()])->callAction(
+            'delete',
+        );
 
         $this->assertDatabaseMissing(Proposal::class, ['id' => $proposal->id]);
     }
@@ -355,8 +348,9 @@ class FilamentAdminCrudTest extends TestCase
         $coverLetter->refresh();
         $this->assertSame('Updated Backend Role', $coverLetter->name);
 
-        Livewire::test(EditCoverLetter::class, ['record' => $coverLetter->getRouteKey()])
-            ->callAction('delete');
+        Livewire::test(EditCoverLetter::class, [
+            'record' => $coverLetter->getRouteKey(),
+        ])->callAction('delete');
 
         $this->assertDatabaseMissing(CoverLetter::class, ['id' => $coverLetter->id]);
     }
@@ -383,7 +377,11 @@ class FilamentAdminCrudTest extends TestCase
                 'bio' => 'Short bio',
                 'projects' => [$project->id],
                 'contacts' => [
-                    ['key' => 'email', 'href' => 'mailto:test@example.com', 'text' => 'test@example.com'],
+                    [
+                        'key' => 'email',
+                        'href' => 'mailto:test@example.com',
+                        'text' => 'test@example.com',
+                    ],
                 ],
                 'references' => [
                     [
@@ -403,9 +401,7 @@ class FilamentAdminCrudTest extends TestCase
                         'date' => '2024-2025',
                         'link' => 'https://example.com',
                         'stack' => 'Laravel',
-                        'bullets' => [
-                            ['bullet' => 'Built admin panel'],
-                        ],
+                        'bullets' => [['bullet' => 'Built admin panel']],
                     ],
                 ],
                 'education' => null,
@@ -435,9 +431,7 @@ class FilamentAdminCrudTest extends TestCase
                         'date' => '2025-2026',
                         'link' => 'https://example.com/updated',
                         'stack' => 'PHP',
-                        'bullets' => [
-                            ['bullet' => 'Led migration'],
-                        ],
+                        'bullets' => [['bullet' => 'Led migration']],
                     ],
                 ],
                 'education' => null,
@@ -450,8 +444,9 @@ class FilamentAdminCrudTest extends TestCase
         $this->assertSame('Updated Resume', $resume->name);
         $this->assertSame(['Led migration'], $resume->experience[0]['bullets']);
 
-        Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])
-            ->callAction('delete');
+        Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])->callAction(
+            'delete',
+        );
 
         $this->assertDatabaseMissing(Resume::class, ['id' => $resume->id]);
     }

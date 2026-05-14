@@ -31,7 +31,9 @@ class EditProposal extends EditRecord
         $data['content'] = $data['content'] ?? [];
         $data['line_items'] = $data['line_items'] ?? [];
         $data['properties'] = $data['properties'] ?? [];
-        $data['total'] = collect($data['line_items'])->sum(fn(array $item) => (float) ($item['price'] ?? 0));
+        $data['total'] = collect($data['line_items'])->sum(
+            fn(array $item) => (float) ($item['price'] ?? 0),
+        );
 
         return $data;
     }

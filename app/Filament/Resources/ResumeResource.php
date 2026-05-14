@@ -35,7 +35,8 @@ class ResumeResource extends Resource
                     Forms\Components\TextInput::make('key'),
                     Forms\Components\TextInput::make('href'),
                     Forms\Components\TextInput::make('text'),
-                ])->columnSpanFull(),
+                ])
+                ->columnSpanFull(),
             Forms\Components\Repeater::make('references')
                 ->schema([
                     Forms\Components\TextInput::make('name'),
@@ -44,7 +45,8 @@ class ResumeResource extends Resource
                     Forms\Components\TextInput::make('location'),
                     Forms\Components\TextInput::make('phone'),
                     Forms\Components\TextInput::make('email'),
-                ])->columnSpanFull(),
+                ])
+                ->columnSpanFull(),
             Forms\Components\Repeater::make('experience')
                 ->schema([
                     Forms\Components\TextInput::make('title'),
@@ -54,12 +56,11 @@ class ResumeResource extends Resource
                     Forms\Components\TextInput::make('link'),
                     Forms\Components\TextInput::make('stack'),
                     Forms\Components\Repeater::make('bullets')
-                        ->schema([
-                            Forms\Components\TextInput::make('bullet')->required(),
-                        ])
+                        ->schema([Forms\Components\TextInput::make('bullet')->required()])
                         ->defaultItems(0)
                         ->columnSpanFull(),
-                ])->columnSpanFull(),
+                ])
+                ->columnSpanFull(),
             Forms\Components\Textarea::make('education')->rows(4)->columnSpanFull(),
             Forms\Components\KeyValue::make('properties')->columnSpanFull(),
         ]);
@@ -67,18 +68,20 @@ class ResumeResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('hash')->searchable(),
-            Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
-        ])->actions([
-            Tables\Actions\Action::make('view')
-                ->label('View')
-                ->icon('heroicon-o-eye')
-                ->url(fn(Resume $record): string => static::$resumeSiteBase . $record->hash)
-                ->openUrlInNewTab(),
-            Tables\Actions\EditAction::make(),
-        ]);
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('hash')->searchable(),
+                Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
+            ])
+            ->actions([
+                Tables\Actions\Action::make('view')
+                    ->label('View')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn(Resume $record): string => static::$resumeSiteBase . $record->hash)
+                    ->openUrlInNewTab(),
+                Tables\Actions\EditAction::make(),
+            ]);
     }
 
     public static function getPages(): array

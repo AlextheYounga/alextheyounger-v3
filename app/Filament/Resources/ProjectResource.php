@@ -43,15 +43,15 @@ class ProjectResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('scope')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('position')->sortable(),
-            Tables\Columns\IconColumn::make('active')->boolean(),
-            Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
-        ])->actions([
-            Tables\Actions\EditAction::make(),
-        ]);
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('scope')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('position')->sortable(),
+                Tables\Columns\IconColumn::make('active')->boolean(),
+                Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
+            ])
+            ->actions([Tables\Actions\EditAction::make()]);
     }
 
     public static function getPages(): array

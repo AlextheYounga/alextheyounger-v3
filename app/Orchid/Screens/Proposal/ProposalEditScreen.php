@@ -78,7 +78,7 @@ class ProposalEditScreen extends Screen
             Button::make('Create project')
                 ->icon('pencil')
                 ->method('createOrUpdate')
-                ->canSee(! $this->proposal->exists),
+                ->canSee(!$this->proposal->exists),
 
             Button::make('Update')
                 ->icon('note')
@@ -203,7 +203,9 @@ class ProposalEditScreen extends Screen
                 Code::make('proposal.custom_css')
                     ->title('Custom CSS')
                     ->language('css')
-                    ->help('Optional custom CSS for this proposal page. Tip: prefix selectors with #proposal to keep styles local.')
+                    ->help(
+                        'Optional custom CSS for this proposal page. Tip: prefix selectors with #proposal to keep styles local.',
+                    )
                     ->value($this->proposal->properties['custom_css'] ?? null),
             ]),
             Layout::view('platform.proposals.calculator'), // Custom calculator functionality for totals
@@ -217,7 +219,7 @@ class ProposalEditScreen extends Screen
     public function createOrUpdate(Request $request)
     {
         $proposal =
-            Proposal::where('id', $request->get('proposal')['id'])->first() ?? new Proposal;
+            Proposal::where('id', $request->get('proposal')['id'])->first() ?? new Proposal();
         $fields = $request->get('proposal');
         $useClientAgreement = $fields['use_client_agreement'] ?? false;
 
@@ -270,7 +272,7 @@ class ProposalEditScreen extends Screen
         $duplicateParams = collect($proposal)
             ->except(['id', 'hash', 'created_at', 'updated_at'])
             ->toArray();
-        $duplicateParams['title'] = $proposalTitle.' (Copy)';
+        $duplicateParams['title'] = $proposalTitle . ' (Copy)';
         $newProposal = Proposal::create($duplicateParams);
 
         return redirect()->route('platform.proposal.edit', $newProposal);

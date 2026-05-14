@@ -28,30 +28,19 @@ class BookResource extends Resource
                 ->searchable()
                 ->preload()
                 ->required(),
-            Forms\Components\TextInput::make('title')
-                ->required()
-                ->maxLength(255),
-            Forms\Components\TextInput::make('author')
-                ->maxLength(255),
-            Forms\Components\TextInput::make('subtitle')
-                ->maxLength(255),
+            Forms\Components\TextInput::make('title')->required()->maxLength(255),
+            Forms\Components\TextInput::make('author')->maxLength(255),
+            Forms\Components\TextInput::make('subtitle')->maxLength(255),
             Forms\Components\TextInput::make('properties.image_name')
                 ->label('Local Image Name')
                 ->maxLength(255),
             Forms\Components\TextInput::make('properties.image_alt')
                 ->label('Image Alt')
                 ->maxLength(255),
-            Forms\Components\TextInput::make('external_link')
-                ->url()
-                ->maxLength(2048),
-            Forms\Components\TextInput::make('external_image_link')
-                ->url()
-                ->maxLength(2048),
-            Forms\Components\TextInput::make('position')
-                ->numeric()
-                ->required(),
-            Forms\Components\Toggle::make('active')
-                ->default(true),
+            Forms\Components\TextInput::make('external_link')->url()->maxLength(2048),
+            Forms\Components\TextInput::make('external_image_link')->url()->maxLength(2048),
+            Forms\Components\TextInput::make('position')->numeric()->required(),
+            Forms\Components\Toggle::make('active')->default(true),
             Forms\Components\Textarea::make('properties.description')
                 ->label('Description')
                 ->rows(8)
@@ -61,16 +50,16 @@ class BookResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('author')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('category.name')->label('Category')->sortable(),
-            Tables\Columns\TextColumn::make('position')->sortable(),
-            Tables\Columns\IconColumn::make('active')->boolean(),
-            Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
-        ])->actions([
-            Tables\Actions\EditAction::make(),
-        ]);
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('author')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('category.name')->label('Category')->sortable(),
+                Tables\Columns\TextColumn::make('position')->sortable(),
+                Tables\Columns\IconColumn::make('active')->boolean(),
+                Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
+            ])
+            ->actions([Tables\Actions\EditAction::make()]);
     }
 
     public static function getPages(): array

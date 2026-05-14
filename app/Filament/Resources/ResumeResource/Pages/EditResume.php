@@ -55,27 +55,29 @@ class EditResume extends EditRecord
     protected function mutateFormDataBeforeSave(array $data): array
     {
         $data['properties'] = $this->normalizeProperties($data['properties'] ?? []);
-        $data['experience'] = collect($data['experience'] ?? [])->map(function (array $item): array {
-            $item['bullets'] = collect($item['bullets'] ?? [])
-                ->map(function (mixed $bullet): ?string {
-                    if (is_array($bullet)) {
-                        $bullet = $bullet['bullet'] ?? null;
-                    }
+        $data['experience'] = collect($data['experience'] ?? [])
+            ->map(function (array $item): array {
+                $item['bullets'] = collect($item['bullets'] ?? [])
+                    ->map(function (mixed $bullet): ?string {
+                        if (is_array($bullet)) {
+                            $bullet = $bullet['bullet'] ?? null;
+                        }
 
-                    if (!is_string($bullet)) {
-                        return null;
-                    }
+                        if (!is_string($bullet)) {
+                            return null;
+                        }
 
-                    $bullet = trim($bullet);
+                        $bullet = trim($bullet);
 
-                    return $bullet === '' ? null : $bullet;
-                })
-                ->filter()
-                ->values()
-                ->all();
+                        return $bullet === '' ? null : $bullet;
+                    })
+                    ->filter()
+                    ->values()
+                    ->all();
 
-            return $item;
-        })->all();
+                return $item;
+            })
+            ->all();
 
         return $data;
     }

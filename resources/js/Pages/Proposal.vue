@@ -44,7 +44,7 @@
                     <!-- Line Items -->
                     <div v-if="proposal.line_items && Object.entries(proposal.line_items).length" class="my-16">
                         <div class="my-12">
-                            <h2 class="text-gray-700 mb-4 text-2xl font-medium">LINE ITEMS</h2>
+                            <h2 class="mb-4 text-2xl font-medium text-gray-700">LINE ITEMS</h2>
                             <div class="mt-4 overflow-x-auto">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
