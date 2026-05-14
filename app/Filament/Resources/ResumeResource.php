@@ -52,8 +52,12 @@ class ResumeResource extends Resource
                     Forms\Components\TextInput::make('date'),
                     Forms\Components\TextInput::make('link'),
                     Forms\Components\TextInput::make('stack'),
-                    Forms\Components\Textarea::make('bullets')
-                        ->helperText('JSON array of bullet strings'),
+                    Forms\Components\Repeater::make('bullets')
+                        ->schema([
+                            Forms\Components\TextInput::make('bullet')->required(),
+                        ])
+                        ->defaultItems(0)
+                        ->columnSpanFull(),
                 ])->columnSpanFull(),
             Forms\Components\Textarea::make('education')->rows(4)->columnSpanFull(),
             Forms\Components\KeyValue::make('properties')->columnSpanFull(),

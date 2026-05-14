@@ -403,7 +403,9 @@ class FilamentAdminCrudTest extends TestCase
                         'date' => '2024-2025',
                         'link' => 'https://example.com',
                         'stack' => 'Laravel',
-                        'bullets' => json_encode(['Built admin panel']),
+                        'bullets' => [
+                            ['bullet' => 'Built admin panel'],
+                        ],
                     ],
                 ],
                 'education' => null,
@@ -433,7 +435,9 @@ class FilamentAdminCrudTest extends TestCase
                         'date' => '2025-2026',
                         'link' => 'https://example.com/updated',
                         'stack' => 'PHP',
-                        'bullets' => json_encode(['Led migration']),
+                        'bullets' => [
+                            ['bullet' => 'Led migration'],
+                        ],
                     ],
                 ],
                 'education' => null,

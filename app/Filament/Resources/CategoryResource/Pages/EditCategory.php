@@ -11,6 +11,20 @@ class EditCategory extends EditRecord
 {
     protected static string $resource = CategoryResource::class;
 
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $data['properties'] = $this->normalizeProperties($data['properties'] ?? []);
+
+        return $data;
+    }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $data['properties'] = $this->normalizeProperties($data['properties'] ?? []);
+
+        return $data;
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -23,5 +37,19 @@ class EditCategory extends EditRecord
         /** @var Category $record */
         $record = $this->record;
         $record->reorderPositions();
+    }
+
+    protected function normalizeProperties(mixed $properties): array
+    {
+        if (is_array($properties)) {
+            return $properties;
+        }
+
+        if (is_string($properties)) {
+            $decoded = json_decode($properties, true);
+            return is_array($decoded) ? $decoded : [];
+        }
+
+        return [];
     }
 }
