@@ -35,7 +35,11 @@ class BookResource extends Resource
                 ->maxLength(255),
             Forms\Components\TextInput::make('subtitle')
                 ->maxLength(255),
-            Forms\Components\TextInput::make('image_name')
+            Forms\Components\TextInput::make('properties.image_name')
+                ->label('Local Image Name')
+                ->maxLength(255),
+            Forms\Components\TextInput::make('properties.image_alt')
+                ->label('Image Alt')
                 ->maxLength(255),
             Forms\Components\TextInput::make('external_link')
                 ->url()
@@ -48,12 +52,9 @@ class BookResource extends Resource
                 ->required(),
             Forms\Components\Toggle::make('active')
                 ->default(true),
-            Forms\Components\Textarea::make('description')
+            Forms\Components\Textarea::make('properties.description')
+                ->label('Description')
                 ->rows(8)
-                ->columnSpanFull(),
-            Forms\Components\Textarea::make('properties')
-                ->rows(10)
-                ->helperText('JSON object for additional book metadata.')
                 ->columnSpanFull(),
         ]);
     }

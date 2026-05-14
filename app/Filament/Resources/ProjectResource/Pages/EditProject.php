@@ -11,6 +11,19 @@ class EditProject extends EditRecord
 {
     protected static string $resource = ProjectResource::class;
 
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $data['content'] = $data['content'] ?? [];
+        $data['content']['bullets'] = collect($data['content']['bullets'] ?? [])
+            ->map(fn(string $bullet): array => ['bullet' => $bullet])
+            ->all();
+        $data['content']['technology'] = collect($data['content']['technology'] ?? [])
+            ->map(fn(string $name): array => ['name' => $name])
+            ->all();
+
+        return $data;
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -28,7 +41,7 @@ class EditProject extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $data['content'] = $data['content'] ?? [];
+        $data['content'] = $this->mutateContent($data['content'] ?? []);
         $data['properties'] = $data['properties'] ?? [];
 
         return $data;
@@ -39,5 +52,22 @@ class EditProject extends EditRecord
         /** @var Project $record */
         $record = $this->record;
         $record->reorderPositions();
+    }
+
+    protected function mutateContent(array $content): array
+    {
+        $content['bullets'] = collect($content['bullets'] ?? [])
+            ->pluck('bullet')
+            ->filter()
+            ->values()
+            ->all();
+
+        $content['technology'] = collect($content['technology'] ?? [])
+            ->pluck('name')
+            ->filter()
+            ->values()
+            ->all();
+
+        return $content;
     }
 }

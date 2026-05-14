@@ -34,9 +34,8 @@ class CategoryResource extends Resource
                 ->required(),
             Forms\Components\Toggle::make('active')
                 ->default(true),
-            Forms\Components\Textarea::make('properties')
-                ->rows(10)
-                ->helperText('JSON object, including html_selector when needed.')
+            Forms\Components\KeyValue::make('properties')
+                ->helperText('Additional category metadata, including html_selector when needed.')
                 ->columnSpanFull(),
         ]);
     }

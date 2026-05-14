@@ -12,7 +12,7 @@ class CreateProject extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['content'] = $data['content'] ?? [];
+        $data['content'] = $this->mutateContent($data['content'] ?? []);
         $data['properties'] = $data['properties'] ?? [];
 
         return $data;
@@ -23,5 +23,22 @@ class CreateProject extends CreateRecord
         /** @var Project $record */
         $record = $this->record;
         $record->reorderPositions();
+    }
+
+    protected function mutateContent(array $content): array
+    {
+        $content['bullets'] = collect($content['bullets'] ?? [])
+            ->pluck('bullet')
+            ->filter()
+            ->values()
+            ->all();
+
+        $content['technology'] = collect($content['technology'] ?? [])
+            ->pluck('name')
+            ->filter()
+            ->values()
+            ->all();
+
+        return $content;
     }
 }

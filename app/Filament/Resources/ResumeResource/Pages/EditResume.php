@@ -11,6 +11,19 @@ class EditResume extends EditRecord
 {
     protected static string $resource = ResumeResource::class;
 
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $data['experience'] = collect($data['experience'] ?? [])
+            ->map(function (array $item): array {
+                $item['bullets'] = json_encode($item['bullets'] ?? [], JSON_PRETTY_PRINT);
+
+                return $item;
+            })
+            ->all();
+
+        return $data;
+    }
+
     protected function getHeaderActions(): array
     {
         return [
