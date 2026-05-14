@@ -57,6 +57,11 @@ class ProposalResource extends Resource
             Tables\Columns\TextColumn::make('total')->money('usd')->sortable(),
             Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
         ])->actions([
+            Tables\Actions\Action::make('view')
+                ->label('View')
+                ->icon('heroicon-o-eye')
+                ->url(fn(Proposal $record): string => url('/proposals/' . $record->hash))
+                ->openUrlInNewTab(),
             Tables\Actions\EditAction::make(),
         ]);
     }

@@ -18,6 +18,7 @@ class ResumeResource extends Resource
     protected static ?string $model = Resume::class;
     protected static ?string $navigationGroup = 'Content';
     protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static string $resumeSiteBase = 'https://resume.alexyounger.me/';
 
     public static function form(Form $form): Form
     {
@@ -71,6 +72,11 @@ class ResumeResource extends Resource
             Tables\Columns\TextColumn::make('hash')->searchable(),
             Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
         ])->actions([
+            Tables\Actions\Action::make('view')
+                ->label('View')
+                ->icon('heroicon-o-eye')
+                ->url(fn(Resume $record): string => static::$resumeSiteBase . $record->hash)
+                ->openUrlInNewTab(),
             Tables\Actions\EditAction::make(),
         ]);
     }
