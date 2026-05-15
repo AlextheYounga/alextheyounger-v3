@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\ProposalResource\Pages\CreateProposal;
 use App\Filament\Resources\ProposalResource\Pages\EditProposal;
 use App\Filament\Resources\ProposalResource\Pages\ListProposals;
@@ -15,6 +16,8 @@ use Filament\Tables\Table;
 
 class ProposalResource extends Resource
 {
+    use GeneratesUniqueCopyName;
+
     protected static ?string $model = Proposal::class;
     protected static ?string $navigationGroup = 'Content';
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
@@ -88,6 +91,18 @@ class ProposalResource extends Resource
                     ->url(fn(Proposal $record): string => url('/proposals/' . $record->hash))
                     ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
+                    ->mutateRecordDataUsing(function (array $data): array {
+                        $data['title'] = static::generateUniqueCopyValue(
+                            Proposal::class,
+                            'title',
+                            $data['title'] ?? null,
+                        );
+                        unset($data['id'], $data['hash']);
+
+                        return $data;
+                    }),
             ]);
     }
 

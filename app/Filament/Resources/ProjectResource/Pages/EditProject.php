@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ProjectResource\Pages;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\ProjectResource;
 use App\Models\Project;
 use Filament\Actions;
@@ -9,6 +10,8 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditProject extends EditRecord
 {
+    use GeneratesUniqueCopyName;
+
     protected static string $resource = ProjectResource::class;
 
     protected function mutateFormDataBeforeFill(array $data): array
@@ -31,7 +34,11 @@ class EditProject extends EditRecord
             Actions\ReplicateAction::make()
                 ->excludeAttributes(['id', 'created_at', 'updated_at'])
                 ->mutateRecordDataUsing(function (array $data): array {
-                    $data['title'] = $data['title'] . ' (Copy)';
+                    $data['title'] = static::generateUniqueCopyValue(
+                        Project::class,
+                        'title',
+                        $data['title'] ?? null,
+                    );
                     unset($data['id']);
 
                     return $data;

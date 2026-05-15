@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\BookResource\Pages\CreateBook;
 use App\Filament\Resources\BookResource\Pages\EditBook;
 use App\Filament\Resources\BookResource\Pages\ListBooks;
@@ -14,6 +15,8 @@ use Filament\Tables\Table;
 
 class BookResource extends Resource
 {
+    use GeneratesUniqueCopyName;
+
     protected static ?string $model = Book::class;
 
     protected static ?string $navigationGroup = 'Content';
@@ -68,7 +71,21 @@ class BookResource extends Resource
                 Tables\Columns\IconColumn::make('active')->boolean(),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
             ])
-            ->actions([Tables\Actions\EditAction::make()]);
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->excludeAttributes(['id', 'created_at', 'updated_at'])
+                    ->mutateRecordDataUsing(function (array $data): array {
+                        $data['title'] = static::generateUniqueCopyValue(
+                            Book::class,
+                            'title',
+                            $data['title'] ?? null,
+                        );
+                        unset($data['id']);
+
+                        return $data;
+                    }),
+            ]);
     }
 
     public static function getPages(): array

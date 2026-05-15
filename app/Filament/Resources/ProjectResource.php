@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\ProjectResource\Pages\CreateProject;
 use App\Filament\Resources\ProjectResource\Pages\EditProject;
 use App\Filament\Resources\ProjectResource\Pages\ListProjects;
@@ -14,6 +15,8 @@ use Filament\Tables\Table;
 
 class ProjectResource extends Resource
 {
+    use GeneratesUniqueCopyName;
+
     protected static ?string $model = Project::class;
     protected static ?string $navigationGroup = 'Content';
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
@@ -60,7 +63,21 @@ class ProjectResource extends Resource
                 Tables\Columns\IconColumn::make('active')->boolean(),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
             ])
-            ->actions([Tables\Actions\EditAction::make()]);
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->excludeAttributes(['id', 'created_at', 'updated_at'])
+                    ->mutateRecordDataUsing(function (array $data): array {
+                        $data['title'] = static::generateUniqueCopyValue(
+                            Project::class,
+                            'title',
+                            $data['title'] ?? null,
+                        );
+                        unset($data['id']);
+
+                        return $data;
+                    }),
+            ]);
     }
 
     public static function getPages(): array

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\CategoryResource\Pages;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\CategoryResource;
 use App\Models\Category;
 use Filament\Actions;
@@ -9,6 +10,8 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditCategory extends EditRecord
 {
+    use GeneratesUniqueCopyName;
+
     protected static string $resource = CategoryResource::class;
 
     protected function mutateFormDataBeforeFill(array $data): array
@@ -27,7 +30,21 @@ class EditCategory extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [Actions\DeleteAction::make()];
+        return [
+            Actions\DeleteAction::make(),
+            Actions\ReplicateAction::make()
+                ->excludeAttributes(['id', 'created_at', 'updated_at'])
+                ->mutateRecordDataUsing(function (array $data): array {
+                    $data['name'] = static::generateUniqueCopyValue(
+                        Category::class,
+                        'name',
+                        $data['name'] ?? null,
+                    );
+                    unset($data['id']);
+
+                    return $data;
+                }),
+        ];
     }
 
     protected function afterSave(): void

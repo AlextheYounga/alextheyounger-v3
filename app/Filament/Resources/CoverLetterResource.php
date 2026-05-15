@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\CoverLetterResource\Pages\CreateCoverLetter;
 use App\Filament\Resources\CoverLetterResource\Pages\EditCoverLetter;
 use App\Filament\Resources\CoverLetterResource\Pages\ListCoverLetters;
@@ -14,6 +15,8 @@ use Filament\Tables\Table;
 
 class CoverLetterResource extends Resource
 {
+    use GeneratesUniqueCopyName;
+
     protected static ?string $model = CoverLetter::class;
     protected static ?string $navigationGroup = 'Content';
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
@@ -50,6 +53,15 @@ class CoverLetterResource extends Resource
                     )
                     ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
+                    ->beforeReplicaSaved(function (CoverLetter $replica): void {
+                        $replica->name = static::generateUniqueCopyValue(
+                            CoverLetter::class,
+                            'name',
+                            $replica->name,
+                        );
+                    }),
             ]);
     }
 
