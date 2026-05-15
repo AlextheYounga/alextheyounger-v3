@@ -22,7 +22,7 @@ export class SectorManager {
     constructor(scene) {
         this.scene = scene;
         this.activeSectors = new Map();
-        this.ambientLight = new THREE.AmbientLight(0x222222);
+        this.ambientLight = new THREE.AmbientLight(0x111111);
         scene.add(this.ambientLight);
     }
 

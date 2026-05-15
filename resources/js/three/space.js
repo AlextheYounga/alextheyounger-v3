@@ -18,7 +18,7 @@ function animate() {
 
 function createUniverse() {
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000005);
+    scene.background = new THREE.Color(0x000000);
 
     const camera = new THREE.PerspectiveCamera(
         75,
