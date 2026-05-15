@@ -6,14 +6,13 @@ export class FreeFlyControls {
         this.domElement = domElement;
         this.enabled = true;
 
-        this.moveSpeed = 20;
+        this.moveSpeed = 5;
         this.lookSpeed = 0.002;
         this.boostMultiplier = 5;
         this.maxSpeed = 500;
         this.gravityInfluenceRadius = 5000;
         this.gravitySoftening = 120;
         this.gravityScale = 0.07;
-        this.collisionBounce = 0.1;
 
         this.euler = new THREE.Euler(0, 0, 0, 'YXZ');
         this.velocity = new THREE.Vector3();
@@ -112,31 +111,6 @@ export class FreeFlyControls {
         }
 
         this.camera.position.addScaledVector(this.velocity, clampedDelta);
-
-        this._resolveBodySafety(gravityBodies);
-    }
-
-    _resolveBodySafety(gravityBodies) {
-        for (const body of gravityBodies) {
-            const bodyPosition = new THREE.Vector3(body.x, body.y, body.z);
-            const toCamera = this.camera.position.clone().sub(bodyPosition);
-            const distance = toCamera.length();
-            const minSafeDistance = body.safeRadius;
-
-            if (distance >= minSafeDistance || distance === 0) {
-                continue;
-            }
-
-            const outward = toCamera.normalize();
-            this.camera.position.copy(bodyPosition).addScaledVector(outward, minSafeDistance + 1);
-
-            const radialVelocity = this.velocity.dot(outward);
-            if (radialVelocity < 0) {
-                this.velocity.addScaledVector(outward, -(1 + this.collisionBounce) * radialVelocity);
-            } else {
-                this.velocity.addScaledVector(outward, 8);
-            }
-        }
     }
 
     dispose() {
