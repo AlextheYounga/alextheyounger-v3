@@ -1,107 +1,70 @@
-// Import necessary components
 import * as THREE from 'three';
-import { createSolarSystem } from './space/createSolarSystems.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { createStars } from './space/createStars.js';
-import { createStarshipEnterprise } from './space/createStarshipEnterprise.js';
-import { createTrisolaranDroplet } from './space/createTrisolaranDroplet.js';
-import { createSpaceXStarship } from './space/createSpaceXStarship.js';
+import { FreeFlyControls } from './universe/freeFlyControls.js';
+import { SectorManager } from './universe/sectorManager.js';
 
-let space = null;
+let universe = null;
 
-// Animation loop
+const clock = new THREE.Clock();
+
 function animate() {
     requestAnimationFrame(animate);
-    space.starField.rotation.y += 0.000002;
-    space.renderer.render(space.scene, space.camera);
-    space.controls.update();
+    const delta = clock.getDelta();
+
+    universe.controls.update(delta);
+    universe.sectorManager.update(universe.camera);
+
+    universe.renderer.render(universe.scene, universe.camera);
 }
 
-function createStarField(scale = 1) {
-    // Set up the scene, camera, and renderer
+function createUniverse() {
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000005);
+
     const camera = new THREE.PerspectiveCamera(
         75,
         window.innerWidth / window.innerHeight,
         0.1,
-        1300
+        100000
     );
-    const renderer = new THREE.WebGLRenderer();
+    camera.position.set(0, 0, 500);
 
-    // Handle window resizing
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
     window.addEventListener('resize', () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
     });
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
     const starfieldDiv = document.getElementById('starfield');
     starfieldDiv.appendChild(renderer.domElement);
 
-    // Add stars to the scene
-    const stars = 12109 * scale; // The smallest prime formed from reverse concatenation of three consecutive composite numbers
-    // const smallStars = stars * 0.1;
-    const mediumStars = Math.floor(stars * 0.85);
-    const largeStars = Math.floor(stars * 0.125);
-    const giantStars = Math.floor(stars * 0.025);
-
-    // const starFieldSmall = createStars(smallStars, 3)
-    const starFieldMedium = createStars(mediumStars, 5);
-    const starFieldLarge = createStars(largeStars, 10);
-    const starFieldGiant = createStars(giantStars, 25);
-
-    const solarSystem = createSolarSystem();
-
-    const starField = new THREE.Group();
-    // starField.add(starFieldSmall);
-    starField.add(starFieldMedium);
-    starField.add(starFieldLarge);
-    starField.add(starFieldGiant);
-    starField.add(solarSystem);
-
-    // Add Enterprise to starfield asynchronously
-    // We load the Enterprise CAD model here and it's several megs
-    createStarshipEnterprise(starField);
-
-    // Add Trisolaran Droplet to starfield asynchronously
-    createTrisolaranDroplet(starField);
-
-    // Add SpaceX Starship to starfield asynchronously
-    createSpaceXStarship(starField);
-
-    camera.position.z = 2000; // Camera positioning
-
-    scene.add(starField);
+    const sectorManager = new SectorManager(scene);
+    sectorManager.update(camera);
 
     return {
-        starField,
         scene,
+        camera,
         renderer,
-        camera
+        sectorManager,
     };
-}
-
-function enableCameraControls(camera, renderer) {
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
-    controls.dampingFactor = 0.05;
-    controls.screenSpacePanning = false;
-    controls.minDistance = 10;
-    controls.maxDistance = 2000;
-    controls.maxPolarAngle = Math.PI / 2;
-
-    return controls;
 }
 
 export const renderStarfield = async () => {
     if (document.getElementById('starfield')) {
-        if (!space) {
-            space = createStarField();
+        if (!universe) {
+            universe = createUniverse();
         }
 
-        space.controls = enableCameraControls(space.camera, space.renderer);
+        if (!universe.controls) {
+            universe.controls = new FreeFlyControls(
+                universe.camera,
+                universe.renderer.domElement
+            );
+        }
 
-        animate(); // Start the animation
+        animate();
     }
 };
