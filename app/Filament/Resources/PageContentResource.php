@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\PageContentResource\Pages\EditPageContent;
 use App\Filament\Resources\PageContentResource\Pages\ListPageContents;
 use App\Models\PageContent;
@@ -13,6 +14,8 @@ use Filament\Tables\Table;
 
 class PageContentResource extends Resource
 {
+    use GeneratesUniqueCopyName;
+
     protected static ?string $model = PageContent::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
@@ -46,7 +49,21 @@ class PageContentResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')->date('Y-m-d')->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')->date('Y-m-d')->sortable(),
             ])
-            ->actions([Tables\Actions\EditAction::make()])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->excludeAttributes(['id', 'created_at', 'updated_at'])
+                    ->mutateRecordDataUsing(function (array $data): array {
+                        $data['name'] = static::generateUniqueCopyValue(
+                            PageContent::class,
+                            'name',
+                            $data['name'] ?? null,
+                        );
+                        unset($data['id']);
+
+                        return $data;
+                    }),
+            ])
             ->bulkActions([]);
     }
 
