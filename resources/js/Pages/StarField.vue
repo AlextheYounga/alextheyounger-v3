@@ -10,7 +10,7 @@
             <div class="animate-pulse text-center text-sky-200/70">
                 <p class="text-lg">Click to explore</p>
                 <p class="mt-1 text-xs text-sky-200/40">
-                    WASD to move &middot; Space/Shift for up/down &middot; Ctrl to boost &middot; Mouse to look
+                    Space to boost forward &middot; Mouse to steer &middot; Esc to release
                 </p>
             </div>
         </div>
@@ -26,7 +26,11 @@
             v-if="isLocked"
             class="pointer-events-none fixed bottom-5 left-5 z-50 text-xs text-sky-200/30"
         >
-            <p>WASD - Move | Space - Up | Shift - Down | Ctrl - Boost | Esc - Release</p>
+            <p>Space - Boost Forward | Mouse - Steer | Esc - Release</p>
+            <p class="mt-1">
+                Velocity {{ velocity.speed }} u/s
+                (x: {{ velocity.x }}, y: {{ velocity.y }}, z: {{ velocity.z }})
+            </p>
         </div>
     </div>
 </template>
@@ -44,6 +48,12 @@ export default {
     data() {
         return {
             isLocked: false,
+            velocity: {
+                x: '0.0',
+                y: '0.0',
+                z: '0.0',
+                speed: '0.0',
+            },
         };
     },
     created() {
@@ -53,10 +63,23 @@ export default {
         this._onPointerLockChange = () => {
             this.isLocked = document.pointerLockElement !== null;
         };
+        this._onTelemetry = (event) => {
+            const telemetry = event?.detail?.velocity;
+            if (!telemetry) return;
+
+            this.velocity = {
+                x: telemetry.x.toFixed(1),
+                y: telemetry.y.toFixed(1),
+                z: telemetry.z.toFixed(1),
+                speed: telemetry.speed.toFixed(1),
+            };
+        };
         document.addEventListener('pointerlockchange', this._onPointerLockChange);
+        window.addEventListener('starfield:telemetry', this._onTelemetry);
     },
     beforeUnmount() {
         document.removeEventListener('pointerlockchange', this._onPointerLockChange);
+        window.removeEventListener('starfield:telemetry', this._onTelemetry);
     },
 };
 </script>

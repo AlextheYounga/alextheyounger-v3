@@ -58,8 +58,14 @@ export function createStarPoints(sector) {
 }
 
 export function createPlanetMesh(planet) {
-    const geometry = new THREE.SphereGeometry(planet.radius, 32, 32);
-    const material = new THREE.MeshPhongMaterial({ color: planet.color });
+    const visibleRadius = planet.radius * 1.45;
+    const geometry = new THREE.SphereGeometry(visibleRadius, 32, 32);
+    const material = new THREE.MeshPhongMaterial({
+        color: planet.color,
+        emissive: planet.color,
+        emissiveIntensity: 0.15,
+        shininess: 45,
+    });
     const mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(planet.x, planet.y, planet.z);
     return mesh;

@@ -10,8 +10,27 @@ function animate() {
     requestAnimationFrame(animate);
     const delta = clock.getDelta();
 
-    universe.controls.update(delta);
     universe.sectorManager.update(universe.camera);
+    const gravityBodies = universe.sectorManager.getNearbyGravityBodies(
+        universe.camera.position,
+        universe.controls.gravityInfluenceRadius,
+    );
+    universe.controls.updateWithPhysics(delta, gravityBodies);
+    universe.sectorManager.update(universe.camera);
+
+    if (universe?.controls?.velocity) {
+        const { x, y, z } = universe.controls.velocity;
+        window.dispatchEvent(new CustomEvent('starfield:telemetry', {
+            detail: {
+                velocity: {
+                    x,
+                    y,
+                    z,
+                    speed: universe.controls.velocity.length(),
+                },
+            },
+        }));
+    }
 
     universe.renderer.render(universe.scene, universe.camera);
 }

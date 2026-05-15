@@ -6,20 +6,19 @@ export class FreeFlyControls {
         this.domElement = domElement;
         this.enabled = true;
 
-        this.moveSpeed = 100;
+        this.moveSpeed = 20;
         this.lookSpeed = 0.002;
         this.boostMultiplier = 5;
+        this.maxSpeed = 500;
+        this.gravityInfluenceRadius = 5000;
+        this.gravitySoftening = 120;
+        this.gravityScale = 0.07;
+        this.collisionBounce = 0.1;
 
         this.euler = new THREE.Euler(0, 0, 0, 'YXZ');
         this.velocity = new THREE.Vector3();
 
         this.keys = {
-            forward: false,
-            backward: false,
-            left: false,
-            right: false,
-            up: false,
-            down: false,
             boost: false,
         };
 
@@ -54,25 +53,13 @@ export class FreeFlyControls {
 
     _onKeyDown(event) {
         switch (event.code) {
-            case 'KeyW': this.keys.forward = true; break;
-            case 'KeyS': this.keys.backward = true; break;
-            case 'KeyA': this.keys.left = true; break;
-            case 'KeyD': this.keys.right = true; break;
-            case 'Space': this.keys.up = true; break;
-            case 'ShiftLeft': case 'ShiftRight': this.keys.down = true; break;
-            case 'ControlLeft': case 'ControlRight': this.keys.boost = true; break;
+            case 'Space': this.keys.boost = true; break;
         }
     }
 
     _onKeyUp(event) {
         switch (event.code) {
-            case 'KeyW': this.keys.forward = false; break;
-            case 'KeyS': this.keys.backward = false; break;
-            case 'KeyA': this.keys.left = false; break;
-            case 'KeyD': this.keys.right = false; break;
-            case 'Space': this.keys.up = false; break;
-            case 'ShiftLeft': case 'ShiftRight': this.keys.down = false; break;
-            case 'ControlLeft': case 'ControlRight': this.keys.boost = false; break;
+            case 'Space': this.keys.boost = false; break;
         }
     }
 
@@ -89,20 +76,67 @@ export class FreeFlyControls {
     update(delta) {
         if (!this.enabled) return;
 
-        const speed = this.moveSpeed * (this.keys.boost ? this.boostMultiplier : 1) * delta;
+        this.updateWithPhysics(delta, []);
+    }
+
+    updateWithPhysics(delta, gravityBodies = []) {
+        if (!this.enabled) return;
+
+        const clampedDelta = Math.min(delta, 0.05);
+        const thrust = this.keys.boost ? this.moveSpeed * this.boostMultiplier : 0;
 
         const forward = new THREE.Vector3();
         this.camera.getWorldDirection(forward);
 
-        const right = new THREE.Vector3();
-        right.crossVectors(forward, this.camera.up).normalize();
+        const acceleration = new THREE.Vector3();
 
-        if (this.keys.forward) this.camera.position.addScaledVector(forward, speed);
-        if (this.keys.backward) this.camera.position.addScaledVector(forward, -speed);
-        if (this.keys.right) this.camera.position.addScaledVector(right, speed);
-        if (this.keys.left) this.camera.position.addScaledVector(right, -speed);
-        if (this.keys.up) this.camera.position.y += speed;
-        if (this.keys.down) this.camera.position.y -= speed;
+        if (thrust > 0) {
+            acceleration.addScaledVector(forward, thrust);
+        }
+
+        for (const body of gravityBodies) {
+            const bodyPosition = new THREE.Vector3(body.x, body.y, body.z);
+            const toBody = bodyPosition.sub(this.camera.position);
+            const distanceSq = Math.max(toBody.lengthSq(), 1);
+            const direction = toBody.normalize();
+            const gravity = (body.mass * this.gravityScale) / (distanceSq + this.gravitySoftening);
+
+            acceleration.addScaledVector(direction, gravity);
+        }
+
+        this.velocity.addScaledVector(acceleration, clampedDelta);
+
+        const speed = this.velocity.length();
+        if (speed > this.maxSpeed) {
+            this.velocity.multiplyScalar(this.maxSpeed / speed);
+        }
+
+        this.camera.position.addScaledVector(this.velocity, clampedDelta);
+
+        this._resolveBodySafety(gravityBodies);
+    }
+
+    _resolveBodySafety(gravityBodies) {
+        for (const body of gravityBodies) {
+            const bodyPosition = new THREE.Vector3(body.x, body.y, body.z);
+            const toCamera = this.camera.position.clone().sub(bodyPosition);
+            const distance = toCamera.length();
+            const minSafeDistance = body.safeRadius;
+
+            if (distance >= minSafeDistance || distance === 0) {
+                continue;
+            }
+
+            const outward = toCamera.normalize();
+            this.camera.position.copy(bodyPosition).addScaledVector(outward, minSafeDistance + 1);
+
+            const radialVelocity = this.velocity.dot(outward);
+            if (radialVelocity < 0) {
+                this.velocity.addScaledVector(outward, -(1 + this.collisionBounce) * radialVelocity);
+            } else {
+                this.velocity.addScaledVector(outward, 8);
+            }
+        }
     }
 
     dispose() {

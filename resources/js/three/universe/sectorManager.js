@@ -89,4 +89,54 @@ export class SectorManager {
     getActiveSectorData() {
         return this.activeSectors;
     }
+
+    getNearbyGravityBodies(position, radius = 5000, maxBodies = 24) {
+        const nearby = [];
+        const radiusSq = radius * radius;
+
+        for (const { sector } of this.activeSectors.values()) {
+            for (const star of sector.stars) {
+                const dx = star.x - position.x;
+                const dy = star.y - position.y;
+                const dz = star.z - position.z;
+                const distSq = dx * dx + dy * dy + dz * dz;
+
+                if (distSq <= radiusSq) {
+                    const starRadius = Math.max(8, star.size * 2.5);
+                    nearby.push({
+                        type: 'star',
+                        x: star.x,
+                        y: star.y,
+                        z: star.z,
+                        mass: 18000 + (star.size * star.size * 140),
+                        safeRadius: starRadius * 1.8,
+                        distanceSq: distSq,
+                    });
+                }
+            }
+
+            for (const planet of sector.planets) {
+                const dx = planet.x - position.x;
+                const dy = planet.y - position.y;
+                const dz = planet.z - position.z;
+                const distSq = dx * dx + dy * dy + dz * dz;
+
+                if (distSq <= radiusSq) {
+                    const safeRadius = Math.max(4, planet.radius * 3.5);
+                    nearby.push({
+                        type: 'planet',
+                        x: planet.x,
+                        y: planet.y,
+                        z: planet.z,
+                        mass: 250 + (planet.radius * planet.radius * 120),
+                        safeRadius,
+                        distanceSq: distSq,
+                    });
+                }
+            }
+        }
+
+        nearby.sort((a, b) => a.distanceSq - b.distanceSq);
+        return nearby.slice(0, maxBodies);
+    }
 }
