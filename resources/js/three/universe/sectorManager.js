@@ -4,6 +4,20 @@ import { createStarPoints, createPlanetMesh, createStarLight } from './renderer.
 
 const RENDER_DISTANCE = 1;
 
+function getNeededSectors(camSector, renderDistance) {
+    const offsets = Array.from({ length: renderDistance * 2 + 1 }, (_, index) => index - renderDistance);
+
+    return offsets.flatMap((dx) =>
+        offsets.flatMap((dy) =>
+            offsets.map((dz) => ({
+                sx: camSector.sx + dx,
+                sy: camSector.sy + dy,
+                sz: camSector.sz + dz,
+            })),
+        ),
+    );
+}
+
 export class SectorManager {
     constructor(scene) {
         this.scene = scene;
@@ -14,26 +28,19 @@ export class SectorManager {
 
     update(camera) {
         const camSector = worldToSector(camera.position.x, camera.position.y, camera.position.z);
-        const needed = new Set();
-
-        for (let dx = -RENDER_DISTANCE; dx <= RENDER_DISTANCE; dx++) {
-            for (let dy = -RENDER_DISTANCE; dy <= RENDER_DISTANCE; dy++) {
-                for (let dz = -RENDER_DISTANCE; dz <= RENDER_DISTANCE; dz++) {
-                    const key = getSectorKey(camSector.sx + dx, camSector.sy + dy, camSector.sz + dz);
-                    needed.add(key);
-                }
-            }
-        }
+        const needed = getNeededSectors(camSector, RENDER_DISTANCE);
+        const neededKeys = new Set(needed.map(({ sx, sy, sz }) => getSectorKey(sx, sy, sz)));
 
         for (const [key, data] of this.activeSectors) {
-            if (!needed.has(key)) {
+            if (!neededKeys.has(key)) {
                 this.unloadSector(key, data);
             }
         }
 
-        for (const key of needed) {
+        for (const { sx, sy, sz } of needed) {
+            const key = getSectorKey(sx, sy, sz);
+
             if (!this.activeSectors.has(key)) {
-                const [sx, sy, sz] = key.split(',').map(Number);
                 this.loadSector(sx, sy, sz);
             }
         }

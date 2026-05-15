@@ -63,6 +63,8 @@ export function generateSector(sx, sy, sz) {
         const lightness = colorDef.lightness - 0.1 + rng() * 0.2;
         const size = rng() < 0.85 ? 3 + rng() * 4 : rng() < 0.95 ? 8 + rng() * 6 : 16 + rng() * 10;
 
+        const hasPlanets = rng() < PLANET_CHANCE;
+
         stars.push({
             index: i,
             x, y, z,
@@ -70,10 +72,10 @@ export function generateSector(sx, sy, sz) {
             saturation,
             lightness,
             size,
-            hasPlanets: rng() < PLANET_CHANCE,
+            hasPlanets,
         });
 
-        if (stars[stars.length - 1].hasPlanets) {
+        if (hasPlanets) {
             const planetCount = Math.floor(rng() * MAX_PLANETS_PER_STAR) + 1;
             for (let p = 0; p < planetCount; p++) {
                 const orbitDistance = 15 + rng() * 80;

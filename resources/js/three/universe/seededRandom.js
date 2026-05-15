@@ -11,8 +11,8 @@ export function mulberry32(seed) {
 export function seedFromSector(sx, sy, sz) {
     let hash = 0;
     const str = `${sx},${sy},${sz}`;
-    for (let i = 0; i < str.length; i++) {
-        hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0;
+    for (const char of str) {
+        hash = ((hash << 5) - hash + char.charCodeAt(0)) | 0;
     }
     return Math.abs(hash);
 }
