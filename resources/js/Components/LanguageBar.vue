@@ -38,7 +38,45 @@
             </template>
         </ul>
         <div class="mt-6">
-            <div id="language-description" class="block" v-html="this.descriptionContent"></div>
+            <div id="language-description" class="block">
+                <p class="text-sm italic pb-1">
+                    These statistics are not random. They were calculated using the
+                    <a
+                        class="font-semibold text-sky-400 hover:text-blue-600"
+                        href="https://github.com/github-linguist/linguist"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Github Linguist package</a
+                    >
+                    and accurately represent the number of bytes of code.
+                </p>
+                <p class="text-sm italic">
+                    You can see how I did this
+                    <a
+                        class="font-semibold text-sky-400 hover:text-blue-600"
+                        href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/app/Http/Services/GithubLinguistService.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >here</a
+                    >. You can even see the list of
+                    <a
+                        class="font-semibold text-sky-400 hover:text-blue-600"
+                        href="https://github.com/AlextheYounga/alextheyounger-v3/blob/master/storage/data/repositories.json"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >repositories</a
+                    >
+                    I scanned from my machine to generate these statistics. I either legally own or have made
+                    substantial contributions to these projects. Most of them (but not all) can be found on my
+                    <a
+                        class="font-semibold text-sky-400 hover:text-blue-600"
+                        href="https://github.com/AlextheYounga"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Github</a
+                    >.
+                </p>
+            </div>
             <div class="stats w-full pt-3 text-sm">
                 <p>
                     Repos Scanned:
@@ -60,14 +98,9 @@
 <script>
 const scriptUrl = "https://github.com/AlextheYounga/repo-linguist-scanner";
 
-const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. 
-	This was calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately represent bytes of code.</p>
-	<p class="text-sm italic">You can see how I did this <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${scriptUrl}">here</a>. Many of these repos (but certainly not all) can be found on my <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga">Github</a>.</p>`;
-
 export default {
     data() {
         return {
-            descriptionContent: defaultDescriptionContent,
             languages: [],
             scriptUrl,
             repoStats: {
