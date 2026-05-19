@@ -37,20 +37,18 @@ class EditResume extends EditRecord
             })
             ->all();
         $data['expertise'] = collect($data['expertise'] ?? [])
-            ->map(function (mixed $item): ?array {
-                if (is_string($item)) {
-                    $item = trim($item);
-
-                    return $item === '' ? null : ['expertise' => $item];
+            ->map(function (mixed $item): ?string {
+                if (is_array($item)) {
+                    $item = $item['expertise'] ?? null;
                 }
 
-                if (!is_array($item)) {
+                if (!is_string($item)) {
                     return null;
                 }
 
-                $item['expertise'] = is_string($item['expertise'] ?? null) ? trim($item['expertise']) : '';
+                $item = trim($item);
 
-                return $item['expertise'] === '' ? null : $item;
+                return $item === '' ? null : $item;
             })
             ->filter()
             ->all();
@@ -101,20 +99,26 @@ class EditResume extends EditRecord
             })
             ->all();
         $data['expertise'] = collect($data['expertise'] ?? [])
-            ->map(function (mixed $item): ?array {
+            ->map(function (mixed $item): ?string {
                 if (is_string($item)) {
                     $item = trim($item);
 
-                    return $item === '' ? null : ['expertise' => $item];
+                    return $item === '' ? null : $item;
                 }
 
                 if (!is_array($item)) {
                     return null;
                 }
 
-                $item['expertise'] = is_string($item['expertise'] ?? null) ? trim($item['expertise']) : '';
+                $item = $item['expertise'] ?? null;
 
-                return $item['expertise'] === '' ? null : $item;
+                if (!is_string($item)) {
+                    return null;
+                }
+
+                $item = trim($item);
+
+                return $item === '' ? null : $item;
             })
             ->filter()
             ->all();
