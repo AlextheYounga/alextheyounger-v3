@@ -12,7 +12,7 @@ class ResumeController extends Controller
         try {
             $record = Resume::where('hash', $hash)->firstOrFail();
             $resume = $record->toArray();
-            $resume['skills'] = collect($record->skills ?? [])->values()->all();
+            $resume['expertise'] = collect($record->expertise ?? [])->values()->all();
             $resume['projects'] = $record
                 ->projects()
                 ->get()

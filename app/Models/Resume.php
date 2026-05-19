@@ -30,7 +30,7 @@ class Resume extends Model
         'references',
         'experience',
         'education',
-        'skills',
+        'expertise',
         'properties',
     ];
 
@@ -39,7 +39,7 @@ class Resume extends Model
         'references' => 'array',
         'experience' => 'array',
         'education' => 'array',
-        'skills' => 'array',
+        'expertise' => 'array',
         'properties' => 'array',
     ];
 

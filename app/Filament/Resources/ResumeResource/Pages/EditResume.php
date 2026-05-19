@@ -36,21 +36,21 @@ class EditResume extends EditRecord
                 return $item;
             })
             ->all();
-        $data['skills'] = collect($data['skills'] ?? [])
-            ->map(function (mixed $skill): ?array {
-                if (is_string($skill)) {
-                    $skill = trim($skill);
+        $data['expertise'] = collect($data['expertise'] ?? [])
+            ->map(function (mixed $item): ?array {
+                if (is_string($item)) {
+                    $item = trim($item);
 
-                    return $skill === '' ? null : ['skill' => $skill];
+                    return $item === '' ? null : ['expertise' => $item];
                 }
 
-                if (!is_array($skill)) {
+                if (!is_array($item)) {
                     return null;
                 }
 
-                $skill['skill'] = is_string($skill['skill'] ?? null) ? trim($skill['skill']) : '';
+                $item['expertise'] = is_string($item['expertise'] ?? null) ? trim($item['expertise']) : '';
 
-                return $skill['skill'] === '' ? null : $skill;
+                return $item['expertise'] === '' ? null : $item;
             })
             ->filter()
             ->all();
@@ -100,21 +100,21 @@ class EditResume extends EditRecord
                 return $item;
             })
             ->all();
-        $data['skills'] = collect($data['skills'] ?? [])
-            ->map(function (mixed $skill): ?array {
-                if (is_string($skill)) {
-                    $skill = trim($skill);
+        $data['expertise'] = collect($data['expertise'] ?? [])
+            ->map(function (mixed $item): ?array {
+                if (is_string($item)) {
+                    $item = trim($item);
 
-                    return $skill === '' ? null : ['skill' => $skill];
+                    return $item === '' ? null : ['expertise' => $item];
                 }
 
-                if (!is_array($skill)) {
+                if (!is_array($item)) {
                     return null;
                 }
 
-                $skill['skill'] = is_string($skill['skill'] ?? null) ? trim($skill['skill']) : '';
+                $item['expertise'] = is_string($item['expertise'] ?? null) ? trim($item['expertise']) : '';
 
-                return $skill['skill'] === '' ? null : $skill;
+                return $item['expertise'] === '' ? null : $item;
             })
             ->filter()
             ->all();

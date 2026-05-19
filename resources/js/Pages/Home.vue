@@ -111,9 +111,9 @@
                     </div>
                 </section>
 
-                <section id="skills" v-if="this.selected == 'skills'" class="mx-auto max-w-3xl">
+                <section id="expertise" v-if="this.selected == 'expertise'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
-                        <h3 class="pb-4 text-2xl font-semibold text-sky-300">Skills</h3>
+                        <h3 class="pb-4 text-2xl font-semibold text-sky-300">Expertise</h3>
                         <div class="text-sky-100">
                             <LanguageBar />
                         </div>
@@ -265,9 +265,9 @@
                     </div>
                 </section>
 
-                <section id="skills" v-if="this.selected == 'skills'" class="mx-auto max-w-3xl">
+                <section id="expertise" v-if="this.selected == 'expertise'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
-                        <h3 class="pb-4 text-xl font-semibold text-sky-300">Skills</h3>
+                        <h3 class="pb-4 text-xl font-semibold text-sky-300">Expertise</h3>
                         <div class="text-sm text-sky-100">
                             <LanguageBar />
                         </div>
@@ -365,7 +365,7 @@ export default {
             homeItems: [
                 { name: "Bio", link: false, id: "bio", action: this.openSection },
                 { name: "About", link: false, id: "about", action: this.openSection },
-                { name: "Skills", link: false, id: "skills", action: this.openSection },
+                { name: "Expertise", link: false, id: "expertise", action: this.openSection },
                 { name: "Contact", link: false, id: "contact", action: this.openSection },
                 { name: "Reading List", link: "pages.books" },
                 { name: "Projects", link: "pages.projects" },
