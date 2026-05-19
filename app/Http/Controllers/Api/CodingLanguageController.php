@@ -2,89 +2,95 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
-use App\Models\Repository;
-use App\Models\CodingLanguage;
-use Database\Seeders\CodingLanguageSeeder;
 use App\Http\Controllers\Controller;
+use App\Models\CodingLanguage;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class CodingLanguageController extends Controller
 {
-    public function addRepositories(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        try {
-            $repositories = $request->collect('repositories');
+        $validated = $request->validate([
+            'languages' => ['required', 'array'],
+            'languages.*.language' => ['required', 'string'],
+            'languages.*.value' => ['required', 'numeric'],
+            'languages.*.display_value' => ['nullable', 'numeric'],
+            'languages.*.width' => ['nullable', 'numeric'],
+            'languages.*.color' => ['nullable', 'string'],
+            'languages.*.active' => ['nullable', 'boolean'],
+            'languages.*.project_count' => ['nullable', 'integer'],
+            'languages.*.properties' => ['nullable', 'array'],
+        ]);
 
-            // Update repositories
-            foreach ($repositories as $repository) {
-                Repository::updateOrCreate(
-                    [
-                        'name' => $repository['name'],
-                    ],
-                    [
-                        'path' => $repository['path'],
-                        'size' => $repository['totalSize'],
-                        'languages' => $repository['languages'],
-                    ],
-                );
-            }
-
-            // Update languages
-            $CodingLanguageSeeder = new CodingLanguageSeeder();
-            $CodingLanguageSeeder->run();
-
-            // Process the data as needed
-            return response()->json(['success' => true], 201);
-        } catch (ValidationException $e) {
-            return response()->json(
+        foreach ($validated['languages'] as $languageData) {
+            CodingLanguage::updateOrCreate(
                 [
-                    'success' => false,
-                    'errors' => $e->errors(),
+                    'language' => $languageData['language'],
                 ],
-                422,
+                [
+                    'value' => $languageData['value'],
+                    'display_value' => $languageData['display_value'] ?? $languageData['value'],
+                    'width' => $languageData['width'] ?? null,
+                    'color' => $languageData['color'] ?? '#000000',
+                    'active' => $languageData['active'] ?? true,
+                    'project_count' => $languageData['project_count'] ?? null,
+                    'properties' => $languageData['properties'] ?? [],
+                ],
             );
         }
+
+        return response()->json(['success' => true], 201);
     }
 
-    public function stats()
+    public function stats(): JsonResponse
     {
         $languages = CodingLanguage::active()->orderBy('width', 'desc')->get();
+        $bytes = (float) CodingLanguage::sum('value');
 
-        // Repository size
-        $repoCount = Repository::all()->count();
-        $bytes = Repository::getTotalSize();
-        $digits = strlen((string) $bytes);
+        [$displaySize, $scale] = $this->formatSize($bytes);
 
-        switch (true) {
-            case $digits >= 4 && $digits < 7:
-                $divisor = pow(10, 3);
-                $scale = 'KB';
-                break;
-            case $digits >= 7 && $digits < 10:
-                $divisor = pow(10, 6);
-                $scale = 'MB';
-                break;
-            case $digits > 10:
-                $divisor = pow(10, 9);
-                $scale = 'GB';
-                break;
-            default:
-                $divisor = pow(10, 9);
-                $scale = 'GB';
-        }
-
-        $displaySize = $bytes ? round($bytes / $divisor, 2) : 0;
-
-        $data = [
+        return response()->json([
             'languages' => $languages,
-            'repoStats' => [
-                'count' => $repoCount,
+            'languageStats' => [
+                'count' => CodingLanguage::count(),
                 'size' => $displaySize,
                 'scale' => $scale,
             ],
-        ];
+        ]);
+    }
 
-        return response()->json($data);
+    private function formatSize(float $bytes): array
+    {
+        if ($bytes >= 1000000000) {
+            return [round($bytes / 1000000000, 2), 'GB'];
+        }
+
+        if ($bytes >= 1000000) {
+            return [round($bytes / 1000000, 2), 'MB'];
+        }
+
+        if ($bytes >= 1000) {
+            return [round($bytes / 1000, 2), 'KB'];
+        }
+
+        return [round($bytes, 2), 'B'];
+    }
+
+	    private function calculateTableWidths()
+    {
+        $languages = CodingLanguage::active()->get();
+        $total = CodingLanguage::active()->sum('display_value');
+
+        if ($total <= 0) {
+            return;
+        }
+
+        foreach ($languages as $language) {
+            $width = round(($language->display_value / $total) * 100, 2);
+            $language->width = $width;
+
+            $language->save();
+        }
     }
 }

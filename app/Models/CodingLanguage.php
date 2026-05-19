@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
-use App\Models\Repository;
 
 class CodingLanguage extends Model
 {
@@ -23,6 +21,7 @@ class CodingLanguage extends Model
         'width',
         'color',
         'active',
+        'project_count',
         'properties',
     ];
 
@@ -30,7 +29,58 @@ class CodingLanguage extends Model
         'properties' => 'json',
     ];
 
-    protected $colors;
+    protected $colors = [];
+
+	    protected $settings = [
+        'additions' => [
+            'PHP' => 3000000,
+            'Ruby' => 4204694,
+            'JavaScript' => 611638,
+        ],
+        // Subtract percent from total
+        'subtractions' => [
+            'PHP' => 0.96, // Account for generated code I didn't write & Wordpress
+            'JavaScript' => 0.88, // Every framework contains generated JavaScript code
+        ],
+        'ignore' => [
+            'Markdown',
+            'ASP.NET',
+            'MDX',
+            'Elixir',
+            'HTML',
+            'CSS',
+            'SCSS',
+            'Blade',
+            'ASL',
+            'CoffeeScript',
+            'Starlark',
+            'EJS',
+            'Nix',
+            'Hack',
+            'Twig',
+            'Handlebars',
+            'Liquid',
+            'Smarty',
+            'DIGITAL Command Language',
+            'Less',
+            'XSLT',
+            'Makefile',
+            'Roff',
+            'Objective-C',
+            'Jinja',
+            'LOLCODE',
+            'Motoko',
+            'Batchfile',
+            'NASL',
+            'Sieve',
+            'Procfile',
+            'Standard ML',
+            'Jupyter Notebook',
+            'Svelte',
+            'Java',
+            'C++',
+        ],
+    ];
 
     public function __construct()
     {
@@ -41,33 +91,6 @@ class CodingLanguage extends Model
     public function scopeActive()
     {
         return $this->where('active', true);
-    }
-
-    public function incrementOrCreate()
-    {
-        $record = CodingLanguage::where('language', $this->language);
-
-        if ($record->exists()) {
-            $record->increment('value', $this->value);
-            $record->increment('display_value', $this->display_value);
-        } else {
-            $this->save();
-        }
-
-        Log::info('Updated ' . $this->language . ' with value ' . $this->value);
-    }
-
-    public function getProjectCount()
-    {
-        $count = 0;
-        $repos = Repository::pluck('languages')->toArray();
-        foreach ($repos as $repo) {
-            if (array_key_exists($this->language, $repo)) {
-                $count++;
-            }
-        }
-
-        $this->project_count = $count;
     }
 
     public function getLanguageColor()

@@ -27,19 +27,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/*
-TODO: Investigate proper authentication for these routes. Issue currently is resume Vue app has no server-side code. 
-Random hash is being used as a psuedo-authentication method. Adding throttle to these routes for now to prevent abuse.
-*/
-
 Route::get('/resume/{hash}', [ResumeController::class, 'get'])->middleware('throttle:50,1'); // Open
 Route::get('/cover-letter/{hash}', [CoverLetterController::class, 'get'])->middleware(
     'throttle:50,1',
 ); // Open
 
-Route::middleware('auth:sanctum')->post('/repositories', [
+Route::middleware('auth:sanctum')->post('/languages', [
     CodingLanguageController::class,
-    'addRepositories',
+    'store',
 ]);
 
 Route::get('/languages/stats', [CodingLanguageController::class, 'stats'])->middleware(
