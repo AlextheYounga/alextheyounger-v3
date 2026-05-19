@@ -18,9 +18,7 @@
 
                 <section id="title" class="relative mb-8 rounded">
                     <h1 class="glow text-center text-5xl text-sky-100">Alex Younger</h1>
-                    <p id="tagline" class="py-2 text-center text-sm text-sky-200">
-                        {{ $props.content?.homeTagline?.content ?? "" }}
-                    </p>
+                    <p id="tagline" class="py-2 text-center text-sm text-sky-200">{{ homeTagline }}</p>
                 </section>
 
                 <section class="menu-list">
@@ -48,7 +46,7 @@
                 <section id="bio" v-if="this.selected == 'bio'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
                         <h2 class="pb-4 text-2xl font-semibold text-sky-300">Bio</h2>
-                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sky-100"></div>
+                        <div v-html="bioContent" class="text-sky-100"></div>
                     </div>
                 </section>
 
@@ -57,7 +55,7 @@
                         class="large-description rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100"
                     >
                         <h2 class="pb-4 text-2xl font-semibold text-sky-300">About</h2>
-                        <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100"></div>
+                        <div v-html="aboutContent" class="text-sky-100"></div>
                     </div>
                 </section>
 
@@ -73,7 +71,7 @@
                 <section id="contact" v-if="this.selected == 'contact'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
                         <h3 class="pb-4 text-2xl font-semibold text-sky-300">Contact</h3>
-                        <div id="contact-description" v-html="$props.content?.contact?.content ?? ''"></div>
+                        <div id="contact-description" v-html="contactContent"></div>
 
                         <div class="w-full pt-12">
                             <div
@@ -103,9 +101,7 @@
 
                 <section id="title" class="relative mb-8 rounded">
                     <h1 class="glow text-center text-5xl text-sky-100">Alex Younger</h1>
-                    <p id="tagline" class="py-2 text-center text-sm text-sky-200">
-                        {{ $props.content?.homeTagline?.content ?? "" }}
-                    </p>
+                    <p id="tagline" class="py-2 text-center text-sm text-sky-200">{{ homeTagline }}</p>
                 </section>
             </div>
 
@@ -135,14 +131,14 @@
                 <section id="bio" v-if="this.selected == 'bio'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
                         <h2 class="pb-4 text-xl font-semibold text-sky-300">Bio</h2>
-                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sm text-sky-100"></div>
+                        <div v-html="bioContent" class="text-sm text-sky-100"></div>
                     </div>
                 </section>
 
                 <section id="about" v-if="this.selected == 'about'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
                         <h2 class="pb-4 text-xl font-semibold text-sky-300">About</h2>
-                        <div v-html="$props.content?.about?.content ?? ''" class="text-sm text-sky-100"></div>
+                        <div v-html="aboutContent" class="text-sm text-sky-100"></div>
                     </div>
                 </section>
 
@@ -161,7 +157,7 @@
                         <div
                             id="contact-description"
                             class="text-sm"
-                            v-html="$props.content?.contact?.content ?? ''"
+                            v-html="contactContent"
                         ></div>
 
                         <div class="w-full pt-6">
@@ -224,14 +220,12 @@ export default {
         AnimatedButtonMenu,
         LanguageBar,
     },
-    props: {
-        content: {
-            type: Object,
-            required: true,
-        },
-    },
     data() {
         return {
+            homeTagline: '',
+            bioContent: '',
+            aboutContent: '',
+            contactContent: '',
             links,
             heroImage,
             homeItems: [

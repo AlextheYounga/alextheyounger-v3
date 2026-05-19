@@ -12,8 +12,6 @@ use App\Filament\Resources\CategoryResource\Pages\ListCategories;
 use App\Filament\Resources\CoverLetterResource;
 use App\Filament\Resources\CoverLetterResource\Pages\CreateCoverLetter;
 use App\Filament\Resources\CoverLetterResource\Pages\EditCoverLetter;
-use App\Filament\Resources\PageContentResource;
-use App\Filament\Resources\PageContentResource\Pages\EditPageContent;
 use App\Filament\Resources\ProjectResource;
 use App\Filament\Resources\ProjectResource\Pages\CreateProject;
 use App\Filament\Resources\ProjectResource\Pages\EditProject;
@@ -26,7 +24,6 @@ use App\Filament\Resources\ResumeResource\Pages\EditResume;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\CoverLetter;
-use App\Models\PageContent;
 use App\Models\Project;
 use App\Models\Proposal;
 use App\Models\Resume;
@@ -57,7 +54,6 @@ class FilamentAdminCrudTest extends TestCase
     {
         foreach (
             [
-                PageContentResource::class,
                 CategoryResource::class,
                 BookResource::class,
                 ProjectResource::class,
@@ -69,32 +65,6 @@ class FilamentAdminCrudTest extends TestCase
         ) {
             $this->get($resource::getUrl('index'))->assertOk();
         }
-    }
-
-    public function test_page_content_can_be_updated_from_filament(): void
-    {
-        $pageContent = PageContent::create([
-            'html_id' => 'hero',
-            'name' => 'Hero Body',
-            'key' => 'hero',
-            'view' => 'Home',
-            'content' => '<p>Old</p>',
-            'properties' => [],
-        ]);
-
-        Livewire::test(EditPageContent::class, ['record' => $pageContent->getRouteKey()])
-            ->fillForm([
-                'name' => 'Hero Updated',
-                'content' => '<p>Updated</p>',
-            ])
-            ->call('save')
-            ->assertHasNoFormErrors();
-
-        $this->assertDatabaseHas(PageContent::class, [
-            'id' => $pageContent->id,
-            'name' => 'Hero Updated',
-            'content' => '<p>Updated</p>',
-        ]);
     }
 
     public function test_category_crud_works_from_filament(): void
