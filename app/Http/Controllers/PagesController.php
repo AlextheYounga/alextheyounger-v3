@@ -7,17 +7,12 @@ use Inertia\Inertia;
 use App\Models\Project;
 use App\Models\Book;
 use App\Models\Category;
-use App\Models\PageContent;
 
 class PagesController extends Controller
 {
     public function home()
     {
-        $pageContent = PageContent::where('view', '=', 'Home')->get()->keyBy('key');
-
-        return Inertia::render('Home', [
-            'content' => $pageContent,
-        ]);
+        return Inertia::render('Home');
     }
 
     public function readingList()
@@ -47,10 +42,4 @@ class PagesController extends Controller
         return Inertia::render('StarField');
     }
 
-    public function setupFooter()
-    {
-        $pageContent = PageContent::where('view', '=', 'Footer')->get()->keyBy('key');
-
-        return response()->json($pageContent);
-    }
 }
