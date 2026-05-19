@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ProposalResource\Pages;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\ProposalResource;
 use App\Models\Proposal;
 use Filament\Actions;
@@ -9,6 +10,8 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditProposal extends EditRecord
 {
+    use GeneratesUniqueCopyName;
+
     protected static string $resource = ProposalResource::class;
 
     protected function mutateFormDataBeforeFill(array $data): array
@@ -25,7 +28,11 @@ class EditProposal extends EditRecord
             Actions\ReplicateAction::make()
                 ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
                 ->mutateRecordDataUsing(function (array $data): array {
-                    $data['title'] = $data['title'] . ' (Copy)';
+                    $data['title'] = static::generateUniqueCopyValue(
+                        Proposal::class,
+                        'title',
+                        $data['title'] ?? null,
+                    );
                     unset($data['id'], $data['hash']);
 
                     return $data;

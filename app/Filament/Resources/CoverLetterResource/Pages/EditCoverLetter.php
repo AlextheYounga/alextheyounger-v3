@@ -2,12 +2,16 @@
 
 namespace App\Filament\Resources\CoverLetterResource\Pages;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\CoverLetterResource;
+use App\Models\CoverLetter;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditCoverLetter extends EditRecord
 {
+    use GeneratesUniqueCopyName;
+
     protected static string $resource = CoverLetterResource::class;
 
     protected function mutateFormDataBeforeFill(array $data): array
@@ -30,11 +34,12 @@ class EditCoverLetter extends EditRecord
             Actions\DeleteAction::make(),
             Actions\ReplicateAction::make()
                 ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
-                ->mutateRecordDataUsing(function (array $data): array {
-                    $data['name'] = $data['name'] . ' (Copy)';
-                    unset($data['id'], $data['hash']);
-
-                    return $data;
+                ->beforeReplicaSaved(function (CoverLetter $replica): void {
+                    $replica->name = static::generateUniqueCopyValue(
+                        CoverLetter::class,
+                        'name',
+                        $replica->name,
+                    );
                 }),
         ];
     }
