@@ -61,6 +61,13 @@ class ResumeResource extends Resource
                         ->columnSpanFull(),
                 ])
                 ->columnSpanFull(),
+            Forms\Components\Repeater::make('skills')
+                ->label('Skills')
+                ->schema([
+                    Forms\Components\TextInput::make('skill')->label('Skill')->required(),
+                ])
+                ->defaultItems(0)
+                ->columnSpanFull(),
             Forms\Components\Textarea::make('education')->rows(4)->columnSpanFull(),
             Forms\Components\KeyValue::make('properties')->columnSpanFull(),
         ]);

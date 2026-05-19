@@ -33,6 +33,24 @@ class EditResume extends EditRecord
                 return $item;
             })
             ->all();
+        $data['skills'] = collect($data['skills'] ?? [])
+            ->map(function (mixed $skill): ?array {
+                if (is_string($skill)) {
+                    $skill = trim($skill);
+
+                    return $skill === '' ? null : ['skill' => $skill];
+                }
+
+                if (!is_array($skill)) {
+                    return null;
+                }
+
+                $skill['skill'] = is_string($skill['skill'] ?? null) ? trim($skill['skill']) : '';
+
+                return $skill['skill'] === '' ? null : $skill;
+            })
+            ->filter()
+            ->all();
 
         return $data;
     }
@@ -77,6 +95,24 @@ class EditResume extends EditRecord
 
                 return $item;
             })
+            ->all();
+        $data['skills'] = collect($data['skills'] ?? [])
+            ->map(function (mixed $skill): ?array {
+                if (is_string($skill)) {
+                    $skill = trim($skill);
+
+                    return $skill === '' ? null : ['skill' => $skill];
+                }
+
+                if (!is_array($skill)) {
+                    return null;
+                }
+
+                $skill['skill'] = is_string($skill['skill'] ?? null) ? trim($skill['skill']) : '';
+
+                return $skill['skill'] === '' ? null : $skill;
+            })
+            ->filter()
             ->all();
 
         return $data;
