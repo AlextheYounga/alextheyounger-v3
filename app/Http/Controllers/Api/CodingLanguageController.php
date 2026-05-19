@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CodingLanguage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class CodingLanguageController extends Controller
 {
@@ -16,7 +17,6 @@ class CodingLanguageController extends Controller
             'languages.*.language' => ['required', 'string'],
             'languages.*.value' => ['required', 'numeric'],
             'languages.*.display_value' => ['nullable', 'numeric'],
-            'languages.*.width' => ['nullable', 'numeric'],
             'languages.*.color' => ['nullable', 'string'],
             'languages.*.active' => ['nullable', 'boolean'],
             'languages.*.project_count' => ['nullable', 'integer'],
@@ -31,7 +31,6 @@ class CodingLanguageController extends Controller
                 [
                     'value' => $languageData['value'],
                     'display_value' => $languageData['display_value'] ?? $languageData['value'],
-                    'width' => $languageData['width'] ?? null,
                     'color' => $languageData['color'] ?? '#000000',
                     'active' => $languageData['active'] ?? true,
                     'project_count' => $languageData['project_count'] ?? null,
@@ -45,7 +44,8 @@ class CodingLanguageController extends Controller
 
     public function stats(): JsonResponse
     {
-        $languages = CodingLanguage::active()->orderBy('width', 'desc')->get();
+        $languages = CodingLanguage::active()->orderByDesc('display_value')->get();
+        $this->applyComputedWidths($languages);
         $bytes = (float) CodingLanguage::sum('value');
 
         [$displaySize, $scale] = $this->formatSize($bytes);
@@ -58,6 +58,16 @@ class CodingLanguageController extends Controller
                 'scale' => $scale,
             ],
         ]);
+    }
+
+    private function applyComputedWidths(Collection $languages): void
+    {
+        $total = (float) $languages->sum('display_value');
+
+        foreach ($languages as $language) {
+            $width = $total > 0 ? round(($language->display_value / $total) * 100, 2) : 0.0;
+            $language->setAttribute('width', $width);
+        }
     }
 
     private function formatSize(float $bytes): array
@@ -75,22 +85,5 @@ class CodingLanguageController extends Controller
         }
 
         return [round($bytes, 2), 'B'];
-    }
-
-	    private function calculateTableWidths()
-    {
-        $languages = CodingLanguage::active()->get();
-        $total = CodingLanguage::active()->sum('display_value');
-
-        if ($total <= 0) {
-            return;
-        }
-
-        foreach ($languages as $language) {
-            $width = round(($language->display_value / $total) * 100, 2);
-            $language->width = $width;
-
-            $language->save();
-        }
     }
 }

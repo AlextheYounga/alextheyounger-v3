@@ -18,7 +18,6 @@ class CodingLanguage extends Model
         'language',
         'value',
         'display_value',
-        'width',
         'color',
         'active',
         'project_count',
