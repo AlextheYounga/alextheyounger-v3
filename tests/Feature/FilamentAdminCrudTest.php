@@ -416,9 +416,9 @@ class FilamentAdminCrudTest extends TestCase
                         'bullets' => [['bullet' => 'Built admin panel']],
                     ],
                 ],
-                'skills' => [
-                    ['skill' => 'Laravel'],
-                    ['skill' => 'PHP'],
+                'expertise' => [
+                    ['expertise' => 'Laravel'],
+                    ['expertise' => 'PHP'],
                 ],
                 'education' => null,
                 'properties' => ['theme' => 'default'],
@@ -429,7 +429,7 @@ class FilamentAdminCrudTest extends TestCase
         $resume = Resume::firstOrFail();
         $this->assertSame([$project->id], $resume->projects()->pluck('projects.id')->all());
         $this->assertSame(['Built admin panel'], $resume->experience[0]['bullets']);
-        $this->assertSame(['Laravel', 'PHP'], $resume->skills);
+        $this->assertSame(['Laravel', 'PHP'], $resume->expertise);
 
         Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])
             ->fillForm([
@@ -451,8 +451,8 @@ class FilamentAdminCrudTest extends TestCase
                         'bullets' => [['bullet' => 'Led migration']],
                     ],
                 ],
-                'skills' => [
-                    ['skill' => 'Symfony'],
+                'expertise' => [
+                    ['expertise' => 'Symfony'],
                 ],
                 'education' => null,
                 'properties' => ['theme' => 'clean'],
@@ -463,7 +463,7 @@ class FilamentAdminCrudTest extends TestCase
         $resume->refresh();
         $this->assertSame('Updated Resume', $resume->name);
         $this->assertSame(['Led migration'], $resume->experience[0]['bullets']);
-        $this->assertSame(['Symfony'], $resume->skills);
+        $this->assertSame(['Symfony'], $resume->expertise);
 
         Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])->callAction(
             'delete',

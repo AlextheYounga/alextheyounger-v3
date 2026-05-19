@@ -10,12 +10,12 @@ class ResumeApiTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function test_resume_api_includes_skills(): void
+    public function test_resume_api_includes_expertise(): void
     {
         $resume = Resume::create([
             'name' => 'API Resume',
             'bio' => 'Short bio',
-            'skills' => ['Laravel', 'Vue', 'PHP'],
+            'expertise' => ['Laravel', 'Vue', 'PHP'],
             'education' => [],
             'contacts' => [],
             'references' => [],
@@ -25,6 +25,6 @@ class ResumeApiTest extends TestCase
 
         $this->getJson('/api/resume/' . $resume->hash)
             ->assertOk()
-            ->assertJsonPath('skills', ['Laravel', 'Vue', 'PHP']);
+            ->assertJsonPath('expertise', ['Laravel', 'Vue', 'PHP']);
     }
 }
