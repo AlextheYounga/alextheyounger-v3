@@ -6,7 +6,7 @@
                     <span
                         @mouseenter="highlightLanguage"
                         @mouseleave="highlightLanguage"
-                        :style="{ width: language.width + '%', backgroundColor: language.color }"
+                        :style="{ width: language.percentage + '%', backgroundColor: language.color }"
                         :id="`bar-item-${language.properties?.slug}`"
                         class="bar-item"
                     >
@@ -30,26 +30,32 @@
                             >
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path>
                             </svg>
-                            <span class="lang-name mr-1 text-xs font-bold text-white">{{ language.language }}</span>
-                            <span class="percent text-gray-400">{{ language.width }}%</span>
+                            <span class="lang-name mr-1 text-xs font-bold text-white">{{ language.name }}</span>
+                            <span class="percent text-gray-400">{{ language.percentage }}%</span>
                         </div>
                     </li>
                 </template>
             </template>
         </ul>
         <div class="mt-6">
-            <div id="language-description" class="block" v-html="this.descriptionContent"></div>
+            <div id="language-description" class="block">
+                <p class="text-sm italic pb-1">
+                    These statistics are not random. They accurately represent bytes of code for <b>most</b> of my git repositories.</p>
+                <p class="text-sm italic">
+                    The <a
+                        class="font-semibold text-sky-400 hover:text-blue-600 italic"
+                        href="https://github.com/AlextheYounga/reposcan"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Rust CLI</a
+                    > I created to do this.
+                </p>
+            </div>
             <div class="stats w-full pt-3 text-sm">
                 <p>
-                    Repos Scanned:
-                    <a class="font-semibold text-sky-400 hover:text-blue-600" :href="scriptUrl">{{
-                        repoStats.count
-                    }}</a>
-                </p>
-                <p>
-                    Repos Compressed Size:
+                    Megabytes written in these languages:
                     <a class="font-semibold text-sky-400 hover:text-blue-600" :href="scriptUrl"
-                        >{{ repoStats.size }}{{ repoStats.scale }}</a
+                        >{{ languageStats.size }}{{ languageStats.scale }}</a
                     >
                 </p>
             </div>
@@ -60,17 +66,12 @@
 <script>
 const scriptUrl = "https://github.com/AlextheYounga/repo-linguist-scanner";
 
-const defaultDescriptionContent = `<p class="text-sm italic pb-1">These statistics are not random. 
-	This was calculated using the <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/github-linguist/linguist">Github Linguist package</a> and accurately represent bytes of code.</p>
-	<p class="text-sm italic">You can see how I did this <a class="text-sky-400 hover:text-blue-600 font-semibold" href="${scriptUrl}">here</a>. Many of these repos (but certainly not all) can be found on my <a class="text-sky-400 hover:text-blue-600 font-semibold" href="https://github.com/AlextheYounga">Github</a>.</p>`;
-
 export default {
     data() {
         return {
-            descriptionContent: defaultDescriptionContent,
             languages: [],
             scriptUrl,
-            repoStats: {
+            languageStats: {
                 count: 0,
                 size: 0,
                 scale: "GB",
@@ -91,7 +92,7 @@ export default {
             .get("/api/languages/stats")
             .then((response) => {
                 this.languages = response.data.languages;
-                this.repoStats = response.data.repoStats;
+                this.languageStats = response.data.languageStats;
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);

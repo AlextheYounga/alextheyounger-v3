@@ -2,89 +2,119 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
-use App\Models\Repository;
-use App\Models\CodingLanguage;
-use Database\Seeders\CodingLanguageSeeder;
 use App\Http\Controllers\Controller;
+use App\Models\CodingLanguage;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class CodingLanguageController extends Controller
 {
-    public function addRepositories(Request $request)
+    public function index(): JsonResponse
     {
-        try {
-            $repositories = $request->collect('repositories');
-
-            // Update repositories
-            foreach ($repositories as $repository) {
-                Repository::updateOrCreate(
-                    [
-                        'name' => $repository['name'],
-                    ],
-                    [
-                        'path' => $repository['path'],
-                        'size' => $repository['totalSize'],
-                        'languages' => $repository['languages'],
-                    ],
-                );
-            }
-
-            // Update languages
-            $CodingLanguageSeeder = new CodingLanguageSeeder();
-            $CodingLanguageSeeder->run();
-
-            // Process the data as needed
-            return response()->json(['success' => true], 201);
-        } catch (ValidationException $e) {
-            return response()->json(
-                [
-                    'success' => false,
-                    'errors' => $e->errors(),
-                ],
-                422,
-            );
-        }
+        return response()->json([
+            'languages' => $this->getLanguages(),
+        ]);
     }
 
-    public function stats()
+    public function store(Request $request): JsonResponse
     {
-        $languages = CodingLanguage::active()->orderBy('width', 'desc')->get();
+        $validated = $request->validate([
+            'languages' => ['required', 'array'],
+            'languages.*.size' => ['required', 'numeric'],
+            'languages.*.percentage' => ['required', 'numeric'],
+        ]);
 
-        // Repository size
-        $repoCount = Repository::all()->count();
-        $bytes = Repository::getTotalSize();
-        $digits = strlen((string) $bytes);
-
-        switch (true) {
-            case $digits >= 4 && $digits < 7:
-                $divisor = pow(10, 3);
-                $scale = 'KB';
-                break;
-            case $digits >= 7 && $digits < 10:
-                $divisor = pow(10, 6);
-                $scale = 'MB';
-                break;
-            case $digits > 10:
-                $divisor = pow(10, 9);
-                $scale = 'GB';
-                break;
-            default:
-                $divisor = pow(10, 9);
-                $scale = 'GB';
+        foreach ($validated['languages'] as $name => $languageData) {
+            CodingLanguage::updateOrCreate(
+                [
+                    'name' => $name,
+                ],
+                [
+                    'value' => $languageData['size'],
+                    'percentage' => $languageData['percentage'],
+                    'active' => true,
+                    'properties' => [
+                        'slug' => Str::slug($name),
+                    ],
+                ],
+            );
         }
 
-        $displaySize = $bytes ? round($bytes / $divisor, 2) : 0;
+        return response()->json(['success' => true], 201);
+    }
 
-        $data = [
+    public function stats(): JsonResponse
+    {
+        $storedLanguages = CodingLanguage::query()->get();
+        $languages = $this->getLanguages();
+        $bytes = (float) ($storedLanguages->isNotEmpty() ? $storedLanguages->sum('value') : $languages->sum('value'));
+
+        $languages = $this->applyLanguageMetadata($languages);
+
+        [$displaySize, $scale] = $this->formatSize($bytes);
+
+        return response()->json([
             'languages' => $languages,
-            'repoStats' => [
-                'count' => $repoCount,
+            'languageStats' => [
+                'count' => $storedLanguages->isNotEmpty() ? $storedLanguages->count() : $languages->count(),
                 'size' => $displaySize,
                 'scale' => $scale,
             ],
-        ];
+        ]);
+    }
 
-        return response()->json($data);
+    private function getLanguages(): Collection
+    {
+        $storedLanguages = CodingLanguage::query()->get();
+
+        if ($storedLanguages->isNotEmpty()) {
+            return $this->applyLanguageMetadata(
+                $storedLanguages
+                    ->where('active', true)
+                    ->sortByDesc('percentage')
+                    ->values(),
+            );
+        }
+
+        return $this->applyLanguageMetadata(CodingLanguage::defaultLanguages());
+    }
+
+    private function applyLanguageMetadata(Collection $languages): Collection
+    {
+        return $languages->map(function ($language): array {
+            $name = data_get($language, 'name', data_get($language, 'language', ''));
+            $percentage = (float) data_get($language, 'percentage', 0);
+            $properties = (array) data_get($language, 'properties', []);
+
+            $properties['slug'] = $properties['slug'] ?? Str::slug((string) $name);
+
+            return [
+                'name' => $name,
+                'value' => (float) data_get($language, 'value', 0),
+                'percentage' => $percentage,
+                'color' => data_get($language, 'color') ?: CodingLanguage::colorFor((string) $name) ?: '#64748b',
+                'active' => (bool) data_get($language, 'active', true),
+                'properties' => $properties,
+            ];
+        });
+    }
+
+    private function formatSize(float $bytes): array
+    {
+        if ($bytes >= 1000000000) {
+            return [round($bytes / 1000000000, 2), 'GB'];
+        }
+
+        if ($bytes >= 1000000) {
+            return [round($bytes / 1000000, 2), 'MB'];
+        }
+
+        if ($bytes >= 1000) {
+            return [round($bytes / 1000, 2), 'KB'];
+        }
+
+        return [round($bytes, 2), 'B'];
     }
 }

@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
-use App\Models\Repository;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class CodingLanguage extends Model
 {
     use HasFactory;
+
+    protected static array $colors = [];
 
     /**
      * The attributes that are mass assignable.
@@ -17,11 +19,9 @@ class CodingLanguage extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'language',
+        'name',
         'value',
-        'display_value',
-        'width',
-        'color',
+        'percentage',
         'active',
         'properties',
     ];
@@ -30,63 +30,51 @@ class CodingLanguage extends Model
         'properties' => 'json',
     ];
 
-    protected $colors;
-
-    public function __construct()
+    public static function colorFor(string $language): ?string
     {
-        $colorsJson = base_path() . '/resources/data/language-colors.json';
-        $this->colors = json_decode(file_get_contents($colorsJson), true);
+        $colors = static::loadColors();
+
+        return $colors[$language] ?? null;
+    }
+
+    public static function defaultLanguages(): Collection
+    {
+        $languagesJson = storage_path('app/data/languages.json');
+        $payload = json_decode(file_get_contents($languagesJson), true);
+
+        return collect($payload['languages'] ?? [])
+            ->map(function (array $language, string $name): array {
+                return [
+                    'name' => $name,
+                    'value' => (float) ($language['size'] ?? 0),
+                    'percentage' => (float) ($language['percentage'] ?? 0),
+                    'color' => static::colorFor($name) ?? '#64748b',
+                    'active' => true,
+                    'properties' => [
+                        'slug' => Str::slug($name),
+                    ],
+                ];
+            })
+            ->sortByDesc('percentage')
+            ->values();
+    }
+
+    protected static function loadColors(): array
+    {
+        if (static::$colors !== []) {
+            return static::$colors;
+        }
+
+        $colorsPath = storage_path('app/data/language-colors.json');
+        $colors = json_decode(file_get_contents($colorsPath), true);
+
+        static::$colors = is_array($colors) ? $colors : [];
+
+        return static::$colors;
     }
 
     public function scopeActive()
     {
         return $this->where('active', true);
-    }
-
-    public function incrementOrCreate()
-    {
-        $record = CodingLanguage::where('language', $this->language);
-
-        if ($record->exists()) {
-            $record->increment('value', $this->value);
-            $record->increment('display_value', $this->display_value);
-        } else {
-            $this->save();
-        }
-
-        Log::info('Updated ' . $this->language . ' with value ' . $this->value);
-    }
-
-    public function getProjectCount()
-    {
-        $count = 0;
-        $repos = Repository::pluck('languages')->toArray();
-        foreach ($repos as $repo) {
-            if (array_key_exists($this->language, $repo)) {
-                $count++;
-            }
-        }
-
-        $this->project_count = $count;
-    }
-
-    public function getLanguageColor()
-    {
-        if (array_key_exists($this->language, $this->colors)) {
-            return $this->colors[$this->language];
-        }
-        print 'No color found for language ' . $this->language . "\n";
-        $randomColor = sprintf('#%06X', mt_rand(0, 0xffffff));
-        return $randomColor;
-    }
-
-    public function slugifyLanguage()
-    {
-        $slug = $this->language;
-        if (strpos($slug, '+') !== false) {
-            $slug = str_replace('+', 'plus', $slug);
-        }
-        $slug = preg_replace('/[^a-zA-Z0-9]+/', '-', $slug);
-        return strtolower($slug);
     }
 }

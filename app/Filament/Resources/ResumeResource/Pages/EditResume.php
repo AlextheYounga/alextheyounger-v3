@@ -36,6 +36,22 @@ class EditResume extends EditRecord
                 return $item;
             })
             ->all();
+        $data['expertise'] = collect($data['expertise'] ?? [])
+            ->map(function (mixed $item): ?string {
+                if (is_array($item)) {
+                    $item = $item['expertise'] ?? null;
+                }
+
+                if (!is_string($item)) {
+                    return null;
+                }
+
+                $item = trim($item);
+
+                return $item === '' ? null : $item;
+            })
+            ->filter()
+            ->all();
 
         return $data;
     }
@@ -81,6 +97,30 @@ class EditResume extends EditRecord
 
                 return $item;
             })
+            ->all();
+        $data['expertise'] = collect($data['expertise'] ?? [])
+            ->map(function (mixed $item): ?string {
+                if (is_string($item)) {
+                    $item = trim($item);
+
+                    return $item === '' ? null : $item;
+                }
+
+                if (!is_array($item)) {
+                    return null;
+                }
+
+                $item = $item['expertise'] ?? null;
+
+                if (!is_string($item)) {
+                    return null;
+                }
+
+                $item = trim($item);
+
+                return $item === '' ? null : $item;
+            })
+            ->filter()
             ->all();
 
         return $data;

@@ -51,7 +51,7 @@
                                 <a :href="book.external_link" target="_blank" rel="nofollow" class="no-underline">
                                     <img
                                         v-if="book.external_image_link"
-                                        :src="book.external_image_link"
+                                        :src="bookImage(book)"
                                         class="mx-auto mb-3 shadow"
                                         :alt="imageAlt(book)"
                                     />
@@ -135,6 +135,10 @@ export default {
             return `Alex Younger Reading List ${book.title} Cover Image`;
         },
         bookImage(book) {
+            if (book?.external_image_link) {
+                return route('api.books.image', book.id);
+            }
+
             return resolveImage(bookImages, book?.properties?.image_name, "books");
         },
         selectCategory(selector) {
