@@ -55,6 +55,7 @@ class CodingLanguage extends Model
                     ],
                 ];
             })
+            ->sortByDesc('percentage')
             ->values();
     }
 
