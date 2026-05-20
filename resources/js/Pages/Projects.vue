@@ -39,11 +39,11 @@
                             <div class="flex-1">
                                 <p
                                     v-for="tech of project.content?.technology"
-                                    :key="tech"
+                                    :key="tech.name"
                                     class="framework-bubble mr-2 inline-flex rounded-full px-2 text-xs font-semibold leading-5"
-                                    :data-techstack="tech"
+                                    :style="technologyStyle(tech)"
                                 >
-                                    {{ tech }}
+                                    {{ tech.name }}
                                 </p>
 
                                 <div class="mt-2 block">
@@ -106,11 +106,11 @@
                 <div class="flex-1">
                     <p
                         v-for="tech of projectSelected.content?.technology"
-                        :key="tech"
+                        :key="tech.name"
                         class="framework-bubble mr-2 inline-flex rounded-full px-2 text-xs font-semibold leading-5"
-                        :data-techstack="tech"
+                        :style="technologyStyle(tech)"
                     >
-                        {{ tech }}
+                        {{ tech.name }}
                     </p>
 
                     <div class="mt-2 block">
@@ -151,7 +151,6 @@
 import Modal from "@/Components/Modal.vue";
 import { Head } from "@inertiajs/vue3";
 import AnimatedButtonMenu from "@/Components/AnimatedButtonMenu.vue";
-import { generateColors } from "@/projectColors";
 import { renderStarfield } from "@/three/space";
 
 const projectImages = import.meta.glob("../../images/projects/*.{jpg,jpeg,png,webp}", {
@@ -180,6 +179,41 @@ const resolveImage = (imageMap, name, folder) => {
     return "";
 };
 
+function padZero(str, len) {
+    len = len || 2;
+    const zeros = new Array(len).join('0');
+
+    return (zeros + str).slice(-len);
+}
+
+function invertColor(hex, bw) {
+    if (hex.indexOf('#') === 0) {
+        hex = hex.slice(1);
+    }
+
+    if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+
+    if (hex.length !== 6) {
+        throw new Error('Invalid HEX color.');
+    }
+
+    let r = parseInt(hex.slice(0, 2), 16),
+        g = parseInt(hex.slice(2, 4), 16),
+        b = parseInt(hex.slice(4, 6), 16);
+
+    if (bw) {
+        return r * 0.299 + g * 0.587 + b * 0.114 > 186 ? '#000000' : '#FFFFFF';
+    }
+
+    r = (255 - r).toString(16);
+    g = (255 - g).toString(16);
+    b = (255 - b).toString(16);
+
+    return '#' + padZero(r) + padZero(g) + padZero(b);
+}
+
 export default {
     components: {
         Head,
@@ -205,13 +239,17 @@ export default {
         projectImage(project) {
             return resolveImage(projectImages, project?.properties?.image_name, "projects");
         },
+        technologyStyle(technology) {
+            const backgroundColor = technology.color || '#64748b';
+
+            return {
+                backgroundColor,
+                color: invertColor(backgroundColor, true),
+            };
+        },
     },
     mounted() {
         renderStarfield();
-        generateColors();
-    },
-    updated() {
-        generateColors();
     },
 };
 </script>

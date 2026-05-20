@@ -6,7 +6,7 @@
                     <span
                         @mouseenter="highlightLanguage"
                         @mouseleave="highlightLanguage"
-                        :style="{ width: language.width + '%', backgroundColor: language.color }"
+                        :style="{ width: language.percentage + '%', backgroundColor: language.color }"
                         :id="`bar-item-${language.properties?.slug}`"
                         class="bar-item"
                     >
@@ -30,8 +30,8 @@
                             >
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path>
                             </svg>
-                            <span class="lang-name mr-1 text-xs font-bold text-white">{{ language.language }}</span>
-                            <span class="percent text-gray-400">{{ language.width }}%</span>
+                            <span class="lang-name mr-1 text-xs font-bold text-white">{{ language.name }}</span>
+                            <span class="percent text-gray-400">{{ language.percentage }}%</span>
                         </div>
                     </li>
                 </template>
@@ -79,15 +79,15 @@
             </div>
             <div class="stats w-full pt-3 text-sm">
                 <p>
-                    Repos Scanned:
+                    Languages Tracked:
                     <a class="font-semibold text-sky-400 hover:text-blue-600" :href="scriptUrl">{{
-                        repoStats.count
+                        languageStats.count
                     }}</a>
                 </p>
                 <p>
-                    Repos Compressed Size:
+                    Total Language Size:
                     <a class="font-semibold text-sky-400 hover:text-blue-600" :href="scriptUrl"
-                        >{{ repoStats.size }}{{ repoStats.scale }}</a
+                        >{{ languageStats.size }}{{ languageStats.scale }}</a
                     >
                 </p>
             </div>
@@ -103,7 +103,7 @@ export default {
         return {
             languages: [],
             scriptUrl,
-            repoStats: {
+            languageStats: {
                 count: 0,
                 size: 0,
                 scale: "GB",
@@ -124,7 +124,7 @@ export default {
             .get("/api/languages/stats")
             .then((response) => {
                 this.languages = response.data.languages;
-                this.repoStats = response.data.repoStats;
+                this.languageStats = response.data.languageStats;
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);

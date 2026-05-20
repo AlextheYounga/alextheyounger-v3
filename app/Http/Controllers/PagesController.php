@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 
+use App\Models\CodingLanguage;
 use App\Models\Project;
 use App\Models\Book;
 use App\Models\Category;
@@ -32,8 +33,14 @@ class PagesController extends Controller
 
     public function projects()
     {
+        $projects = Project::active()->orderBy('position', 'asc')->get()->map(function (Project $project): Project {
+            $project->setAttribute('content', $this->applyTechnologyColors($project->content ?? []));
+
+            return $project;
+        });
+
         return Inertia::render('Projects', [
-            'projects' => Project::active()->orderBy('position', 'asc')->get(),
+            'projects' => $projects,
         ]);
     }
 
@@ -42,4 +49,25 @@ class PagesController extends Controller
         return Inertia::render('StarField');
     }
 
+    private function applyTechnologyColors(array $content): array
+    {
+        $content['technology'] = collect($content['technology'] ?? [])
+            ->map(function ($technology): ?array {
+                $technologyName = is_array($technology) ? ($technology['name'] ?? null) : $technology;
+
+                if (! is_string($technologyName) || $technologyName === '') {
+                    return null;
+                }
+
+                return [
+                    'name' => $technologyName,
+                    'color' => CodingLanguage::colorFor($technologyName) ?? '#64748b',
+                ];
+            })
+            ->filter()
+            ->values()
+            ->all();
+
+        return $content;
+    }
 }

@@ -10,8 +10,18 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('repositories', function (Blueprint $table) {
-            $table->dropColumn(['visibility', 'host', 'url']);
+        if (! Schema::hasTable('repositories')) {
+            return;
+        }
+
+        $columns = array_filter(['visibility', 'host', 'url'], fn (string $column): bool => Schema::hasColumn('repositories', $column));
+
+        if ($columns === []) {
+            return;
+        }
+
+        Schema::table('repositories', function (Blueprint $table) use ($columns) {
+            $table->dropColumn($columns);
         });
     }
 
@@ -20,10 +30,22 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('repositories', function (Blueprint $table) {
-            $table->string('visibility')->nullable();
-            $table->string('host')->nullable();
-            $table->string('url')->nullable();
+        if (! Schema::hasTable('repositories')) {
+            return;
+        }
+
+        Schema::table('repositories', function (Blueprint $table): void {
+            if (! Schema::hasColumn('repositories', 'visibility')) {
+                $table->string('visibility')->nullable();
+            }
+
+            if (! Schema::hasColumn('repositories', 'host')) {
+                $table->string('host')->nullable();
+            }
+
+            if (! Schema::hasColumn('repositories', 'url')) {
+                $table->string('url')->nullable();
+            }
         });
     }
 };
