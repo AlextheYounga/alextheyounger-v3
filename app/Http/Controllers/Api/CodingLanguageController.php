@@ -11,6 +11,13 @@ use Illuminate\Support\Str;
 
 class CodingLanguageController extends Controller
 {
+    public function index(): JsonResponse
+    {
+        return response()->json([
+            'languages' => $this->getLanguages(),
+        ]);
+    }
+
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
@@ -41,17 +48,8 @@ class CodingLanguageController extends Controller
     public function stats(): JsonResponse
     {
         $storedLanguages = CodingLanguage::query()->get();
-
-        if ($storedLanguages->isNotEmpty()) {
-            $languages = $storedLanguages
-                ->where('active', true)
-                ->sortByDesc('percentage')
-                ->values();
-            $bytes = (float) $storedLanguages->sum('value');
-        } else {
-            $languages = CodingLanguage::defaultLanguages();
-            $bytes = (float) $languages->sum('value');
-        }
+        $languages = $this->getLanguages();
+        $bytes = (float) ($storedLanguages->isNotEmpty() ? $storedLanguages->sum('value') : $languages->sum('value'));
 
         $languages = $this->applyLanguageMetadata($languages);
 
@@ -65,6 +63,22 @@ class CodingLanguageController extends Controller
                 'scale' => $scale,
             ],
         ]);
+    }
+
+    private function getLanguages(): Collection
+    {
+        $storedLanguages = CodingLanguage::query()->get();
+
+        if ($storedLanguages->isNotEmpty()) {
+            return $this->applyLanguageMetadata(
+                $storedLanguages
+                    ->where('active', true)
+                    ->sortByDesc('percentage')
+                    ->values(),
+            );
+        }
+
+        return $this->applyLanguageMetadata(CodingLanguage::defaultLanguages());
     }
 
     private function applyLanguageMetadata(Collection $languages): Collection

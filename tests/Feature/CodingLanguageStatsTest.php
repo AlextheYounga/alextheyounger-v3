@@ -22,6 +22,16 @@ class CodingLanguageStatsTest extends TestCase
             ->assertJsonPath('languages.0.properties.slug', 'php');
     }
 
+    public function test_language_index_uses_default_data_when_database_is_empty(): void
+    {
+        $this->getJson('/api/languages')
+            ->assertOk()
+            ->assertJsonPath('languages.0.name', 'PHP')
+            ->assertJsonPath('languages.0.percentage', 38.29)
+            ->assertJsonPath('languages.0.color', '#4F5D95')
+            ->assertJsonPath('languages.0.properties.slug', 'php');
+    }
+
     public function test_language_payload_can_be_stored_from_external_service_shape(): void
     {
         Sanctum::actingAs(User::factory()->create());

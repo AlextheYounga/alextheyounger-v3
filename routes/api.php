@@ -37,6 +37,10 @@ Route::middleware('auth:sanctum')->post('/languages', [
     'store',
 ]);
 
+Route::get('/languages', [CodingLanguageController::class, 'index'])->middleware(
+    'throttle:50,1',
+); // Open
+
 Route::get('/languages/stats', [CodingLanguageController::class, 'stats'])->middleware(
     'throttle:50,1',
 ); // Open
