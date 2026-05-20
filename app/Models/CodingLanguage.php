@@ -9,7 +9,7 @@ class CodingLanguage extends Model
 {
     use HasFactory;
 
-	protected $colors = [];
+    protected static array $colors = [];
 
     /**
      * The attributes that are mass assignable.
@@ -30,10 +30,23 @@ class CodingLanguage extends Model
         'properties' => 'json',
     ];
 
-    public function __construct()
+    public static function colorFor(string $language): ?string
     {
-        $colorsJson = base_path() . '/resources/data/language-colors.json';
-        $this->colors = json_decode(file_get_contents($colorsJson), true);
+        $colors = static::colors();
+
+        return $colors[$language] ?? null;
+    }
+
+    protected static function colors(): array
+    {
+        if (static::$colors !== []) {
+            return static::$colors;
+        }
+
+        $colorsJson = storage_path('app/data/language-colors.json');
+        $colors = json_decode(file_get_contents($colorsJson), true);
+
+        return static::$colors = is_array($colors) ? $colors : [];
     }
 
     public function scopeActive()
@@ -43,11 +56,12 @@ class CodingLanguage extends Model
 
     public function getLanguageColor()
     {
-        if (array_key_exists($this->language, $this->colors)) {
-            return $this->colors[$this->language];
+        if (array_key_exists($this->language, static::colors())) {
+            return static::colors()[$this->language];
         }
-        print 'No color found for language ' . $this->language . "\n";
+
         $randomColor = sprintf('#%06X', mt_rand(0, 0xffffff));
+
         return $randomColor;
     }
 }
