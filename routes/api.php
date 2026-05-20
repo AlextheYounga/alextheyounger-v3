@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CoverLetterController;
 use App\Http\Controllers\Api\CodingLanguageController;
+use App\Http\Controllers\Api\BookImageController;
+use App\Http\Controllers\Api\ProjectImageController;
 use App\Http\Controllers\Api\ResumeController;
 
 /*
@@ -31,6 +33,12 @@ Route::get('/resume/{hash}', [ResumeController::class, 'get'])->middleware('thro
 Route::get('/cover-letter/{hash}', [CoverLetterController::class, 'get'])->middleware(
     'throttle:50,1',
 ); // Open
+Route::get('/books/{book}/image', [BookImageController::class, 'show'])
+    ->name('api.books.image')
+    ->middleware('throttle:50,1');
+Route::get('/projects/{project}/image', [ProjectImageController::class, 'show'])
+    ->name('api.projects.image')
+    ->middleware('throttle:50,1');
 
 Route::middleware('auth:sanctum')->post('/languages', [
     CodingLanguageController::class,
