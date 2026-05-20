@@ -6,7 +6,7 @@
                     <span
                         @mouseenter="highlightLanguage"
                         @mouseleave="highlightLanguage"
-                        :style="{ width: language.width + '%', backgroundColor: language.color }"
+                        :style="{ width: language.percentage + '%', backgroundColor: language.color }"
                         :id="`bar-item-${language.properties?.slug}`"
                         class="bar-item"
                     >
@@ -30,8 +30,8 @@
                             >
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path>
                             </svg>
-                            <span class="lang-name mr-1 text-xs font-bold text-white">{{ language.language }}</span>
-                            <span class="percent text-gray-400">{{ language.width }}%</span>
+                            <span class="lang-name mr-1 text-xs font-bold text-white">{{ language.name }}</span>
+                            <span class="percent text-gray-400">{{ language.percentage }}%</span>
                         </div>
                     </li>
                 </template>

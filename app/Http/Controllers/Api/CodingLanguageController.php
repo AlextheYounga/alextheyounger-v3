@@ -7,6 +7,7 @@ use App\Models\CodingLanguage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class CodingLanguageController extends Controller
 {
@@ -14,27 +15,22 @@ class CodingLanguageController extends Controller
     {
         $validated = $request->validate([
             'languages' => ['required', 'array'],
-            'languages.*.language' => ['required', 'string'],
-            'languages.*.value' => ['required', 'numeric'],
-            'languages.*.display_value' => ['nullable', 'numeric'],
-            'languages.*.color' => ['nullable', 'string'],
-            'languages.*.active' => ['nullable', 'boolean'],
-            'languages.*.project_count' => ['nullable', 'integer'],
-            'languages.*.properties' => ['nullable', 'array'],
+            'languages.*.size' => ['required', 'numeric'],
+            'languages.*.percentage' => ['required', 'numeric'],
         ]);
 
-        foreach ($validated['languages'] as $languageData) {
+        foreach ($validated['languages'] as $name => $languageData) {
             CodingLanguage::updateOrCreate(
                 [
-                    'language' => $languageData['language'],
+                    'name' => $name,
                 ],
                 [
-                    'value' => $languageData['value'],
-                    'display_value' => $languageData['display_value'] ?? $languageData['value'],
-                    'color' => $languageData['color'] ?? '#000000',
-                    'active' => $languageData['active'] ?? true,
-                    'project_count' => $languageData['project_count'] ?? null,
-                    'properties' => $languageData['properties'] ?? [],
+                    'value' => $languageData['size'],
+                    'percentage' => $languageData['percentage'],
+                    'active' => true,
+                    'properties' => [
+                        'slug' => Str::slug($name),
+                    ],
                 ],
             );
         }
@@ -44,30 +40,51 @@ class CodingLanguageController extends Controller
 
     public function stats(): JsonResponse
     {
-        $languages = CodingLanguage::active()->orderByDesc('display_value')->get();
-        $this->applyComputedWidths($languages);
-        $bytes = (float) CodingLanguage::sum('value');
+        $storedLanguages = CodingLanguage::query()->get();
+
+        if ($storedLanguages->isNotEmpty()) {
+            $languages = $storedLanguages
+                ->where('active', true)
+                ->sortByDesc('percentage')
+                ->values();
+            $bytes = (float) $storedLanguages->sum('value');
+        } else {
+            $languages = CodingLanguage::defaultLanguages();
+            $bytes = (float) $languages->sum('value');
+        }
+
+        $languages = $this->applyLanguageMetadata($languages);
 
         [$displaySize, $scale] = $this->formatSize($bytes);
 
         return response()->json([
             'languages' => $languages,
             'languageStats' => [
-                'count' => CodingLanguage::count(),
+                'count' => $storedLanguages->isNotEmpty() ? $storedLanguages->count() : $languages->count(),
                 'size' => $displaySize,
                 'scale' => $scale,
             ],
         ]);
     }
 
-    private function applyComputedWidths(Collection $languages): void
+    private function applyLanguageMetadata(Collection $languages): Collection
     {
-        $total = (float) $languages->sum('display_value');
+        return $languages->map(function ($language): array {
+            $name = data_get($language, 'name', data_get($language, 'language', ''));
+            $percentage = (float) data_get($language, 'percentage', 0);
+            $properties = (array) data_get($language, 'properties', []);
 
-        foreach ($languages as $language) {
-            $width = $total > 0 ? round(($language->display_value / $total) * 100, 2) : 0.0;
-            $language->setAttribute('width', $width);
-        }
+            $properties['slug'] = $properties['slug'] ?? Str::slug((string) $name);
+
+            return [
+                'name' => $name,
+                'value' => (float) data_get($language, 'value', 0),
+                'percentage' => $percentage,
+                'color' => data_get($language, 'color') ?: CodingLanguage::colorFor((string) $name) ?: '#64748b',
+                'active' => (bool) data_get($language, 'active', true),
+                'properties' => $properties,
+            ];
+        });
     }
 
     private function formatSize(float $bytes): array

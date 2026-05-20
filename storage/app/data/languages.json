@@ -1,46 +1,48 @@
 {
-	"Rust": {
-		"size": 1649361,
-		"percentage": "4.07"
-	},
-	"Shell": {
-		"size": 911976,
-		"percentage": "2.25"
-	},
-	"JavaScript": {
-		"size": 7147869,
-		"percentage": "17.62"
-	},
-	"Dockerfile": {
-		"size": 26955,
-		"percentage": "0.07"
-	},
-	"PHP": {
-		"size": 15534119,
-		"percentage": "38.29"
-	},
-	"Python": {
-		"size": 2668719,
-		"percentage": "6.58"
-	},
-	"Vue": {
-		"size": 1706206,
-		"percentage": "4.21"
-	},
-	"Ruby": {
-		"size": 9651761,
-		"percentage": "23.79"
-	},
-	"TypeScript": {
-		"size": 1190197,
-		"percentage": "2.93"
-	},
-	"Lua": {
-		"size": 62863,
-		"percentage": "0.15"
-	},
-	"C": {
-		"size": 22278,
-		"percentage": "0.05"
+	"languages": {
+		"Rust": {
+			"size": 1649361,
+			"percentage": "4.07"
+		},
+		"Shell": {
+			"size": 911976,
+			"percentage": "2.25"
+		},
+		"JavaScript": {
+			"size": 7147869,
+			"percentage": "17.62"
+		},
+		"Dockerfile": {
+			"size": 26955,
+			"percentage": "0.07"
+		},
+		"PHP": {
+			"size": 15534119,
+			"percentage": "38.29"
+		},
+		"Python": {
+			"size": 2668719,
+			"percentage": "6.58"
+		},
+		"Vue": {
+			"size": 1706206,
+			"percentage": "4.21"
+		},
+		"Ruby": {
+			"size": 9651761,
+			"percentage": "23.79"
+		},
+		"TypeScript": {
+			"size": 1190197,
+			"percentage": "2.93"
+		},
+		"Lua": {
+			"size": 62863,
+			"percentage": "0.15"
+		},
+		"C": {
+			"size": 22278,
+			"percentage": "0.05"
+		}
 	}
 }

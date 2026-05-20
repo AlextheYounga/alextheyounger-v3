@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class CodingLanguage extends Model
 {
@@ -17,12 +19,10 @@ class CodingLanguage extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'language',
+        'name',
         'value',
-        'display_value',
-        'color',
+        'percentage',
         'active',
-        'project_count',
         'properties',
     ];
 
@@ -32,36 +32,48 @@ class CodingLanguage extends Model
 
     public static function colorFor(string $language): ?string
     {
-        $colors = static::colors();
+        $colors = static::loadColors();
 
         return $colors[$language] ?? null;
     }
 
-    protected static function colors(): array
+    public static function defaultLanguages(): Collection
+    {
+        $languagesJson = storage_path('app/data/languages.json');
+        $payload = json_decode(file_get_contents($languagesJson), true);
+
+        return collect($payload['languages'] ?? [])
+            ->map(function (array $language, string $name): array {
+                return [
+                    'name' => $name,
+                    'value' => (float) ($language['size'] ?? 0),
+                    'percentage' => (float) ($language['percentage'] ?? 0),
+                    'color' => static::colorFor($name) ?? '#64748b',
+                    'active' => true,
+                    'properties' => [
+                        'slug' => Str::slug($name),
+                    ],
+                ];
+            })
+            ->values();
+    }
+
+    protected static function loadColors(): array
     {
         if (static::$colors !== []) {
             return static::$colors;
         }
 
-        $colorsJson = storage_path('app/data/language-colors.json');
-        $colors = json_decode(file_get_contents($colorsJson), true);
+        $colorsPath = storage_path('app/data/language-colors.json');
+        $colors = json_decode(file_get_contents($colorsPath), true);
 
-        return static::$colors = is_array($colors) ? $colors : [];
+        static::$colors = is_array($colors) ? $colors : [];
+
+        return static::$colors;
     }
 
     public function scopeActive()
     {
         return $this->where('active', true);
-    }
-
-    public function getLanguageColor()
-    {
-        if (array_key_exists($this->language, static::colors())) {
-            return static::colors()[$this->language];
-        }
-
-        $randomColor = sprintf('#%06X', mt_rand(0, 0xffffff));
-
-        return $randomColor;
     }
 }
