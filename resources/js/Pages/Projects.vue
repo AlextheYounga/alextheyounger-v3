@@ -25,7 +25,7 @@
                         <div class="flex-shrink-0">
                             <img
                                 v-if="project.external_image_link"
-                                :src="project.external_image_link"
+                                :src="projectImage(project)"
                                 class="h-48 w-full object-cover"
                             />
                             <img
@@ -92,7 +92,7 @@
             <div class="flex-shrink-0">
                 <img
                     v-if="projectSelected.external_image_link"
-                    :src="projectSelected.external_image_link"
+                    :src="projectImage(projectSelected)"
                     class="w-full object-cover"
                 />
                 <img
@@ -237,6 +237,10 @@ export default {
             return `Alex Younger Project Gallery ${project.title} Cover Image`;
         },
         projectImage(project) {
+            if (project?.external_image_link) {
+                return route('api.projects.image', project.id);
+            }
+
             return resolveImage(projectImages, project?.properties?.image_name, "projects");
         },
         technologyStyle(technology) {
