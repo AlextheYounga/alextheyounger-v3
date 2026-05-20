@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\ResumeResource\Pages\CreateResume;
 use App\Filament\Resources\ResumeResource\Pages\EditResume;
 use App\Filament\Resources\ResumeResource\Pages\ListResumes;
@@ -15,6 +16,8 @@ use Filament\Tables\Table;
 
 class ResumeResource extends Resource
 {
+    use GeneratesUniqueCopyName;
+
     protected static ?string $model = Resume::class;
     protected static ?string $navigationGroup = 'Content';
     protected static ?string $navigationIcon = 'heroicon-o-user';
@@ -61,6 +64,13 @@ class ResumeResource extends Resource
                         ->columnSpanFull(),
                 ])
                 ->columnSpanFull(),
+            Forms\Components\Repeater::make('expertise')
+                ->label('Expertise')
+                ->schema([
+                    Forms\Components\TextInput::make('expertise')->label('Expertise')->required(),
+                ])
+                ->defaultItems(0)
+                ->columnSpanFull(),
             Forms\Components\Textarea::make('education')->rows(4)->columnSpanFull(),
             Forms\Components\KeyValue::make('properties')->columnSpanFull(),
         ]);
@@ -82,6 +92,15 @@ class ResumeResource extends Resource
                     ->url(fn(Resume $record): string => static::$resumeSiteBase . $record->hash)
                     ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
+                    ->beforeReplicaSaved(function (Resume $replica): void {
+                        $replica->name = static::generateUniqueCopyValue(
+                            Resume::class,
+                            'name',
+                            $replica->name,
+                        );
+                    }),
             ]);
     }
 

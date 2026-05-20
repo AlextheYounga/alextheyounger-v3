@@ -19,7 +19,7 @@
                 <section id="title" class="relative mb-8 rounded">
                     <h1 class="glow text-center text-5xl text-sky-100">Alex Younger</h1>
                     <p id="tagline" class="py-2 text-center text-sm text-sky-200">
-                        {{ $props.content?.homeTagline?.content ?? "" }}
+                        Software Engineer, Data Scientist, Entrepreneur
                     </p>
                 </section>
 
@@ -48,7 +48,14 @@
                 <section id="bio" v-if="this.selected == 'bio'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
                         <h2 class="pb-4 text-2xl font-semibold text-sky-300">Bio</h2>
-                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sky-100"></div>
+                        <div class="text-sky-100">
+                            <p>
+                                Programmer writing in multiple languages, doing web development,
+                                <a href="https://youtu.be/VTdS4-Tas6E?si=VuC2DKMPXHrL9r0v">drone programming</a>,
+                                and AI LLM development. I love freedom, adrenaline, and working to improve the world
+                                any way I can.
+                            </p>
+                        </div>
                     </div>
                 </section>
 
@@ -57,13 +64,56 @@
                         class="large-description rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100"
                     >
                         <h2 class="pb-4 text-2xl font-semibold text-sky-300">About</h2>
-                        <div v-html="$props.content?.about?.content ?? ''" class="text-sky-100"></div>
+                        <div class="text-sky-100">
+                            <p>
+                                Over the past three years, I've led the transformation of
+                                <a href="https://www.learnarena.com/" target="_blank" rel="noopener noreferrer"
+                                    >Learn Arena</a
+                                >
+                                into a scalable Next.js platform. It's a competitive learning platform where users can
+                                get paid to learn. I also developed an AI course generator that creates 60+ hours of
+                                interactive content from a single topic.
+                            </p>
+
+                            <p>
+                                At
+                                <a href="https://marketplacer.com/" target="_blank" rel="noopener noreferrer"
+                                    >Marketplacer</a
+                                >,
+                                I developed core Shopify and Adobe Commerce API connectors for an enterprise Rails API
+                                system, allowing enterprise companies to manage a fleet of eCommerce websites where
+                                every action syncs back to a central dashboard.
+                            </p>
+
+                            <p>
+                                I started at
+                                <a href="https://www.izoox.com/" target="_blank" rel="noopener noreferrer">Izoox</a>,
+                                building websites and infrastructure for clients like
+                                <a href="https://www.bluehawaiian.com/en" target="_blank" rel="noopener noreferrer"
+                                    >Blue Hawaiian Helicopters</a
+                                >,
+                                <a href="https://www.intelligentoffice.com/" target="_blank" rel="noopener noreferrer"
+                                    >Intelligent Office</a
+                                >,
+                                and
+                                <a href="https://www.rugdoctor.com/" target="_blank" rel="noopener noreferrer"
+                                    >Rug Doctor</a
+                                >.
+                            </p>
+
+                            <p>
+                                View my <a href="/projects">projects</a> or check out my
+                                <a href="https://resume.alexyounger.me" target="_blank" rel="noopener noreferrer"
+                                    >resume</a
+                                >.
+                            </p>
+                        </div>
                     </div>
                 </section>
 
-                <section id="skills" v-if="this.selected == 'skills'" class="mx-auto max-w-3xl">
+                <section id="expertise" v-if="this.selected == 'expertise'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
-                        <h3 class="pb-4 text-2xl font-semibold text-sky-300">Skills</h3>
+                        <h3 class="pb-4 text-2xl font-semibold text-sky-300">Expertise</h3>
                         <div class="text-sky-100">
                             <LanguageBar />
                         </div>
@@ -73,7 +123,26 @@
                 <section id="contact" v-if="this.selected == 'contact'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border-2 border-sky-600 bg-transparent p-12 shadow shadow-sky-100">
                         <h3 class="pb-4 text-2xl font-semibold text-sky-300">Contact</h3>
-                        <div id="contact-description" v-html="$props.content?.contact?.content ?? ''"></div>
+                        <div id="contact-description">
+                            <p>
+                                Not a fan of copyright, take whatever you want. Here's the
+                                <a
+                                    href="https://github.com/AlextheYounga/alextheyounger-v3"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >repo</a
+                                >
+                                for this site.
+                                <a href="https://alextheyounger.me" target="_blank" rel="noopener noreferrer"
+                                    >alextheyounger.me</a
+                                >
+                                by Alex Younger.
+                            </p>
+                            <p>
+                                This site was built with PHP Laravel with Orchid, InertiaJS, Vue3, ThreeJS, and
+                                TailwindCSS.
+                            </p>
+                        </div>
 
                         <div class="w-full pt-12">
                             <div
@@ -104,7 +173,7 @@
                 <section id="title" class="relative mb-8 rounded">
                     <h1 class="glow text-center text-5xl text-sky-100">Alex Younger</h1>
                     <p id="tagline" class="py-2 text-center text-sm text-sky-200">
-                        {{ $props.content?.homeTagline?.content ?? "" }}
+                        Software Engineer, Data Scientist, Entrepreneur
                     </p>
                 </section>
             </div>
@@ -135,20 +204,70 @@
                 <section id="bio" v-if="this.selected == 'bio'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
                         <h2 class="pb-4 text-xl font-semibold text-sky-300">Bio</h2>
-                        <div v-html="$props.content?.bio?.content ?? ''" class="text-sm text-sky-100"></div>
+                        <div class="text-sm text-sky-100">
+                            <p>
+                                Programmer writing in multiple languages, doing web development,
+                                <a href="https://youtu.be/VTdS4-Tas6E?si=VuC2DKMPXHrL9r0v">drone programming</a>,
+                                and AI LLM development. I love freedom, adrenaline, and working to improve the world
+                                any way I can.
+                            </p>
+                        </div>
                     </div>
                 </section>
 
                 <section id="about" v-if="this.selected == 'about'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
                         <h2 class="pb-4 text-xl font-semibold text-sky-300">About</h2>
-                        <div v-html="$props.content?.about?.content ?? ''" class="text-sm text-sky-100"></div>
+                        <div class="text-sm text-sky-100">
+                            <p>
+                                Over the past three years, I've led the transformation of
+                                <a href="https://www.learnarena.com/" target="_blank" rel="noopener noreferrer"
+                                    >Learn Arena</a
+                                >
+                                into a scalable Next.js platform. It's a competitive learning platform where users can
+                                get paid to learn. I also developed an AI course generator that creates 60+ hours of
+                                interactive content from a single topic.
+                            </p>
+
+                            <p>
+                                At
+                                <a href="https://marketplacer.com/" target="_blank" rel="noopener noreferrer"
+                                    >Marketplacer</a
+                                >,
+                                I developed core Shopify and Adobe Commerce API connectors for an enterprise Rails API
+                                system, allowing enterprise companies to manage a fleet of eCommerce websites where
+                                every action syncs back to a central dashboard.
+                            </p>
+
+                            <p>
+                                I started at
+                                <a href="https://www.izoox.com/" target="_blank" rel="noopener noreferrer">Izoox</a>,
+                                building websites and infrastructure for clients like
+                                <a href="https://www.bluehawaiian.com/en" target="_blank" rel="noopener noreferrer"
+                                    >Blue Hawaiian Helicopters</a
+                                >,
+                                <a href="https://www.intelligentoffice.com/" target="_blank" rel="noopener noreferrer"
+                                    >Intelligent Office</a
+                                >,
+                                and
+                                <a href="https://www.rugdoctor.com/" target="_blank" rel="noopener noreferrer"
+                                    >Rug Doctor</a
+                                >.
+                            </p>
+
+                            <p>
+                                View my <a href="/projects">projects</a> or check out my
+                                <a href="https://resume.alexyounger.me" target="_blank" rel="noopener noreferrer"
+                                    >resume</a
+                                >.
+                            </p>
+                        </div>
                     </div>
                 </section>
 
-                <section id="skills" v-if="this.selected == 'skills'" class="mx-auto max-w-3xl">
+                <section id="expertise" v-if="this.selected == 'expertise'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
-                        <h3 class="pb-4 text-xl font-semibold text-sky-300">Skills</h3>
+                        <h3 class="pb-4 text-xl font-semibold text-sky-300">Expertise</h3>
                         <div class="text-sm text-sky-100">
                             <LanguageBar />
                         </div>
@@ -158,11 +277,26 @@
                 <section id="contact" v-if="this.selected == 'contact'" class="mx-auto max-w-3xl">
                     <div class="rounded-md border border-sky-600 bg-transparent p-3 shadow shadow-sky-100">
                         <h3 class="pb-4 text-xl font-semibold text-sky-300">Contact</h3>
-                        <div
-                            id="contact-description"
-                            class="text-sm"
-                            v-html="$props.content?.contact?.content ?? ''"
-                        ></div>
+                        <div id="contact-description" class="text-sm">
+                            <p>
+                                Not a fan of copyright, take whatever you want. Here's the
+                                <a
+                                    href="https://github.com/AlextheYounga/alextheyounger-v3"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >repo</a
+                                >
+                                for this site.
+                                <a href="https://alextheyounger.me" target="_blank" rel="noopener noreferrer"
+                                    >alextheyounger.me</a
+                                >
+                                by Alex Younger.
+                            </p>
+                            <p>
+                                This site was built with PHP Laravel with Orchid, InertiaJS, Vue3, ThreeJS, and
+                                TailwindCSS.
+                            </p>
+                        </div>
 
                         <div class="w-full pt-6">
                             <div
@@ -224,12 +358,6 @@ export default {
         AnimatedButtonMenu,
         LanguageBar,
     },
-    props: {
-        content: {
-            type: Object,
-            required: true,
-        },
-    },
     data() {
         return {
             links,
@@ -237,7 +365,7 @@ export default {
             homeItems: [
                 { name: "Bio", link: false, id: "bio", action: this.openSection },
                 { name: "About", link: false, id: "about", action: this.openSection },
-                { name: "Skills", link: false, id: "skills", action: this.openSection },
+                { name: "Expertise", link: false, id: "expertise", action: this.openSection },
                 { name: "Contact", link: false, id: "contact", action: this.openSection },
                 { name: "Reading List", link: "pages.books" },
                 { name: "Projects", link: "pages.projects" },

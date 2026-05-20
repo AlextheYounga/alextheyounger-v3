@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CoverLetterController;
 use App\Http\Controllers\Api\CodingLanguageController;
+use App\Http\Controllers\Api\BookImageController;
+use App\Http\Controllers\Api\ProjectImageController;
 use App\Http\Controllers\Api\ResumeController;
 
 /*
@@ -27,20 +29,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/*
-TODO: Investigate proper authentication for these routes. Issue currently is resume Vue app has no server-side code. 
-Random hash is being used as a psuedo-authentication method. Adding throttle to these routes for now to prevent abuse.
-*/
-
 Route::get('/resume/{hash}', [ResumeController::class, 'get'])->middleware('throttle:50,1'); // Open
 Route::get('/cover-letter/{hash}', [CoverLetterController::class, 'get'])->middleware(
     'throttle:50,1',
 ); // Open
+Route::get('/books/{book}/image', [BookImageController::class, 'show'])
+    ->name('api.books.image')
+    ->middleware('throttle:50,1');
+Route::get('/projects/{project}/image', [ProjectImageController::class, 'show'])
+    ->name('api.projects.image')
+    ->middleware('throttle:50,1');
 
-Route::middleware('auth:sanctum')->post('/repositories', [
+Route::middleware('auth:sanctum')->post('/languages', [
     CodingLanguageController::class,
-    'addRepositories',
+    'store',
 ]);
+
+Route::get('/languages', [CodingLanguageController::class, 'index'])->middleware(
+    'throttle:50,1',
+); // Open
 
 Route::get('/languages/stats', [CodingLanguageController::class, 'stats'])->middleware(
     'throttle:50,1',

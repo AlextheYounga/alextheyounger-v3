@@ -13,6 +13,7 @@ class CreateResume extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['experience'] = $this->mutateExperience($data['experience'] ?? []);
+        $data['expertise'] = $this->mutateExpertise($data['expertise'] ?? []);
         $data['properties'] = $this->normalizeProperties($data['properties'] ?? []);
 
         return $data;
@@ -50,6 +51,27 @@ class CreateResume extends CreateRecord
 
                 return $item;
             })
+            ->all();
+    }
+
+    protected function mutateExpertise(array $expertise): array
+    {
+        return collect($expertise)
+            ->map(function (mixed $item): ?string {
+                if (is_array($item)) {
+                    $item = $item['expertise'] ?? null;
+                }
+
+                if (!is_string($item)) {
+                    return null;
+                }
+
+                $item = trim($item);
+
+                return $item === '' ? null : $item;
+            })
+            ->filter()
+            ->values()
             ->all();
     }
 

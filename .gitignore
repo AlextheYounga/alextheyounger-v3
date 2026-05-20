@@ -22,3 +22,4 @@ __trash__
 .DS_Store
 docs/plans
 docs/references
+.worktrees

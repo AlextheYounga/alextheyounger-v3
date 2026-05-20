@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ResumeResource\Pages;
 
+use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
 use App\Filament\Resources\ResumeResource;
 use App\Models\Resume;
 use Filament\Actions;
@@ -9,6 +10,8 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditResume extends EditRecord
 {
+    use GeneratesUniqueCopyName;
+
     protected static string $resource = ResumeResource::class;
 
     protected function mutateFormDataBeforeFill(array $data): array
@@ -33,6 +36,22 @@ class EditResume extends EditRecord
                 return $item;
             })
             ->all();
+        $data['expertise'] = collect($data['expertise'] ?? [])
+            ->map(function (mixed $item): ?string {
+                if (is_array($item)) {
+                    $item = $item['expertise'] ?? null;
+                }
+
+                if (!is_string($item)) {
+                    return null;
+                }
+
+                $item = trim($item);
+
+                return $item === '' ? null : $item;
+            })
+            ->filter()
+            ->all();
 
         return $data;
     }
@@ -43,11 +62,12 @@ class EditResume extends EditRecord
             Actions\DeleteAction::make(),
             Actions\ReplicateAction::make()
                 ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
-                ->mutateRecordDataUsing(function (array $data): array {
-                    $data['name'] = $data['name'] . ' (Copy)';
-                    unset($data['id'], $data['hash']);
-
-                    return $data;
+                ->beforeReplicaSaved(function (Resume $replica): void {
+                    $replica->name = static::generateUniqueCopyValue(
+                        Resume::class,
+                        'name',
+                        $replica->name,
+                    );
                 }),
         ];
     }
@@ -77,6 +97,30 @@ class EditResume extends EditRecord
 
                 return $item;
             })
+            ->all();
+        $data['expertise'] = collect($data['expertise'] ?? [])
+            ->map(function (mixed $item): ?string {
+                if (is_string($item)) {
+                    $item = trim($item);
+
+                    return $item === '' ? null : $item;
+                }
+
+                if (!is_array($item)) {
+                    return null;
+                }
+
+                $item = $item['expertise'] ?? null;
+
+                if (!is_string($item)) {
+                    return null;
+                }
+
+                $item = trim($item);
+
+                return $item === '' ? null : $item;
+            })
+            ->filter()
             ->all();
 
         return $data;
