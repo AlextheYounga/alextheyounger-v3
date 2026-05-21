@@ -37,7 +37,7 @@ class EditResume extends EditRecord
             })
             ->all();
         $data['expertise'] = collect($data['expertise'] ?? [])
-            ->map(function (mixed $item): ?string {
+            ->map(function (mixed $item): ?array {
                 if (is_array($item)) {
                     $item = $item['expertise'] ?? null;
                 }
@@ -48,7 +48,7 @@ class EditResume extends EditRecord
 
                 $item = trim($item);
 
-                return $item === '' ? null : $item;
+                return $item === '' ? null : ['expertise' => $item];
             })
             ->filter()
             ->all();

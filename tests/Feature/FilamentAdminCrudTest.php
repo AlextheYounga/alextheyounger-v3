@@ -465,6 +465,18 @@ class FilamentAdminCrudTest extends TestCase
         $this->assertSame(['Led migration'], $resume->experience[0]['bullets']);
         $this->assertSame(['Symfony'], $resume->expertise);
 
+        $editResume = Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])->instance();
+        $mutateFormDataBeforeFill = new \ReflectionMethod($editResume, 'mutateFormDataBeforeFill');
+        $mutateFormDataBeforeFill->setAccessible(true);
+
+        $filled = $mutateFormDataBeforeFill->invoke($editResume, [
+            'expertise' => $resume->expertise,
+        ]);
+
+        $this->assertSame([
+            ['expertise' => 'Symfony'],
+        ], $filled['expertise']);
+
         Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])->callAction(
             'delete',
         );
