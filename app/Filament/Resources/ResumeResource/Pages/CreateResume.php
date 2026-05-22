@@ -4,7 +4,6 @@ namespace App\Filament\Resources\ResumeResource\Pages;
 
 use App\Filament\Resources\Concerns\HasSaveHeaderAction;
 use App\Filament\Resources\ResumeResource;
-use App\Models\Resume;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 
@@ -33,13 +32,6 @@ class CreateResume extends CreateRecord
         $data['properties'] = $this->normalizeProperties($data['properties'] ?? []);
 
         return $data;
-    }
-
-    protected function afterCreate(): void
-    {
-        /** @var Resume $record */
-        $record = $this->record;
-        $this->syncProjects($record, $this->data['projects'] ?? []);
     }
 
     protected function mutateExperience(array $experience): array
@@ -104,23 +96,4 @@ class CreateResume extends CreateRecord
         return [];
     }
 
-    protected function syncProjects(Resume $record, mixed $projects): void
-    {
-        if (! is_array($projects)) {
-            $record->projects()->sync([]);
-
-            return;
-        }
-
-        $record->projects()->sync(
-            collect($projects)
-                ->filter(fn (mixed $projectId): bool => is_numeric($projectId))
-                ->map(fn (mixed $projectId): int => (int) $projectId)
-                ->values()
-                ->mapWithKeys(fn (int $projectId, int $index): array => [
-                    $projectId => ['position' => $index + 1],
-                ])
-                ->all(),
-        );
-    }
 }

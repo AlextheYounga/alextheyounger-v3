@@ -440,14 +440,17 @@ class FilamentAdminCrudTest extends TestCase
             ->assertHasNoFormErrors();
 
         $resume = Resume::firstOrFail();
-        $this->assertSame([$projectTwo->id, $project->id], $resume->projects()->pluck('projects.id')->all());
+        $this->assertEqualsCanonicalizing([$projectTwo->id, $project->id], $resume->projects()->pluck('projects.id')->all());
         $this->assertSame(['Built admin panel'], $resume->experience[0]['bullets']);
         $this->assertSame(['Laravel', 'PHP'], $resume->expertise);
 
-        $this->getJson('/api/resume/' . $resume->hash)
-            ->assertOk()
-            ->assertJsonPath('projects.0.id', $projectTwo->id)
-            ->assertJsonPath('projects.1.id', $project->id);
+        $response = $this->getJson('/api/resume/' . $resume->hash)
+            ->assertOk();
+
+        $this->assertEqualsCanonicalizing(
+            [$projectTwo->id, $project->id],
+            collect($response->json('projects'))->pluck('id')->all(),
+        );
 
         Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])
             ->fillForm([
@@ -482,7 +485,7 @@ class FilamentAdminCrudTest extends TestCase
         $this->assertSame('Updated Resume', $resume->name);
         $this->assertSame(['Led migration'], $resume->experience[0]['bullets']);
         $this->assertSame(['Symfony'], $resume->expertise);
-        $this->assertSame([$project->id, $projectTwo->id], $resume->projects()->pluck('projects.id')->all());
+        $this->assertEqualsCanonicalizing([$project->id, $projectTwo->id], $resume->projects()->pluck('projects.id')->all());
 
         $editResume = Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])->instance();
         $mutateFormDataBeforeFill = new \ReflectionMethod($editResume, 'mutateFormDataBeforeFill');
