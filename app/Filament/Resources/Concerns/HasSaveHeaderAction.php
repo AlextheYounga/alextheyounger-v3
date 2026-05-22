@@ -13,6 +13,7 @@ trait HasSaveHeaderAction
         return Action::make('save')
             ->label('Save')
             ->submit($submitAction)
+            ->formId('form')
             ->keyBindings(['mod+s']);
     }
 
