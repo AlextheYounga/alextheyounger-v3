@@ -3,16 +3,32 @@
 namespace App\Filament\Resources\ProjectResource\Pages;
 
 use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
+use App\Filament\Resources\Concerns\HasSaveHeaderAction;
 use App\Filament\Resources\ProjectResource;
 use App\Models\Project;
 use Filament\Actions;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
 
 class EditProject extends EditRecord
 {
     use GeneratesUniqueCopyName;
+    use HasSaveHeaderAction;
 
     protected static string $resource = ProjectResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            $this->saveHeaderAction('save'),
+            Actions\DeleteAction::make(),
+        ];
+    }
+
+    protected function getSaveFormAction(): Action
+    {
+        return $this->editFormSaveAction();
+    }
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
@@ -25,25 +41,6 @@ class EditProject extends EditRecord
             ->all();
 
         return $data;
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-            Actions\ReplicateAction::make()
-                ->excludeAttributes(['id', 'created_at', 'updated_at'])
-                ->mutateRecordDataUsing(function (array $data): array {
-                    $data['title'] = static::generateUniqueCopyValue(
-                        Project::class,
-                        'title',
-                        $data['title'] ?? null,
-                    );
-                    unset($data['id']);
-
-                    return $data;
-                }),
-        ];
     }
 
     protected function mutateFormDataBeforeSave(array $data): array

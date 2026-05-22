@@ -44,6 +44,7 @@ class CoverLetterResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
             ])
             ->actions([
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\Action::make('view')
                     ->label('View')
                     ->icon('heroicon-o-eye')
@@ -52,7 +53,6 @@ class CoverLetterResource extends Resource
                             $record->hash,
                     )
                     ->openUrlInNewTab(),
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\ReplicateAction::make()
                     ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
                     ->beforeReplicaSaved(function (CoverLetter $replica): void {
@@ -62,7 +62,9 @@ class CoverLetterResource extends Resource
                             $replica->name,
                         );
                     }),
-            ]);
+            ])
+            ->recordAction('edit')
+            ->recordUrl(fn (CoverLetter $record): string => static::getUrl('edit', ['record' => $record]));
     }
 
     public static function getPages(): array

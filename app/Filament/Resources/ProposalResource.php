@@ -85,12 +85,12 @@ class ProposalResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
             ])
             ->actions([
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\Action::make('view')
                     ->label('View')
                     ->icon('heroicon-o-eye')
                     ->url(fn(Proposal $record): string => url('/proposals/' . $record->hash))
                     ->openUrlInNewTab(),
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\ReplicateAction::make()
                     ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
                     ->mutateRecordDataUsing(function (array $data): array {
@@ -103,7 +103,9 @@ class ProposalResource extends Resource
 
                         return $data;
                     }),
-            ]);
+            ])
+            ->recordAction('edit')
+            ->recordUrl(fn (Proposal $record): string => static::getUrl('edit', ['record' => $record]));
     }
 
     public static function getPages(): array

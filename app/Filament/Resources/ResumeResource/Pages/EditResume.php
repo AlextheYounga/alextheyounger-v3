@@ -3,16 +3,32 @@
 namespace App\Filament\Resources\ResumeResource\Pages;
 
 use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
+use App\Filament\Resources\Concerns\HasSaveHeaderAction;
 use App\Filament\Resources\ResumeResource;
 use App\Models\Resume;
+use Filament\Actions\Action;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditResume extends EditRecord
 {
     use GeneratesUniqueCopyName;
+    use HasSaveHeaderAction;
 
     protected static string $resource = ResumeResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            $this->saveHeaderAction('save'),
+            Actions\DeleteAction::make(),
+        ];
+    }
+
+    protected function getSaveFormAction(): Action
+    {
+        return $this->editFormSaveAction();
+    }
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
@@ -54,22 +70,6 @@ class EditResume extends EditRecord
             ->all();
 
         return $data;
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-            Actions\ReplicateAction::make()
-                ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
-                ->beforeReplicaSaved(function (Resume $replica): void {
-                    $replica->name = static::generateUniqueCopyValue(
-                        Resume::class,
-                        'name',
-                        $replica->name,
-                    );
-                }),
-        ];
     }
 
     protected function mutateFormDataBeforeSave(array $data): array

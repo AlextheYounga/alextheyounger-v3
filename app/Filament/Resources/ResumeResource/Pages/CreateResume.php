@@ -2,13 +2,29 @@
 
 namespace App\Filament\Resources\ResumeResource\Pages;
 
+use App\Filament\Resources\Concerns\HasSaveHeaderAction;
 use App\Filament\Resources\ResumeResource;
 use App\Models\Resume;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateResume extends CreateRecord
 {
+    use HasSaveHeaderAction;
+
     protected static string $resource = ResumeResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            $this->saveHeaderAction('create'),
+        ];
+    }
+
+    protected function getCreateFormAction(): Action
+    {
+        return $this->createFormSaveAction();
+    }
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
