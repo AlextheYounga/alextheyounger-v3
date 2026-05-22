@@ -2,13 +2,27 @@
 
 namespace App\Filament\Resources\ProposalResource\Pages;
 
+use App\Filament\Resources\Concerns\HasSaveHeaderAction;
 use App\Filament\Resources\ProposalResource;
 use App\Models\Proposal;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateProposal extends CreateRecord
 {
+    use HasSaveHeaderAction;
+
     protected static string $resource = ProposalResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [$this->saveHeaderAction('create')];
+    }
+
+    protected function getCreateFormAction(): Action
+    {
+        return $this->createFormSaveAction();
+    }
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {

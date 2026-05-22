@@ -2,13 +2,29 @@
 
 namespace App\Filament\Resources\ResumeResource\Pages;
 
+use App\Filament\Resources\Concerns\HasSaveHeaderAction;
 use App\Filament\Resources\ResumeResource;
 use App\Models\Resume;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateResume extends CreateRecord
 {
+    use HasSaveHeaderAction;
+
     protected static string $resource = ResumeResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            $this->saveHeaderAction('create'),
+        ];
+    }
+
+    protected function getCreateFormAction(): Action
+    {
+        return $this->createFormSaveAction();
+    }
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
@@ -23,8 +39,7 @@ class CreateResume extends CreateRecord
     {
         /** @var Resume $record */
         $record = $this->record;
-        $projects = $this->data['projects'] ?? [];
-        $record->projects()->sync(is_array($projects) ? $projects : []);
+        $this->syncProjects($record, $this->data['projects'] ?? []);
     }
 
     protected function mutateExperience(array $experience): array
@@ -87,5 +102,25 @@ class CreateResume extends CreateRecord
         }
 
         return [];
+    }
+
+    protected function syncProjects(Resume $record, mixed $projects): void
+    {
+        if (! is_array($projects)) {
+            $record->projects()->sync([]);
+
+            return;
+        }
+
+        $record->projects()->sync(
+            collect($projects)
+                ->filter(fn (mixed $projectId): bool => is_numeric($projectId))
+                ->map(fn (mixed $projectId): int => (int) $projectId)
+                ->values()
+                ->mapWithKeys(fn (int $projectId, int $index): array => [
+                    $projectId => ['position' => $index + 1],
+                ])
+                ->all(),
+        );
     }
 }

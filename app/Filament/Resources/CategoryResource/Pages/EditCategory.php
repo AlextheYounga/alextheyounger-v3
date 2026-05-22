@@ -3,16 +3,32 @@
 namespace App\Filament\Resources\CategoryResource\Pages;
 
 use App\Filament\Resources\Concerns\GeneratesUniqueCopyName;
+use App\Filament\Resources\Concerns\HasSaveHeaderAction;
 use App\Filament\Resources\CategoryResource;
 use App\Models\Category;
 use Filament\Actions;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
 
 class EditCategory extends EditRecord
 {
     use GeneratesUniqueCopyName;
+    use HasSaveHeaderAction;
 
     protected static string $resource = CategoryResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            $this->saveHeaderAction('save'),
+            Actions\DeleteAction::make(),
+        ];
+    }
+
+    protected function getSaveFormAction(): Action
+    {
+        return $this->editFormSaveAction();
+    }
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
@@ -26,25 +42,6 @@ class EditCategory extends EditRecord
         $data['properties'] = $this->normalizeProperties($data['properties'] ?? []);
 
         return $data;
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-            Actions\ReplicateAction::make()
-                ->excludeAttributes(['id', 'created_at', 'updated_at'])
-                ->mutateRecordDataUsing(function (array $data): array {
-                    $data['name'] = static::generateUniqueCopyValue(
-                        Category::class,
-                        'name',
-                        $data['name'] ?? null,
-                    );
-                    unset($data['id']);
-
-                    return $data;
-                }),
-        ];
     }
 
     protected function afterSave(): void

@@ -86,12 +86,12 @@ class ResumeResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
             ])
             ->actions([
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\Action::make('view')
                     ->label('View')
                     ->icon('heroicon-o-eye')
                     ->url(fn(Resume $record): string => static::$resumeSiteBase . $record->hash)
                     ->openUrlInNewTab(),
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\ReplicateAction::make()
                     ->excludeAttributes(['id', 'hash', 'created_at', 'updated_at'])
                     ->beforeReplicaSaved(function (Resume $replica): void {
@@ -101,7 +101,9 @@ class ResumeResource extends Resource
                             $replica->name,
                         );
                     }),
-            ]);
+            ])
+            ->recordAction('edit')
+            ->recordUrl(fn (Resume $record): string => static::getUrl('edit', ['record' => $record]));
     }
 
     public static function getPages(): array

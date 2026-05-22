@@ -77,7 +77,9 @@ class ProjectResource extends Resource
 
                         return $data;
                     }),
-            ]);
+            ])
+            ->recordAction('edit')
+            ->recordUrl(fn (Project $record): string => static::getUrl('edit', ['record' => $record]));
     }
 
     public static function getPages(): array

@@ -69,7 +69,9 @@ class CategoryResource extends Resource
 
                         return $data;
                     }),
-            ]);
+            ])
+            ->recordAction('edit')
+            ->recordUrl(fn (Category $record): string => static::getUrl('edit', ['record' => $record]));
     }
 
     public static function getPages(): array

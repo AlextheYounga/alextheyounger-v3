@@ -2,13 +2,27 @@
 
 namespace App\Filament\Resources\CategoryResource\Pages;
 
+use App\Filament\Resources\Concerns\HasSaveHeaderAction;
 use App\Filament\Resources\CategoryResource;
 use App\Models\Category;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateCategory extends CreateRecord
 {
+    use HasSaveHeaderAction;
+
     protected static string $resource = CategoryResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [$this->saveHeaderAction('create')];
+    }
+
+    protected function getCreateFormAction(): Action
+    {
+        return $this->createFormSaveAction();
+    }
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {

@@ -85,7 +85,9 @@ class BookResource extends Resource
 
                         return $data;
                     }),
-            ]);
+            ])
+            ->recordAction('edit')
+            ->recordUrl(fn (Book $record): string => static::getUrl('edit', ['record' => $record]));
     }
 
     public static function getPages(): array
