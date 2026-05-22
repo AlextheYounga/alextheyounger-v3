@@ -130,8 +130,7 @@ class EditResume extends EditRecord
     {
         /** @var Resume $record */
         $record = $this->record;
-        $projects = $this->data['projects'] ?? [];
-        $record->projects()->sync(is_array($projects) ? $projects : []);
+        $this->syncProjects($record, $this->data['projects'] ?? []);
     }
 
     protected function normalizeProperties(mixed $properties): array
@@ -146,5 +145,25 @@ class EditResume extends EditRecord
         }
 
         return [];
+    }
+
+    protected function syncProjects(Resume $record, mixed $projects): void
+    {
+        if (! is_array($projects)) {
+            $record->projects()->sync([]);
+
+            return;
+        }
+
+        $record->projects()->sync(
+            collect($projects)
+                ->filter(fn (mixed $projectId): bool => is_numeric($projectId))
+                ->map(fn (mixed $projectId): int => (int) $projectId)
+                ->values()
+                ->mapWithKeys(fn (int $projectId, int $index): array => [
+                    $projectId => ['position' => $index + 1],
+                ])
+                ->all(),
+        );
     }
 }

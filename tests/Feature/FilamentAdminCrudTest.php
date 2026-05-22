@@ -382,12 +382,25 @@ class FilamentAdminCrudTest extends TestCase
             'properties' => ['image_name' => 'project-alpha'],
             'active' => true,
         ]);
+        $projectTwo = Project::create([
+            'title' => 'Project Beta',
+            'scope' => 'Professional',
+            'position' => 2,
+            'content' => [
+                'description' => '<p>Description</p>',
+                'excerpt' => 'Excerpt',
+                'technology' => ['Laravel'],
+                'bullets' => ['Built feature'],
+            ],
+            'properties' => ['image_name' => 'project-beta'],
+            'active' => true,
+        ]);
 
         Livewire::test(CreateResume::class)
             ->fillForm([
                 'name' => 'Primary Resume',
                 'bio' => 'Short bio',
-                'projects' => [$project->id],
+                'projects' => [$projectTwo->id, $project->id],
                 'contacts' => [
                     [
                         'key' => 'email',
@@ -427,15 +440,20 @@ class FilamentAdminCrudTest extends TestCase
             ->assertHasNoFormErrors();
 
         $resume = Resume::firstOrFail();
-        $this->assertSame([$project->id], $resume->projects()->pluck('projects.id')->all());
+        $this->assertSame([$projectTwo->id, $project->id], $resume->projects()->pluck('projects.id')->all());
         $this->assertSame(['Built admin panel'], $resume->experience[0]['bullets']);
         $this->assertSame(['Laravel', 'PHP'], $resume->expertise);
+
+        $this->getJson('/api/resume/' . $resume->hash)
+            ->assertOk()
+            ->assertJsonPath('projects.0.id', $projectTwo->id)
+            ->assertJsonPath('projects.1.id', $project->id);
 
         Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])
             ->fillForm([
                 'name' => 'Updated Resume',
                 'bio' => 'Updated bio',
-                'projects' => [$project->id],
+                'projects' => [$project->id, $projectTwo->id],
                 'contacts' => [
                     ['key' => 'github', 'href' => 'https://github.com/alex', 'text' => 'alex'],
                 ],
@@ -464,6 +482,7 @@ class FilamentAdminCrudTest extends TestCase
         $this->assertSame('Updated Resume', $resume->name);
         $this->assertSame(['Led migration'], $resume->experience[0]['bullets']);
         $this->assertSame(['Symfony'], $resume->expertise);
+        $this->assertSame([$project->id, $projectTwo->id], $resume->projects()->pluck('projects.id')->all());
 
         $editResume = Livewire::test(EditResume::class, ['record' => $resume->getRouteKey()])->instance();
         $mutateFormDataBeforeFill = new \ReflectionMethod($editResume, 'mutateFormDataBeforeFill');

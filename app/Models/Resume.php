@@ -45,6 +45,9 @@ class Resume extends Model
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class, 'project_resume');
+        return $this->belongsToMany(Project::class, 'project_resume')
+            ->withPivot('position')
+            ->orderBy('project_resume.position')
+            ->orderBy('project_resume.id');
     }
 }
