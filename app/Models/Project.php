@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Project extends Model
 {
@@ -21,16 +25,17 @@ class Project extends Model
     ];
 
     protected $casts = [
+        'active' => 'boolean',
         'properties' => 'json',
         'content' => 'json',
     ];
 
-    public function resumes()
+    public function resumes(): BelongsToMany
     {
         return $this->belongsToMany(Resume::class, 'project_resume');
     }
 
-    public function reorderPositions()
+    public function reorderPositions(): self
     {
         $oldPosition = $this->getOriginal('position');
         $newPosition = $this->position;
@@ -53,12 +58,12 @@ class Project extends Model
         return $this;
     }
 
-    public function scopeActive()
+    public function scopeActive(Builder $query): Builder
     {
-        return $this->where('active', true);
+        return $query->where('active', true);
     }
 
-    public function resumeFormat()
+    public function resumeFormat(): array
     {
         return $this->only(['id', 'title', 'external_link', 'content']);
     }

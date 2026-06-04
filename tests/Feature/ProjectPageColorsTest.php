@@ -28,9 +28,9 @@ class ProjectPageColorsTest extends TestCase
 
         $this->get('/projects')
             ->assertOk()
-            ->assertSee('"name":"PHP"', false)
-            ->assertSee('"color":"#4F5D95"', false)
-            ->assertSee('"name":"Unmapped Tech"', false)
+            ->assertSee('&quot;name&quot;:&quot;PHP&quot;', false)
+            ->assertSee('&quot;color&quot;:&quot;#4F5D95&quot;', false)
+            ->assertSee('&quot;name&quot;:&quot;Unmapped Tech&quot;', false)
             ->assertSee('#64748b', false);
     }
 }
