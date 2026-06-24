@@ -39,7 +39,7 @@ class CodingLanguage extends Model
 
     public static function defaultLanguages(): Collection
     {
-        $languagesJson = storage_path('app/data/languages.json');
+        $languagesJson = public_path('data/languages.json');
         $payload = json_decode(file_get_contents($languagesJson), true);
 
         return collect($payload['languages'] ?? [])
