@@ -65,7 +65,7 @@ class CodingLanguage extends Model
             return static::$colors;
         }
 
-        $colorsPath = storage_path('app/data/language-colors.json');
+        $colorsPath = public_path('data/language-colors.json');
         $colors = json_decode(file_get_contents($colorsPath), true);
 
         static::$colors = is_array($colors) ? $colors : [];
