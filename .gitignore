@@ -25,3 +25,4 @@ docs/plans
 .bones
 .production
 bonesdeploy
+!.env.build
